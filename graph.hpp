@@ -1,28 +1,13 @@
 #ifndef GRAPH_GRAPH_HPP
 #define GRAPH_GRAPH_HPP
-
+#include "implementation/adjlist.hpp"
 namespace graph
 {
-    //EdgePolicy Requirements
     template
     <
         typename VertexType,
-        typename EdgeType,
-        typename EdgePolicy
+        typename EdgeType
     >
-    class AdjacencyList:public EdgePolicy
-    {
-        
-    };
-    
-    
-    template
-    <
-        typename VertexType,
-        typename EdgeType,
-        typename EdgePolicy
-    >
-    using Graph=AdjacencyList<VertexType,EdgeType,EdgePolicy>;
-    
+    using Graph=AdjacencyList<VertexType,EdgeType>; 
 }
 #endif
