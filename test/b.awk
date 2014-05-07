@@ -1,6 +1,5 @@
 BEGIN{
-    FILENAME=ARGV[1];
-    while(getline s<FILENAME)
+    while(getline s<ARGV[1])
     {
 	x=index(s," ");
 	if(x!=0)
@@ -9,14 +8,16 @@ BEGIN{
 	    tmp2=substr(s,x+1,length(s));
 	    #print tmp;
 	    system("g++ " tmp1);
-	    system("./a.out");
-	    if($0==$tmp2)
+	    system("./a.out>f.txt");
+	    getline out<"f.txt";
+	    if(out==tmp2)
 		print tmp1":OK";
 	    else
 		print tmp1":ERROR";
 	    #print tmp2;
 	    #print " ";
 	    #print out;
+	    system("rm f.txt");
 	}
 	#print x;
     }
