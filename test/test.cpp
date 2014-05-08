@@ -1,4 +1,5 @@
 #include "../graph.hpp"
+#include "../search/search.hpp"
 #include<iostream>
 int main()
 {
