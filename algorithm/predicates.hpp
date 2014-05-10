@@ -3,13 +3,8 @@
 #include "../graph.hpp"
 namespace graph
 {
-	template
-	<
-	typename VertexType,
-	typename EdgeType
-	>
-	
-	bool isAdjacent(Graph<VertexType,EdgeType>& g, VertexType x, VertexType y )
+	template<typename Graph>
+	bool isAdjacent(Graph& g,typename Graph::VertexType x,typename Graph::VertexType y )
 	{
 		int count=0;
 		for(auto i=g.nbegin(x);i!=g.nend(x);++i)

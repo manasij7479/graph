@@ -26,5 +26,5 @@ int main()
         std::cout<<"***\n";
     }
     
-    std::cout<<graph::isAdjacent<std::string,int>(g,"foo","bar");
+    std::cout<<graph::isAdjacent(g,"foo","bar");
 }
