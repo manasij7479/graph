@@ -1,7 +1,7 @@
 #include "../graph.hpp"
 
 #include "../search/search.hpp"
-#include "../search/dfs.hpp"
+#include "../search/ucs.hpp"
 
 int main()
 {
@@ -37,8 +37,8 @@ int main()
         std::cout<<"***\n";
     }
     
-    graph::DepthFirstSearch<decltype(g)> dfs(g,"a");
-    std::cout<<dfs.distanceTo("h");
+    graph::UniformCostSearch<decltype(g)> ucs(g,"a");
+    std::cout<<ucs.distanceTo("h");
     
     
     
