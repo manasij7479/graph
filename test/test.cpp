@@ -1,6 +1,11 @@
 #include "../graph.hpp"
+
 #include "../search/search.hpp"
 #include "../search/dfs.hpp"
+
+#include "../algorithm/predicates.hpp"
+//#include "../algorithm/enumeration.hpp"
+
 #include<iostream>
 int main()
 {
@@ -9,7 +14,7 @@ int main()
     g.insertVertex("bar");
     g.insertEdge("foo","bar",4);
 //     g.removeEdge("foo","bar");
-    g.removeVertex("bar");
+//    g.removeVertex("bar");
     
     for(auto x = g.begin();x!=g.end();++x)
     {
@@ -21,5 +26,5 @@ int main()
         std::cout<<"***\n";
     }
     
-    
+    std::cout<<graph::isAdjacent<std::string,int>(g,"foo","bar");
 }
