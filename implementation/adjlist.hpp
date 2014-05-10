@@ -25,8 +25,11 @@ namespace graph
         
         void insertVertex(const VertexType& v)
         {
-            auto e=new EdgeList();
-            data[v]=e;
+            if(data.find(v)==data.end())
+            {
+                auto e=new EdgeList();
+                data[v]=e;
+            }
         }
         void removeVertex(VertexType v)
         {
