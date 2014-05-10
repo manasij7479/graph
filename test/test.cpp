@@ -1,15 +1,12 @@
 #include "../graph.hpp"
 
-#include "../search/search.hpp"
-#include "../search/dfs.hpp"
-
 #include "../algorithm/predicates.hpp"
-//#include "../algorithm/enumeration.hpp"
+#include "../algorithm/enumeration.hpp"
 
 #include<iostream>
 int main()
 {
-    graph::Graph<std::string,int> g(false);
+    graph::Graph<std::string,int> g(true);
     g.insertVertex("foo");
     g.insertVertex("bar");
     g.insertEdge("foo","bar",4);
@@ -26,5 +23,5 @@ int main()
         std::cout<<"***\n";
     }
     
-    std::cout<<graph::isAdjacent(g,"foo","bar");
+    std::cout<<graph::inDegree(g,"foo");
 }

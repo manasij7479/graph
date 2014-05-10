@@ -3,13 +3,8 @@
 #include "../graph.hpp"
 namespace graph
 {
-	template
-	<
-	typename VertexType,
-	typename EdgeType
-	>
-	
-	int outdegree(Graph<VertexType,EdgeType>& g, VertexType v)
+	template<typename Graph>
+	int outDegree(Graph& g, typename Graph::VertexType v)
 	{
 		int count=0;
 		for(auto i=g.nbegin(v);i!=g.nend(v);++i)
@@ -17,22 +12,17 @@ namespace graph
 		return count;
 	}
 	
-	template
-	<
-	typename VertexType,
-	typename EdgeType
-	>
-	
-	int indegree(Graph<VertexType,EdgeType>& g, VertexType v)
+    template<typename Graph>
+	int inDegree(Graph& g, typename Graph::VertexType v)
 	{
 		int count=0;
-		if(!g.directed)
-			return outdegree(v);
+		if(!g.isDirected())
+			return outDegree(g,v);
 		else
 		{
 			for(auto x=g.begin();x!=g.end();++x)
 			{
-				for(auto y=g.nbegin(x);y!=g.nend(x);++y)
+				for(auto y=g.nbegin(x->first);y!=g.nend(x->first);++y)
 					if(y->first==v)
 						count++;
 			}
@@ -40,18 +30,13 @@ namespace graph
 		}
 	}
 	
-	template
-	<
-	typename VertexType,
-	typename EdgeType
-	>
-	
-	int degree(Graph<VertexType,EdgeType>& g, Vertextype v)
+	template<typename Graph>
+	int degree(Graph& g,typename Graph::Vertextype v)
 	{
-		if(!g.directed)
-			return outdegree(v);
+		if(!g.isDirected())
+			return outDegree(g,v);
 		else
-			return indegree(v)+outdegree(v);
+			return inDegree(g,v)+outDegree(g,v);
 	}
 }
 #endif

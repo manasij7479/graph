@@ -70,7 +70,7 @@ namespace graph
                 std::cout<<x.first<<std::endl;
             }
         }
-        
+        bool isDirected(){return directed;}
     private:
         std::map<VertexType,EdgeList*> data;
         bool directed;
