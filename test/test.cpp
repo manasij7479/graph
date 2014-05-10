@@ -1,4 +1,6 @@
 #include "../graph.hpp"
+#include "../algorithm/predicates.hpp"
+//#include "../algorithm/enumeration.hpp"
 #include<iostream>
 int main()
 {
@@ -6,8 +8,8 @@ int main()
     g.insertVertex("foo");
     g.insertVertex("bar");
     g.insertEdge("foo","bar",4);
-//     g.removeEdge("foo","bar");
-    g.removeVertex("bar");
+    g.removeEdge("foo","bar");
+//    g.removeVertex("bar");
     
     for(auto x = g.begin();x!=g.end();++x)
     {
@@ -19,5 +21,5 @@ int main()
         std::cout<<"***\n";
     }
     
-    
+    std::cout<<graph::isAdjacent(g,"foo","bar");
 }
