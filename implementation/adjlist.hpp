@@ -45,6 +45,10 @@ namespace graph
         }
         void insertEdge(const VertexType& x,const VertexType& y,const EdgeType& e)
         {
+            auto xit=data.find(x);
+            auto yit=data.find(y);
+            if(xit==data.end()||yit==data.end())
+                throw std::runtime_error("Vertex does not exist.");
             data[x]->insert({y,e});
             if(!directed)
                 data[y]->insert({x,e});
