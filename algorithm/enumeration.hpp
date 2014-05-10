@@ -12,7 +12,7 @@ namespace graph
 		return count;
 	}
 	
-    template<typename Graph>
+	template<typename Graph>
 	int inDegree(Graph& g, typename Graph::VertexType v)
 	{
 		int count=0;
