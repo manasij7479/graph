@@ -1,4 +1,3 @@
-#./cr.sh test.cpp foo
 filename=$1
 rp=`realpath $filename`
 expected=$2
