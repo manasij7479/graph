@@ -6,19 +6,20 @@ cplpl=".cpp"
 if [[ `echo $rp | grep .c$ -o` == "$c" ]]
 then
 	gcc $rp
-	out=`realpath a.out`
-	exec $out
+	out=`a.out`
 elif [[ `echo $rp | grep .cpp$ -o` == "$cplpl" ]]
 then
 	g++ $rp -std=c++11 
 	out=`./a.out`
+
+fi
 # 	echo $expected $out
-	if [ $expected == $out ]
-	then
-		echo '[OK]'
-		exit 0
-    else
-		echo '[ERROR]'
-		exit 1
-    fi
+
+if [ $expected == $out ]
+then
+	echo '[OK]'
+	exit 0
+else
+	echo '[ERROR]'
+	exit 1
 fi
