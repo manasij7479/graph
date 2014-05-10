@@ -1,6 +1,11 @@
 #include "../graph.hpp"
+
+#include "../search/search.hpp"
+#include "../search/dfs.hpp"
+
 #include "../algorithm/predicates.hpp"
 //#include "../algorithm/enumeration.hpp"
+
 #include<iostream>
 int main()
 {

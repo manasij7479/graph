@@ -9,13 +9,15 @@ namespace graph
 {
     template
     <
-        typename VertexType,
-        typename EdgeType
+        typename VT,
+        typename ET
     >
     class AdjacencyList
     {
     public:
-        typedef std::map<VertexType,EdgeType> EdgeList;
+        typedef VT VertexType;
+        typedef ET EdgeType;
+        typedef typename std::map<VertexType,EdgeType> EdgeList;
         typedef typename EdgeList::iterator EdgeIterator;
         typedef typename std::map<VertexType,EdgeList*>::iterator VertexIterator;
         
