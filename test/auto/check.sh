@@ -5,10 +5,10 @@ c=".c"
 cplpl=".cpp"
 if [[ `echo $rp | grep .c$ -o` == "$c" ]]
 then
-	gcc $rp &>/dev/null
+	cc $rp &>/dev/null
 elif [[ `echo $rp | grep .cpp$ -o` == "$cplpl" ]]
 then
-	g++ $rp -std=c++11 &>/dev/null
+	c++ $rp -std=c++11 &>/dev/null
 fi
 
 # 	echo $expected $out
