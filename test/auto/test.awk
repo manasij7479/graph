@@ -4,7 +4,12 @@ BEGIN{
 	fail=0;
 }
 {
-	retval=system("./check.sh "  $1 " " $2);
+	expected=$2;
+	
+	for(i=3;i<=NF;++i)
+		expected=expected "\\ "$i;
+	
+	retval=system("./check.sh "  $1 " " expected);
 	if(retval==0)
 		pass++;
 	else 

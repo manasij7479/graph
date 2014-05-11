@@ -1,3 +1,4 @@
 test.cpp foo
 test.cpp bar
+space.cpp 1 2 3
 broken.cpp irrelevant

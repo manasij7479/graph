@@ -15,7 +15,7 @@ fi
 if [ $? == 0 ]
 then
 	out=`./a.out`
-	if [ $expected == $out ]
+	if [ "$expected" == "$out" ]
 	then
 		echo '[OK]'
 		exit 0
