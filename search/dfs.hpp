@@ -3,18 +3,21 @@
 #include "search.hpp"
 namespace graph
 {
-    template<typename T>
+    template<typename GraphType>
     class Stack
     {
     public:
-        Stack(std::map<T,typename edge_traits<T>::DistanceType>&){}
-        void put(T t)
+        typedef typename GraphType::EdgeType E;
+        typedef typename GraphType::VertexType V;
+        
+        Stack(std::map<V,typename edge_traits<E>::DistanceType>&){}
+        void put(V t)
         {
             data.push_back(t);
         }
-        T get()
+        V get()
         {
-            T result=data.back();
+            V result=data.back();
             data.pop_back();
             return result;
         }
@@ -23,11 +26,11 @@ namespace graph
             return data.empty();
         }
     private:
-        std::vector<T> data;
+        std::vector<V> data;
     };
     
-    template<typename T>
-    using DepthFirstSearch=Search<T,Stack>;
+    template<typename G>
+    using DepthFirstSearch=Search<G,Stack>;
     
 }
 #endif

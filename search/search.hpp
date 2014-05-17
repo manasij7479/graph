@@ -15,7 +15,8 @@ namespace graph
     {
     public:
         typedef typename Graph::VertexType VertexType;
-        typedef typename edge_traits<VertexType>::DistanceType DistanceType;
+        typedef typename Graph::EdgeType EdgeType;
+        typedef typename edge_traits<EdgeType>::DistanceType DistanceType;
         
         Search(Graph& g_,const VertexType& s)
             :fringe(dist),g(g_),source(s)
@@ -27,7 +28,7 @@ namespace graph
             while(!fringe.empty())
             {
                 VertexType v=fringe.get();
-                for(auto y=g.nbegin(v);y!=g.nend(y);++y)
+                for(auto y=g.nbegin(v);y!=g.nend(v);++y)
                 {
                     if(dist.find(y->first)==dist.end())
                     {
@@ -57,8 +58,12 @@ namespace graph
                 std::reverse(result.begin(),result.end());
                 return result;
         }
+        VertexType parentOf(const VertexType& v)
+		{
+			return parent[v];
+		}
     private:
-        Container<VertexType> fringe;
+        Container<Graph> fringe;
         std::map<VertexType,DistanceType> dist;
         std::map<VertexType,VertexType> parent;
         Graph& g;
