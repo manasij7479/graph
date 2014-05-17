@@ -17,13 +17,13 @@ then
 	out=`./a.out`
 	if [ "$expected" == "$out" ]
 	then
-		echo '[OK]'
+		#echo '[OK]'
 		exit 0
 	else
-		echo '[VALUE ERROR]'
-		exit 1
+		#echo '[VALUE ERROR]'
+		exit 2
 	fi
 else
-	echo '[BUILD ERROR]'
+	#echo '[BUILD ERROR]'
 	exit 1
 fi
