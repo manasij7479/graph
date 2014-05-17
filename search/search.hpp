@@ -58,6 +58,10 @@ namespace graph
                 std::reverse(result.begin(),result.end());
                 return result;
         }
+        VertexType parentOf(const VertexType& v)
+		{
+			return parent[v];
+		}
     private:
         Container<Graph> fringe;
         std::map<VertexType,DistanceType> dist;
