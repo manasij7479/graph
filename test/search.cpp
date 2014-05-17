@@ -2,30 +2,35 @@
 
 #include "../search/search.hpp"
 #include "../search/ucs.hpp"
+#include "../search/dfs.hpp"
+#include "../search/bfs.hpp"
+#include<vector>
+#include<string>
+#include<iostream>
 
 int main()
 {
-    graph::Graph<std::string,int> g(true);
-    g.insertVertex("a");
-    g.insertVertex("b");
-    g.insertVertex("c");
-    g.insertVertex("d");
-    g.insertVertex("e");
-    g.insertVertex("f");
-    g.insertVertex("g");
-    g.insertVertex("h");
+    graph::Graph<std::string,int> g(false);
+    g.insertVertex("1");
+    g.insertVertex("2");
+    g.insertVertex("3");
+    g.insertVertex("4");
+    g.insertVertex("5");
+    g.insertVertex("6");
+    //g.insertVertex("g");
+    //g.insertVertex("h");
     
-    g.insertEdge("a","b",1);
-    g.insertEdge("a","c",1);
-    g.insertEdge("a","d",4);
-    g.insertEdge("b","c",2);
-    g.insertEdge("b","e",3);
-    g.insertEdge("c","g",1);
-    g.insertEdge("d","h",200);
-    g.insertEdge("d","f",1);
-    g.insertEdge("f","g",3);
-    g.insertEdge("e","h",5);
-    g.insertEdge("h","g",4);
+    g.insertEdge("1","2",1);
+    g.insertEdge("1","3",1);
+    g.insertEdge("2","3",4);
+    g.insertEdge("2","4",2);
+    g.insertEdge("2","5",3);
+    g.insertEdge("3","5",1);
+    g.insertEdge("4","5",2);
+    g.insertEdge("5","6",1);
+    //g.insertEdge("f","g",3);
+    //g.insertEdge("e","h",5);
+    //g.insertEdge("h","g",4);
     
     for(auto x = g.begin();x!=g.end();++x)
     {
@@ -37,9 +42,15 @@ int main()
         std::cout<<"***\n";
     }
     
-    graph::UniformCostSearch<decltype(g)> ucs(g,"a");
-    std::cout<<ucs.distanceTo("h");
-    
+    graph::DepthFirstSearch<decltype(g)> dfs(g,"1");
+    std::vector<std::string> v;
+    for(auto x=g.begin();x!=g.end();++x)
+	{
+		v=dfs.getPath(x->first);
+		for(int i=0;i<v.size();++i)
+			std::cout<<v[i];
+		std::cout<<'\n';
+	}
     
     
 }
