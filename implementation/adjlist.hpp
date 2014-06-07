@@ -78,6 +78,7 @@ namespace graph
             }
         }
         bool isDirected(){return directed;}
+        int order(){return data.size();}
     private:
         std::map<VertexType,EdgeList*> data;
         bool directed;

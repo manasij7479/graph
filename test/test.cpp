@@ -6,10 +6,13 @@
 #include<iostream>
 int main()
 {
-    graph::Graph<std::string,int> g(true);
+    graph::Graph<std::string,int> g(false);
     g.insertVertex("foo");
     g.insertVertex("bar");
     g.insertEdge("foo","bar",4);
+	graph::Graph<std::string,int> h(false);
+	h.insertVertex("foo");
+	h.insertVertex("bar");
 //     g.removeEdge("foo","bar");
 //    g.removeVertex("bar");
     
@@ -23,5 +26,10 @@ int main()
         std::cout<<"***\n";
     }
     
-    std::cout<<graph::inDegree(g,"foo");
+    //std::cout<<graph::inDegree(g,"foo");
+    
+    if(graph::isSpanningSubgraph(g,h))
+		std::cout<<"Yes"<<'\n';
+	else
+		std::cout<<"No"<<'\n';
 }
