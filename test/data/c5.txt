@@ -1,0 +1,12 @@
+weighted 0
+directed 0
+v a
+v b
+v c
+v d
+v e
+e a b
+e b c
+e c d
+e d e
+e e a
