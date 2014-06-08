@@ -1,27 +1,12 @@
 #include "../graph.hpp"
 
-#include "../algorithm/predicates.hpp"
-#include "../algorithm/enumeration.hpp"
+#include "../util/io.hpp"
 
-#include<iostream>
+#include <iostream>
+#include <fstream>
 int main()
 {
-    graph::Graph<std::string,int> g(true);
-    g.insertVertex("foo");
-    g.insertVertex("bar");
-    g.insertEdge("foo","bar",4);
-//     g.removeEdge("foo","bar");
-//    g.removeVertex("bar");
-    
-    for(auto x = g.begin();x!=g.end();++x)
-    {
-        std::cout<<"["<<x->first<<"]->";
-        for(auto y = g.nbegin(x->first);y!=g.nend(x->first);++y)
-        {
-            std::cout<<"("<< y->first<<","<< y->second<<")->";
-        }
-        std::cout<<"***\n";
-    }
-    
-    std::cout<<graph::inDegree(g,"foo");
+    std::ifstream in("c5.txt");
+    auto g=graph::makeGraph(in);
+    graph::displayGraph(g);
 }
