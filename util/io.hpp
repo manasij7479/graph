@@ -1,6 +1,6 @@
 #ifndef GRAPH_UTIL_IO_HPP
 #define GRAPH_UTIL_IO_HPP
-#include <istream>
+#include <fstream>
 #include <sstream>
 #include <map>
 #include "../graph.hpp"
@@ -48,6 +48,11 @@ namespace graph
         }
         return g;
     }
+    Graph<std::string,int> makeGraph(std::string filename)
+    {
+        std::ifstream in(filename);
+        return makeGraph(in);
+    }
     template<typename Graph>
     void displayGraph(Graph& g)
     {
@@ -61,5 +66,25 @@ namespace graph
             std::cout<<"*\n";
         }
     }
+    template<typename Graph>
+    std::string writeGraph(Graph& g)
+    {
+        std::ostringstream out;
+        out<<"directed "<<g.isDirected()<<"\n";
+        out<<"weighted 1\n";
+        for(auto x = g.begin();x!=g.end();++x)
+            out<<"v "<<x->first<<"\n";
+        
+        for(auto x = g.begin();x!=g.end();++x)
+        {
+            for(auto y = g.nbegin(x->first);y!=g.nend(x->first);++y)
+            {
+                out<<"e "<<x->first<<" "<< y->first<<" "<< y->second<<"\n";
+            }
+        }
+        return out.str();
+    }
+    
+    
 }
 #endif
