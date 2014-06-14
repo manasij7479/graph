@@ -5,6 +5,6 @@
 
 int main()
 {
-    auto g=graph::gen::cycle(5);
+    auto g=graph::gen::line(6);
     graph::displayGraph(g);
 }
