@@ -30,39 +30,39 @@ namespace graph
         }
 
         Graph<std::string,int> complete(int n,int start=1)
-		{
-			Graph<std::string,int> result;
+        {
+            Graph<std::string,int> result;
             add_vertices(result,n,start);
-			for(int i=start;i<=start+n-1;++i)
-				for(int j=start;j<=start+n-1;++j)
-					if(i!=j)
-						result.insertEdge(std::to_string(i),std::to_string(j),1);
+            for(int i=start;i<=start+n-1;++i)
+            for(int j=start;j<=start+n-1;++j)
+                if(i!=j)				
+                    result.insertEdge(std::to_string(i),std::to_string(j),1);
+             
+            return result;
+        }
 
-			return result;
-		}
+        Graph<std::string,int> wheel(int n,int start=1)
+        {
+            Graph<std::string,int> result = cycle(n-1,start+1);
+            result.insertVertex(std::to_string(start));
+            for(int i=start+1;i<=start+n-1;++i)
+                result.insertEdge(std::to_string(start),std::to_string(i),1);
 
-		Graph<std::string,int> wheel(int n,int start=1)
-		{
-			Graph<std::string,int> result = cycle(n-1,start+1);
-			result.insertVertex(std::to_string(start));
-			for(int i=start+1;i<=start+n-1;++i)
-				result.insertEdge(std::to_string(start),std::to_string(i),1);
-
-			return result;
-		}
-		
-		Graph<std::string,int> complete_bipartite(int m,int n,int start=1)
-		{
-			Graph<std::string,int> result;
+            return result;
+        }
+        
+        Graph<std::string,int> complete_bipartite(int m,int n,int start=1)
+        {
+            Graph<std::string,int> result;
             add_vertices(result,m+n,start);
-			for(int i=start;i<=start+m-1;++i)
-				for(int j=start+m;j<=start+m+n-1;++j)
-					result.insertEdge(std::to_string(i),std::to_string(j),1);
+            for(int i=start;i<=start+m-1;++i)
+                for(int j=start+m;j<=start+m+n-1;++j)
+                    result.insertEdge(std::to_string(i),std::to_string(j),1);
 
-			return result;
-		}
-		
-		Graph<std::string,int> star(int n,int start=1)
+            return result;
+        }
+        
+        Graph<std::string,int> star(int n,int start=1)
         {
             Graph<std::string,int> result;
             add_vertices(result,n+1,start);
@@ -73,31 +73,31 @@ namespace graph
             return result;
         }
 
-		Graph<std::string,int> grid(int m,int n,int start=1)
-		{
-			Graph<std::string,int> result;
+        Graph<std::string,int> grid(int m,int n,int start=1)
+        {
+            Graph<std::string,int> result;
 
-			if(m==1 && n==1)
-			{
-				result.insertVertex(std::to_string(start));
-				return result;
-			}
-			if(m==1)
-				return line(n,start);
-			if(n==1)
-				return line(m,start);
+            if(m==1 && n==1)
+            {
+                result.insertVertex(std::to_string(start));
+                return result;
+            }
+            if(m==1)
+                return line(n,start);
+            if(n==1)
+                return line(m,start);
 
             add_vertices(result,m*n,start);
 
-			for(int i=start;i<=start+m*n-1;i+=n)
-				for(int j=i;j<=i+n-2;++j)
-					result.insertEdge(std::to_string(j),std::to_string(j+1),1);
-			for(int i=start;i<=start+n-1;++i)
-				for(int j=i+n;j<=start+m*n-1;j+=n)
-					result.insertEdge(std::to_string(j-n),std::to_string(j),1);
+            for(int i=start;i<=start+m*n-1;i+=n)
+                for(int j=i;j<=i+n-2;++j)
+                    result.insertEdge(std::to_string(j),std::to_string(j+1),1);
+            for(int i=start;i<=start+n-1;++i)
+                for(int j=i+n;j<=start+m*n-1;j+=n)
+                    result.insertEdge(std::to_string(j-n),std::to_string(j),1);
 
-			return result;
-		}
+            return result;
+        }
 
     }
 }
