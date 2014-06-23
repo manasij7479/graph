@@ -5,6 +5,6 @@
 
 int main()
 {
-    auto g=graph::gen::complete_bipartite(2,6,110);
+    auto g=graph::gen::star(6,2);
     graph::displayGraph(g);
 }

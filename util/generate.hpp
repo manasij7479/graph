@@ -61,6 +61,17 @@ namespace graph
 
 			return result;
 		}
+		
+		Graph<std::string,int> star(int n,int start=1)
+        {
+            Graph<std::string,int> result;
+            add_vertices(result,n+1,start);
+            
+            for(int i=start+1;i<=start+n;++i)
+                result.insertEdge(std::to_string(start),std::to_string(i),1);
+            
+            return result;
+        }
 
 		Graph<std::string,int> grid(int m,int n,int start=1)
 		{
