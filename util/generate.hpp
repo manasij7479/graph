@@ -5,11 +5,10 @@ namespace graph
 {
     namespace gen
     {
-        /*Graph<std::string,int>*/void add_vertices(Graph<std::string,int>& g,int n,int start)
+        void add_vertices(Graph<std::string,int>& g,int n,int start)
         {
             for(int i=start;i<=start+n-1;++i)
                 g.insertVertex(std::to_string(i));
-            //return g;
         }
         
         Graph<std::string,int> line(int n,int start=1)
