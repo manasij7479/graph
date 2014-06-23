@@ -5,24 +5,35 @@ namespace graph
 {
     namespace gen
     {
-        Graph<std::string,int> add_vertices(Graph<std::string,int> g,int n,int start)
+        /*Graph<std::string,int>*/void add_vertices(Graph<std::string,int>& g,int n,int start)
         {
             for(int i=start;i<=start+n-1;++i)
                 g.insertVertex(std::to_string(i));
-            return g;
+            //return g;
         }
+        
+        Graph<std::string,int> line(int n,int start=1)
+        {
+            Graph<std::string,int> result;
+            add_vertices(result,n,start);
+            for(int i=start;i<=start+n-2;++i)
+                result.insertEdge(std::to_string(i),std::to_string(i+1),1);
+
+            return result;
+        }
+        
         Graph<std::string,int> cycle(int n,int start=1)
         {
-            Graph<std::string,int> result=add_vertices(result,n,start);
-            for(int i=start-1;i<start+n-1;++i)
-                result.insertEdge(std::to_string(i+1),std::to_string((i+1)%n+1),1);
+            Graph<std::string,int> result = line(n,start);
+            result.insertEdge(std::to_string(start),std::to_string(start+n-1),1);
 
             return result;
         }
 
         Graph<std::string,int> complete(int n,int start=1)
 		{
-			Graph<std::string,int> result=add_vertices(result,n,start);
+			Graph<std::string,int> result;
+            add_vertices(result,n,start);
 			for(int i=start;i<=start+n-1;++i)
 				for(int j=start;j<=start+n-1;++j)
 					if(i!=j)
@@ -40,19 +51,11 @@ namespace graph
 
 			return result;
 		}
-
-		Graph<std::string,int> line(int n,int start=1)
-		{
-			Graph<std::string,int> result=add_vertices(result,n,start);
-			for(int i=start;i<=start+n-2;++i)
-				result.insertEdge(std::to_string(i),std::to_string(i+1),1);
-
-			return result;
-		}
-
+		
 		Graph<std::string,int> complete_bipartite(int m,int n,int start=1)
 		{
-			Graph<std::string,int> result=add_vertices(result,m+n,start);
+			Graph<std::string,int> result;
+            add_vertices(result,m+n,start);
 			for(int i=start;i<=start+m-1;++i)
 				for(int j=start+m;j<=start+m+n-1;++j)
 					result.insertEdge(std::to_string(i),std::to_string(j),1);
@@ -74,7 +77,7 @@ namespace graph
 			if(n==1)
 				return line(m,start);
 
-            result=add_vertices(result,m*n,start);
+            add_vertices(result,m*n,start);
 
 			for(int i=start;i<=start+m*n-1;i+=n)
 				for(int j=i;j<=i+n-2;++j)
