@@ -5,6 +5,6 @@
 
 int main()
 {
-    auto g=graph::gen::star(6,2);
+    auto g=graph::gen::star_polygon(7,3,1);
     graph::displayGraph(g);
 }

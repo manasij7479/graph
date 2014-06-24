@@ -1,6 +1,7 @@
 #ifndef GRAPH_UTIL_GENERATE_HPP
 #define GRAPH_UTIL_GENERATE_HPP
 #include<string>
+#include<stdexcept>
 namespace graph
 {
     namespace gen
@@ -73,6 +74,26 @@ namespace graph
             return result;
         }
 
+        Graph<std::string,int> star_polygon(int p,int q,int start=1)
+        {
+            if(!(q>1 && p>2*q))
+                throw std::runtime_error("Not Possible : (2<2q<p) not met ...");
+            Graph<std::string,int> result;
+            add_vertices(result,p,start);
+            
+            int end=start+p-1;
+            for(int i=start,j=start+q;i<=end;++i)
+            {
+                result.insertEdge(std::to_string(i),std::to_string(j),1);
+                if(j==end)
+                    j=start;
+                else
+                    j++;
+            }
+            
+            return result;
+        }
+        
         Graph<std::string,int> grid(int m,int n,int start=1)
         {
             Graph<std::string,int> result;
