@@ -78,7 +78,7 @@ namespace graph
             }
         }
         
-        int weight(const VertexType x,const VertexType y)
+        EdgeType weight(const VertexType x,const VertexType y)
         {
             auto i=data[x]->find(y);
             if(i!=data[x]->end())
