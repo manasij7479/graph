@@ -131,6 +131,11 @@ namespace graph
 
             return result;
         }
+        
+        Graph<std::string,int> wagner(int start=1)
+        {
+            return mobius_ladder(8,start);
+        }
 
     }
 }

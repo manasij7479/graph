@@ -5,6 +5,6 @@
 
 int main()
 {
-    auto g=graph::gen::mobius_ladder(5,3);
+    auto g=graph::gen::wagner();
     graph::displayGraph(g);
 }
