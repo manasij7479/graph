@@ -5,6 +5,6 @@
 
 int main()
 {
-    auto g=graph::gen::star_polygon(7,3,1);
+    auto g=graph::gen::mobius_ladder(5,3);
     graph::displayGraph(g);
 }

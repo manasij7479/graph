@@ -94,6 +94,18 @@ namespace graph
             return result;
         }
         
+        Graph<std::string,int> mobius_ladder(int n,int start=1)
+        {
+            if(n%2 != 0)
+                throw std::runtime_error("Not Possible : 'n' must be even ...");
+            
+            Graph<std::string,int> result = cycle(n,start);
+            int end=start+n-1;
+            for(int i=start;i<=(start+end)/2;++i)
+                result.insertEdge(std::to_string(i),std::to_string(i+n/2),1);
+            return result;
+        }
+        
         Graph<std::string,int> grid(int m,int n,int start=1)
         {
             Graph<std::string,int> result;
