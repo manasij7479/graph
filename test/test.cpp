@@ -5,6 +5,6 @@
 
 int main()
 {
-    auto g=graph::gen::wagner();
+    auto g=graph::gen::butterfly();
     graph::displayGraph(g);
 }
