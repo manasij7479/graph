@@ -1,10 +1,11 @@
-#include "../graph.hpp"
-#include "../util/io.hpp"
-#include "../util/generate.hpp"
 #include <iostream>
+#include "../graph.hpp"
 
 int main()
 {
-    auto g=graph::gen::wagner();
-    graph::displayGraph(g);
+    graph::Graph<std::string,int> g;
+    g.insertVertex("foo");
+    g.insertVertex("bar");
+    g.insertEdge("foo","bar",5);
+    std::cout<<g.weight("foo","bar");
 }

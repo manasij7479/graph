@@ -77,6 +77,16 @@ namespace graph
                 std::cout<<x.first<<std::endl;
             }
         }
+        
+        EdgeType weight(const VertexType x,const VertexType y)
+        {
+            auto i=data[x]->find(y);
+            if(i!=data[x]->end())
+                return i->second;
+            else
+                return 0;
+        }
+        
         bool isDirected(){return directed;}
         int order(){return data.size();}
     private:
