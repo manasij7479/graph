@@ -1,5 +1,6 @@
 #ifndef GRAPH_UTIL_GENERATE_HPP
 #define GRAPH_UTIL_GENERATE_HPP
+#include "../algorithm/operations.hpp"
 #include<string>
 #include<stdexcept>
 namespace graph
@@ -162,6 +163,15 @@ namespace graph
             return result;
         }
         
+        Graph<std::string,int> generalized_petersen(int n,int k,int start=1)
+        {
+            Graph<std::string,int> result = Union(star_polygon(n,k,start),cycle(n,start+n));
+            for(int i=start;i<=start+n-1;i++)
+                result.insertEdge(std::to_string(i),std::to_string(i+n),1);
+            
+            return result;
+        }
+        
         Graph<std::string,int> wagner(int start=1)
         {
             return mobius_ladder(8,start);
@@ -171,7 +181,36 @@ namespace graph
         {
             return friendship(2,start);
         }
+        
+        Graph<std::string,int> petersen(int start=1)
+        {
+            return generalized_petersen(5,2,start);
+        }
 
+        Graph<std::string,int> durer(int start=1)
+        {
+            return generalized_petersen(6,2,start);
+        }
+        
+        Graph<std::string,int> desargues(int start=1)
+        {
+            return generalized_petersen(10,3,start);
+        }
+        
+        Graph<std::string,int> mobius_kantor(int start=1)
+        {
+            return generalized_petersen(8,3,start);
+        }
+        
+        Graph<std::string,int> dodecahedron(int start=1)
+        {
+            return generalized_petersen(10,2,start);
+        }
+        
+        Graph<std:;string,int> nauru(int start=1)
+        {
+            return generalized_petersen(12,5,start);
+        }
     }
 }
 #endif
