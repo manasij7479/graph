@@ -1,6 +1,7 @@
 #ifndef GRAPH_ALGORITHM_PREDICATES_HPP
 #define GRAPH_ALGORITHM_PREDICATES_HPP
 #include "../graph.hpp"
+# include "../algorithm/enumeration.hpp"
 #include<vector>
 #include<algorithm>
 namespace graph
@@ -46,6 +47,54 @@ namespace graph
 		if(g.order()==h.order() && isSubgraph(g,h))
 			return true;
 		return false;
+	}
+	template<typename Graph>
+	bool isConnected(Graph& g)
+	{
+		return true;
+	}
+	template <typename Graph>
+	bool isRegular(Graph &g)
+	{
+		int k=degree(g,g.begin()->first);
+		for (auto x=g.begin();x!=g.end();x++)
+			if(k!=degree(g,x->first))
+				return false;
+		return true;
+	}
+	template <typename Graph>
+	bool isEulerian(Graph &g)
+	{
+		if (isConnected(g))
+		{	for (auto x=g.begin();x!=g.end();x++)
+			{
+					int k=degree(g,x->first);
+					if(k%2!=0)
+						return false;
+			}
+			return true;
+		}
+		else
+			return false;
+	}
+	template <typename Graph>
+	bool isSemiEulerian(Graph &g)
+	{
+		if (isConnected(g))
+		{	int count=0;
+			for (auto x=g.begin();x!=g.end();x++)
+			{
+					int k=degree(g,x->first);
+					if(k%2!=0)
+						count++;
+			}
+			if(count==2)
+				return true;
+			else
+				return false;
+		}
+		else
+			return false;
 	}
 }
 #endif

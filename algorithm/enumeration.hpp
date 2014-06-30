@@ -38,5 +38,17 @@ namespace graph
 		else
 			return inDegree(g,v)+outDegree(g,v);
 	}
+	
+	template<typename Graph>
+	int nregular(Graph& g)
+	{
+		int k=degree(g,g.begin()->first);
+		for(auto x=g.begin();x!=g.end();x++)
+		{
+			if (k!=degree(g,x->first))
+				return 0;
+		}
+		return k;
+	}
 }
 #endif
