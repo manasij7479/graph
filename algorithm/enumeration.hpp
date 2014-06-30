@@ -31,7 +31,7 @@ namespace graph
 	}
 	
 	template<typename Graph>
-	int degree(Graph& g,typename Graph::Vertextype v)
+	int degree(Graph& g,typename Graph::VertexType v)
 	{
 		if(!g.isDirected())
 			return outDegree(g,v);

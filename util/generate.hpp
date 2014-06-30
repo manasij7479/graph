@@ -207,7 +207,7 @@ namespace graph
             return generalized_petersen(10,2,start);
         }
         
-        Graph<std:;string,int> nauru(int start=1)
+        Graph<std::string,int> nauru(int start=1)
         {
             return generalized_petersen(12,5,start);
         }
