@@ -33,9 +33,13 @@ namespace graph
     private:
         void generate()
         {
-            if(g.order()<=map.size())
+            if(g.order()==map.size())
                 return;
-            for(auto it=g.begin();it!=g.end();++it)
+            else if (g.order()<map.size())
+            {
+                //TODO: Remove discarded vertex from map
+            }
+            else for(auto it=g.begin();it!=g.end();++it)
             {
                 if(map.find(it->first)==map.end())
                 {

@@ -9,7 +9,7 @@ int main()
     // create the window
     sf::RenderWindow window(sf::VideoMode(600, 600), "LayoutTester");
 
-    auto g = graph::gen::star(5);
+    auto g = graph::gen::complete(5);
     
     graph::RandomLayout<decltype(g)> rand(g,{300,300},{100,100});
     graph::ForceBasedLayout<decltype(g)> layout(g,rand);
@@ -60,6 +60,7 @@ int main()
                 line[0].color=sf::Color::Black;
                 line[1].color=sf::Color::Black;
                 window.draw(line, 2, sf::Lines);
+//                 std::cin.get();
             }
         }
         
