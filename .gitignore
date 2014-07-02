@@ -24,3 +24,5 @@
 *.gch
 *.pch
 
+.kdev4*
+graph.kdev4
