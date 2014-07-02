@@ -2,15 +2,18 @@
 #include <SFML/Graphics.hpp>
 #include "graph.hpp"
 #include "layout/random_layout.hpp"
-#include "test/testgraph.h" //switch to generators soon
+#include "layout/force_based_layout.hpp"
+#include "util/generate.hpp"
 int main()
 {
     // create the window
     sf::RenderWindow window(sf::VideoMode(600, 600), "LayoutTester");
 
-    auto g = getOriginalTestGraph();
+    auto g = graph::gen::star(5);
     
-    graph::RandomLayout<decltype(g)> layout(g,{300,300},{100,100});
+    graph::RandomLayout<decltype(g)> rand(g,{300,300},{100,100});
+    graph::ForceBasedLayout<decltype(g)> layout(g,rand);
+    
     sf::CircleShape c(3,10);
     c.setFillColor(sf::Color::Blue);
     sf::Font font;

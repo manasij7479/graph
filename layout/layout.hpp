@@ -16,6 +16,7 @@ namespace graph
         typedef typename Graph::VertexType VertexType;
         virtual Point Vertex(VertexType v){return {0.0f,0.0f};};
         virtual Curve Edge(VertexType x, VertexType y) { return {};} 
+        virtual void import(Layout& l){};
     };
 }
 #endif

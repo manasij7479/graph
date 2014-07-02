@@ -14,7 +14,10 @@ namespace graph
     public:
         typedef typename Graph::VertexType VertexType;
         RandomLayout(Graph& g_,Point mean={0,0},Point stddev={0.5f,.5f})
-            :g(g_),twister(rd()),x(mean.x,stddev.x),y(mean.y,stddev.y){};
+            :g(g_),twister(rd()),x(mean.x,stddev.x),y(mean.y,stddev.y)
+            {
+                generate();
+            };
         Point Vertex(VertexType v)
         {
             generate();
