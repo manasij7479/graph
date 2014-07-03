@@ -96,5 +96,15 @@ namespace graph
 		else
 			return false;
 	}
+	template <typename Graph>
+	bool isComplete(Graph &g)
+	{
+		for (auto x=g.begin();x!=g.end();x++)
+			for (auto y=g.begin();y!=g.end();y++)
+				if (x!=y && !(isAdjacent(g,x->first,y->first)))
+					return false;
+			
+		return true;
+	}
 }
 #endif

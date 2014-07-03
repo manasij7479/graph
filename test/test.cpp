@@ -7,11 +7,15 @@
 int main()
 {
     auto g1=graph::gen::cycle(5);
-    if(isEulerian(g1))
+    if (isComplete(g1))
+		std::cout<<"1";
+	else
+		std::cout<<"2";
+    /*if(isEulerian(g1))
 		std::cout<<"1";
 	int k=nregular(g1);
 	if(k!=0)
-		std::cout<<k;
+		std::cout<<k;*/
 	
     /*auto g2=graph::gen::wheel(6);
     auto g=graph::intersection(g1,g2);
