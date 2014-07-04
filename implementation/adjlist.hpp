@@ -66,9 +66,11 @@ namespace graph
         
         VertexIterator begin(){return data.begin();}
         VertexIterator end(){return data.end();}
+        VertexIterator find(const VertexType& v){return data.find(v);}
         
         EdgeIterator nbegin(const VertexType& v){return data[v]->begin();}
         EdgeIterator nend(const VertexType& v){return data[v]->end();}
+        EdgeIterator nfind(const VertexType& v,const VertexType& n){return data[v]->find(n);}
         
         void showInternal()
         {
