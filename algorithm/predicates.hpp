@@ -1,8 +1,10 @@
 #ifndef GRAPH_ALGORITHM_PREDICATES_HPP
 #define GRAPH_ALGORITHM_PREDICATES_HPP
 #include "../graph.hpp"
-#include<vector>
-#include<algorithm>
+#include "../search/search.hpp"
+#include "../search/dfs.hpp"
+#include <vector>
+#include <algorithm>
 namespace graph
 {
 	template<typename Graph>
