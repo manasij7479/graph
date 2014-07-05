@@ -15,6 +15,7 @@ namespace graph
 			return false;
 	}
 	
+	
 	template<typename Graph>
 	bool isSubgraph(Graph& g,Graph& h)
 	{
@@ -48,4 +49,5 @@ namespace graph
 		return false;
 	}
 }
+#include "cyclic.hpp"
 #endif
