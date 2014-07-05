@@ -4,6 +4,7 @@
 #include "../implementation/edge_traits.hpp"
 #include <map>
 #include <vector>
+#include <functional>
 namespace graph
 {
     template
@@ -117,5 +118,44 @@ namespace graph
             Search<Graph,Container,DefaultSearch>::execute();
         }
     };
+    
+    template
+    <
+        typename Graph,
+        template <typename> class Container
+    >
+    class HookedSearch : public Search<Graph,Container,HookedSearch>
+    {
+    public:
+        typedef typename Graph::VertexType V;
+        HookedSearch(Graph& g,const V& s)
+            :Search<Graph,Container,HookedSearch>(g,s)
+        {
+            m_p1=m_p2=m_p3=
+            [](const V&)
+            {
+                return true;
+            };
+        }
+        
+        void execute()
+        {
+            Search<Graph,Container,HookedSearch>::execute();
+        }
+        bool p1(const V& v)
+        {
+            return m_p1(v);
+        }
+        bool p2(const V& v)
+        {
+            return m_p2(v);
+        }
+        bool p3(const V& v)
+        {
+            return m_p3(v);
+        }
+        std::function<bool(const V& v)> m_p1,m_p2,m_p3;
+    };
+    
 }
 #endif

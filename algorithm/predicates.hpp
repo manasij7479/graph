@@ -48,6 +48,20 @@ namespace graph
 			return true;
 		return false;
 	}
+	
+	    
+    template<typename Graph>
+    bool isCyclic(Graph& g)
+    {
+        HookedSearch<Graph,Stack> searchObject(g,g.begin()->first);
+        bool cyclic=false;
+        searchObject.m_p3=[&](const typename Graph::VertexType& v)
+        {
+            cyclic=true;
+            return false;
+        };
+        searchObject.execute();
+        return cyclic;
+    }
 }
-#include "cyclic.hpp"
 #endif
