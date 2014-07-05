@@ -1,11 +1,10 @@
 #include "../graph.hpp"
 #include "../util/io.hpp"
+#include "../util/generate.hpp"
 #include <iostream>
-#include <fstream>
 
 int main()
 {
-    std::ifstream in("data/c5.txt");
-    auto g=graph::makeGraph(in);
+    auto g=graph::gen::cycle(5);
     std::cout<<g.order();
 }

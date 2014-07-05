@@ -25,12 +25,16 @@ namespace graph
         {
             return data.empty();
         }
+        int count(V v)
+        {
+            return data.count(v);
+        }
     private:
         std::vector<V> data;
     };
     
     template<typename G>
-    using DepthFirstSearch=Search<G,Stack>;
+    using DepthFirstSearch=Search<G,Stack,DefaultSearch>;
     
 }
 #endif
