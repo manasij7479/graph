@@ -106,5 +106,26 @@ namespace graph
 			
 		return true;
 	}
+	template <typename Graph>
+	bool isComplement(Graph &g, Graph &h)
+	{
+		for (auto x=g.begin();x!=g.end();x++)
+			for (auto y=g.begin();y!=g.end();y++)
+				if (x!=y)
+					if(isAdjacent(g,x->first,y->first) && isAdjacent(h,x->first,y->first))
+						return false;
+			
+		return true;
+	}
+	template <typename Graph>
+	bool isEdgeless(Graph &g)
+	{
+		for (auto x=g.begin();x!=g.end();x++)
+			for (auto y=g.begin();y!=g.end();y++)
+				if(isAdjacent(g,x->first,y->first))
+					return false;
+			
+		return true;
+	}
 }
 #endif

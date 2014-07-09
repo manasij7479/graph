@@ -40,5 +40,18 @@ namespace graph
         
         return result;
     }
+    template<typename Graph>
+    Graph complement(Graph g1)
+    {
+        Graph result;
+        for(auto i=g1.begin();i!=g1.end();++i)
+			result.insertVertex(i->first);
+        for(auto i=g1.begin();i!=g1.end();++i)
+            for (auto j=g1.begin();j!=g1.end();++j)
+				if(i->first!=j->first && !(isAdjacent(g1,i->first,j->first)))
+					result.insertEdge(i->first,j->first,1);
+        
+        return result;
+    }
 }
 #endif
