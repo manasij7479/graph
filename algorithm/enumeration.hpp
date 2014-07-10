@@ -3,52 +3,52 @@
 #include "../graph.hpp"
 namespace graph
 {
-	template<typename Graph>
-	int outDegree(Graph& g, typename Graph::VertexType v)
-	{
-		int count=0;
-		for(auto i=g.nbegin(v);i!=g.nend(v);++i)
-			count++;
-		return count;
-	}
-	
-	template<typename Graph>
-	int inDegree(Graph& g, typename Graph::VertexType v)
-	{
-		int count=0;
-		if(!g.isDirected())
-			return outDegree(g,v);
-		else
-		{
-			for(auto x=g.begin();x!=g.end();++x)
-			{
-				for(auto y=g.nbegin(x->first);y!=g.nend(x->first);++y)
-					if(y->first==v)
-						count++;
-			}
-			return count;
-		}
-	}
-	
-	template<typename Graph>
-	int degree(Graph& g,typename Graph::VertexType v)
-	{
-		if(!g.isDirected())
-			return outDegree(g,v);
-		else
-			return inDegree(g,v)+outDegree(g,v);
-	}
-	
-	template<typename Graph>
-	int nregular(Graph& g)
-	{
-		int k=degree(g,g.begin()->first);
-		for(auto x=g.begin();x!=g.end();x++)
-		{
-			if (k!=degree(g,x->first))
-				return 0;
-		}
-		return k;
-	}
+    template<typename Graph>
+    int outDegree(Graph& g, typename Graph::VertexType v)
+    {
+        int count=0;
+        for(auto i=g.nbegin(v);i!=g.nend(v);++i)
+            count++;
+        return count;
+    }
+    
+    template<typename Graph>
+    int inDegree(Graph& g, typename Graph::VertexType v)
+    {
+        int count=0;
+        if(!g.isDirected())
+            return outDegree(g,v);
+        else
+        {
+            for(auto x=g.begin();x!=g.end();++x)
+            {
+                for(auto y=g.nbegin(x->first);y!=g.nend(x->first);++y)
+                    if(y->first==v)
+                        count++;
+            }
+            return count;
+        }
+    }
+    
+    template<typename Graph>
+    int degree(Graph& g,typename Graph::VertexType v)
+    {
+        if(!g.isDirected())
+            return outDegree(g,v);
+        else
+            return inDegree(g,v)+outDegree(g,v);
+    }
+    
+    template<typename Graph>
+    int nregular(Graph& g)
+    {
+        int k=degree(g,g.begin()->first);
+        for(auto x=g.begin();x!=g.end();x++)
+        {
+            if (k!=degree(g,x->first))
+                return 0;
+        }
+        return k;
+    }
 }
 #endif
