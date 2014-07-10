@@ -7,12 +7,39 @@
 #include<iostream>
 int main()
 {
-    auto g=graph::gen::path(1);
-    auto h=graph::gen::cycle(5,2);
-    auto g1=graph::join(g,h);
-    graph::displayGraph(g1);
-    auto w=graph::gen::wheel(6);
-    graph::displayGraph(w);
+//     auto g=graph::gen::path(1);
+//     auto h=graph::gen::cycle(5,2);
+//     auto g1=graph::join(g,h);
+//     graph::displayGraph(g1);
+//     auto w=graph::gen::wheel(6);
+    graph::Graph<std::string,int> g,h;
+    g.insertVertex("1");
+    g.insertVertex("2");
+    g.insertVertex("3");
+    g.insertVertex("4");
+    g.insertEdge("4","1",1);
+    g.insertEdge("4","2",1);
+    g.insertEdge("4","3",1);
+    g.insertEdge("1","2",1);
+    g.insertEdge("1","3",1);
+    g.insertEdge("2","3",1);
+    
+    h.insertVertex("1");
+    h.insertVertex("3");
+    h.insertVertex("5");
+    h.insertVertex("7");
+    h.insertVertex("9");
+    h.insertEdge("9","1",1);
+    h.insertEdge("9","3",1);
+    h.insertEdge("9","5",1);
+    h.insertEdge("9","7",1);
+    h.insertEdge("1","3",1);
+    h.insertEdge("1","7",1);
+    h.insertEdge("5","7",1);
+    h.insertEdge("5","3",1);
+    
+    auto sd=graph::symmetric_difference(g,h);
+    graph::displayGraph(sd);
     
     
     /*auto g1=graph::gen::cycle(5);

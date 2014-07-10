@@ -51,6 +51,31 @@ namespace graph
     }
     
     template<typename Graph>
+    Graph symmetric_difference(Graph g1,Graph g2)
+    {
+        Graph result;
+        for(auto i=g1.begin();i!=g1.end();++i)
+            if(!isVertex(g2,i->first))
+                result.insertVertex(i->first);
+        for(auto i=g2.begin();i!=g2.end();++i)
+            if(!isVertex(g1,i->first))
+                result.insertVertex(i->first);
+        
+        for(auto i=g1.begin();i!=g1.end();++i)
+            for(auto j=g1.nbegin(i->first);j!=g1.nend(i->first);++j)
+                if(isVertex(result,i->first) && isVertex(result,j->first))
+                    if(!isAdjacent(g2,i->first,j->first))
+                        result.insertEdge(i->first,j->first,j->second);
+        for(auto i=g2.begin();i!=g2.end();++i)
+            for(auto j=g2.nbegin(i->first);j!=g2.nend(i->first);++j)
+                if(isVertex(result,i->first) && isVertex(result,j->first))
+                    if(!isAdjacent(g1,i->first,j->first))
+                        result.insertEdge(i->first,j->first,j->second);
+                    
+        return result;
+    }
+    
+    template<typename Graph>
     Graph complement(Graph g1)
     {
         Graph result;
