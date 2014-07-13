@@ -23,5 +23,8 @@ subgraph        :[ subgraph [ ID ] ] '{' stmt_list '}'
 compass_pt      :(n | ne | e | se | s | sw | w | nw | c | _)
 
 
+PEG of what we have currently:
+GraphDecl  = (graph|digraph) [ID] StmtListDecl
+StmtListDecl = ???
 
 
