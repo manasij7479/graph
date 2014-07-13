@@ -2,6 +2,8 @@
 #define GRAPH_ALGORITHM_PREDICATES_HPP
 #include "../graph.hpp"
 # include "../algorithm/enumeration.hpp"
+#include "../search/search.hpp"
+#include "../search/dfs.hpp"
 #include<vector>
 #include<algorithm>
 namespace graph
@@ -130,6 +132,21 @@ namespace graph
                     return false;
                 
                 return true;
+
+    }
+    
+    template<typename Graph>
+    bool isCyclic(Graph& g)
+    {
+        HookedSearch<Graph,Stack> searchObject(g,g.begin()->first);
+        bool cyclic=false;
+        searchObject.m_p3=[&](const typename Graph::VertexType& v)
+        {
+            cyclic=true;
+            return false;
+        };
+        searchObject.execute();
+        return cyclic;
     }
 }
 #endif

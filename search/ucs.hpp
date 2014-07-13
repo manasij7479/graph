@@ -47,7 +47,7 @@ namespace graph
     };
     
     template<typename G>
-    using UniformCostSearch=Search<G,PriorityQueue>;
+    using UniformCostSearch=Search<G,PriorityQueue,DefaultSearch>;
     
 }
 #endif

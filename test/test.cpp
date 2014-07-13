@@ -78,3 +78,4 @@ int main()
     //std::cout<<graph::degree(g,g.begin()->first);
     //std::cout<<g.begin()->first;
 }
+
