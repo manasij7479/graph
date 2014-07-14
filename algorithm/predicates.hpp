@@ -57,6 +57,7 @@ namespace graph
     template<typename Graph>
     bool isConnected(Graph& g)
     {
+        //pore change korte hobe TODO
         return true;
     }
     template <typename Graph>
@@ -147,6 +148,11 @@ namespace graph
         };
         searchObject.execute();
         return cyclic;
+    }
+    template<typename Graph>
+    bool isEmpty(Graph& g)
+    {
+       return (g.begin()==g.end());
     }
 }
 #endif
