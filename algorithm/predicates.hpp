@@ -58,9 +58,9 @@ namespace graph
     template<typename Graph>
     bool isConnected(Graph& g)
     {
-        BreadthFirstSearch<Graph> b(g,g.begin()->first);
-        b();
-        auto d=b.getDistArray();
+        BreadthFirstSearch<Graph> bfs(g,g.begin()->first);
+        bfs();
+        auto d=bfs.getDistArray();
         
         return d.size()==g.order();
     }
