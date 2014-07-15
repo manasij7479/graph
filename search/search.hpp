@@ -66,12 +66,12 @@ namespace graph
             dist[source]=DistanceType(0);
             parent[source]=source;
             fringe.put(source);
-            if(!dynamic_cast<Derived*>(this)->p1(source))
+            if(!static_cast<Derived*>(this)->p1(source))
                 return;
             while(!fringe.empty())
             {
                 VertexType v=fringe.get();
-                if(!dynamic_cast<Derived*>(this)->p2(v))
+                if(!static_cast<Derived*>(this)->p2(v))
                     return;
                 for(auto y=g.nbegin(v);y!=g.nend(v);++y)
                 {
@@ -87,13 +87,13 @@ namespace graph
                         //back edge
                         if(g.isDirected())
                         {
-                            if(!dynamic_cast<Derived*>(this)->p3(y->first))
+                            if(!static_cast<Derived*>(this)->p3(y->first))
                                 return;
                         }
                         else
                         {
                             if(parent[v]!=y->first)
-                                if(!dynamic_cast<Derived*>(this)->p3(y->first))
+                                if(!static_cast<Derived*>(this)->p3(y->first))
                                     return;
                         }
                     }
@@ -116,6 +116,7 @@ namespace graph
     class DefaultSearch : public Search<Graph,Container,DefaultSearch>
     {
     public:
+        typedef typename Graph::VertexType V;;
         DefaultSearch(Graph& g,const typename Graph::VertexType& s)
             :Search<Graph,Container,DefaultSearch>(g,s)
         {
