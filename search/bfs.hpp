@@ -31,7 +31,7 @@ namespace graph
     };
     
     template<typename G>
-    using BreadthFirstSearch=Search<G,DefaultSearch,Queue>;
+    using BreadthFirstSearch=Search<G,Queue,DefaultSearch>;
     
 }
 #endif
