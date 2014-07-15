@@ -2,7 +2,7 @@
 #define GRAPH_ALGORITHM_PREDICATES_HPP
 #include "../graph.hpp"
 # include "../algorithm/enumeration.hpp"
-#include "../search/search.hpp"
+#include "../search/bfs.hpp"
 #include "../search/dfs.hpp"
 #include<vector>
 #include<algorithm>
@@ -54,12 +54,17 @@ namespace graph
             return true;
         return false;
     }
+    
     template<typename Graph>
     bool isConnected(Graph& g)
     {
-        //pore change korte hobe TODO
-        return true;
+        BreadthFirstSearch<Graph> b(g,g.begin()->first);
+        b();
+        auto d=b.getDistArray();
+        
+        return d.size()==g.order();
     }
+    
     template <typename Graph>
     bool isRegular(Graph &g)
     {
@@ -69,6 +74,7 @@ namespace graph
                 return false;
             return true;
     }
+    
     template <typename Graph>
     bool isEulerian(Graph &g)
     {
@@ -84,6 +90,7 @@ namespace graph
         else
             return false;
     }
+    
     template <typename Graph>
     bool isSemiEulerian(Graph &g)
     {
@@ -103,6 +110,7 @@ namespace graph
         else
             return false;
     }
+    
     template <typename Graph>
     bool isComplete(Graph &g)
     {
@@ -113,6 +121,7 @@ namespace graph
                 
                 return true;
     }
+    
     template <typename Graph>
     bool isComplement(Graph &g, Graph &h)
     {
@@ -124,6 +133,7 @@ namespace graph
                     
                     return true;
     }
+    
     template <typename Graph>
     bool isEdgeless(Graph &g)
     {
@@ -149,6 +159,7 @@ namespace graph
         searchObject.execute();
         return cyclic;
     }
+    
     template<typename Graph>
     bool isEmpty(Graph& g)
     {

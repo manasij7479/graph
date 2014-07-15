@@ -38,7 +38,7 @@ namespace graph
         virtual bool p2(const VertexType& v){return true;};
         virtual bool p3(const VertexType& v){return true;};
         
-        DistanceType distanceTo(const VertexType& v)
+        /*DistanceType distanceTo(const VertexType& v)
         {
             return dist[v];
         }
@@ -55,7 +55,11 @@ namespace graph
                 std::reverse(result.begin(),result.end());
                 return result;
         }
-        VertexType parentOf(const VertexType& v){return parent[v];}
+        VertexType parentOf(const VertexType& v){return parent[v];}*/
+        
+        std::map<VertexType,DistanceType>& getDistArray() {return dist;}
+        std::map<VertexType,VertexType>& getParentArray() {return parent;}
+        
     protected:
         void execute()
         {
