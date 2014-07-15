@@ -86,10 +86,14 @@
 
     #include "../graph.hpp"
     #include "../search/bfs.hpp"
+    #include "../algorithm/operations.hpp"
+    #include "../algorithm/predicates.hpp"
     #include "../util/generate.hpp"
     int main()
     {
-        auto g=graph::gen::path(2);
-        graph::BreadthFirstSearch<decltype(g)> b(g,g.begin()->first);
+        auto g1=graph::gen::cycle(10);
+        auto g4=graph::gen::cycle(3,11);
+        auto g5=graph::Union(g1,g4);
+        std::cout<<graph::isConnected(g4)<<graph::isSubgraph<>(g4,g5)<<graph::isComponent(g4,g5);
     }
 

@@ -23,32 +23,22 @@ namespace graph
     }
     
     template<typename Graph>
-    bool isSubgraph(Graph& g,Graph& h)
+    bool isSubgraph(Graph& g,Graph& h) //is 'g' subgraph of 'h'
     {
-        if(h.order()>g.order())
+        if(h.order()<g.order())
             return false;
-        std::vector<typename Graph::VertexType> v;
-        for(auto x=g.begin();x!=g.end();++x)
-            v.push_back(x->first);
-        for(auto x=h.begin();x!=h.end();++x)
-        {
-            if(std::find(v.begin(),v.end(),x->first)==v.end())
+        for(auto i=g.begin();i!=g.end();++i)
+            if(!(isVertex(h,i->first)))
                 return false;
-            else
-            {
-                std::vector<typename Graph::VertexType> e;
-                for(auto y=g.nbegin(x->first);y!=g.nend(x->first);++y)
-                    e.push_back(y->first);
-                for(auto y=h.nbegin(x->first);y!=h.nend(x->first);++y)
-                    if(std::find(e.begin(),e.end(),y->first)==e.end())
-                        return false;
-            }
-        }
+        for(auto i=g.begin();i!=g.end();++i)
+            for(auto j=g.nbegin(i->first);j!=g.nend(i->first);++j)
+                if(!(isAdjacent(h,i->first,j->first)))
+                    return false;
         return true;
     }
     
     template<typename Graph>
-    bool isSpanningSubgraph(Graph& g,Graph& h)
+    bool isSpanningSubgraph(Graph& g,Graph& h) //is 'g' spanning_subgraph of 'h'
     {
         if(g.order()==h.order() && isSubgraph(g,h))
             return true;
@@ -81,6 +71,19 @@ namespace graph
         };
         searchObject.execute();
         return connected;
+    }
+    
+    template<typename Graph>
+    bool isComponent(Graph& g1,Graph& g2)  //is 'g1' component of 'g2' 
+    {
+        if(!(isConnected(g1)&&isSubgraph(g1,g2)))
+            return false;
+        BreadthFirstSearch<Graph> bfs(g2,g1.begin()->first);
+        bfs();
+        auto d=bfs.getDistArray();
+        if(d.size()!=g1.order())
+            return false;
+        return true;
     }
     
     template <typename Graph>
@@ -179,7 +182,7 @@ namespace graph
     }
     
     template<typename Graph>
-    bool isEmpty(Graph& g)
+    bool isEmpty(Graph& g) //is vertexless graph
     {
        return (g.begin()==g.end());
     }
