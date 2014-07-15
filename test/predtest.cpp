@@ -1,4 +1,4 @@
-// expected output 11 101 11 1
+// expected output 11 101 11 1 101
 #include "../graph.hpp"
 #include "../algorithm/predicates.hpp"
 #include "../util/generate.hpp"
@@ -29,4 +29,6 @@ int main()
     std::cout<<isSemiEulerian(g3);
     
     std::cout<<isConnected(g1);
+    
+    std::cout<<isConnected(g1,"1","10")<<isConnected(g1,"1","11")<<isConnected(g1,"1","1");
 }

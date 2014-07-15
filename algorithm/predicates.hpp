@@ -65,6 +65,24 @@ namespace graph
         return d.size()==g.order();
     }
     
+    template<typename Graph>
+    bool isConnected(Graph& g,typename Graph::VertexType x,typename Graph::VertexType y)
+    {
+        HookedSearch<Graph,Queue> searchObject(g,x);
+        bool connected=false;
+        searchObject.m_p2=[&](const typename Graph::VertexType& v)
+        {
+            if(v==y)
+            {
+                connected=true;
+                return false;
+            }
+            return true;
+        };
+        searchObject.execute();
+        return connected;
+    }
+    
     template <typename Graph>
     bool isRegular(Graph &g)
     {
