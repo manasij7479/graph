@@ -8,8 +8,6 @@ namespace dot
         //TODO
         //Not sure what the basic interface will be
         //Decide tomorrow
-    public:
-        bool parse(Stream& in);
     };
 }
 #endif

@@ -9,7 +9,6 @@ namespace dot
     class GraphDecl : public DotDecl
     {
     public:
-        GraphDecl(std::ifstream& in);
         bool isDigraph();
         bool hasID();
         std::string getID();
