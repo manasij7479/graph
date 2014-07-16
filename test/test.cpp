@@ -83,17 +83,22 @@
 // 
 
         
-
-    #include "../graph.hpp"
-    #include "../search/bfs.hpp"
-    #include "../algorithm/operations.hpp"
-    #include "../algorithm/predicates.hpp"
-    #include "../util/generate.hpp"
-    int main()
-    {
-        auto g1=graph::gen::cycle(10);
-        auto g4=graph::gen::cycle(3,11);
-        auto g5=graph::Union(g1,g4);
-        std::cout<<graph::isConnected(g4)<<graph::isSubgraph<>(g4,g5)<<graph::isComponent(g4,g5);
-    }
-
+#include<iostream>
+#include<vector>
+#include<tuple>
+#include "../graph.hpp"
+#include "../search/bfs.hpp"
+#include "../algorithm/operations.hpp"
+#include "../algorithm/predicates.hpp"
+#include "../util/generate.hpp"
+#include "../algorithm/collections.hpp"
+int main()
+{
+    auto g1=graph::gen::cycle(10);
+    auto g4=graph::gen::cycle(3,11);
+    auto g5=graph::Union(g1,g4);
+    auto e=graph::edges(g1,false);
+     for(auto i:e)
+         std::cout<<std::get<0>(i)<<" "<<std::get<1>(i)<<" "<<std::get<2>(i)<<std::endl;
+}
+        
