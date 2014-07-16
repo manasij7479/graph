@@ -10,7 +10,7 @@
 namespace graph
 {
     template<typename Graph>
-    std::vector<typename Graph::VertexType> vertices(Graph& g)
+    std::vector<typename Graph::VertexType> VertexList(Graph& g)
     {
         std::vector<typename Graph::VertexType> v;
         for(auto i=g.begin();i!=g.end();++i)
@@ -19,7 +19,7 @@ namespace graph
     }
     
     template<typename Graph>
-    std::vector<std::tuple<typename Graph::VertexType,typename Graph::VertexType,typename Graph::EdgeType>> edges(Graph& g,bool duplicate)
+    std::vector<std::tuple<typename Graph::VertexType,typename Graph::VertexType,typename Graph::EdgeType>> EdgeList(Graph& g,bool duplicate=true)
     {
         std::vector<std::tuple<typename Graph::VertexType,typename Graph::VertexType,typename Graph::EdgeType>> e;
         for(auto i=g.begin();i!=g.end();++i)
@@ -32,6 +32,15 @@ namespace graph
                 else
                     e.push_back(std::make_tuple(i->first,j->first,j->second));
         return e;
+    }
+    
+    template<typename Graph>
+    std::map<typename Graph::VertexType,int> DegreeList(Graph& g)
+    {
+        std::map<typename Graph::VertexType,int> m;
+        for(auto i=g.begin();i!=g.end();++i)
+            m[i->first]=degree(g,i->first);
+        return m;
     }
 }
 #endif

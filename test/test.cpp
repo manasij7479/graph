@@ -95,10 +95,11 @@
 int main()
 {
     auto g1=graph::gen::cycle(10);
+    auto g2=graph::gen::path(10);
     auto g4=graph::gen::cycle(3,11);
     auto g5=graph::Union(g1,g4);
-    auto e=graph::edges(g1,false);
-     for(auto i:e)
-         std::cout<<std::get<0>(i)<<" "<<std::get<1>(i)<<" "<<std::get<2>(i)<<std::endl;
+    auto d=graph::DegreeList(g2);
+     for(auto i:d)
+         std::cout<<i.first<<" "<<i.second<<std::endl;
 }
         
