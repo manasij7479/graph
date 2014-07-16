@@ -7,6 +7,7 @@
 #include "predicates.hpp"
 #include<vector>
 #include<map>
+#include<set>
 #include<tuple>
 #include<algorithm>
 #include<stdexcept>
@@ -74,6 +75,36 @@ namespace graph
              m[i->first]=max;
         }
         return m;
+    }
+    
+    template<typename Graph>
+    std::set<typename Graph::VertexType> Centre(Graph& g)
+    {
+        std::set<typename Graph::VertexType> s;
+        auto e=EcentricityList(g);
+        auto min=e.begin()->second;
+        for(auto i=e.begin();i!=e.end();++i)
+                if(i->second<min)
+                    min=i->second;
+        for(auto i=e.begin();i!=e.end();++i)
+            if(min==i->second)
+                s.insert(i->first);
+        return s;
+    }
+    
+    template<typename Graph>
+    std::set<typename Graph::VertexType> Periphery(Graph& g)
+    {
+        std::set<typename Graph::VertexType> s;
+        auto e=EcentricityList(g);
+        auto max=e.begin()->second;
+        for(auto i=e.begin();i!=e.end();++i)
+                if(i->second>max)
+                    max=i->second;
+        for(auto i=e.begin();i!=e.end();++i)
+            if(max==i->second)
+                s.insert(i->first);
+        return s;
     }
 }
 #endif
