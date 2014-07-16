@@ -2,11 +2,14 @@
 #define GRAPH_ALGORITHM_COLLECTIONS_HPP
 #include "../graph.hpp"
 #include "../search/bfs.hpp"
+#include "../search/ucs.hpp"
 #include "enumeration.hpp"
+#include "predicates.hpp"
 #include<vector>
 #include<map>
 #include<tuple>
 #include<algorithm>
+#include<stdexcept>
 namespace graph
 {
     template<typename Graph>
@@ -40,6 +43,36 @@ namespace graph
         std::map<typename Graph::VertexType,int> m;
         for(auto i=g.begin();i!=g.end();++i)
             m[i->first]=degree(g,i->first);
+        return m;
+    }
+    
+    template<typename Graph>
+    std::vector<int> DegreeSequence(Graph& g)
+    {
+        std::vector<int> ds;
+        for(auto i=g.begin();i!=g.end();++i)
+            ds.push_back(degree(g,i->first));
+        std::sort(ds.begin(),ds.end());
+        return ds;
+    }
+    
+    template<typename Graph>
+    std::map<typename Graph::VertexType,typename Graph::EdgeType> EcentricityList(Graph& g)
+    {
+        if(g.isDirected() || !isConnected(g))
+            throw std::runtime_error("Not Possible : 'g'-> Undirected & Connected not met ...");
+        std::map<typename Graph::VertexType,typename Graph::EdgeType> m;
+        for(auto i=g.begin();i!=g.end();++i)
+        {
+            UniformCostSearch<Graph> ucs(g,i->first);
+            ucs();
+            auto d=ucs.getDistArray();
+            auto max=d.begin()->second;
+            for(auto j=d.begin();j!=d.end();++j)
+                if(j->second>max)
+                    max=j->second;
+             m[i->first]=max;
+        }
         return m;
     }
 }

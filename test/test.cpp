@@ -88,6 +88,7 @@
 #include<tuple>
 #include "../graph.hpp"
 #include "../search/bfs.hpp"
+#include "../search/ucs.hpp"
 #include "../algorithm/operations.hpp"
 #include "../algorithm/predicates.hpp"
 #include "../util/generate.hpp"
@@ -98,8 +99,12 @@ int main()
     auto g2=graph::gen::path(10);
     auto g4=graph::gen::cycle(3,11);
     auto g5=graph::Union(g1,g4);
-    auto d=graph::DegreeList(g2);
-     for(auto i:d)
-         std::cout<<i.first<<" "<<i.second<<std::endl;
+    auto d=graph::EcentricityList(g2);
+    //std::cout<<graph::isConnected(g2);
+    /*graph::UniformCostSearch<decltype(g2)> ucs(g2,g2.begin()->first);
+    ucs();
+    auto d=ucs.getDistArray();*/
+    for(auto i:d)
+        std::cout<<i.first<<" "<<i.second<<std::endl;
 }
         
