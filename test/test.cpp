@@ -93,6 +93,7 @@
 #include "../algorithm/predicates.hpp"
 #include "../util/generate.hpp"
 #include "../algorithm/collections.hpp"
+#include "../algorithm/enumeration.hpp"
 int main()
 {
     auto g1=graph::gen::cycle(10);
@@ -100,11 +101,12 @@ int main()
     auto g4=graph::gen::cycle(3,11);
     auto g5=graph::Union(g1,g4);
     auto d=graph::Periphery(g2);
-    //std::cout<<graph::isConnected(g2);
+    std::cout<<graph::Diameter(g2)<<std::endl;
     /*graph::UniformCostSearch<decltype(g2)> ucs(g2,g2.begin()->first);
     ucs();
     auto d=ucs.getDistArray();*/
-    for(auto i:d)
-        std::cout<<i/*.firsi<<" "<<i.second*/<<std::endl;
+    auto e=graph::EcentricityList(g2);
+    for(auto i:e)
+        std::cout<<i.first<<" "<<i.second<<std::endl;
 }
         

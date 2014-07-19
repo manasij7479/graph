@@ -1,6 +1,7 @@
 #ifndef GRAPH_ALGORITHM_ENUMERATION_HPP
 #define GRAPH_ALGORITHM_ENUMERATION_HPP    
 #include "../graph.hpp"
+#include "collections.hpp"
 namespace graph
 {
     template<typename Graph>
@@ -49,6 +50,28 @@ namespace graph
                 return 0;
         }
         return k;
+    }
+    
+    template<typename Graph>
+    typename Graph::EdgeType Radius(Graph& g)
+    {
+        auto e=EcentricityList(g);
+        auto min=e.begin()->second;
+        for(auto i=e.begin();i!=e.end();++i)
+                if(i->second<min)
+                    min=i->second;
+        return min;
+    }
+    
+    template<typename Graph>
+    typename Graph::EdgeType Diameter(Graph& g)
+    {
+        auto e=EcentricityList(g);
+        auto max=e.begin()->second;
+        for(auto i=e.begin();i!=e.end();++i)
+                if(i->second>max)
+                    max=i->second;
+        return max;
     }
 }
 #endif
