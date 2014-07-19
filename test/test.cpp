@@ -105,8 +105,8 @@ int main()
     /*graph::UniformCostSearch<decltype(g2)> ucs(g2,g2.begin()->first);
     ucs();
     auto d=ucs.getDistArray();*/
-    auto e=graph::EcentricityList(g2);
+    auto e=graph::AdjacencyMatrix(g2);
     for(auto i:e)
-        std::cout<<i.first<<" "<<i.second<<std::endl;
+        std::cout<<i.first.first<<" "<<i.first.second<<" "<<i.second<<std::endl;
 }
         
