@@ -11,6 +11,7 @@
 #include<tuple>
 #include<algorithm>
 #include<stdexcept>
+#include<utility>
 namespace graph
 {
     template<typename Graph>
@@ -116,5 +117,14 @@ namespace graph
         return s;
     }
     
+    template<typename Graph>
+    std::map<std::pair<typename Graph::VertexType,typename Graph::VertexType>,typename Graph::EdgeType> AdjacencyMatrix(Graph& g)
+    {
+        std::map<std::pair<typename Graph::VertexType,typename Graph::VertexType>,typename Graph::EdgeType> m;
+        for(auto i=g.begin();i!=g.end();++i)
+            for(auto j=g.nbegin(i->first);j!=g.nend(i->first);++j)
+                m[std::make_pair(i->first,j->first)]=j->second;
+        return m;
+    }
 }
 #endif
