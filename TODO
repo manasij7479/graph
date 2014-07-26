@@ -1,0 +1,48 @@
+SSSP
+    Bellman ford SB
+    dijkstra SB
+    return  path list SB
+     return distance list SB
+
+APSP
+    Floyd/Warshall MM
+    Johnson’s algo  ??? MM
+
+MST
+    Kruskal (param to control max/min)   MM
+    Prims SB
+
+Predicates
+    sparse/dense MB
+    isomorphic
+    
+iskconnected  MM
+istree MB
+isCentre SB
+isPeriphery SB
+isEqual MB
+
+Flow
+    Yet to be decided MM
+
+Cut MM
+    Vertex 
+    Edge
+    Min “
+
+Operations
+    Permutation MM
+    Line graph MM
+    EdgeDeletionSubGraph  MB
+    VertexDeletionSubGraph MB
+Contraction(Edge) ??? 
+
+Enumerations
+    Centrality SB
+    
+
+
+Clique
+Independent Set  MM
+Vertex Cover 
+Hamiltonian (is/path)

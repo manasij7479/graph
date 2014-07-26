@@ -23,7 +23,16 @@ namespace graph
     }
     
     template<typename Graph>
-    std::vector<std::tuple<typename Graph::VertexType,typename Graph::VertexType,typename Graph::EdgeType>> EdgeList(Graph& g,bool duplicate=true)
+    std::vector
+    <
+        std::tuple
+        <
+            typename Graph::VertexType,
+            typename Graph::VertexType,
+            typename Graph::EdgeType
+        >
+    >
+    EdgeList(Graph& g,bool duplicate=true)
     {
         std::vector<std::tuple<typename Graph::VertexType,typename Graph::VertexType,typename Graph::EdgeType>> e;
         for(auto i=g.begin();i!=g.end();++i)
@@ -106,5 +115,6 @@ namespace graph
                 s.insert(i->first);
         return s;
     }
+    
 }
 #endif
