@@ -1,9 +1,10 @@
 #ifndef GRAPH_ALGORITHM_PREDICATES_HPP
 #define GRAPH_ALGORITHM_PREDICATES_HPP
 #include "../graph.hpp"
-# include "../algorithm/enumeration.hpp"
+# include "enumeration.hpp"
 #include "../search/bfs.hpp"
 #include "../search/dfs.hpp"
+#include "collections.hpp"
 #include<vector>
 #include<algorithm>
 namespace graph
@@ -179,6 +180,20 @@ namespace graph
         };
         searchObject.execute();
         return cyclic;
+    }
+    
+    template<typename Graph>
+    bool isCentre(Graph& g,typename Graph::VertexType x)
+    {
+        auto s=Centre(g);
+        return s.find(x)!=s.end();
+    }
+    
+    template<typename Graph>
+    bool isPeriphery(Graph& g,typename Graph::VertexType x)
+    {
+        auto s=Periphery(g);
+        return s.find(x)!=s.end();
     }
     
     template<typename Graph>
