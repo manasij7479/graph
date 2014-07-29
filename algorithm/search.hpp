@@ -1,10 +1,15 @@
 #ifndef GRAPH_SEARCH_HPP
 #define GRAPH_SEARCH_HPP
+
 #include "../graph.hpp"
 #include "../implementation/edge_traits.hpp"
+#include "../structures/stack.hpp"
+#include "../structures/queue.hpp"
+
 #include <map>
 #include <vector>
 #include <functional>
+
 namespace graph
 {
     template
@@ -161,6 +166,16 @@ namespace graph
         }
         std::function<bool(const V& v)> m_p1,m_p2,m_p3;
     };
+    
+    template<typename G>
+    using UniformCostSearch=Search<G,PriorityQueue,DefaultSearch>;
+    
+    template<typename G>
+    using DepthFirstSearch=Search<G,Stack,DefaultSearch>;
+    
+    template<typename G>
+    using BreadthFirstSearch=Search<G,Queue,DefaultSearch>;
+    
     
 }
 #endif

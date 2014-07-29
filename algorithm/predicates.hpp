@@ -2,8 +2,7 @@
 #define GRAPH_ALGORITHM_PREDICATES_HPP
 #include "../graph.hpp"
 # include "enumeration.hpp"
-#include "../search/bfs.hpp"
-#include "../search/dfs.hpp"
+#include "search.hpp"
 #include "collections.hpp"
 #include<vector>
 #include<algorithm>

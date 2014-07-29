@@ -1,8 +1,7 @@
 #ifndef GRAPH_ALGORITHM_COLLECTIONS_HPP
 #define GRAPH_ALGORITHM_COLLECTIONS_HPP
 #include "../graph.hpp"
-#include "../search/bfs.hpp"
-#include "../search/ucs.hpp"
+#include "search.hpp"
 #include "enumeration.hpp"
 #include "predicates.hpp"
 #include<vector>
