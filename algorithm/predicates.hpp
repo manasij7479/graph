@@ -50,7 +50,7 @@ namespace graph
     {
         BreadthFirstSearch<Graph> bfs(g,g.begin()->first);
         bfs();
-        auto d=bfs.getDistArray();
+        auto d=bfs.getDistanceArray();
         
         return d.size()==g.order();
     }
@@ -80,7 +80,7 @@ namespace graph
             return false;
         BreadthFirstSearch<Graph> bfs(g2,g1.begin()->first);
         bfs();
-        auto d=bfs.getDistArray();
+        auto d=bfs.getDistanceArray();
         if(d.size()!=g1.order())
             return false;
         return true;

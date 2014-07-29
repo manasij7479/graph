@@ -76,7 +76,7 @@ namespace graph
         {
             UniformCostSearch<Graph> ucs(g,i->first);
             ucs();
-            auto d=ucs.getDistArray();
+            auto d=ucs.getDistanceArray();
             auto max=d.begin()->second;
             for(auto j=d.begin();j!=d.end();++j)
                 if(j->second>max)

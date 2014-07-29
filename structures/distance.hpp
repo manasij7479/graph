@@ -45,6 +45,8 @@ namespace graph
         
     public: 
         //compatibility functions, may be removed later
+        //Do not use unless problem can not be solved by
+        //the interafce functions 
         
         typedef typename decltype(map)::iterator iterator;
         iterator begin(){return map.begin();}

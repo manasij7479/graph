@@ -5,7 +5,7 @@
 #include "../implementation/edge_traits.hpp"
 #include "../structures/stack.hpp"
 #include "../structures/queue.hpp"
-
+#include "../structures/parent.hpp"
 #include <map>
 #include <vector>
 #include <functional>
@@ -47,23 +47,11 @@ namespace graph
         {
             return dist[v];
         }
-        std::vector<VertexType> getPath(const VertexType& v)
-        {
-                std::vector<VertexType> result;
-                VertexType temp=v;
-                while(parent[temp]!=temp)
-                {
-                    result.push_back(temp);
-                    temp=parent[temp];
-                }
-                result.push_back(temp);
-                std::reverse(result.begin(),result.end());
-                return result;
-        }
+
         VertexType parentOf(const VertexType& v){return parent[v];}*/
         
-        DistanceArray<Graph>& getDistArray() {return dist;}
-        std::map<VertexType,VertexType>& getParentArray() {return parent;}
+        DistanceArray<Graph>& getDistanceArray() {return dist;}
+        ParentArray<Graph>& getParentArray() {return parent;}
         
     protected:
         void execute()
@@ -107,7 +95,7 @@ namespace graph
         }
         Container<Graph> fringe;
         DistanceArray<Graph> dist;
-        std::map<VertexType,VertexType> parent;
+        ParentArray<Graph> parent;
         Graph& g;
         VertexType source;
     };
