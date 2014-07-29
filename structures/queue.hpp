@@ -2,6 +2,7 @@
 #define GRAPH_STRUCTURES_QUEUE
 #include <queue>
 #include <vector>
+#include "distance.hpp"
 namespace graph
 {
     template<typename GraphType>
@@ -11,7 +12,7 @@ namespace graph
         typedef typename GraphType::EdgeType E;
         typedef typename GraphType::VertexType V;
         
-        Queue(std::map<V,typename edge_traits<E>::DistanceType>&){}
+        Queue(DistanceArray<GraphType>&){}
         void put(V t)
         {
             data.push(t);
@@ -36,8 +37,7 @@ namespace graph
     public:
         typedef typename GraphType::EdgeType E;
         typedef typename GraphType::VertexType V;
-        typedef typename std::map<V,typename edge_traits<E>::DistanceType> MapType;
-        PriorityQueue(MapType& m):pq(m){}
+        PriorityQueue(DistanceArray<GraphType>& dist):pq(dist){}
         void put(V t)
         {
             pq.push(t);
@@ -59,13 +59,12 @@ namespace graph
         public:
             typedef typename GT::EdgeType E;
             typedef typename GT::VertexType V;
-            typedef typename std::map<V,typename edge_traits<E>::DistanceType> MapType;
             
-            Cmp(MapType& m):map(m){};
+            Cmp(DistanceArray<GT>& m):map(m){};
             bool operator()(V x,V y){return map[x]>map[y];}
             
         private:
-            MapType& map;
+            DistanceArray<GraphType>& map;
         };
     private:
         std::priority_queue<V,std::vector<V>,Cmp<GraphType>>  pq;

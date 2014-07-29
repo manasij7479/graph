@@ -62,7 +62,7 @@ namespace graph
         }
         VertexType parentOf(const VertexType& v){return parent[v];}*/
         
-        std::map<VertexType,DistanceType>& getDistArray() {return dist;}
+        DistanceArray<Graph>& getDistArray() {return dist;}
         std::map<VertexType,VertexType>& getParentArray() {return parent;}
         
     protected:
@@ -80,10 +80,10 @@ namespace graph
                     return;
                 for(auto y=g.nbegin(v);y!=g.nend(v);++y)
                 {
-                    auto it = dist.find(y->first);
-                    if(it==dist.end())
+                    
+                    if(dist.isUnknown(y->first))
                     {
-                        dist[y->first]=dist[v]+y->second;
+                        dist.set(y->first,dist[v]+y->second);
                         fringe.put(y->first);
                         parent[y->first]=v;
                     }
@@ -106,7 +106,7 @@ namespace graph
             } 
         }
         Container<Graph> fringe;
-        std::map<VertexType,DistanceType> dist;
+        DistanceArray<Graph> dist;
         std::map<VertexType,VertexType> parent;
         Graph& g;
         VertexType source;

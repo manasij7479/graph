@@ -1,6 +1,7 @@
 #ifndef GRAPH_STRUCTURES_STACK
 #define GRAPH_STRUCTURES_STACK
 #include <stack>
+#include "distance.hpp"
 namespace graph
 {
     template<typename GraphType>
@@ -10,7 +11,7 @@ namespace graph
         typedef typename GraphType::EdgeType E;
         typedef typename GraphType::VertexType V;
         
-        Stack(std::map<V,typename edge_traits<E>::DistanceType>&){}
+        Stack(DistanceArray<GraphType>&){}
         void put(V t)
         {
             data.push_back(t);
