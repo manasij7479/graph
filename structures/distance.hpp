@@ -22,6 +22,12 @@ namespace graph
             map[v]=d;
             knowledge.insert(v);
         }
+        D get(V v)
+        {
+            if(isUnknown(v))
+                return D(-1);
+            else return map[v];
+        }
         bool updateIfLess(V v, D newDist)//Generalized lambda version if needed later.
         {
             if(isUnknown(v)||newDist<map[v])
@@ -31,11 +37,7 @@ namespace graph
             }
             return false;
         }
-        D& operator[](V v) // do NOT call if may be unknown
-        {
-            knowledge.insert(v);
-            return map[v];            
-        }
+
         
     private:
         std::map<V,D> map;
@@ -43,11 +45,17 @@ namespace graph
         
     public: 
         //compatibility functions, may be removed later
+        
         typedef typename decltype(map)::iterator iterator;
         iterator begin(){return map.begin();}
         iterator end(){return map.end();}
         iterator find(V v){return map.find(v);}
         std::size_t size(){return knowledge.size();}
+        D& operator[](V v) // do NOT call if may be unknown
+        {
+            knowledge.insert(v);//for safety
+            return map[v];            
+        }
     };
 }
 
