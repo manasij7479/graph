@@ -1,6 +1,7 @@
 #ifndef DOT_DECL_HPP
 #define DOT_DECL_HPP
 #include "Stream.hpp"
+
 namespace dot
 {
     class DotDecl
@@ -37,7 +38,8 @@ namespace dot
         std::string parse(Stream& in)
         {
             in.skipSpace();
-            //TODO: Continue from here
+            while(std::isalpha(in.peek()))
+                result+=in.get();
         }
     private:
         std::string result;
