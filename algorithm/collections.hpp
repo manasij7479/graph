@@ -125,5 +125,33 @@ namespace graph
                 m[std::make_pair(i->first,j->first)]=j->second;
         return m;
     }
+    
+    template<typename Graph>
+    std::vector<typename Graph::VertexType> outVertexList(Graph& g,typename Graph::VertexType x)
+    {
+        std::vector<typename Graph::VertexType> v;
+        for(auto i=g.nbegin(x);i!=g.nend(x);++i)
+            v.push_back(i->first);
+        
+        return v;
+    }
+    
+    template<typename Graph>
+    std::vector<typename Graph::VertexType> inVertexList(Graph& g,typename Graph::VertexType x)
+    {
+        if(!g.isDirected())
+            return outVertexList(g,x);
+        else
+        {
+            std::vector<typename Graph::VertexType> v;
+            for(auto i=g.begin();i!=g.end();++i)
+            {
+                auto it=g.nfind(i->first,x);
+                if(it!=g.nend(i->first))
+                    v.push_back(i->first);
+            }
+            return v;
+        }           
+    }
 }
 #endif
