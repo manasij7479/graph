@@ -2,6 +2,7 @@
 #define GRAPH_STRUCTURES_QUEUE
 #include <queue>
 #include <vector>
+#include <set>
 #include "distance.hpp"
 namespace graph
 {
@@ -40,17 +41,24 @@ namespace graph
         PriorityQueue(DistanceArray<GraphType>& dist):pq(dist){}
         void put(V t)
         {
-            pq.push(t);
+            pq.push(t); 
+            elements.insert(t);
         }
         V get()
         {
             V result=pq.top();
             pq.pop();
+            elements.erase(result);
             return result;
         }
         bool empty()
         {
             return pq.empty();
+        }
+        
+        bool isElement(V t)
+        {
+            return elements.find(t)!=elements.end();
         }
         
         template<typename GT>
@@ -68,6 +76,7 @@ namespace graph
         };
     private:
         std::priority_queue<V,std::vector<V>,Cmp<GraphType>>  pq;
+        std::set<V> elements;
     };
 }
 #endif
