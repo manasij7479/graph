@@ -1,4 +1,4 @@
-// expected output 1 1 1 1 1
+// expected output 1 1 1 1 1 0 9
 #include "../graph.hpp"
 #include "../algorithm/predicates.hpp"
 #include "../util/generate.hpp"
@@ -29,5 +29,13 @@ int main()
     auto g9=graph::gen::complete(10);
     auto g10=symmetric_difference(g9,g9);
     std::cout<<isEmpty(g10);
+    
+    auto g12=graph::gen::path(10);
+    g12=graph::EdgeDeletionSubgraph(g12,"1","2");
+    std::cout<<graph::isConnected(g12);
+    
+    auto g11=graph::gen::path(10);
+    g11=graph::VertexDeletionSubgraph(g11,"1");
+    std::cout<<g11.order();
     
 }

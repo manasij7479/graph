@@ -108,5 +108,19 @@ namespace graph
                 
         return result;
     }
+    template<typename Graph>
+    Graph EdgeDeletionSubgraph(Graph g1, typename Graph::VertexType x, typename Graph::VertexType  y)
+    {
+        g1.removeEdge(x,y);
+                
+        return g1;
+    }
+    template<typename Graph>
+    Graph VertexDeletionSubgraph(Graph g1, typename Graph::VertexType x)
+    {
+        g1.removeVertex(x);
+                
+        return g1;
+    }
 }
 #endif
