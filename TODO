@@ -13,11 +13,11 @@ MST
     Prims SB
 
 Predicates
-    sparse/dense MB
+    sparse/dense MB done
     isomorphic
     
 iskconnected  MM
-istree MB
+istree MB done
 isCentre SB
 isPeriphery SB
 isEqual MB

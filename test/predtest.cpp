@@ -1,4 +1,4 @@
-// expected output 11 101 11 1 101 01 1100 1100
+// expected output 11 101 11 1 101 01 1100 1100 10 10
 #include "../graph.hpp"
 #include "../algorithm/predicates.hpp"
 #include "../algorithm/operations.hpp"
@@ -41,4 +41,21 @@ int main()
     std::cout<<isCentre(g3,"5")<<isCentre(g3,"6")<<isCentre(g3,"4")<<isCentre(g3,"11");
     
     std::cout<<isPeriphery(g3,"1")<<isPeriphery(g3,"10")<<isPeriphery(g3,"4")<<isPeriphery(g3,"11");
+    
+    auto h1=graph::gen::star_polygon(5,2);
+    std::cout<<graph::isSparse(h1);
+    auto h2=graph::gen::complete_bipartite(5,2);
+    std::cout<<graph::isSparse(h2);
+    
+    graph::Graph <std::string, int> h;
+    h.insertVertex("1");
+    h.insertVertex("2");
+    h.insertVertex("3");
+    h.insertVertex("4");
+    h.insertEdge("1","2",1);
+    h.insertEdge("2","3",1);
+    h.insertEdge("4","2",1);
+    std::cout<<graph::isTree(h);
+    h.insertEdge("4","1",1);
+    std::cout<<graph::isTree(h);
 }

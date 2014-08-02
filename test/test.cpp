@@ -7,19 +7,22 @@
 #include<iostream>
 int main()
 {
-    auto g1=graph::gen::cycle(5);
-    auto v1=graph::Djikstra(g1,"1");
-    /*std::cout<<graph::isPeriphery(g1,"5");
-    graph::Graph <std::string, int> g(true);
+    /*auto g1=graph::gen::cycle(5);
+    auto v1=graph::Djikstra(g1,"1");*/
+    /*auto g2=graph::gen::complete_bipartite(5,2);
+    std::cout<<graph::isSparse(g2);*/
+    /*std::cout<<graph::isPeriphery(g1,"5");*/
+    graph::Graph <std::string, int> g;
     g.insertVertex("1");
     g.insertVertex("2");
     g.insertVertex("3");
     g.insertVertex("4");
     g.insertEdge("1","2",1);
     g.insertEdge("2","3",1);
-    g.insertEdge("3","1",1);
     g.insertEdge("4","2",1);
+    std::cout<<graph::isTree(g);
     
+    /*
     auto v1=graph::outVertexList(g,"2");
     auto v2=graph::inVertexList(g,"2");
     */

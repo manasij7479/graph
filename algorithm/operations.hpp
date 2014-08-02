@@ -1,4 +1,4 @@
-/**	\brief Operations.hpp - header file that has collections of operations possible on any graph 
+/**	\brief Operations.hpp - Header file that has collections of operations possible on any graph 
  * datastruture 
  * **/
 
@@ -10,10 +10,10 @@
 namespace graph
 {
     /**
-     * \brief Union - returns union of two Graph datastructures
-     * Graph g1 - first parameter  
-     * Graph g2 - second parameter
-     * Graph result - variable to store resultant Union of Graph g1 and Graph g2
+     * \brief Union - Returns union of two Graph datastructures
+     * Graph g1 - First parameter  
+     * Graph g2 - Second parameter
+     * Graph result - Variable to store resultant Union of Graph g1 and Graph g2
      * **/
     template<typename Graph>
     Graph Union(Graph g1,Graph g2)
@@ -35,10 +35,10 @@ namespace graph
     }
     
     /**
-     * \brief intersection - returns intersection of two Graph datastructures
-     * Graph g1 - first parameter  
-     * Graph g2 - second parameter
-     * Graph result - variable to store resultant intersection of Graph g1 and Graph g2
+     * \brief intersection - Returns intersection of two Graph datastructures
+     * Graph g1 - First parameter  
+     * Graph g2 - Second parameter
+     * Graph result - Variable to store resultant intersection of Graph g1 and Graph g2
      * **/
     template<typename Graph>
     Graph intersection(Graph g1,Graph g2)
@@ -56,10 +56,10 @@ namespace graph
         return result;
     }
     /**
-     * \brief join- returns natural join of two Graph datastructures
-     * Graph g1 - first parameter  
-     * Graph g2 - second parameter
-     * Graph result - variable to store resultant natural join of Graph g1 and Graph g2
+     * \brief join- Returns natural join of two Graph datastructures
+     * Graph g1 - First parameter  
+     * Graph g2 - Second parameter
+     * Graph result - Variable to store resultant natural join of Graph g1 and Graph g2
      * **/
     template<typename Graph>
     Graph join(Graph g1,Graph g2)
@@ -72,10 +72,10 @@ namespace graph
         return result;
     }
     /**
-     * \brief symmetric_difference - returns symmetric_difference of two Graph datastructures
-     * Graph g1 - first parameter  
-     * Graph g2 - second parameter
-     * Graph result - variable to store resultant symmetric_difference of Graph g1 and Graph g2
+     * \brief symmetric_difference - Returns symmetric_difference of two Graph datastructures
+     * Graph g1 - First parameter  
+     * Graph g2 - Second parameter
+     * Graph result - Variable to store resultant symmetric_difference of Graph g1 and Graph g2
      * **/
     template<typename Graph>
     Graph symmetric_difference(Graph g1,Graph g2)
@@ -102,14 +102,19 @@ namespace graph
         return result;
     }
     
+    /** 
+     * \brief first - Returns substring of s from beginning till first occurence of '-'
+     * fsecond - Returns substring of s from after first occurence of '-' till end
+     * **/
+    
     std::string first(std::string s) { return s.substr(0,s.find('-')); }
     std::string second(std::string s) { return s.substr(s.find('-')+1); }
     
     /**
-     * \brief cartesian_product - returns cartesian_product of two Graph datastructures
-     * Graph g1 - first parameter  
-     * Graph g2 - second parameter
-     * Graph result - variable to store resultant cartesian_product of Graph g1 and Graph g2
+     * \brief cartesian_product - Returns cartesian_product of two Graph datastructures
+     * Graph g1 - First parameter  
+     * Graph g2 - Second parameter
+     * Graph result - Variable to store resultant cartesian_product of Graph g1 and Graph g2
      * **/
     template<typename Graph>
     Graph cartesian_product(Graph g1,Graph g2)
@@ -128,10 +133,10 @@ namespace graph
         return result;
     }
     /**
-     * \brief complement - returns complement of a Graph datastructure
-     * the edges not present in Graph g1 are present in graph result and vice versa
-     * Graph g1 - parameter  
-     * Graph result - variable to store resultant complement of Graph g1
+     * \brief complement - Returns complement of a Graph datastructure
+     * The edges not present in Graph g1 are present in graph result and vice versa
+     * Graph g1 - Parameter  
+     * Graph result - Variable to store resultant complement of Graph g1
      * **/
     template<typename Graph>
     Graph complement(Graph g1)
@@ -147,9 +152,9 @@ namespace graph
         return result;
     }
     /**
-     * \brief EdgeDeletionSubgraph - returns the graph after deleting the edge between
+     * \brief EdgeDeletionSubgraph - Returns the graph after deleting the edge between
      * vertex x and vertex y of graph g1
-     * Graph g1 - parameter  
+     * Graph g1 - Parameter  
      * **/
     template<typename Graph>
     Graph EdgeDeletionSubgraph(Graph g1, typename Graph::VertexType x, typename Graph::VertexType  y)
@@ -159,9 +164,9 @@ namespace graph
         return g1;
     }
      /**
-     * \brief VertexDeletionSubgraph - returns the graph after deleting the vertex x 
+     * \brief VertexDeletionSubgraph - Returns the graph after deleting the vertex x 
      * of graph g1
-     * Graph g1 - parameter  
+     * Graph g1 - Parameter  
      * **/
     template<typename Graph>
     Graph VertexDeletionSubgraph(Graph g1, typename Graph::VertexType x)

@@ -200,5 +200,27 @@ namespace graph
     {
        return (g.begin()==g.end());
     }
+    
+    template<typename Graph>
+    bool isSparse(Graph& g) //is vertexless graph
+    {
+       int count=0;
+       for (auto x=g.begin();x!=g.end();x++)
+		for (auto y=g.begin();y!=g.end();y++)
+			if(isAdjacent(g,x->first,y->first))
+				count++;
+		int n=2*g.order();
+		if (count<=n)
+			return true;
+		return false;
+    }
+    
+    template<typename Graph>
+    bool isTree(Graph& g) 
+    {
+       if(!isCyclic(g)&&isConnected(g))
+		return true;
+	return false;
+    }
 }
 #endif
