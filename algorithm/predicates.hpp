@@ -1,3 +1,6 @@
+/**	\brief predicates.hpp - Header file that has collection of different checks that can be made
+ * for a graph datastructure
+ * **/
 #ifndef GRAPH_ALGORITHM_PREDICATES_HPP
 #define GRAPH_ALGORITHM_PREDICATES_HPP
 #include "../graph.hpp"
@@ -8,12 +11,31 @@
 #include<algorithm>
 namespace graph
 {
+	/**
+     * \brief isVertex - Returns true if Graph::VertexType x is a vertex of Graph g,
+     *  false otherwise
+     * 
+     * Graph g - First parameter, a graph datastructure
+     *   
+     * Graph::VertexType x- Second parameter, the vertex
+     * **/
     template<typename Graph>
     bool isVertex(Graph& g,typename Graph::VertexType x)
     {
         return g.find(x)!=g.end();
     }
     
+    /**
+     * \brief isAdjacent - Returns true if Graph::VertexType x and Graph::VertexType y
+     * are adjacent in Graph g, false otherwise
+     * 
+     * Graph g - First parameter, a graph datastructure
+     *   
+     * Graph::VertexType x- Second parameter, the first vertex
+     * 
+     * Graph::VertexType y- Third parameter, the second vertex
+     * **/
+     
     template<typename Graph>
     bool isAdjacent(Graph& g,typename Graph::VertexType x,typename Graph::VertexType y)
     {
@@ -22,6 +44,14 @@ namespace graph
         return false;
     }
     
+     /**
+     * \brief isSubgraph - Returns true if Graph g is a subgraph of Graph h, false otherwise
+     * 
+     * Graph g - First parameter, a graph datastructure
+     *   
+     * Graph h - Second parameter, a graph datastructure
+     * **/
+     
     template<typename Graph>
     bool isSubgraph(Graph& g,Graph& h) //is 'g' subgraph of 'h'
     {
@@ -36,6 +66,14 @@ namespace graph
                     return false;
         return true;
     }
+    /**
+     * \brief isSpanningSubgraph - Returns true if Graph g is a spanning subgraph of Graph h,
+     * false otherwise
+     * 
+     * Graph g - First parameter, a graph datastructure
+     *   
+     * Graph h - Second parameter, a graph datastructure
+     * **/
     
     template<typename Graph>
     bool isSpanningSubgraph(Graph& g,Graph& h) //is 'g' spanning_subgraph of 'h'
@@ -44,7 +82,12 @@ namespace graph
             return true;
         return false;
     }
-    
+    /**
+     * \brief isConnected - Returns true if all vertices of Graph g can be traversed,
+     * false otherwise
+     *  
+     * Graph g - Parameter, a graph datastructure
+     * **/
     template<typename Graph>
     bool isConnected(Graph& g)
     {
@@ -54,7 +97,16 @@ namespace graph
         
         return d.size()==g.order();
     }
-    
+    /**
+     * \brief isConnected - Returns true if Graph::VertexType y can be reached from 
+     * Graph::VertexType x in Graph g, false otherwise
+     * 
+     * Graph g - First parameter, a graph datastructure
+     *   
+     * Graph::VertexType x- Second parameter, the first vertex
+     * 
+     * Graph::VertexType y- Third parameter, the second vertex
+     * **/
     template<typename Graph>
     bool isConnected(Graph& g,typename Graph::VertexType x,typename Graph::VertexType y)
     {
@@ -73,6 +125,15 @@ namespace graph
         return connected;
     }
     
+    /**
+     * \brief isComponent - Returns true if Graph g1 is a component of Graph g2,
+     *  false otherwise
+     * 
+     * Graph g1 - First parameter, a graph datastructure
+     *   
+     * Graph g2 - Second parameter, a graph datastructure
+     * **/
+    
     template<typename Graph>
     bool isComponent(Graph& g1,Graph& g2)  //is 'g1' component of 'g2' 
     {
@@ -86,6 +147,13 @@ namespace graph
         return true;
     }
     
+    /**
+     * \brief isRegular - Returns true if degree of all vertices in Graph g is equal,
+     *  false otherwise
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
+     
     template <typename Graph>
     bool isRegular(Graph &g)
     {
@@ -96,6 +164,12 @@ namespace graph
             return true;
     }
     
+    /** \brief isEulerian - Returns true if degree of all vertices in Graph g is even and
+     *  Graph g is connected, false otherwise
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
+     
     template <typename Graph>
     bool isEulerian(Graph &g)
     {
@@ -112,6 +186,12 @@ namespace graph
             return false;
     }
     
+    /** \brief isSemiEulerian - Returns true if degree of exactly two vertices in Graph g is even
+     *  and Graph g is connected, false otherwise
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
+     
     template <typename Graph>
     bool isSemiEulerian(Graph &g)
     {
@@ -132,6 +212,12 @@ namespace graph
             return false;
     }
     
+    /** \brief isComplete- Returns true if atleast one edge is present between all
+     *  combination of vertices (except self loops) in Graph g, false otherwise
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
+    
     template <typename Graph>
     bool isComplete(Graph &g)
     {
@@ -142,6 +228,15 @@ namespace graph
                 
                 return true;
     }
+    
+    /**
+     * \brief isComplement - Returns true if edges present in Graph g are not present
+     * in Graph h and vice versa (neglecting self loops), false otherwise
+     * 
+     * Graph g - First parameter, a graph datastructure
+     *   
+     * Graph h - Second parameter, a graph datastructure
+     * **/
     
     template <typename Graph>
     bool isComplement(Graph &g, Graph &h)
@@ -155,6 +250,11 @@ namespace graph
                     return true;
     }
     
+    /** \brief isEdgeless- Returns true if there are no edges in Graph g, false otherwise
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
+    
     template <typename Graph>
     bool isEdgeless(Graph &g)
     {
@@ -166,6 +266,12 @@ namespace graph
                 return true;
 
     }
+    
+    /** \brief isCyclic- Returns true if there is atleast one path starting and ending
+     * at the same vertex in Graph g, false otherwise
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
     
     template<typename Graph>
     bool isCyclic(Graph& g)
@@ -181,12 +287,30 @@ namespace graph
         return cyclic;
     }
     
+    /**
+     * \brief isCentre- Returns true if Graph::VertexType x is at the centre of Graph g,
+     *  false otherwise
+     * 
+     * Graph g - First parameter, a graph datastructure
+     *   
+     * Graph::VertexType x- Second parameter, the vertex
+     * **/
+    
     template<typename Graph>
     bool isCentre(Graph& g,typename Graph::VertexType x)
     {
         auto s=Centre(g);
         return s.find(x)!=s.end();
     }
+    
+    /**
+     * \brief isPeriphery - Returns true if Graph::VertexType x lies at the periphery of Graph g,
+     *  false otherwise
+     * 
+     * Graph g - First parameter, a graph datastructure
+     *   
+     * Graph::VertexType x- Second parameter, the vertex
+     * **/
     
     template<typename Graph>
     bool isPeriphery(Graph& g,typename Graph::VertexType x)
@@ -195,14 +319,25 @@ namespace graph
         return s.find(x)!=s.end();
     }
     
+    /** \brief isEmpty- Returns true if there are no vertex in Graph g, false otherwise
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
+    
     template<typename Graph>
     bool isEmpty(Graph& g) //is vertexless graph
     {
        return (g.begin()==g.end());
     }
     
+    /** \brief isSparse- Returns true if number of edges in Graph g is less than or equal
+     * to twice the number of vertices in graph g, false otherwise
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
+    
     template<typename Graph>
-    bool isSparse(Graph& g) //is vertexless graph
+    bool isSparse(Graph& g) 
     {
        int count=0;
        for (auto x=g.begin();x!=g.end();x++)
@@ -215,6 +350,11 @@ namespace graph
 		return false;
     }
     
+    /** \brief isTree- Returns true if Graph g is a tree, false otherwise
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
+        
     template<typename Graph>
     bool isTree(Graph& g) 
     {

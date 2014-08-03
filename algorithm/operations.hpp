@@ -1,4 +1,4 @@
-/**	\brief Operations.hpp - Header file that has collections of operations possible on any graph 
+/**	\brief operations.hpp - Header file that has collection of operations possible on any graph 
  * datastruture 
  * **/
 
@@ -11,8 +11,11 @@ namespace graph
 {
     /**
      * \brief Union - Returns union of two Graph datastructures
-     * Graph g1 - First parameter  
+     * 
+     * Graph g1 - First parameter
+     *   
      * Graph g2 - Second parameter
+     * 
      * Graph result - Variable to store resultant Union of Graph g1 and Graph g2
      * **/
     template<typename Graph>
@@ -36,8 +39,11 @@ namespace graph
     
     /**
      * \brief intersection - Returns intersection of two Graph datastructures
+     * 
      * Graph g1 - First parameter  
+     * 
      * Graph g2 - Second parameter
+     * 
      * Graph result - Variable to store resultant intersection of Graph g1 and Graph g2
      * **/
     template<typename Graph>
@@ -57,8 +63,11 @@ namespace graph
     }
     /**
      * \brief join- Returns natural join of two Graph datastructures
+     * 
      * Graph g1 - First parameter  
+     * 
      * Graph g2 - Second parameter
+     * 
      * Graph result - Variable to store resultant natural join of Graph g1 and Graph g2
      * **/
     template<typename Graph>
@@ -73,8 +82,11 @@ namespace graph
     }
     /**
      * \brief symmetric_difference - Returns symmetric_difference of two Graph datastructures
+     * 
      * Graph g1 - First parameter  
+     * 
      * Graph g2 - Second parameter
+     * 
      * Graph result - Variable to store resultant symmetric_difference of Graph g1 and Graph g2
      * **/
     template<typename Graph>
@@ -104,7 +116,8 @@ namespace graph
     
     /** 
      * \brief first - Returns substring of s from beginning till first occurence of '-'
-     * fsecond - Returns substring of s from after first occurence of '-' till end
+     * 
+     * \brief second - Returns substring of s from after first occurence of '-' till end
      * **/
     
     std::string first(std::string s) { return s.substr(0,s.find('-')); }
@@ -112,8 +125,11 @@ namespace graph
     
     /**
      * \brief cartesian_product - Returns cartesian_product of two Graph datastructures
+     * 
      * Graph g1 - First parameter  
+     * 
      * Graph g2 - Second parameter
+     * 
      * Graph result - Variable to store resultant cartesian_product of Graph g1 and Graph g2
      * **/
     template<typename Graph>
@@ -134,8 +150,11 @@ namespace graph
     }
     /**
      * \brief complement - Returns complement of a Graph datastructure
+     * 
      * The edges not present in Graph g1 are present in graph result and vice versa
+     * 
      * Graph g1 - Parameter  
+     * 
      * Graph result - Variable to store resultant complement of Graph g1
      * **/
     template<typename Graph>
@@ -154,6 +173,7 @@ namespace graph
     /**
      * \brief EdgeDeletionSubgraph - Returns the graph after deleting the edge between
      * vertex x and vertex y of graph g1
+     * 
      * Graph g1 - Parameter  
      * **/
     template<typename Graph>
@@ -166,6 +186,7 @@ namespace graph
      /**
      * \brief VertexDeletionSubgraph - Returns the graph after deleting the vertex x 
      * of graph g1
+     * 
      * Graph g1 - Parameter  
      * **/
     template<typename Graph>
