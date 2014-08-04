@@ -1,14 +1,30 @@
+/**	\brief enumeration.hpp - Header file that has collection of functions 
+ * that can count different aspects of a grah dtastructure
+ * **/
+
+
 #ifndef GRAPH_ALGORITHM_ENUMERATION_HPP
 #define GRAPH_ALGORITHM_ENUMERATION_HPP    
 #include "../graph.hpp"
 #include "collections.hpp"
 namespace graph
 {
+    /** \brief - Returns number of edges in Graph g
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
     template<typename Graph>
     int Size(Graph& g)
     {
         return EdgeList(g,false).size();
     }
+    
+    /** \brief - Returns the number of edges directed out of Graph::VertexType v in Graph g
+     * 
+     * Graph g - First parameter, a graph datastructure
+     * 
+     * Graph::VertexType v - Second parameter, a vertex of Graph g
+     * **/
     
     template<typename Graph>
     int outDegree(Graph& g, typename Graph::VertexType v)
@@ -18,6 +34,13 @@ namespace graph
             count++;
         return count;
     }
+    
+    /** \brief - Returns the number of edges directed towards Graph::VertexType v in Graph g
+     * 
+     * Graph g - First parameter, a graph datastructure
+     * 
+     * Graph::VertexType v - Second parameter, a vertex of Graph g
+     * **/
     
     template<typename Graph>
     int inDegree(Graph& g, typename Graph::VertexType v)
@@ -37,6 +60,13 @@ namespace graph
         }
     }
     
+    /** \brief - Returns the total number of edges of Graph::VertexType v in Graph g
+     * 
+     * Graph g - First parameter, a graph datastructure
+     * 
+     * Graph::VertexType v - Second parameter, a vertex of Graph g
+     * **/
+    
     template<typename Graph>
     int degree(Graph& g,typename Graph::VertexType v)
     {
@@ -45,6 +75,12 @@ namespace graph
         else
             return inDegree(g,v)+outDegree(g,v);
     }
+    
+    /** \brief - Returns the degree of each vertex in Graph g if degree of all vertex is equal,
+     * returns 0 otherwise
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
     
     template<typename Graph>
     int nregular(Graph& g)
@@ -58,6 +94,11 @@ namespace graph
         return k;
     }
     
+    /** \brief - Returns the radius eccentricity in Graph g
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
+    
     template<typename Graph>
     typename Graph::EdgeType Radius(Graph& g)
     {
@@ -69,6 +110,11 @@ namespace graph
         return min;
     }
     
+    /** \brief - Returns the diameter of Graph g
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
+    
     template<typename Graph>
     typename Graph::EdgeType Diameter(Graph& g)
     {
@@ -79,6 +125,11 @@ namespace graph
                     max=i->second;
         return max;
     }
+    
+    /** \brief - Returns the density of edges with respect to vertices in Graph g
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
     
     template<typename Graph>
     float Density(Graph& g)
