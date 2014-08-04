@@ -3,6 +3,6 @@ cyclictest.cpp 10
 adjtest.cpp 001
 enumtest.cpp 902225955
 gengraph.cpp 01
-optest.cpp 11111
-predtest.cpp 111011111010111001100
+optest.cpp 1111109
+predtest.cpp 1110111110101110011001010
 collectiontest.cpp 102010

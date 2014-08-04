@@ -10,7 +10,7 @@
 namespace graph
 {
     /**
-     * \brief Union - Returns union of two Graph datastructures
+     * \brief - Returns union of two Graph datastructures
      * 
      * Graph g1 - First parameter
      *   
@@ -38,7 +38,7 @@ namespace graph
     }
     
     /**
-     * \brief intersection - Returns intersection of two Graph datastructures
+     * \brief - Returns intersection of two Graph datastructures
      * 
      * Graph g1 - First parameter  
      * 
@@ -62,7 +62,7 @@ namespace graph
         return result;
     }
     /**
-     * \brief join- Returns natural join of two Graph datastructures
+     * \brief - Returns natural join of two Graph datastructures
      * 
      * Graph g1 - First parameter  
      * 
@@ -81,7 +81,7 @@ namespace graph
         return result;
     }
     /**
-     * \brief symmetric_difference - Returns symmetric_difference of two Graph datastructures
+     * \brief - Returns symmetric_difference of two Graph datastructures
      * 
      * Graph g1 - First parameter  
      * 
@@ -115,16 +115,19 @@ namespace graph
     }
     
     /** 
-     * \brief first - Returns substring of s from beginning till first occurence of '-'
-     * 
-     * \brief second - Returns substring of s from after first occurence of '-' till end
-     * **/
+     * \brief - Returns substring of s from beginning till first occurence of '-'
+     * */
     
     std::string first(std::string s) { return s.substr(0,s.find('-')); }
+    
+     /**    
+     * \brief - Returns substring of s from after first occurence of '-' till end
+     * **/
+    
     std::string second(std::string s) { return s.substr(s.find('-')+1); }
     
     /**
-     * \brief cartesian_product - Returns cartesian_product of two Graph datastructures
+     * \brief - Returns cartesian_product of two Graph datastructures
      * 
      * Graph g1 - First parameter  
      * 
@@ -149,7 +152,7 @@ namespace graph
         return result;
     }
     /**
-     * \brief complement - Returns complement of a Graph datastructure
+     * \brief - Returns complement of a Graph datastructure
      * 
      * The edges not present in Graph g1 are present in graph result and vice versa
      * 
@@ -171,7 +174,7 @@ namespace graph
         return result;
     }
     /**
-     * \brief EdgeDeletionSubgraph - Returns the graph after deleting the edge between
+     * \brief - Returns the graph after deleting the edge between
      * vertex x and vertex y of graph g1
      * 
      * Graph g1 - Parameter  
@@ -184,7 +187,7 @@ namespace graph
         return g1;
     }
      /**
-     * \brief VertexDeletionSubgraph - Returns the graph after deleting the vertex x 
+     * \brief - Returns the graph after deleting the vertex x 
      * of graph g1
      * 
      * Graph g1 - Parameter  

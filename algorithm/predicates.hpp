@@ -12,7 +12,7 @@
 namespace graph
 {
 	/**
-     * \brief isVertex - Returns true if Graph::VertexType x is a vertex of Graph g,
+     * \brief - Returns true if Graph::VertexType x is a vertex of Graph g,
      *  false otherwise
      * 
      * Graph g - First parameter, a graph datastructure
@@ -26,7 +26,7 @@ namespace graph
     }
     
     /**
-     * \brief isAdjacent - Returns true if Graph::VertexType x and Graph::VertexType y
+     * \brief - Returns true if Graph::VertexType x and Graph::VertexType y
      * are adjacent in Graph g, false otherwise
      * 
      * Graph g - First parameter, a graph datastructure
@@ -45,7 +45,7 @@ namespace graph
     }
     
      /**
-     * \brief isSubgraph - Returns true if Graph g is a subgraph of Graph h, false otherwise
+     * \brief - Returns true if Graph g is a subgraph of Graph h, false otherwise
      * 
      * Graph g - First parameter, a graph datastructure
      *   
@@ -67,7 +67,7 @@ namespace graph
         return true;
     }
     /**
-     * \brief isSpanningSubgraph - Returns true if Graph g is a spanning subgraph of Graph h,
+     * \brief - Returns true if Graph g is a spanning subgraph of Graph h,
      * false otherwise
      * 
      * Graph g - First parameter, a graph datastructure
@@ -83,7 +83,7 @@ namespace graph
         return false;
     }
     /**
-     * \brief isConnected - Returns true if all vertices of Graph g can be traversed,
+     * \brief - Returns true if all vertices of Graph g can be traversed,
      * false otherwise
      *  
      * Graph g - Parameter, a graph datastructure
@@ -98,7 +98,7 @@ namespace graph
         return d.size()==g.order();
     }
     /**
-     * \brief isConnected - Returns true if Graph::VertexType y can be reached from 
+     * \brief - Returns true if Graph::VertexType y can be reached from 
      * Graph::VertexType x in Graph g, false otherwise
      * 
      * Graph g - First parameter, a graph datastructure
@@ -126,7 +126,7 @@ namespace graph
     }
     
     /**
-     * \brief isComponent - Returns true if Graph g1 is a component of Graph g2,
+     * \brief - Returns true if Graph g1 is a component of Graph g2,
      *  false otherwise
      * 
      * Graph g1 - First parameter, a graph datastructure
@@ -148,7 +148,7 @@ namespace graph
     }
     
     /**
-     * \brief isRegular - Returns true if degree of all vertices in Graph g is equal,
+     * \brief - Returns true if degree of all vertices in Graph g is equal,
      *  false otherwise
      * 
      * Graph g - Parameter, a graph datastructure
@@ -164,7 +164,7 @@ namespace graph
             return true;
     }
     
-    /** \brief isEulerian - Returns true if degree of all vertices in Graph g is even and
+    /** \brief - Returns true if degree of all vertices in Graph g is even and
      *  Graph g is connected, false otherwise
      * 
      * Graph g - Parameter, a graph datastructure
@@ -186,7 +186,7 @@ namespace graph
             return false;
     }
     
-    /** \brief isSemiEulerian - Returns true if degree of exactly two vertices in Graph g is even
+    /** \brief - Returns true if degree of exactly two vertices in Graph g is even
      *  and Graph g is connected, false otherwise
      * 
      * Graph g - Parameter, a graph datastructure
@@ -212,7 +212,7 @@ namespace graph
             return false;
     }
     
-    /** \brief isComplete- Returns true if atleast one edge is present between all
+    /** \brief - Returns true if atleast one edge is present between all
      *  combination of vertices (except self loops) in Graph g, false otherwise
      * 
      * Graph g - Parameter, a graph datastructure
@@ -230,7 +230,7 @@ namespace graph
     }
     
     /**
-     * \brief isComplement - Returns true if edges present in Graph g are not present
+     * \brief  - Returns true if edges present in Graph g are not present
      * in Graph h and vice versa (neglecting self loops), false otherwise
      * 
      * Graph g - First parameter, a graph datastructure
@@ -250,7 +250,7 @@ namespace graph
                     return true;
     }
     
-    /** \brief isEdgeless- Returns true if there are no edges in Graph g, false otherwise
+    /** \brief - Returns true if there are no edges in Graph g, false otherwise
      * 
      * Graph g - Parameter, a graph datastructure
      * **/
@@ -267,7 +267,7 @@ namespace graph
 
     }
     
-    /** \brief isCyclic- Returns true if there is atleast one path starting and ending
+    /** \brief - Returns true if there is atleast one path starting and ending
      * at the same vertex in Graph g, false otherwise
      * 
      * Graph g - Parameter, a graph datastructure
@@ -288,7 +288,7 @@ namespace graph
     }
     
     /**
-     * \brief isCentre- Returns true if Graph::VertexType x is at the centre of Graph g,
+     * \brief - Returns true if Graph::VertexType x is at the centre of Graph g,
      *  false otherwise
      * 
      * Graph g - First parameter, a graph datastructure
@@ -304,7 +304,7 @@ namespace graph
     }
     
     /**
-     * \brief isPeriphery - Returns true if Graph::VertexType x lies at the periphery of Graph g,
+     * \brief - Returns true if Graph::VertexType x lies at the periphery of Graph g,
      *  false otherwise
      * 
      * Graph g - First parameter, a graph datastructure
@@ -319,7 +319,7 @@ namespace graph
         return s.find(x)!=s.end();
     }
     
-    /** \brief isEmpty- Returns true if there are no vertex in Graph g, false otherwise
+    /** \brief - Returns true if there are no vertex in Graph g, false otherwise
      * 
      * Graph g - Parameter, a graph datastructure
      * **/
@@ -330,7 +330,7 @@ namespace graph
        return (g.begin()==g.end());
     }
     
-    /** \brief isSparse- Returns true if number of edges in Graph g is less than or equal
+    /** \brief - Returns true if number of edges in Graph g is less than or equal
      * to twice the number of vertices in graph g, false otherwise
      * 
      * Graph g - Parameter, a graph datastructure
@@ -350,7 +350,7 @@ namespace graph
 		return false;
     }
     
-    /** \brief isTree- Returns true if Graph g is a tree, false otherwise
+    /** \brief - Returns true if Graph g is a tree, false otherwise
      * 
      * Graph g - Parameter, a graph datastructure
      * **/
