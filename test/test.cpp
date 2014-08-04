@@ -1,16 +1,17 @@
 #include "../graph.hpp"
 #include "../algorithm/sssp.hpp"
 #include "../algorithm/predicates.hpp"
+#include "../algorithm/enumeration.hpp"
 #include "../algorithm/operations.hpp"
 #include "../algorithm/collections.hpp"
 #include "../util/generate.hpp"
 #include<iostream>
 int main()
 {
-    /*auto g1=graph::gen::cycle(5);
-    auto v1=graph::Djikstra(g1,"1");*/
-    /*auto g2=graph::gen::complete_bipartite(5,2);
-    std::cout<<graph::isSparse(g2);*/
+    auto g1=graph::gen::cycle(5);
+    /*auto v1=graph::Djikstra(g1,"1");*/
+    auto g2=graph::gen::complete(5);
+    /*std::cout<<graph::isSparse(g2);*/
     /*std::cout<<graph::isPeriphery(g1,"5");*/
     graph::Graph <std::string, int> g;
     g.insertVertex("1");
@@ -20,7 +21,8 @@ int main()
     g.insertEdge("1","2",1);
     g.insertEdge("2","3",1);
     g.insertEdge("4","2",1);
-    std::cout<<graph::isTree(g);
+    auto g3=graph::gen::path(5);
+    std::cout<<graph::Density(g3);
     
     /*
     auto v1=graph::outVertexList(g,"2");

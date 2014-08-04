@@ -5,6 +5,12 @@
 namespace graph
 {
     template<typename Graph>
+    int Size(Graph& g)
+    {
+        return EdgeList(g,false).size();
+    }
+    
+    template<typename Graph>
     int outDegree(Graph& g, typename Graph::VertexType v)
     {
         int count=0;
@@ -72,6 +78,12 @@ namespace graph
                 if(i->second>max)
                     max=i->second;
         return max;
+    }
+    
+    template<typename Graph>
+    float Density(Graph& g)
+    {
+        return (2.0*Size(g))/(g.order()*(g.order()-1));
     }
 }
 #endif
