@@ -1,3 +1,7 @@
+/**	\brief collection.hpp - Header file that has functions that returns sequences and lists of
+ *  different aspects of a grah dtastructure
+ * **/
+
 #ifndef GRAPH_ALGORITHM_COLLECTIONS_HPP
 #define GRAPH_ALGORITHM_COLLECTIONS_HPP
 #include "../graph.hpp"
@@ -13,6 +17,14 @@
 #include<utility>
 namespace graph
 {
+	/**
+     * \brief - Returns a list containing names of all the vertices in Graph g
+     * 
+     * Graph g - Parameter, a graph datastructure
+     *   
+     * vector<typename Graph::VertexType> v - vector to store the list
+     * **/
+     
     template<typename Graph>
     std::vector<typename Graph::VertexType> VertexList(Graph& g)
     {
@@ -22,6 +34,17 @@ namespace graph
         return v;
     }
     
+    /**
+     * \brief - Returns a list containing all pairs of vertices between which an edge
+     * exists in Graph g, along with the edge weights
+     * 
+     * Graph g - First parameter, a graph datastructure
+     * 
+     * bool duplicate - Second parameter, to check for duplicate edges
+     *   
+     * vector<std::tuple<typename Graph::VertexType,typename Graph::VertexType,typename Graph::EdgeType>> e - vector to store the list
+     * **/
+     
     template<typename Graph>
     std::vector
     <
@@ -47,6 +70,15 @@ namespace graph
         return e;
     }
     
+    /**
+     * \brief - Returns a list containing names of all the vertices in Graph g
+     * alongwith the total number of edges of each vertex
+     * 
+     * Graph g - Parameter, a graph datastructure
+     *   
+     * map<typename Graph::VertexType,int> m - variable to store the list
+     * **/
+     
     template<typename Graph>
     std::map<typename Graph::VertexType,int> DegreeList(Graph& g)
     {
@@ -56,6 +88,15 @@ namespace graph
         return m;
     }
     
+    /**
+     * \brief - Returns a sequence of total number of edges of all vertices in Graph g in sorted
+     * order
+     * 
+     * Graph g - Parameter, a graph datastructure
+     *   
+     * vector<int> ds - variable to store the sequence
+     * **/
+     
     template<typename Graph>
     std::vector<int> DegreeSequence(Graph& g)
     {
@@ -65,6 +106,14 @@ namespace graph
         std::sort(ds.begin(),ds.end());
         return ds;
     }
+    
+    /**
+     * \brief - Returns a map of al vertices in Graph g with their corresponding eccentricities
+     * 
+     * Graph g - Parameter, a graph datastructure
+     *   
+     * map<typename Graph::VertexType,typename Graph::EdgeType> m - variable to store the mapping
+     * **/
     
     template<typename Graph>
     std::map<typename Graph::VertexType,typename Graph::EdgeType> EcentricityList(Graph& g)
@@ -86,6 +135,14 @@ namespace graph
         return m;
     }
     
+     /**
+     * \brief - Returns a set of vertices constituting the centre in Graph g
+     * 
+     * Graph g - Parameter, a graph datastructure
+     *   
+     * set<typename Graph::VertexType> s - variable to store the centres
+     * **/
+    
     template<typename Graph>
     std::set<typename Graph::VertexType> Centre(Graph& g)
     {
@@ -101,6 +158,15 @@ namespace graph
         return s;
     }
     
+     /**
+     * \brief - Returns a set of vertices constituting the periphery in Graph g
+     * 
+     * Graph g - Parameter, a graph datastructure
+     *   
+     * set<typename Graph::VertexType> s - variable to store the peripheries
+     * **/
+   
+    
     template<typename Graph>
     std::set<typename Graph::VertexType> Periphery(Graph& g)
     {
@@ -115,7 +181,16 @@ namespace graph
                 s.insert(i->first);
         return s;
     }
-    
+   
+    /**
+     * \brief - Returns adjacency matrix of Graph g
+     * as a mapping between the pair of vertices and the edge between these two vertices
+     * 
+     * Graph g - Parameter, a graph datastructure
+     *   
+     * map<std::pair<typename Graph::VertexType,typename Graph::VertexType>,typename Graph::EdgeType> m - variable to store the adjacency matrix
+     * **/
+       
     template<typename Graph>
     std::map<std::pair<typename Graph::VertexType,typename Graph::VertexType>,typename Graph::EdgeType> AdjacencyMatrix(Graph& g)
     {
@@ -126,6 +201,17 @@ namespace graph
         return m;
     }
     
+    /**
+     * \brief - Returns a list containing names of all the vertices in Graph g
+     * having edges originating from Vertex x
+     * 
+     * Graph g - First parameter, a graph datastructure
+     * 
+     * typename Graph::VertexType x - Second parameter, a vertex of Graph g
+     *   
+     * map<typename Graph::VertexType> v - variable to store the list
+     * **/
+    
     template<typename Graph>
     std::vector<typename Graph::VertexType> outVertexList(Graph& g,typename Graph::VertexType x)
     {
@@ -135,6 +221,17 @@ namespace graph
         
         return v;
     }
+    
+    /**
+     * \brief - Returns a list containing names of all the vertices in Graph g
+     * having edges ending at Vertex x
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * 
+     * typename Graph::VertexType x - Second parameter, a vertex of Graph g
+     *   
+     * map<typename Graph::VertexType> v - variable to store the list
+     * **/
     
     template<typename Graph>
     std::vector<typename Graph::VertexType> inVertexList(Graph& g,typename Graph::VertexType x)
@@ -147,7 +244,7 @@ namespace graph
             for(auto i=g.begin();i!=g.end();++i)
             {
                 auto it=g.nfind(i->first,x);
-                if(it!=g.nend(i->first))
+                if(it!=pg.nend(i->first))
                     v.push_back(i->first);
             }
             return v;

@@ -12,9 +12,9 @@ namespace graph
     /**
      * \brief - Returns union of two Graph datastructures
      * 
-     * Graph g1 - First parameter
+     * Graph g1 - First parameter, a graph datastructure
      *   
-     * Graph g2 - Second parameter
+     * Graph g2 - Second parameter, a graph datastructure
      * 
      * Graph result - Variable to store resultant Union of Graph g1 and Graph g2
      * **/
@@ -40,9 +40,9 @@ namespace graph
     /**
      * \brief - Returns intersection of two Graph datastructures
      * 
-     * Graph g1 - First parameter  
+     * Graph g1 - First parameter, a graph datastructure
      * 
-     * Graph g2 - Second parameter
+     * Graph g2 - Second parameter, a graph datastructure
      * 
      * Graph result - Variable to store resultant intersection of Graph g1 and Graph g2
      * **/
@@ -64,9 +64,9 @@ namespace graph
     /**
      * \brief - Returns natural join of two Graph datastructures
      * 
-     * Graph g1 - First parameter  
+     * Graph g1 - First parameter, a graph datastructure
      * 
-     * Graph g2 - Second parameter
+     * Graph g2 - Second parameter, a graph datastructure
      * 
      * Graph result - Variable to store resultant natural join of Graph g1 and Graph g2
      * **/
@@ -83,9 +83,9 @@ namespace graph
     /**
      * \brief - Returns symmetric_difference of two Graph datastructures
      * 
-     * Graph g1 - First parameter  
+     * Graph g1 - First parameter, a graph datastructure
      * 
-     * Graph g2 - Second parameter
+     * Graph g2 - Second parameter, a graph datastructure
      * 
      * Graph result - Variable to store resultant symmetric_difference of Graph g1 and Graph g2
      * **/
@@ -129,9 +129,9 @@ namespace graph
     /**
      * \brief - Returns cartesian_product of two Graph datastructures
      * 
-     * Graph g1 - First parameter  
+     * Graph g1 - First parameter, a graph datastructure
      * 
-     * Graph g2 - Second parameter
+     * Graph g2 - Second parameter, a graph datastructure
      * 
      * Graph result - Variable to store resultant cartesian_product of Graph g1 and Graph g2
      * **/
@@ -156,7 +156,7 @@ namespace graph
      * 
      * The edges not present in Graph g1 are present in graph result and vice versa
      * 
-     * Graph g1 - Parameter  
+     * Graph g1 - Parameter, a graph datastructure
      * 
      * Graph result - Variable to store resultant complement of Graph g1
      * **/
@@ -177,7 +177,7 @@ namespace graph
      * \brief - Returns the graph after deleting the edge between
      * vertex x and vertex y of graph g1
      * 
-     * Graph g1 - Parameter  
+     * Graph g1 - Parameter, a graph datastructure
      * **/
     template<typename Graph>
     Graph EdgeDeletionSubgraph(Graph g1, typename Graph::VertexType x, typename Graph::VertexType  y)
@@ -190,7 +190,7 @@ namespace graph
      * \brief - Returns the graph after deleting the vertex x 
      * of graph g1
      * 
-     * Graph g1 - Parameter  
+     * Graph g1 - Parameter, a graph datastructure
      * **/
     template<typename Graph>
     Graph VertexDeletionSubgraph(Graph g1, typename Graph::VertexType x)
