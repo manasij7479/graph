@@ -31,8 +31,8 @@ namespace graph
         typedef typename edge_traits<EdgeType>::DistanceType DistanceType;
         typedef Child<Graph,Container> Derived;
         
-        Search(Graph& g_,const VertexType& s)
-            :fringe(dist),g(g_),source(s) {}
+        Search(Graph& g_,const VertexType& s, std::function<bool(VertexType,VertexType)> compare)
+            :fringe(compare),g(g_),source(s) {}
         virtual void operator()()
         {
             execute();
@@ -109,9 +109,10 @@ namespace graph
     class DefaultSearch : public Search<Graph,Container,DefaultSearch>
     {
     public:
-        typedef typename Graph::VertexType V;;
+        typedef typename Graph::VertexType V;
+        typedef Search<Graph,Container,DefaultSearch> Base;
         DefaultSearch(Graph& g,const typename Graph::VertexType& s)
-            :Search<Graph,Container,DefaultSearch>(g,s)
+            :Search<Graph,Container,DefaultSearch>(g,s,[&](V x,V y){return this->dist[x] < this->dist[y];})
         {
             Search<Graph,Container,DefaultSearch>::execute();
         }
@@ -126,8 +127,9 @@ namespace graph
     {
     public:
         typedef typename Graph::VertexType V;
+        typedef Search<Graph,Container,DefaultSearch> Base;
         HookedSearch(Graph& g,const V& s)
-            :Search<Graph,Container,HookedSearch>(g,s)
+            :Search<Graph,Container,HookedSearch>(g,s,[&](V x,V y){return this->dist[x] < this->dist[y];})
         {
             m_p1=m_p2=m_p3=
             [](const V&)
@@ -156,13 +158,13 @@ namespace graph
     };
     
     template<typename G>
-    using UniformCostSearch=Search<G,PriorityQueue,DefaultSearch>;
+    using UniformCostSearch=DefaultSearch<G,PriorityQueue>;
     
     template<typename G>
-    using DepthFirstSearch=Search<G,Stack,DefaultSearch>;
+    using DepthFirstSearch=DefaultSearch<G,Stack>;
     
     template<typename G>
-    using BreadthFirstSearch=Search<G,Queue,DefaultSearch>;
+    using BreadthFirstSearch=DefaultSearch<G,Queue>;
     
     
 }

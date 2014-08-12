@@ -244,7 +244,7 @@ namespace graph
             for(auto i=g.begin();i!=g.end();++i)
             {
                 auto it=g.nfind(i->first,x);
-                if(it!=pg.nend(i->first))
+                if(it!=g.nend(i->first))
                     v.push_back(i->first);
             }
             return v;

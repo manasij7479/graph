@@ -3,6 +3,8 @@
 #include <queue>
 #include <vector>
 #include <set>
+#include <functional>
+#include <algorithm>
 #include "distance.hpp"
 namespace graph
 {
@@ -13,7 +15,7 @@ namespace graph
         typedef typename GraphType::EdgeType E;
         typedef typename GraphType::VertexType V;
         
-        Queue(DistanceArray<GraphType>&){}
+        Queue(std::function<bool(V,V)>){}
         void put(V t)
         {
             data.push(t);
@@ -32,51 +34,44 @@ namespace graph
         std::queue<V> data;
     };
     
+    //FIXME: Stupid linear implementation
+    //Implement a min heap or use Boost's implementation
+    //http://www.boost.org/doc/libs/1_56_0/doc/html/boost/heap/fibonacci_heap.html
     template<typename GraphType>
     class PriorityQueue
     {
     public:
         typedef typename GraphType::EdgeType E;
         typedef typename GraphType::VertexType V;
-        PriorityQueue(DistanceArray<GraphType>& dist):pq(dist){}
+        PriorityQueue(std::function<bool(V,V)> compare):less(compare){}
         void put(V t)
         {
-            pq.push(t); 
-            elements.insert(t);
+            data.push_back(t); 
+//             std::push_heap(data.begin(),data.end(),less);
         }
         V get()
         {
-            V result=pq.top();
-            pq.pop();
-            elements.erase(result);
+//             std::pop_heap(data.begin(),data.end(),less);
+            auto it = std::min_element(data.begin(),data.end(),less);
+            V result=*it;
+            data.erase(it);
+//             data.pop_back();
             return result;
         }
+        
         bool empty()
         {
-            return pq.empty();
+            return data.empty();
         }
         
         bool isElement(V t)
         {
-            return elements.find(t)!=elements.end();
+            return std::find(data.begin(),data.end(),t)!=data.end();
         }
         
-        template<typename GT>
-        class Cmp
-        {
-        public:
-            typedef typename GT::EdgeType E;
-            typedef typename GT::VertexType V;
-            
-            Cmp(DistanceArray<GT>& m):map(m){};
-            bool operator()(V x,V y){return map[x]>map[y];}
-            
-        private:
-            DistanceArray<GraphType>& map;
-        };
     private:
-        std::priority_queue<V,std::vector<V>,Cmp<GraphType>>  pq;
-        std::set<V> elements;
+        std::vector<V> data;
+        std::function<bool(V,V)> less;
     };
 }
 #endif

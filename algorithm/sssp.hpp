@@ -17,7 +17,7 @@ namespace graph
         for(auto i=g.begin();i!=g.end();++i)
             dist.set(i->first,std::numeric_limits<typename Graph::EdgeType>::max());
         dist.set(s,0);
-        PriorityQueue<Graph> pq(dist);
+        PriorityQueue<Graph> pq([&](typename Graph::VertexType x,typename Graph::VertexType y){return dist[x]<dist[y];});
         for(auto i=g.begin();i!=g.end();++i)
             pq.put(i->first);
         
