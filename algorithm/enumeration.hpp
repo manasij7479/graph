@@ -1,5 +1,5 @@
 /**	\brief enumeration.hpp - Header file that has collection of functions 
- * that can count different aspects of a grah dtastructure
+ * that can enumerate different aspects of a grah object
  * **/
 
 
@@ -11,7 +11,7 @@ namespace graph
 {
     /** \brief - Returns number of edges in Graph g
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
     template<typename Graph>
     int Size(Graph& g)
@@ -21,7 +21,7 @@ namespace graph
     
     /** \brief - Returns the number of edges directed out of Graph::VertexType v in Graph g
      * 
-     * Graph g - First parameter, a graph datastructure
+     * Graph g - First parameter, a graph object
      * 
      * Graph::VertexType v - Second parameter, a vertex of Graph g
      * **/
@@ -37,7 +37,7 @@ namespace graph
     
     /** \brief - Returns the number of edges directed towards Graph::VertexType v in Graph g
      * 
-     * Graph g - First parameter, a graph datastructure
+     * Graph g - First parameter, a graph object
      * 
      * Graph::VertexType v - Second parameter, a vertex of Graph g
      * **/
@@ -62,7 +62,7 @@ namespace graph
     
     /** \brief - Returns the total number of edges of Graph::VertexType v in Graph g
      * 
-     * Graph g - First parameter, a graph datastructure
+     * Graph g - First parameter, a graph object
      * 
      * Graph::VertexType v - Second parameter, a vertex of Graph g
      * **/
@@ -79,7 +79,7 @@ namespace graph
     /** \brief - Returns the degree of each vertex in Graph g if degree of all vertex is equal,
      * returns 0 otherwise
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
     
     template<typename Graph>
@@ -96,7 +96,7 @@ namespace graph
     
     /** \brief - Returns the radius eccentricity in Graph g
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
     
     template<typename Graph>
@@ -112,7 +112,7 @@ namespace graph
     
     /** \brief - Returns the diameter of Graph g
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
     
     template<typename Graph>
@@ -128,7 +128,7 @@ namespace graph
     
     /** \brief - Returns the density of edges with respect to vertices in Graph g
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
     
     template<typename Graph>
