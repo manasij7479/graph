@@ -1,5 +1,9 @@
-/**	\brief predicates.hpp - Header file that has collection of different checks that can be made
- * for a graph datastructure
+/**	\brief predicates.hpp - Header file that has collection of boolean functions 
+/**      on a graph object. All these checks must evaluate to true or false.
+/**      
+/**      Note: Use std::bind on these predicates and a Graph object for these to be 
+/**      applicable to STL algorithms.
+/**      
  * **/
 #ifndef GRAPH_ALGORITHM_PREDICATES_HPP
 #define GRAPH_ALGORITHM_PREDICATES_HPP
@@ -11,11 +15,11 @@
 #include<algorithm>
 namespace graph
 {
-	/**
+    /**
      * \brief - Returns true if Graph::VertexType x is a vertex of Graph g,
      *  false otherwise
      * 
-     * Graph g - First parameter, a graph datastructure
+     * Graph g - First parameter, a graph object
      *   
      * Graph::VertexType x- Second parameter, the vertex
      * **/
@@ -29,7 +33,7 @@ namespace graph
      * \brief - Returns true if Graph::VertexType x and Graph::VertexType y
      * are adjacent in Graph g, false otherwise
      * 
-     * Graph g - First parameter, a graph datastructure
+     * Graph g - First parameter, a graph object
      *   
      * Graph::VertexType x- Second parameter, the first vertex
      * 
@@ -47,9 +51,9 @@ namespace graph
      /**
      * \brief - Returns true if Graph g is a subgraph of Graph h, false otherwise
      * 
-     * Graph g - First parameter, a graph datastructure
+     * Graph g - First parameter, a graph object
      *   
-     * Graph h - Second parameter, a graph datastructure
+     * Graph h - Second parameter, a graph object
      * **/
      
     template<typename Graph>
@@ -70,9 +74,9 @@ namespace graph
      * \brief - Returns true if Graph g is a spanning subgraph of Graph h,
      * false otherwise
      * 
-     * Graph g - First parameter, a graph datastructure
+     * Graph g - First parameter, a graph object
      *   
-     * Graph h - Second parameter, a graph datastructure
+     * Graph h - Second parameter, a graph object
      * **/
     
     template<typename Graph>
@@ -86,7 +90,7 @@ namespace graph
      * \brief - Returns true if all vertices of Graph g can be traversed,
      * false otherwise
      *  
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
     template<typename Graph>
     bool isConnected(Graph& g)
@@ -101,7 +105,7 @@ namespace graph
      * \brief - Returns true if Graph::VertexType y can be reached from 
      * Graph::VertexType x in Graph g, false otherwise
      * 
-     * Graph g - First parameter, a graph datastructure
+     * Graph g - First parameter, a graph object
      *   
      * Graph::VertexType x- Second parameter, the first vertex
      * 
@@ -129,9 +133,9 @@ namespace graph
      * \brief - Returns true if Graph g1 is a component of Graph g2,
      *  false otherwise
      * 
-     * Graph g1 - First parameter, a graph datastructure
+     * Graph g1 - First parameter, a graph object
      *   
-     * Graph g2 - Second parameter, a graph datastructure
+     * Graph g2 - Second parameter, a graph object
      * **/
     
     template<typename Graph>
@@ -151,7 +155,7 @@ namespace graph
      * \brief - Returns true if degree of all vertices in Graph g is equal,
      *  false otherwise
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
      
     template <typename Graph>
@@ -167,7 +171,7 @@ namespace graph
     /** \brief - Returns true if degree of all vertices in Graph g is even and
      *  Graph g is connected, false otherwise
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
      
     template <typename Graph>
@@ -189,7 +193,7 @@ namespace graph
     /** \brief - Returns true if degree of exactly two vertices in Graph g is even
      *  and Graph g is connected, false otherwise
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
      
     template <typename Graph>
@@ -215,7 +219,7 @@ namespace graph
     /** \brief - Returns true if atleast one edge is present between all
      *  combination of vertices (except self loops) in Graph g, false otherwise
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
     
     template <typename Graph>
@@ -233,9 +237,9 @@ namespace graph
      * \brief  - Returns true if edges present in Graph g are not present
      * in Graph h and vice versa (neglecting self loops), false otherwise
      * 
-     * Graph g - First parameter, a graph datastructure
+     * Graph g - First parameter, a graph object
      *   
-     * Graph h - Second parameter, a graph datastructure
+     * Graph h - Second parameter, a graph object
      * **/
     
     template <typename Graph>
@@ -252,7 +256,7 @@ namespace graph
     
     /** \brief - Returns true if there are no edges in Graph g, false otherwise
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
     
     template <typename Graph>
@@ -270,7 +274,7 @@ namespace graph
     /** \brief - Returns true if there is atleast one path starting and ending
      * at the same vertex in Graph g, false otherwise
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
     
     template<typename Graph>
@@ -291,7 +295,7 @@ namespace graph
      * \brief - Returns true if Graph::VertexType x is at the centre of Graph g,
      *  false otherwise
      * 
-     * Graph g - First parameter, a graph datastructure
+     * Graph g - First parameter, a graph object
      *   
      * Graph::VertexType x- Second parameter, the vertex
      * **/
@@ -307,7 +311,7 @@ namespace graph
      * \brief - Returns true if Graph::VertexType x lies at the periphery of Graph g,
      *  false otherwise
      * 
-     * Graph g - First parameter, a graph datastructure
+     * Graph g - First parameter, a graph object
      *   
      * Graph::VertexType x- Second parameter, the vertex
      * **/
@@ -321,7 +325,7 @@ namespace graph
     
     /** \brief - Returns true if there are no vertex in Graph g, false otherwise
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
     
     template<typename Graph>
@@ -333,7 +337,7 @@ namespace graph
     /** \brief - Returns true if number of edges in Graph g is less than or equal
      * to twice the number of vertices in graph g, false otherwise
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
     
     template<typename Graph>
@@ -352,7 +356,7 @@ namespace graph
     
     /** \brief - Returns true if Graph g is a tree, false otherwise
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * **/
         
     template<typename Graph>

@@ -1,5 +1,5 @@
 /**	\brief collection.hpp - Header file that has functions that returns sequences and lists of
- *  different aspects of a grah dtastructure
+ *  different aspects of a graph object
  * **/
 
 #ifndef GRAPH_ALGORITHM_COLLECTIONS_HPP
@@ -20,7 +20,7 @@ namespace graph
 	/**
      * \brief - Returns a list containing names of all the vertices in Graph g
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      *   
      * vector<typename Graph::VertexType> v - vector to store the list
      * **/
@@ -38,7 +38,7 @@ namespace graph
      * \brief - Returns a list containing all pairs of vertices between which an edge
      * exists in Graph g, along with the edge weights
      * 
-     * Graph g - First parameter, a graph datastructure
+     * Graph g - First parameter, a graph object
      * 
      * bool duplicate - Second parameter, to check for duplicate edges
      *   
@@ -74,7 +74,7 @@ namespace graph
      * \brief - Returns a list containing names of all the vertices in Graph g
      * alongwith the total number of edges of each vertex
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      *   
      * map<typename Graph::VertexType,int> m - variable to store the list
      * **/
@@ -92,7 +92,7 @@ namespace graph
      * \brief - Returns a sequence of total number of edges of all vertices in Graph g in sorted
      * order
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      *   
      * vector<int> ds - variable to store the sequence
      * **/
@@ -110,7 +110,7 @@ namespace graph
     /**
      * \brief - Returns a map of al vertices in Graph g with their corresponding eccentricities
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      *   
      * map<typename Graph::VertexType,typename Graph::EdgeType> m - variable to store the mapping
      * **/
@@ -138,7 +138,7 @@ namespace graph
      /**
      * \brief - Returns a set of vertices constituting the centre in Graph g
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      *   
      * set<typename Graph::VertexType> s - variable to store the centres
      * **/
@@ -161,7 +161,7 @@ namespace graph
      /**
      * \brief - Returns a set of vertices constituting the periphery in Graph g
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      *   
      * set<typename Graph::VertexType> s - variable to store the peripheries
      * **/
@@ -186,7 +186,7 @@ namespace graph
      * \brief - Returns adjacency matrix of Graph g
      * as a mapping between the pair of vertices and the edge between these two vertices
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      *   
      * map<std::pair<typename Graph::VertexType,typename Graph::VertexType>,typename Graph::EdgeType> m - variable to store the adjacency matrix
      * **/
@@ -205,7 +205,7 @@ namespace graph
      * \brief - Returns a list containing names of all the vertices in Graph g
      * having edges originating from Vertex x
      * 
-     * Graph g - First parameter, a graph datastructure
+     * Graph g - First parameter, a graph object
      * 
      * typename Graph::VertexType x - Second parameter, a vertex of Graph g
      *   
@@ -213,7 +213,7 @@ namespace graph
      * **/
     
     template<typename Graph>
-    std::vector<typename Graph::VertexType> outVertexList(Graph& g,typename Graph::VertexType x)
+    std::vector<typename Graph::VertexType> OutVertexList(Graph& g,typename Graph::VertexType x)
     {
         std::vector<typename Graph::VertexType> v;
         for(auto i=g.nbegin(x);i!=g.nend(x);++i)
@@ -226,7 +226,7 @@ namespace graph
      * \brief - Returns a list containing names of all the vertices in Graph g
      * having edges ending at Vertex x
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Graph g - Parameter, a graph object
      * 
      * typename Graph::VertexType x - Second parameter, a vertex of Graph g
      *   
@@ -234,7 +234,7 @@ namespace graph
      * **/
     
     template<typename Graph>
-    std::vector<typename Graph::VertexType> inVertexList(Graph& g,typename Graph::VertexType x)
+    std::vector<typename Graph::VertexType> InVertexList(Graph& g,typename Graph::VertexType x)
     {
         if(!g.isDirected())
             return outVertexList(g,x);
