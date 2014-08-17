@@ -32,6 +32,7 @@ namespace dot
             in.skipSpace();
             while(std::isalpha(in.peek()))
                 result+=in.get();
+            return result;
         }
     private:
         std::string result;

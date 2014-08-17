@@ -9,7 +9,7 @@ namespace dot
         {
             pos  = in.pos();
         }
-        std::string what()
+        std::string what() const
         {
             return msg;
             //would support more elaborate diagnostics later
