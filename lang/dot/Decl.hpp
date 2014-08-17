@@ -1,18 +1,10 @@
 #ifndef DOT_DECL_HPP
 #define DOT_DECL_HPP
 #include "Stream.hpp"
-
+#include "StmtListDecl.hpp"
 namespace dot
 {
-    class DotDecl
-    {
-        //TODO
-        //Not sure what the basic interface will be
-        //Decide tomorrow
-        
-    };
-    
-    class MatchExact
+    class MatchExactString
     {
     public:
         MatchExactString(std::string str_):str(str_){};
@@ -44,5 +36,18 @@ namespace dot
     private:
         std::string result;
     };
+    
+    class MatchStmtList
+    {
+    public:
+        StmtListDecl* parse(Stream& in)
+        {
+            decl = new StmtListDecl();
+        }
+    private:
+        StmtListDecl* decl;
+        
+    };
+    
 }
 #endif

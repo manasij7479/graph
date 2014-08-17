@@ -4,7 +4,7 @@
 #include <string>
 namespace dot
 {
-    class StmtDecl : public DotDecl
+    class StmtDecl 
     {
         
     };
@@ -15,6 +15,9 @@ namespace dot
     private:
         std::string name;
     };
+    
+    class EdgeStmtRHS;
+    class EdgeOp;
     class EdgeStmtDecl : public StmtDecl
     {
     public:
@@ -22,13 +25,17 @@ namespace dot
         NodeStmtDecl * node;
         EdgeStmtRHS* rhs;
     };
-    class EdgeStmtRHS: public DotDecl
+    class EdgeStmtRHS
     {
     public:
     private:
         EdgeOp* op;
         NodeStmtDecl* node;
         EdgeStmtRHS* rhs; // optional
+    };
+    class EdgeOp
+    {
+        
     };
 }
 #endif

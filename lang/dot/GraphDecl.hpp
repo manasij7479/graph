@@ -7,22 +7,26 @@
 #include <istream>
 namespace dot
 {
-    class GraphDecl : public DotDecl
+    class GraphDecl
     {
     public:
         bool isDigraph();
         bool hasID();
         std::string getID();
+        
         bool parse(Stream& in)
         {
-            bool keyword = MatchExact("graph").parse(in);
+            bool keyword = MatchExactString("graph").parse(in);
             if(!keyword)
                 throw Exception("'graph' keyword expected.\n",in);
             id = MatchIdentifier().parse(in);
-            bool openBrace  = MatchExact("{").parse(in);
+            
+            bool openBrace  = MatchExactString("{").parse(in);
+            
             statements = new StmtListDecl();
-            bool stmtResult =  statements.parse(in);
-            bool closeBrace  = MatchExact("{").parse(in);
+            statements = MatchStmtList().parse(in);
+            
+            bool closeBrace  = MatchExactString("}").parse(in);
         }
     private:
         StmtListDecl* statements;

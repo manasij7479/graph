@@ -51,8 +51,8 @@ namespace dot
         }
         void skipSpace()
         {
-            while(std::isspace(data[pos]))
-                pos++;
+            while(std::isspace(data[position]))
+                position++;
         }
     private:
         std::vector<char> data;

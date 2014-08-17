@@ -1,12 +1,11 @@
 #ifndef DOT_EXCEPTIONS_HPP
 #define DOT_EXCEPTIONS_HPP
-#include <exception>
 namespace dot
 {
-    class Exception : public std::excpetion
+    class Exception 
     {
     public:
-        Exception(std::string msg_,Stream& in):msg(msg_),in(in_)
+        Exception(std::string msg_,Stream& in_):msg(msg_),in(in_)
         {
             pos  = in.pos();
         }
