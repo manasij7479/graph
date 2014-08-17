@@ -2,7 +2,7 @@
 #include "../graph.hpp"
 #include "../algorithm/predicates.hpp"
 #include "../util/generate.hpp"
-#include<iostream>
+#include <iostream>
 using namespace graph;
 int main()
 {
@@ -37,5 +37,8 @@ int main()
     auto g11=graph::gen::path(10);
     g11=graph::VertexDeletionSubgraph(g11,"1");
     std::cout<<g11.order();
+    
+    auto g13 = graph::EdgeContractionMinor(g1,"2","3");
+    std::cout<<g13.order()<<graph::isCyclic(g13);
     
 }

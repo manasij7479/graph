@@ -5,6 +5,7 @@
 #ifndef GRAPH_ALGORITHM_OPERATIONS_HPP
 #define GRAPH_ALGORITHM_OPERATIONS_HPP
 #include "predicates.hpp"
+#include "collections.hpp"
 #include "../graph.hpp"
 #include<string>
 namespace graph
@@ -199,5 +200,28 @@ namespace graph
                 
         return g1;
     }
+    
+    
+     /**
+     * \brief - Returns the graph minor after contracting the edge (x,y) 
+     * of graph g
+     * 
+     * Graph g - Parameter, a graph datastructure
+     * **/
+    template<typename Graph>
+    Graph EdgeContractionMinor(Graph g, typename Graph::VertexType x, typename Graph::VertexType  y)
+    {
+        if (g.isDirected())
+            throw std::runtime_error("Operation not yet supported for directed graphs.");
+        if (!isAdjacent(g,x,y))
+            return g;//this is not vertex identification
+        g.removeEdge(x,y);
+        for (auto v : OutVertexList(g,y))
+            g.insertEdge(x,v,g.weight(y,v));
+        g.removeVertex(y);
+        
+        return g;
+    }
+    
 }
 #endif
