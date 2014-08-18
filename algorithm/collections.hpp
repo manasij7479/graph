@@ -30,7 +30,7 @@ namespace graph
     std::vector<typename Graph::VertexType> VertexList(Graph& g)
     {
         std::vector<typename Graph::VertexType> v;
-        VisitVertices(g,[&](typename Graph::VertexType x){v.push_back(x);}); // put auto after enabling c++11
+        VisitVertices(g,[&v](typename Graph::VertexType x){v.push_back(x);}); // put auto after enabling c++11
         return v;
     }
     

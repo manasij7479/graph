@@ -116,7 +116,7 @@ namespace graph
     {
         Search<Graph,Queue> searchObject(g,x);
         bool connected=false;
-        searchObject.setp2([&](const typename Graph::VertexType& v)
+        searchObject.setp2([&connected,&y](const typename Graph::VertexType& v)
         {
             if(v==y)
             {
@@ -337,7 +337,7 @@ namespace graph
     {
         Search<Graph,Stack> searchObject(g,g.begin()->first);
         bool cyclic=false;
-        searchObject.setp3([&](const typename Graph::VertexType& v)
+        searchObject.setp3([&cyclic](const typename Graph::VertexType& v)
         {
             cyclic=true;
             return false;

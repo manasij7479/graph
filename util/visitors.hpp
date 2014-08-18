@@ -25,12 +25,12 @@ namespace graph
     {
         VisitVertices
         (g, 
-            [&](typename Graph::VertexType x)
+            [&g,&f](typename Graph::VertexType x)
             {
                 VisitNeighbours
                 (
                     g,x,
-                    [&](typename Graph::VertexType y){f(x,y);}
+                    [&g,&f,&x](typename Graph::VertexType y){f(x,y);}
                 );
             }
         );

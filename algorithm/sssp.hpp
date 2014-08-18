@@ -64,7 +64,7 @@ namespace graph
         while(!pq.empty())
         {
             auto u=pq.get();
-            VisitNeighbours(g,u,[&](V v){state.relax(u,v);});
+            VisitNeighbours(g,u,[&state,&u](V v){state.relax(u,v);});
         }
         
         return state;

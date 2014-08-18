@@ -39,7 +39,7 @@ namespace graph
         )
         :g(g_),source(s) 
         {
-            fringe = new Container<Graph>([&](V x,V y){return dist[x] < dist[y];});
+            fringe = new Container<Graph>([this](V x,V y){return this->dist[x] < this->dist[y];});
             p1=p2=p3=
             [](const V&)
             {
