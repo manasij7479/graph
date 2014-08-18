@@ -5,6 +5,7 @@
 #ifndef GRAPH_ALGORITHM_COLLECTIONS_HPP
 #define GRAPH_ALGORITHM_COLLECTIONS_HPP
 #include "../graph.hpp"
+#include "../util/visitors.hpp"
 #include "search.hpp"
 #include "enumeration.hpp"
 #include "predicates.hpp"
@@ -29,8 +30,7 @@ namespace graph
     std::vector<typename Graph::VertexType> VertexList(Graph& g)
     {
         std::vector<typename Graph::VertexType> v;
-        for(auto i=g.begin();i!=g.end();++i)
-            v.push_back(i->first);
+        VisitVertices(g,[&](typename Graph::VertexType x){v.push_back(x);}); // put auto after enabling c++11
         return v;
     }
     
