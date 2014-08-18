@@ -1,6 +1,8 @@
+/** \brief - Contains execution of different searching algorithms with and without using Callback Funtions
+ * **/
+
 #ifndef GRAPH_SEARCH_HPP
 #define GRAPH_SEARCH_HPP
-
 #include "../graph.hpp"
 #include "../implementation/edge_traits.hpp"
 #include "../structures/stack.hpp"
@@ -39,8 +41,12 @@ namespace graph
         }
         
         //hooks
+        /**\brief - Callback Function to return on getting the source vertex from container**/
         virtual bool p1(const VertexType& v){return true;};
+        /**\brief - Callback Function to return on getting the destination vertex
+         * before visiting all vertices of graph **/
         virtual bool p2(const VertexType& v){return true;};
+        /**\brief - Callback Function o return on getting back edge **/
         virtual bool p3(const VertexType& v){return true;};
         
         /*DistanceType distanceTo(const VertexType& v)
@@ -50,9 +56,17 @@ namespace graph
 
         VertexType parentOf(const VertexType& v){return parent[v];}*/
         
+        /** \brief - To get the distance array at a particular instance **/
         DistanceArray<Graph>& getDistanceArray() {return dist;}
+        /** \brief - To get the parent array at a particular instance **/
         ParentArray<Graph>& getParentArray() {return parent;}
-        
+    /**
+     * \brief - The basic framework to implement any of the three searches, UCS< DFS and BFS
+     * with or without using hooks.
+     * 
+     * Container<Graph> fringe - can be used as a stack or queue or priority queue in this 
+     * context
+     * **/    
     protected:
         void execute()
         {
@@ -100,7 +114,7 @@ namespace graph
         VertexType source;
     };
     
-    
+    /** \brief - To implement any search operation without the use of any hooks**/
     template
     <
         typename Graph,
@@ -118,6 +132,7 @@ namespace graph
         }
     };
     
+    /** \brief - To implement any search operation usin hooks **/
     template
     <
         typename Graph,
@@ -128,6 +143,7 @@ namespace graph
     public:
         typedef typename Graph::VertexType V;
         typedef Search<Graph,Container,DefaultSearch> Base;
+        /** \brief - All of the hooks, namely p1, p2 and p3, are set to true as their default values **/
         HookedSearch(Graph& g,const V& s)
             :Search<Graph,Container,HookedSearch>(g,s,[&](V x,V y){return this->dist[x] < this->dist[y];})
         {
@@ -156,13 +172,13 @@ namespace graph
         }
         std::function<bool(const V& v)> m_p1,m_p2,m_p3;
     };
-    
+    /** \brief - To implement Uniform Cost Search**/
     template<typename G>
     using UniformCostSearch=DefaultSearch<G,PriorityQueue>;
-    
+    /** \brief - To implement Depth First Search**/
     template<typename G>
     using DepthFirstSearch=DefaultSearch<G,Stack>;
-    
+    /** \brief - To implement Breadth First Search**/
     template<typename G>
     using BreadthFirstSearch=DefaultSearch<G,Queue>;
     

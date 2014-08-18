@@ -161,6 +161,9 @@ namespace graph
     template <typename Graph>
     bool isRegular(Graph &g)
     {
+        if (g.isDirected())
+			if(inDegree(g,g.begin()->first)!=outDegree(g,g.begin()->first))
+				return false;
         int k=degree(g,g.begin()->first);
         for (auto x=g.begin();x!=g.end();x++)
             if(k!=degree(g,x->first))
@@ -177,6 +180,9 @@ namespace graph
     template <typename Graph>
     bool isEulerian(Graph &g)
     {
+        if (g.isDirected())
+			if(inDegree(g,g.begin()->first)!=outDegree(g,g.begin()->first))
+				return false;
         if (isConnected(g))
         {	for (auto x=g.begin();x!=g.end();x++)
             {
@@ -199,7 +205,10 @@ namespace graph
     template <typename Graph>
     bool isSemiEulerian(Graph &g)
     {
-        if (isConnected(g))
+        if (g.isDirected())
+			if(inDegree(g,g.begin()->first)!=outDegree(g,g.begin()->first))
+				return false;
+		if (isConnected(g))
         {	int count=0;
             for (auto x=g.begin();x!=g.end();x++)
             {
@@ -227,8 +236,11 @@ namespace graph
     {
         for (auto x=g.begin();x!=g.end();x++)
             for (auto y=g.begin();y!=g.end();y++)
-                if (x!=y && !(isAdjacent(g,x->first,y->first)))
+             {   if (x!=y && !(isAdjacent(g,x->first,y->first)))
                     return false;
+                 if (g.isDirected() && !(isAdjacent(g,y->first,x->first)))
+					return false;
+		     }
                 
                 return true;
     }
@@ -346,9 +358,14 @@ namespace graph
        int count=0;
        for (auto x=g.begin();x!=g.end();x++)
 		for (auto y=g.begin();y!=g.end();y++)
-			if(isAdjacent(g,x->first,y->first))
+			if(x!=y && isAdjacent(g,x->first,y->first))
 				count++;
-		int n=2*g.order();
+		if (g.isDirected())
+		 	for (auto x=g.begin();x!=g.end();x++)
+				for (auto y=g.begin();y!=g.end();y++)
+					if(isAdjacent(g,y->first,x->first))
+						count++;
+		int n=(g.isDirected()?4*g.order():2*g.order());
 		if (count<=n)
 			return true;
 		return false;
