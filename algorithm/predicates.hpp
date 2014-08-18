@@ -114,9 +114,9 @@ namespace graph
     template<typename Graph>
     bool isConnected(Graph& g,typename Graph::VertexType x,typename Graph::VertexType y)
     {
-        HookedSearch<Graph,Queue> searchObject(g,x);
+        Search<Graph,Queue> searchObject(g,x);
         bool connected=false;
-        searchObject.m_p2=[&](const typename Graph::VertexType& v)
+        searchObject.setp2([&](const typename Graph::VertexType& v)
         {
             if(v==y)
             {
@@ -124,8 +124,8 @@ namespace graph
                 return false;
             }
             return true;
-        };
-        searchObject.execute();
+        });
+        searchObject();
         return connected;
     }
     
@@ -335,14 +335,14 @@ namespace graph
     template<typename Graph>
     bool isCyclic(Graph& g)
     {
-        HookedSearch<Graph,Stack> searchObject(g,g.begin()->first);
+        Search<Graph,Stack> searchObject(g,g.begin()->first);
         bool cyclic=false;
-        searchObject.m_p3=[&](const typename Graph::VertexType& v)
+        searchObject.setp3([&](const typename Graph::VertexType& v)
         {
             cyclic=true;
             return false;
-        };
-        searchObject.execute();
+        });
+        searchObject();
         return cyclic;
     }
     
