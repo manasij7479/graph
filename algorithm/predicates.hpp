@@ -161,14 +161,20 @@ namespace graph
     template <typename Graph>
     bool isRegular(Graph &g)
     {
-        if (g.isDirected())
-			if(inDegree(g,g.begin()->first)!=outDegree(g,g.begin()->first))
-				return false;
         int k=degree(g,g.begin()->first);
-        for (auto x=g.begin();x!=g.end();x++)
+        
+        for (auto x=g.begin();x!=g.end();++x)
+        {
+            if (g.isDirected())
+            {
+                if (inDegree(g,x->first)!=outDegree(g,x->first))
+                    return false;
+            }
             if(k!=degree(g,x->first))
                 return false;
-            return true;
+          
+        }
+        return true;
     }
     
     /** \brief - Returns true if degree of all vertices in Graph g is even and
@@ -181,10 +187,19 @@ namespace graph
     bool isEulerian(Graph &g)
     {
         if (g.isDirected())
-			if(inDegree(g,g.begin()->first)!=outDegree(g,g.begin()->first))
-				return false;
+        {
+            for (auto x=g.begin();x!=g.end();++x)
+            {
+                if (degree(g,x->first)==0)
+                    return false;
+                if (inDegree(g,x->first)!=outDegree(g,x->first))
+                    return false;
+            }
+            return true;
+        }
         if (isConnected(g))
-        {	for (auto x=g.begin();x!=g.end();x++)
+        {
+            for (auto x=g.begin();x!=g.end();++x)
             {
                 int k=degree(g,x->first);
                 if(k%2!=0)
@@ -206,11 +221,39 @@ namespace graph
     bool isSemiEulerian(Graph &g)
     {
         if (g.isDirected())
-			if(inDegree(g,g.begin()->first)!=outDegree(g,g.begin()->first))
-				return false;
-		if (isConnected(g))
-        {	int count=0;
-            for (auto x=g.begin();x!=g.end();x++)
+        {
+            bool out = false;
+            bool in = false;
+            for (auto x=g.begin();x!=g.end();++x)
+            {
+                if (degree(g,x->first)==0)
+                    return false;
+                int id = inDegree(g,x->first);
+                int od = outDegree(g,x->first);
+                if (id==od)
+                {
+                    continue;
+                }
+                if (out == 1 + in)
+                {
+                    if(out)
+                        return false;
+                    else out = true;
+                }
+                else if (in == 1 + out)
+                {
+                    if(in)
+                        return false;
+                    else in = true;
+                }
+                else return false;
+            }
+            return true;
+        }
+        if (isConnected(g))
+        {
+            int count=0;
+            for (auto x=g.begin();x!=g.end();++x)
             {
                 int k=degree(g,x->first);
                 if(k%2!=0)
@@ -234,15 +277,15 @@ namespace graph
     template <typename Graph>
     bool isComplete(Graph &g)
     {
-        for (auto x=g.begin();x!=g.end();x++)
-            for (auto y=g.begin();y!=g.end();y++)
-             {   if (x!=y && !(isAdjacent(g,x->first,y->first)))
+        for (auto x=g.begin();x!=g.end();++x)
+            for (auto y=g.begin();y!=g.end();++y)
+            {
+                if (x!=y && !(isAdjacent(g,x->first,y->first)))
                     return false;
                  if (g.isDirected() && !(isAdjacent(g,y->first,x->first)))
-					return false;
-		     }
-                
-                return true;
+                        return false;
+            }
+        return true;
     }
     
     /**
@@ -257,8 +300,8 @@ namespace graph
     template <typename Graph>
     bool isComplement(Graph &g, Graph &h)
     {
-        for (auto x=g.begin();x!=g.end();x++)
-            for (auto y=g.begin();y!=g.end();y++)
+        for (auto x=g.begin();x!=g.end();++x)
+            for (auto y=g.begin();y!=g.end();++y)
                 if (x!=y)
                     if(isAdjacent(g,x->first,y->first) && isAdjacent(h,x->first,y->first))
                         return false;
@@ -274,8 +317,8 @@ namespace graph
     template <typename Graph>
     bool isEdgeless(Graph &g)
     {
-        for (auto x=g.begin();x!=g.end();x++)
-            for (auto y=g.begin();y!=g.end();y++)
+        for (auto x=g.begin();x!=g.end();++x)
+            for (auto y=g.begin();y!=g.end();++y)
                 if(isAdjacent(g,x->first,y->first))
                     return false;
                 
@@ -355,20 +398,20 @@ namespace graph
     template<typename Graph>
     bool isSparse(Graph& g) 
     {
-       int count=0;
-       for (auto x=g.begin();x!=g.end();x++)
-		for (auto y=g.begin();y!=g.end();y++)
-			if(x!=y && isAdjacent(g,x->first,y->first))
-				count++;
-		if (g.isDirected())
-		 	for (auto x=g.begin();x!=g.end();x++)
-				for (auto y=g.begin();y!=g.end();y++)
-					if(isAdjacent(g,y->first,x->first))
-						count++;
-		int n=(g.isDirected()?4*g.order():2*g.order());
-		if (count<=n)
-			return true;
-		return false;
+        int count=0;
+        for (auto x=g.begin();x!=g.end();x++)
+        for (auto y=g.begin();y!=g.end();y++)
+            if(x!=y && isAdjacent(g,x->first,y->first))
+                count++;
+            if (g.isDirected())
+                for (auto x=g.begin();x!=g.end();x++)
+                    for (auto y=g.begin();y!=g.end();y++)
+                        if(isAdjacent(g,y->first,x->first))
+                            count++;
+        int n=(g.isDirected()?4*g.order():2*g.order());
+        if (count<=n)
+            return true;
+        return false;
     }
     
     /** \brief - Returns true if Graph g is a tree, false otherwise
@@ -379,9 +422,9 @@ namespace graph
     template<typename Graph>
     bool isTree(Graph& g) 
     {
-       if(!isCyclic(g)&&isConnected(g))
-		return true;
-	return false;
+        if(!isCyclic(g)&&isConnected(g))
+            return true;
+        return false;
     }
 }
 #endif
