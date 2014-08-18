@@ -6,10 +6,12 @@
 #include "../structures/parent.hpp"
 #include "../structures/queue.hpp"
 #include "../graph.hpp"
-#include<limits>
-#include<iostream>
+#include "../util/visitors.hpp"
+#include <limits>
 namespace graph
 {    
+    using namespace std::placeholders;
+    
     template <typename Graph>
     class SSSPState
     {
@@ -50,19 +52,19 @@ namespace graph
     template<typename Graph>
     SSSPState<Graph> Djikstra(Graph& g,typename Graph::VertexType s)
     {
+        typedef typename Graph::VertexType V;
         SSSPState<Graph> state(g,s);
         ParentArray<Graph>& parent=state.getParentArray();
         DistanceArray<Graph>& dist=state.getDistanceArray();
         
-        PriorityQueue<Graph> pq([&](typename Graph::VertexType x,typename Graph::VertexType y){return dist[x]<dist[y];});
+        PriorityQueue<Graph> pq([&](V x,V y){return dist[x]<dist[y];});
         for(auto i=g.begin();i!=g.end();++i)
             pq.put(i->first);
         
         while(!pq.empty())
         {
             auto u=pq.get();
-            for(auto v : OutVertexList(g,u))
-                state.relax(u,v);
+            VisitNeighbours(g,u,[&](V v){state.relax(u,v);});
         }
         
         return state;
@@ -73,11 +75,11 @@ namespace graph
     template<typename Graph>
     SSSPState<Graph> BellmanFord(Graph& g,typename Graph::VertexType s)
     {
+        typedef typename Graph::VertexType V;
         SSSPState<Graph> state(g,s);
         for (int i=1; i< g.order()-1; ++i)
         {
-            for (auto e : EdgeList(g))
-                state.relax(std::get<0>(e),std::get<1>(e));
+            VisitEdges(g,std::bind(&SSSPState<Graph>::relax, &state, _1,_2));
         }
         return state;
     }

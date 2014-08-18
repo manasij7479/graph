@@ -218,6 +218,7 @@ namespace graph
         g.removeEdge(x,y);
         for (auto v : OutVertexList(g,y))
             g.insertEdge(x,v,g.weight(y,v));
+        
         g.removeVertex(y);
         
         return g;
