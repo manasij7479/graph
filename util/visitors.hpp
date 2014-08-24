@@ -5,23 +5,23 @@
 
 namespace graph
 {
-    template<typename Graph>
-    void VisitVertices(Graph& g, std::function<void(typename Graph::VertexType)> f)
+    template<typename Graph, typename F>
+    void VisitVertices(Graph& g, F f)
     {
         for(auto it = g.begin(); it != g.end(); ++it)
             f(it->first);
     }
     
-    template<typename Graph>
-    void VisitNeighbours(Graph& g, typename Graph::VertexType v, std::function<void(typename Graph::VertexType)> f)
+    template<typename Graph, typename F>
+    void VisitNeighbours(Graph& g,typename Graph::VertexType v, F f)
     {
         for(auto it = g.nbegin(v); it != g.nend(v); ++it)
             f(it->first);
     }
     
     //Especially useful if the compiler is very good at optimizing lambda functions
-    template<typename Graph>
-    void VisitEdges(Graph& g, std::function<void(typename Graph::VertexType,typename Graph::VertexType)> f)
+    template<typename Graph, typename F>
+    void VisitEdges(Graph& g, F f)
     {
         VisitVertices
         (g, 

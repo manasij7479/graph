@@ -5,7 +5,9 @@
 #include "../algorithm/operations.hpp"
 #include "../algorithm/collections.hpp"
 #include "../util/generate.hpp"
+#include "../util/visitors.hpp"
 #include<iostream>
+#include <functional>
 int main()
 {
     auto g1=graph::gen::cycle(5);
