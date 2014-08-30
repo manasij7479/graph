@@ -1,6 +1,8 @@
-#ifndef GRAPH_SEARCH_DFS_HPP
-#define GRAPH_SEARCH_DFS_HPP
-#include "search.hpp"
+#ifndef GRAPH_STRUCTURES_STACK
+#define GRAPH_STRUCTURES_STACK
+#include <stack>
+#include "distance.hpp"
+#include <functional>
 namespace graph
 {
     template<typename GraphType>
@@ -10,7 +12,7 @@ namespace graph
         typedef typename GraphType::EdgeType E;
         typedef typename GraphType::VertexType V;
         
-        Stack(std::map<V,typename edge_traits<E>::DistanceType>&){}
+        Stack(std::function<bool(V,V)>){}
         void put(V t)
         {
             data.push_back(t);
@@ -32,9 +34,6 @@ namespace graph
     private:
         std::vector<V> data;
     };
-    
-    template<typename G>
-    using DepthFirstSearch=Search<G,Stack,DefaultSearch>;
     
 }
 #endif

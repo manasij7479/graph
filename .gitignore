@@ -26,3 +26,5 @@
 
 .kdev4*
 graph.kdev4
+.directory
+test/test.cpp
