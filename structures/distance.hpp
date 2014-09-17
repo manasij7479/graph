@@ -1,8 +1,7 @@
 #ifndef GRAPH_STRUCTURES_DISTANCE_HPP
 #define GRAPH_STRUCTURES_DISTANCE_HPP
-#include <map>
-#include <set>
 #include "../implementation/edge_traits.hpp"
+#include "attribute.hpp"
 namespace graph
 {
     template<typename Graph>
@@ -15,22 +14,21 @@ namespace graph
         
         bool isUnknown(V v)
         {
-            return knowledge.find(v)==knowledge.end();
+            return !dist.isKnown(v);
         }
         void set(V v,D d)
         {
-            map[v]=d;
-            knowledge.insert(v);
+            dist.value(v) = d;
         }
         D get(V v)
         {
             if(isUnknown(v))
                 return D(-1);
-            else return map[v];
+            else return dist.value(v);
         }
         bool updateIfLess(V v, D newDist)//Generalized lambda version if needed later.
         {
-            if(isUnknown(v)||newDist<map[v])
+            if(isUnknown(v)||newDist< get(v))
             {
                 set(v,newDist);
                 return true;
@@ -39,13 +37,11 @@ namespace graph
         }
         D& operator[](V v)
         {
-            knowledge.insert(v);//for safety
-            return map[v];            
+            return dist.value(v);            
         }
-        std::size_t size(){return knowledge.size();}
+        std::size_t size(){return dist.count();}
     private:
-        std::map<V,D> map;
-        std::set<V> knowledge;
+        VertexAttribute<Graph, D> dist;
     };
 }
 

@@ -20,6 +20,8 @@ namespace graph
     public:
         VertexAttribute(){};
         Value& value(typename Graph::VertexType x){return data[x];}
+        bool isKnown(typename Graph::VertexType x){return data.find(x) != data.end();}
+        int count(){return data.size();}
     private:
         std::map<typename Graph::VertexType, Value> data;
     };
