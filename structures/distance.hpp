@@ -37,27 +37,15 @@ namespace graph
             }
             return false;
         }
-
-        
-    private:
-        std::map<V,D> map;
-        std::set<V> knowledge;
-        
-    public: 
-        //compatibility functions, may be removed later
-        //Do not use unless problem can not be solved by
-        //the interafce functions 
-        
-        typedef typename decltype(map)::iterator iterator;
-        iterator begin(){return map.begin();}
-        iterator end(){return map.end();}
-        iterator find(V v){return map.find(v);}
-        std::size_t size(){return knowledge.size();}
-        D& operator[](V v) // do NOT call if may be unknown
+        D& operator[](V v)
         {
             knowledge.insert(v);//for safety
             return map[v];            
         }
+        std::size_t size(){return knowledge.size();}
+    private:
+        std::map<V,D> map;
+        std::set<V> knowledge;
     };
 }
 

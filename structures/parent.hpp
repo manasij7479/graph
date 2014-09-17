@@ -2,6 +2,7 @@
 #define GRAPH_STRUCTURE_PARENT
 #include <map>
 #include <vector>
+#include <algorithm>
 namespace graph
 {
     template<typename Graph>

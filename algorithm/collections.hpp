@@ -125,12 +125,12 @@ namespace graph
         {
             UniformCostSearch<Graph> ucs(g,i->first);
             ucs();
-            auto d=ucs.getDistanceArray();
-            auto max=d.begin()->second;
-            for(auto j=d.begin();j!=d.end();++j)
-                if(j->second>max)
-                    max=j->second;
-             m[i->first]=max;
+            auto d = ucs.getDistanceArray();
+            auto max = d[g.begin()->first];
+            for(auto j = g.begin();j != g.end(); ++j)
+                if(d[j->first] > max)
+                    max = d[j->first];
+             m[i->first] = max;
         }
         return m;
     }
