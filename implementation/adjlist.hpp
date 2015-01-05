@@ -7,6 +7,17 @@
 #include <iostream>
 namespace graph
 {
+    template <typename T>
+    struct MapCmp
+    {
+        bool operator()(const T& a, const T& b){return a < b;}
+    };
+    template <>
+    struct MapCmp<std::string>
+    {
+        bool operator()(const std::string& a, const std::string& b){return std::stoi(a) < std::stoi(b);}
+    };
+    
     template
     <
         typename VT,
@@ -19,7 +30,7 @@ namespace graph
         typedef ET EdgeType;
         typedef typename std::map<VertexType,EdgeType> EdgeList;
         typedef typename EdgeList::iterator EdgeIterator;
-        typedef typename std::map<VertexType,EdgeList*>::iterator VertexIterator;
+        typedef typename std::map<VertexType,EdgeList*, MapCmp<VertexType>>::iterator VertexIterator;
         
         AdjacencyList(bool dir=false):directed(dir){}
         
@@ -92,7 +103,7 @@ namespace graph
         bool isDirected(){return directed;}
         int order(){return data.size();}
     private:
-        std::map<VertexType,EdgeList*> data;
+        std::map<VertexType,EdgeList*, MapCmp<VertexType>> data;
         bool directed;
     };
 }
