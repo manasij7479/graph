@@ -7,16 +7,15 @@
 #include "../util/generate.hpp"
 #include "../util/visitors.hpp"
 #include "../structures/attribute.hpp"
+#include "../algorithm/coloring.hpp"
 #include <iostream>
 #include <functional>
 int main()
 {
-    auto g1=graph::gen::cycle(5);
-    auto d=graph::BellmanFord(g1,"1");
-    graph::VertexAttribute<decltype(g1),int> dist;
-    
-    for (auto v : VertexList(g1))
-        dist.value(v) = d[v].first;
-    for (auto v : VertexList(g1))
-        std::cout<<dist.value(v); 
+    auto g1=graph::gen::complete({4});
+    auto g2=graph::gen::path({2});
+    //auto d=graph::BellmanFord(g1,"1");
+    graph::Coloring<decltype(g1)> cObj(g1);
+    int i=cObj.getChromaticNo();
+    std::cout<<i;
 }
