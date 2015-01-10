@@ -326,6 +326,19 @@ namespace graph
             return result;
         }
         
+        Graph<std::string,int> k_ary_tree(std::vector<int> args,int start=1)   //args[0]=n, args[1]=k
+        {
+            Graph<std::string,int> result;
+            add_vertices(result,args[0],start);
+            
+            for(int i=0;i<args[0];++i)
+                for(int j=args[1]*i+1;j<=args[1]*i+args[1];++j)
+                    if(j+1<=args[0])
+                        result.insertEdge(std::to_string(i+1),std::to_string(j+1),1);
+            
+            return result;
+        }
+        
         /**
         * \brief - Returns a wagner graph
         * Reference Link - http://en.wikipedia.org/wiki/Wagner_graph
