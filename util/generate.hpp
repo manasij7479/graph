@@ -29,11 +29,13 @@ namespace graph
         /**
         * \brief - Returns a path graph 
         * Reference Link - http://en.wikipedia.org/wiki/Path_graph
-        *  
-        * int n- First parameter, the number of vertices to be added
+        * 
+        * std::vector<int> args - First parameter, a vector of integers
         * 
         * int start- Second parameter, the starting position from which the vertices are 
         * to be added, default value 1
+        * 
+        * args[0] - the number of vertices to be added
         * 
         * Graph<std::string,int> result - a variable to store the path graph
         * **/
@@ -55,10 +57,12 @@ namespace graph
         * \brief - Returns a cycle graph
         * Reference Link - http://en.wikipedia.org/wiki/Cycle_graph
         *  
-        * int n- First parameter, the number of vertices to be added
+        * std::vector<int> args - First parameter, a vector of integers
         * 
         * int start- Second parameter, the starting position from which the vertices are 
         * to be added, default value 1
+        * 
+        * args[0]- The number of vertices to be added
         * 
         * Graph<std::string,int> result - a variable to store the cycle graph
         * **/
@@ -78,10 +82,12 @@ namespace graph
         * \brief - Returns a complete graph
         * Reference Link - http://en.wikipedia.org/wiki/Complete_graph
         *  
-        * int n- First parameter, the number of vertices to be added
+        * std::vector<int> args - First parameter, a vector of integers
         * 
         * int start- Second parameter, the starting position from which the vertices are 
         * to be added, default value 1
+        * 
+        * args[0]- The number of vertices to be added
         * 
         * Graph<std::string,int> result - a variable to store the complete graph
         * **/
@@ -105,10 +111,12 @@ namespace graph
         * \brief - Returns a wheel graph
         * Reference Link - http://en.wikipedia.org/wiki/Wheel_graph
         *  
-        * int n- First parameter, the number of vertices to be added
+        * std::vector<int> args - First parameter, a vector of integers
         * 
         * int start- Second parameter, the starting position from which the vertices are 
         * to be added, default value 1
+        * 
+        * args[0]- The number of vertices to be added
         * 
         * Graph<std::string,int> result - a variable to store the wheel graph
         * **/
@@ -130,12 +138,14 @@ namespace graph
         * \brief - Returns a complete bipartite graph
         * Reference Link - http://en.wikipedia.org/wiki/Complete_bipartite_graph
         * 
-        * int m- First parameter, the number of vertices to be added on one side
-        *  
-        * int n- Second parameter, the number of vertices to be added on the other side
+        * std::vector<int> args - First parameter, a vector of integers
         * 
         * int start- Third parameter, the starting position from which the vertices are 
         * to be added, default value 1
+        * 
+        * args[0]- The number of vertices to be added on one side
+        *  
+        * args[1]- The number of vertices to be added on the other side
         * 
         * Graph<std::string,int> result - a variable to store the complete bipartite graph
         * **/
@@ -158,10 +168,12 @@ namespace graph
         * \brief - Returns a star graph
         * Reference Link - http://en.wikipedia.org/wiki/Star_graph
         *  
-        * int n- First parameter, the number of vertices to be added
+        * std::vector<int> args - First parameter, a vector of integers
         * 
         * int start- Second parameter, the starting position from which the vertices are 
         * to be added, default value 1
+        * 
+        * args[0]- The number of vertices to be added
         * 
         * Graph<std::string,int> result - a variable to store the star graph
         * **/
@@ -178,12 +190,14 @@ namespace graph
         * \brief - Returns a star polygon graph
         * Reference Link - http://en.wikipedia.org/wiki/Star_polygon
         * 
-        * int p- First parameter, the number of vertices to be added
-        *  
-        * int q- Second parameter, the number of vertices between two vetices with an edge
+        * std::vector<int> args - First parameter, a vector of integers
         * 
         * int start- Third parameter, the starting position from which the vertices are 
         * to be added, default value 1
+        * 
+        * args[0]- The number of vertices to be added
+        *  
+        * args[1]- The number of vertices between two vetices with an edge
         * 
         * Graph<std::string,int> result - a variable to store the star polygon graph
         * **/
@@ -213,10 +227,12 @@ namespace graph
         * \brief - Returns a friendship graph
         * Reference Link - http://en.wikipedia.org/wiki/Friendship_graph
         *  
-        * int n- First parameter, the number of vertices to be added
+        * std::vector<int> args - First parameter, a vector of integers
         * 
         * int start- Second parameter, the starting position from which the vertices are 
         * to be added, default value 1
+        * 
+        * args[0]- The number of vertices to be added
         * 
         * Graph<std::string,int> result - a variable to store the friendship graph
         * **/
@@ -239,10 +255,12 @@ namespace graph
         * \brief - Returns a modius ladder graph
         * Reference Link - http://en.wikipedia.org/wiki/Möbius_ladder
         *  
-        * int n- First parameter, the number of vertices to be added
+        * std::vector<int> args - First parameter, a vector of integers
         * 
         * int start- Second parameter, the starting position from which the vertices are 
         * to be added, default value 1
+        * 
+        * args[0]- The number of vertices to be added
         * 
         * Graph<std::string,int> result - a variable to store the mobius ladder graph
         * **/
@@ -263,12 +281,14 @@ namespace graph
         * \brief - Returns a grid graph
         * Reference Link - http://en.wikipedia.org/wiki/Grid_graph
         * 
-        * int m- First parameter, the number of vertices to be added as y coordinates
-        *  
-        * int n- Second parameter, the number of vertices to be added as x coordinates
+        * std::vector<int> args - First parameter, a vector of integers
         * 
-        * int start- Third parameter, the starting position from which the vertices are 
+        * int start- TSecond parameter, the starting position from which the vertices are 
         * to be added, default value 1
+        * 
+        * args[0]- The number of vertices to be added as y coordinates
+        *  
+        * args[1]- The number of vertices to be added as x coordinates
         * 
         * Graph<std::string,int> result - a variable to store the grid graph
         * **/
@@ -306,13 +326,15 @@ namespace graph
         * \brief - Returns a generalized petersen graph
         * Reference Link - http://en.wikipedia.org/wiki/Generalized_Petersen_graph
         * 
-        * int n- First parameter, the number of vertices to be added
-        *  
-        * int k- Second parameter, the number of vertices between two vertices with an 
-        * edge in the star polygon
+        * std::vector<int> args - First parameter, a vector of integers
         * 
-        * int start- Third parameter, the starting position from which the vertices are 
+        * int start- Second parameter, the starting position from which the vertices are 
         * to be added, default value 1
+        * 
+        * args[0]- The number of vertices to be added
+        *  
+        * args[1]- The number of vertices between two vertices with an 
+        * edge in the star polygon
         * 
         * Graph<std::string,int> result - a variable to store the generalized petersen graph
         * **/
@@ -330,6 +352,9 @@ namespace graph
         * \brief - Returns a wagner graph
         * Reference Link - http://en.wikipedia.org/wiki/Wagner_graph
         * 
+        * std::vector<int> args - First parameter, a vector of integers, not used here,
+        * included for consistency
+        * 
         * int start- Parameter, the starting position from which the vertices are 
         * to be added, default value 1
         * **/
@@ -342,6 +367,9 @@ namespace graph
         /**
         * \brief - Returns a butterfly graph
         * Reference Link - http://en.wikipedia.org/wiki/Butterfly_graph
+        * 
+        * std::vector<int> args - First parameter, a vector of integers, not used here,
+        * included for consistency
         * 
         * int start- Parameter, the starting position from which the vertices are 
         * to be added, default value 1
@@ -356,6 +384,9 @@ namespace graph
         * \brief - Returns a petersen graph
         * Reference Link - http://en.wikipedia.org/wiki/Petersen_graph
         * 
+        * std::vector<int> args - First parameter, a vector of integers, not used here,
+        * included for consistency
+        * 
         * int start- Parameter, the starting position from which the vertices are 
         * to be added, default value 1
         * **/
@@ -368,6 +399,9 @@ namespace graph
         /**
         * \brief - Returns a durer graph
         * Reference Link - http://en.wikipedia.org/wiki/Durer_graph
+        * 
+        * std::vector<int> args - First parameter, a vector of integers, not used here,
+        * included for consistency
         * 
         * int start- Parameter, the starting position from which the vertices are 
         * to be added, default value 1
@@ -382,6 +416,9 @@ namespace graph
         * \brief - Returns a desargues graph
         * Reference Link - http://en.wikipedia.org/wiki/Desargues_graph
         * 
+        * std::vector<int> args - First parameter, a vector of integers, not used here,
+        * included for consistency
+        * 
         * int start- Parameter, the starting position from which the vertices are 
         * to be added, default value 1
         * **/
@@ -394,6 +431,9 @@ namespace graph
         /**
         * \brief - Returns a mobius kantor graph
         * Reference Link - http://en.wikipedia.org/wiki/Möbius–Kantor_graph
+        * 
+        * std::vector<int> args - First parameter, a vector of integers, not used here,
+        * included for consistency
         * 
         * int start- Parameter, the starting position from which the vertices are 
         * to be added, default value 1
@@ -408,6 +448,9 @@ namespace graph
         * \brief - Returns a dodecahedron graph
         * Reference Link - http://en.wikipedia.org/wiki/Dodecahedron
         * 
+        * std::vector<int> args - First parameter, a vector of integers, not used here,
+        * included for consistency
+        * 
         * int start- Parameter, the starting position from which the vertices are 
         * to be added, default value 1
         * **/
@@ -420,6 +463,9 @@ namespace graph
         /**
         * \brief - Returns a nauru graph
         * Reference Link - http://en.wikipedia.org/wiki/Nauru_graph
+        * 
+        * std::vector<int> args - First parameter, a vector of integers, not used here,
+        * included for consistency
         * 
         * int start- Parameter, the starting position from which the vertices are 
         * to be added, default value 1
