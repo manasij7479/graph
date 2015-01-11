@@ -5,7 +5,7 @@
 #include<iostream>
 int main()
 {
-    auto g1=graph::gen::cycle(10);
+    auto g1=graph::gen::cycle({10});
     //auto g4=graph::gen::cycle(3,11);
     //auto g5=graph::Union(g1,g4);
     

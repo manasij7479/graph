@@ -1,3 +1,6 @@
+/**	\brief sssp.hpp - Header file that has collection of single source shortest path finding algorithms
+ * **/
+
 #ifndef GRAPH_ALGORITHM_SSSP_HPP
 #define GRAPH_ALGORITHM_SSSP_HPP
 #include "enumeration.hpp"

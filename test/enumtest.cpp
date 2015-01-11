@@ -15,12 +15,12 @@ int main()
     g.insertEdge("1","2",1);
     g.insertEdge("2","3",1);
     g.insertEdge("4","2",1);
-    auto g1=graph::gen::cycle(10);
-    auto g3=graph::gen::complete_bipartite(3,4);
-    auto g2=graph::gen::complete(10);
-    auto g4=graph::gen::petersen();
-    auto g5=graph::gen::path(10);
-    auto g6=graph::gen::desargues();
+    auto g1=graph::gen::cycle({10});
+    auto g3=graph::gen::complete_bipartite({3,4});
+    auto g2=graph::gen::complete({10});
+    auto g4=graph::gen::petersen({});
+    auto g5=graph::gen::path({10});
+    auto g6=graph::gen::desargues({});
     
     std::cout<<nregular(g2);
     std::cout<<nregular(g3);
