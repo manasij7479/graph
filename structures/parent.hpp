@@ -13,14 +13,15 @@ namespace graph
         std::vector<V> getPath(V v)
         {
             std::vector<V> result;
-            V temp=v;
-            while(parent.value(v)!=temp)
+            while(true)
             {
-                result.push_back(temp);
-                temp=parent.value(temp);
+                result.push_back(v);
+                auto p = parent.value(v);
+                if (p == v)
+                    break;
+                v = p;
             }
-            result.push_back(temp);
-            std::reverse(result.begin(),result.end());
+            std::reverse(result.begin(), result.end());
             return result;
         }
         V& operator[](V v)
