@@ -54,16 +54,16 @@ namespace graph
         return makeGraph(in);
     }
     template<typename Graph>
-    void displayGraph(Graph& g)
+    void displayGraph(Graph& g, std::ostream& out = std::cout)
     {
         for(auto x = g.begin();x!=g.end();++x)
         {
-            std::cout<<"["<<x->first<<"] =>> ";
+            out<<"["<<x->first<<"] =>> ";
             for(auto y = g.nbegin(x->first);y!=g.nend(x->first);++y)
             {
-                std::cout<<"("<< y->first<<","<< y->second<<") ";
+                out<<"("<< y->first<<","<< y->second<<") ";
             }
-            std::cout<<"*\n";
+            out<<"*\n";
         }
     }
     template<typename Graph>
