@@ -40,7 +40,7 @@ namespace graph
         :g(g_),source(s) 
         {
             fringe = new Container<Graph>([this](V x,V y){return this->dist[x] < this->dist[y];});
-            p1=p2=p3=
+            p1=p2=p3=p4=
             [](const V&)
             {
                 return true;
@@ -67,6 +67,8 @@ namespace graph
                         dist.set(y->first,dist[v]+y->second);
                         fringe->put(y->first);
                         parent[y->first]=v;
+                        if(!p4(y->first))
+                            return;
                     }
                     else
                     {
@@ -98,6 +100,7 @@ namespace graph
         void setp1(std::function<bool(const V& v)> f){p1=f;}
         void setp2(std::function<bool(const V& v)> f){p2=f;}
         void setp3(std::function<bool(const V& v)> f){p3=f;}
+        void setp4(std::function<bool(const V& v)> f){p4=f;}
         
         void resetFringe(std::function<bool(V,V)> compare)//This can be used to implement heuristics
         {
@@ -111,7 +114,7 @@ namespace graph
         ParentArray<Graph> parent;
         Graph& g;
         V source;
-        std::function<bool(const V& v)> p1,p2,p3;
+        std::function<bool(const V& v)> p1, p2, p3, p4;
     };
     
     
