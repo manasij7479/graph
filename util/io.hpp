@@ -8,7 +8,7 @@
 //will need to be abstracted when adding new formats
 namespace graph
 {
-    Graph<std::string,int> makeGraph(std::istream& in)
+    inline Graph<std::string,int> makeGraph(std::istream& in)
     {
         std::string line;
         std::string type,v1,v2,v3;
@@ -48,7 +48,7 @@ namespace graph
         }
         return g;
     }
-    Graph<std::string,int> makeGraph(std::string filename)
+    inline Graph<std::string,int> makeGraph(std::string filename)
     {
         std::ifstream in(filename);
         return makeGraph(in);
