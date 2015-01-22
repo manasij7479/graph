@@ -70,6 +70,42 @@ namespace graph
         return e;
     }
     
+    template <typename Graph>
+    bool sortComparison
+    (
+        std::tuple
+        <   
+            typename Graph::VertexType,
+            typename Graph::VertexType,
+            typename Graph::EdgeType
+        > a,
+        std::tuple
+        <   
+            typename Graph::VertexType,
+            typename Graph::VertexType,
+            typename Graph::EdgeType
+        > b
+    )
+    {
+        return (std::get<2>(a)<std::get<2>(b));
+    }
+    template <typename Graph>
+    std::vector
+    <
+        std::tuple
+        <
+            typename Graph::VertexType,
+            typename Graph::VertexType,
+            typename Graph::EdgeType
+        >
+    >
+    sortedEdgeList(Graph& g,bool duplicate=true)
+    {
+         std::vector<std::tuple<typename Graph::VertexType,typename Graph::VertexType,typename Graph::EdgeType>> e=EdgeList(g,duplicate);
+         std::sort(e.begin(),e.end(),sortComparison<Graph>);
+         return e;
+    }
+    
     /**
      * \brief - Returns a list containing names of all the vertices in Graph g
      * alongwith the total number of edges of each vertex
