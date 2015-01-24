@@ -9,6 +9,7 @@
 #include<vector>
 #include<tuple>
 #include<algorithm>
+#include<limits>
 namespace graph
 {
     template<typename Graph>
@@ -79,11 +80,11 @@ namespace graph
         {
             for(auto i=g.begin();i!=g.end();++i)                                   //finding edge with min weight leaving from every vertex
             {
-                E min = g.nbegin(i->first)->second;
-                V x = g.nbegin(i->first)->first;
+                E min = std::numeric_limits<E>::max();
+                V x;
                 for(auto j=g.nbegin(i->first);j!=g.nend(i->first);++j)
                 {
-                    if(j->second < min)
+                    if(j->second < min && !isAdjacent(state.getMst(),i->first,j->first))
                     {
                         min = j->second;
                         x = j->first;
@@ -97,9 +98,11 @@ namespace graph
             }
             for(auto it=compMinEdge.begin();it!=compMinEdge.end();++it)            //inserting edge with min weight of every component to mst
             {
-                ds.Union(std::get<0>(it->second), std::get<1>(it->second));
-                state.insertEdge(std::get<0>(it->second), std::get<1>(it->second), std::get<2>(it->second));
-                size++;
+                if(ds.Union(std::get<0>(it->second), std::get<1>(it->second)))
+                {
+                    state.insertEdge(std::get<0>(it->second), std::get<1>(it->second), std::get<2>(it->second));
+                    size++;
+                }
             }
             compMinEdge.clear();
         }
