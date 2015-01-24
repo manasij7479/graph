@@ -25,7 +25,7 @@ namespace graph
             span=0;
         }
         
-        Graph getMst() { return mst;}
+        Graph& getMst() { return mst;}
         E getSpan() {return span;}
         
         void insertEdge(V x,V y,E w) 
@@ -51,7 +51,7 @@ namespace graph
         int size=0;
         for(int i=0;i<e.size();++i)
         {
-            if(size == state.order())
+            if(size == state.order()-1)
                 break;
             auto x = std::get<0>(e[i]);
             auto y = std::get<1>(e[i]);
@@ -62,6 +62,48 @@ namespace graph
                 size++;
             }
         }
+        return state;
+    }
+    
+    template <typename Graph>
+    MSTState<Graph> Boruvka(Graph g)
+    {
+        typedef typename Graph::VertexType V;
+        typedef typename Graph::EdgeType E;
+        MSTState<Graph> state(g);
+        DisjointSet<Graph> ds(g);
+        std::map<V, std::tuple<V,V,E>> compMinEdge;
+        
+        int size=0;
+        while(size < state.order()-1)
+        {
+            for(auto i=g.begin();i!=g.end();++i)                                   //finding edge with min weight leaving from every vertex
+            {
+                E min = g.nbegin(i->first)->second;
+                V x = g.nbegin(i->first)->first;
+                for(auto j=g.nbegin(i->first);j!=g.nend(i->first);++j)
+                {
+                    if(j->second < min)
+                    {
+                        min = j->second;
+                        x = j->first;
+                    }
+                }
+                auto root = ds.findRoot(i->first);
+                if(compMinEdge.find(root) == compMinEdge.end())                     //finding edge with min weight of every component
+                    compMinEdge[root] = std::make_tuple(i->first,x,min);
+                else if(std::get<2>(compMinEdge[root]) > min)
+                    compMinEdge[root] = std::make_tuple(i->first,x,min);
+            }
+            for(auto it=compMinEdge.begin();it!=compMinEdge.end();++it)            //inserting edge with min weight of every component to mst
+            {
+                ds.Union(std::get<0>(it->second), std::get<1>(it->second));
+                state.insertEdge(std::get<0>(it->second), std::get<1>(it->second), std::get<2>(it->second));
+                size++;
+            }
+            compMinEdge.clear();
+        }
+        
         return state;
     }
 }
