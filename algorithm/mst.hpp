@@ -42,8 +42,8 @@ namespace graph
         E span;
     };
     
-    template<typename Graph>
-    MSTState<Graph> Kruskal(Graph g)
+    template<typename Graph, typename F>
+    MSTState<Graph> Kruskal(Graph g, F callback)
     {
         MSTState<Graph> state(g); 
         auto e = sortedEdgeList(g,false);
@@ -60,6 +60,7 @@ namespace graph
             if(ds.Union(x,y) == true)
             {
                 state.insertEdge(x,y,w);
+                callback(x,y,w);
                 size++;
             }
         }
