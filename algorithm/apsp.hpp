@@ -35,7 +35,7 @@ namespace graph
                     if(i->first==j->first)
                         distance [std::make_pair(i->first,j->first)]=0;
                     else if (!(isAdjacent(g, i->first, j->first)))
-                        distance [std::make_pair(i->first,j->first)]=std::numeric_limits<E>::max();
+                        distance [std::make_pair(i->first,j->first)]=std::numeric_limits<D>::max();
                     else if(i->first!=j->first)
                     {
                         distance [std::make_pair(i->first,j->first)]=g.weight(i->first,j->first);
