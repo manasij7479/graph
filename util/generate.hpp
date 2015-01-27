@@ -26,6 +26,12 @@ namespace graph
                 g.insertVertex(std::to_string(i));
         }
         
+        Graph<std::string,int> k_ary_tree(std::vector<int> args,int start=1)   //args[0]=n, args[1]=k
+        {
+            Graph<std::string,int> result;
+            return result;
+		}
+        
         /**
         * \brief - Returns a path graph 
         * Reference Link - http://en.wikipedia.org/wiki/Path_graph
