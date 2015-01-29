@@ -1,10 +1,10 @@
-/**	\brief predicates.hpp - Header file that has collection of boolean functions 
-/**      on a graph object. All these checks must evaluate to true or false.
-/**      
-/**      Note: Use std::bind on these predicates and a Graph object for these to be 
-/**      applicable to STL algorithms.
-/**      
- * **/
+/** \brief predicates.hpp - Header file that has collection of boolean functions 
+*      on a graph object. All these checks must evaluate to true or false.
+*      
+*      Note: Use std::bind on these predicates and a Graph object for these to be 
+*      applicable to STL algorithms.
+*      
+**/
 #ifndef GRAPH_ALGORITHM_PREDICATES_HPP
 #define GRAPH_ALGORITHM_PREDICATES_HPP
 #include "../graph.hpp"
@@ -337,7 +337,7 @@ namespace graph
     {
         Search<Graph,Stack> searchObject(g,g.begin()->first);
         bool cyclic=false;
-        searchObject.setp3([&cyclic](const typename Graph::VertexType& v)
+        searchObject.setp3([&cyclic](const typename Graph::VertexType&)
         {
             cyclic=true;
             return false;

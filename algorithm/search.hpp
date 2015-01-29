@@ -50,7 +50,7 @@ namespace graph
                 return true;
             };
         }
-        
+        virtual ~Search(){}
         virtual void operator()()
         {
             dist[source]=D(0);

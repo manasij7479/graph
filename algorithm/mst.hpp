@@ -50,7 +50,7 @@ namespace graph
         DisjointSet<Graph> ds(g);
         
         int size=0;
-        for(int i=0;i<e.size();++i)
+        for(uint i=0;i<e.size();++i)
         {
             if(size == state.order()-1)
                 break;

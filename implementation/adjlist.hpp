@@ -101,7 +101,7 @@ namespace graph
         }
         
         bool isDirected(){return directed;}
-        int order(){return data.size();}
+        uint order(){return data.size();}
     private:
         std::map<VertexType,EdgeList*, MapCmp<VertexType>> data;
         bool directed;

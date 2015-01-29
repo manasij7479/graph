@@ -26,7 +26,7 @@ namespace graph
                 g.insertVertex(std::to_string(i));
         }
         
-        Graph<std::string,int> empty(std::vector<int> args,int start=1)   
+        Graph<std::string,int> empty(std::vector<int> /*args*/,int=1)   
         {
             Graph<std::string,int> result;
             return result;
@@ -378,7 +378,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> wagner(std::vector<int> args, int start=1)
+        Graph<std::string,int> wagner(std::vector<int> /*args*/, int start=1)
         {
             return mobius_ladder({8},start);
         }
@@ -394,7 +394,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> butterfly(std::vector<int> args, int start=1)
+        Graph<std::string,int> butterfly(std::vector<int> /*args*/, int start=1)
         {
             return friendship({2},start);
         }
@@ -410,7 +410,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> petersen(std::vector<int> args, int start=1)
+        Graph<std::string,int> petersen(std::vector<int> /*args*/, int start=1)
         {
             return generalized_petersen({5,2},start);
         }
@@ -426,7 +426,7 @@ namespace graph
         * to be added, default value 1
         * **/
 
-        Graph<std::string,int> durer(std::vector<int> args, int start=1)
+        Graph<std::string,int> durer(std::vector<int> /*args*/, int start=1)
         {
             return generalized_petersen({6,2},start);
         }
@@ -442,7 +442,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> desargues(std::vector<int> args, int start=1)
+        Graph<std::string,int> desargues(std::vector<int> /*args*/, int start=1)
         {
             return generalized_petersen({10,3},start);
         }
@@ -458,7 +458,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> mobius_kantor(std::vector<int> args, int start=1)
+        Graph<std::string,int> mobius_kantor(std::vector<int> /*args*/, int start=1)
         {
             return generalized_petersen({8,3},start);
         }
@@ -474,7 +474,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> dodecahedron(std::vector<int> args, int start=1)
+        Graph<std::string,int> dodecahedron(std::vector<int> /*args*/, int start=1)
         {
             return generalized_petersen({10,2},start);
         }
@@ -490,7 +490,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> nauru(std::vector<int> args, int start=1)
+        Graph<std::string,int> nauru(std::vector<int> /*args*/, int start=1)
         {
             return generalized_petersen({12,5},start);
         }
