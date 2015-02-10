@@ -1,3 +1,6 @@
+/**
+ * \brief - Header file containing collection of vertex coloring algorithms
+ * **/
 #ifndef GRAPH_ALGORITHM_COLORING_HPP
 #define GRAPH_ALGORITHM_COLORING_HPP
 #include "../graph.hpp"
@@ -14,20 +17,26 @@ namespace graph
     public:
         typedef typename Graph::VertexType V;
         typedef typename Graph::EdgeType E;
-        
+        /**
+         * \brief - Constructor to initialize chromatic number of the graph
+         * **/
         Coloring(Graph& g_):g(g_)
         {
             chromatic_no=g.order();
             doneMapping=false;
         }
-        
+        /**
+         * \brief - Returns chromtaic number of the graph
+         * **/
         int getChromaticNo()
         {
             if(!doneMapping)
                 vertexColoring();
             return chromatic_no;
         }
-        
+        /**
+         * \brief - Returns a map of vertex and corresponding chromatic number
+         * **/
         std::map<V,int> getColorMap()
         {
             if(!doneMapping)
@@ -40,7 +49,10 @@ namespace graph
         std::map<V,int> colormap;
         int chromatic_no;
         bool doneMapping;
-        
+        /**
+         * \brief - Returns a map of vertex and corresponding chromatic number for a particular
+         * 			sequence of vertices
+         * **/
         std::pair<std::map<V,int>,int> assignColor(std::vector<V> vertices)
         {
             std::map<V,int> tempmap;
@@ -65,7 +77,10 @@ namespace graph
             }
             return std::make_pair(tempmap,ncolor);
         }
-        
+        /**
+         * \brief - Determines the map of vertices and corresponding chromatic number for all possobile
+         * 			sequence of vertices
+         * **/
         void vertexColoring()
         {
             std::vector<V> vertices = VertexList(g);
