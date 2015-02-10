@@ -21,6 +21,9 @@ namespace graph
     public:
         typedef typename Graph::VertexType V;
         typedef typename Graph::EdgeType E;
+        /**
+         * \brief - Constructor to initialize distance array and parent array
+         * **/
         SSSPState(Graph& g_,V s):g(g_),source(s)
         {
             for(auto i=g.begin();i!=g.end();++i)
@@ -28,6 +31,9 @@ namespace graph
             distance.set(source,0);
             parent[source]=source;
         }
+        /**
+         * \brief - Function to calculate shortest path between two vertices 'u' and 'v'
+         * **/
         void relax(V u, V v)
         {
             auto w = g.weight(u,v);
@@ -51,7 +57,17 @@ namespace graph
         ParentArray<Graph> parent;
         DistanceArray<Graph> distance;
     };
-    
+    /**
+     * \brief - Returns the parent array and distance array of a graph after applying
+     * 			Djikstra's Algorithm
+     * 
+     * Graph g - First Parameter, a graph object on which Djikstra's Algorithm is applied
+     * 
+     * typename Graph::VertexType s - Second Parameter, a vertex of graph g and the source
+     * 								  for Djikstra's algorithm
+     * 
+     * SSSPState<Graph> state - Contains the modified parent array and distance array after applying Djikstra's Algorithm
+     * **/
     template<typename Graph>
     SSSPState<Graph> Djikstra(Graph& g,typename Graph::VertexType s)
     {
@@ -72,7 +88,17 @@ namespace graph
         
         return state;
     }
-    
+    /**
+     * \brief - Returns the parent array and distance array of a graph after applying
+     * 			Bellman-Ford Algorithm
+     * 
+     * Graph g - First Parameter, a graph object on which Djikstra's Algorithm is applied
+     * 
+     * typename Graph::VertexType s - Second Parameter, a vertex of graph g and the source
+     * 								  for Djikstra's algorithm
+     * 
+     * SSSPState<Graph> state - Contains the modified parent array and distance array after applying Bellman-Ford Algorithm
+     * **/
     //FIXME: Assumes no negative cycle, may segfault
     //put proper checks later
     template<typename Graph>

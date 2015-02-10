@@ -69,6 +69,9 @@ namespace graph
                     e.push_back(std::make_tuple(i->first,j->first,j->second));
         return e;
     }
+    /**
+     * 	\brief - A function to compare the edges between two vertices
+     * **/
     
     template <typename Graph>
     bool sortComparison
@@ -89,6 +92,18 @@ namespace graph
     {
         return (std::get<2>(a)<std::get<2>(b));
     }
+    /**
+     * \brief - Returns a list containing all pairs of vertices between which an edge
+     * exists in Graph g, along with the edge weights, in sorted order
+     * 
+     * 
+     * Graph g - First Parameter, a graph object
+     * 
+     * bool duplicate - Second Parameter, to check for duplicate edges
+     *   
+     * std::vector<std::tuple<typename Graph::VertexType,typename Graph::VertexType,typename Graph::EdgeType>> e - variable to store the sorted edge list
+     * **/
+    
     template <typename Graph>
     std::vector
     <

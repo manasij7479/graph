@@ -1,3 +1,6 @@
+/**
+ * \brief - Header file that contains collectin of all Minimum Cost Spanning Tree finding algorithms
+ * **/
 #ifndef GRAPH_ALGORITHM_MST_HPP
 #define GRAPH_ALGORITHM_MST_HPP
 #include "../graph.hpp"
@@ -18,7 +21,9 @@ namespace graph
     public:
         typedef typename Graph::VertexType V;
         typedef typename Graph::EdgeType E;
-        
+        /**
+         * \brief - Constructor to initialize the graph with all the vetices but no edges
+         * **/
         MSTState(Graph g)
         {
             for(auto i=g.begin();i!=g.end();++i)
@@ -28,7 +33,9 @@ namespace graph
         
         Graph& getMst() { return mst;}
         E getSpan() {return span;}
-        
+        /**
+         * \brief - Function to insert edges into the graph while creating Minimum Cost Spanning Tree
+         * **/
         void insertEdge(V x,V y,E w) 
         { 
             mst.insertEdge(x,y,w);
@@ -41,7 +48,15 @@ namespace graph
         Graph mst;
         E span;
     };
-    
+    /**
+     * \brief - Returns the Minimum Cost Spanning tree obtained using Kruskal's ALgorithm
+     * 
+     * Graph g - First Parameter, a graph on which Kruskal's Algorithm is implemented
+     * 
+     * F callback - Second Parameter, a hook to facilitate different functions
+     * 
+     * MSTState<Graph> state - holds the Minimum Cost Spanning tree after Kruskal's Algorithm is applied
+     * **/
     template<typename Graph, typename F>
     MSTState<Graph> Kruskal(Graph g, F callback)
     {
@@ -67,6 +82,13 @@ namespace graph
         return state;
     }
     
+    /**
+     * \brief - Returns the Minimum Cost Spanning tree obtained using Boruvka ALgorithm
+     * 
+     * Graph g - Parameter, a graph on which Boruvka Algorithm is implemented
+     * 
+     * MSTState<Graph> state - holds the Minimum Cost Spanning tree after Boruvka Algorithm is applied
+     * **/
     template <typename Graph>
     MSTState<Graph> Boruvka(Graph g)
     {
