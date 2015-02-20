@@ -7,6 +7,7 @@
 #include "predicates.hpp"
 #include "collections.hpp"
 #include "../graph.hpp"
+#include <cmath>
 #include<string>
 namespace graph
 {
@@ -115,18 +116,6 @@ namespace graph
         return result;
     }
     
-    /** 
-     * \brief - Returns substring of s from beginning till first occurence of '-'
-     * */
-    
-    std::string first(std::string s) { return s.substr(0,s.find('-')); }
-    
-     /**    
-     * \brief - Returns substring of s from after first occurence of '-' till end
-     * **/
-    
-    std::string second(std::string s) { return s.substr(s.find('-')+1); }
-    
     /**
      * \brief - Returns cartesian_product of two Graph datastructures
      * 
@@ -136,20 +125,36 @@ namespace graph
      * 
      * Graph result - Variable to store resultant cartesian_product of Graph g1 and Graph g2
      * **/
+    int pairCompute(int x, int y)
+    {
+        return (x+y)*(x+y+1)/2+y;
+    }
+    std::pair<int, int> pairInvert(int z)
+    {
+        int w = (std::sqrt(8*z+1)-1)/2;
+        int t = (w*w+w)/2;
+        int y = z-t;
+        int x = w-y;
+        return {x, y};
+    }
     template<typename Graph>
     Graph cartesian_product(Graph g1,Graph g2)
     {
         Graph result;
         for(auto i=g1.begin();i!=g1.end();++i)
             for(auto j=g2.begin();j!=g2.end();++j)
-                result.insertVertex(i->first+"-"+j->first);
+                result.insertVertex(pairCompute(i->first, j->first));
         for(auto i=result.begin();i!=result.end();++i)
             for(auto j=result.begin();j!=result.end();++j)
                 if(i->first!=j->first)
-                    if( (first(i->first)==first(j->first)&&isAdjacent(g2,second(i->first),second(j->first))) || (second(i->first)==second(j->first)&&isAdjacent(g1,first(i->first),first(j->first))) )
+                {
+                    auto invi = pairInvert(i->first);
+                    auto invj = pairInvert(j->first);
+                    if((invi.first == invj.first && isAdjacent(g2,invi.second , invj.second )) 
+                        || ( invi.second ==  invj.second && isAdjacent(g1, invi.first, invj.first)))
                         if(!isAdjacent(result,i->first,j->first))
                             result.insertEdge(i->first,j->first,1);
-        
+                }
         return result;
     }
     /**
