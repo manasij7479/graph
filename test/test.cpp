@@ -16,7 +16,7 @@ int main()
 {
     auto g=graph::gen::path({12});
     graph::displayGraph(g);
-    graph::BreadthFirstSearch<decltype(g)> search(g, "1");
+    graph::BreadthFirstSearch<decltype(g)> search(g, 1);
     search();
     for (auto v : graph::VertexList(g))
     {

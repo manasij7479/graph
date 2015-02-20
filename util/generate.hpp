@@ -4,7 +4,6 @@
 #ifndef GRAPH_UTIL_GENERATE_HPP
 #define GRAPH_UTIL_GENERATE_HPP
 #include "../algorithm/operations.hpp"
-#include<string>
 #include<stdexcept>
 namespace graph
 {
@@ -20,15 +19,15 @@ namespace graph
         * int start- Third parameter, the starting position from which the vertices are to be added
         * **/
         
-        void add_vertices(Graph<std::string,int>& g,int n,int start)
+        void add_vertices(Graph<int,int>& g,int n,int start)
         {
             for(int i=start;i<=start+n-1;++i)
-                g.insertVertex(std::to_string(i));
+                g.insertVertex(i);
         }
         
-        Graph<std::string,int> empty(std::vector<int> /*args*/,int=1)   
+        Graph<int,int> empty(std::vector<int> /*args*/,int=1)   
         {
-            Graph<std::string,int> result;
+            Graph<int,int> result;
             return result;
 	}
         
@@ -46,15 +45,15 @@ namespace graph
         * Graph<std::string,int> result - a variable to store the path graph
         * **/
         
-        Graph<std::string,int> path(std::vector<int> args, int start=1)
+        Graph<int,int> path(std::vector<int> args, int start=1)
         {
             if(args[0]<1)
                 throw std::runtime_error("Not Possible : (n>0) not met ...");
             
-            Graph<std::string,int> result;
+            Graph<int,int> result;
             add_vertices(result,args[0],start);
             for(int i=start;i<=start+args[0]-2;++i)
-                result.insertEdge(std::to_string(i),std::to_string(i+1),1);
+                result.insertEdge(i,i+1,1);
 
             return result;
         }
@@ -73,13 +72,13 @@ namespace graph
         * Graph<std::string,int> result - a variable to store the cycle graph
         * **/
         
-        Graph<std::string,int> cycle(std::vector<int> args,int start=1)
+        Graph<int,int> cycle(std::vector<int> args,int start=1)
         {
             if(args[0]<3)
                 throw std::runtime_error("Not possible : (n>2) not met ...");
             
-            Graph<std::string,int> result = path({args[0]},start);
-            result.insertEdge(std::to_string(start),std::to_string(start+args[0]-1),1);
+            Graph<int,int> result = path({args[0]},start);
+            result.insertEdge(start,start+args[0]-1,1);
 
             return result;
         }
@@ -98,17 +97,17 @@ namespace graph
         * Graph<std::string,int> result - a variable to store the complete graph
         * **/
 
-        Graph<std::string,int> complete(std::vector<int> args,int start=1)
+        Graph<int,int> complete(std::vector<int> args,int start=1)
         {
             if(args[0]<1)
                 throw std::runtime_error("Not Possible : (n>0) not met ...");
             
-            Graph<std::string,int> result;
+            Graph<int,int> result;
             add_vertices(result,args[0],start);
             for(int i=start;i<=start+args[0]-1;++i)
             for(int j=start;j<=start+args[0]-1;++j)
                 if(i!=j)                                
-                    result.insertEdge(std::to_string(i),std::to_string(j),1);
+                    result.insertEdge(i,j,1);
              
             return result;
         }
@@ -127,15 +126,15 @@ namespace graph
         * Graph<std::string,int> result - a variable to store the wheel graph
         * **/
 
-        Graph<std::string,int> wheel(std::vector<int> args,int start=1)
+        Graph<int,int> wheel(std::vector<int> args,int start=1)
         {
             if(args[0]<4)
                 throw std::runtime_error("Not Possible : (n>3) not met ...");
             
-            Graph<std::string,int> result = cycle({args[0]-1},start+1);
-            result.insertVertex(std::to_string(start));
+            Graph<int,int> result = cycle({args[0]-1},start+1);
+            result.insertVertex(start);
             for(int i=start+1;i<=start+args[0]-1;++i)
-                result.insertEdge(std::to_string(start),std::to_string(i),1);
+                result.insertEdge(start,i,1);
 
             return result;
         }
@@ -156,16 +155,16 @@ namespace graph
         * Graph<std::string,int> result - a variable to store the complete bipartite graph
         * **/
         
-        Graph<std::string,int> complete_bipartite(std::vector<int> args,int start=1)
+        Graph<int,int> complete_bipartite(std::vector<int> args,int start=1)
         {
             if(args[0]<1 || args[1]<1)
                 throw std::runtime_error("Not Possible : (m,n>0) not met ...");
             
-            Graph<std::string,int> result;
+            Graph<int,int> result;
             add_vertices(result,args[1]+args[0],start);
             for(int i=start;i<=start+args[0]-1;++i)
                 for(int j=start+args[0];j<=start+args[0]+args[1]-1;++j)
-                    result.insertEdge(std::to_string(i),std::to_string(j),1);
+                    result.insertEdge(i,j,1);
 
             return result;
         }
@@ -184,7 +183,7 @@ namespace graph
         * Graph<std::string,int> result - a variable to store the star graph
         * **/
         
-        Graph<std::string,int> star(std::vector<int> args,int start=1)
+        Graph<int,int> star(std::vector<int> args,int start=1)
         {
             if(args[0]<3)
                 throw std::runtime_error("Not Possible : (n>2) not met ...");
@@ -208,18 +207,18 @@ namespace graph
         * Graph<std::string,int> result - a variable to store the star polygon graph
         * **/
 
-        Graph<std::string,int> star_polygon(std::vector<int> args,int start=1)
+        Graph<int,int> star_polygon(std::vector<int> args,int start=1)
         {
             if(!(args[1]>1 && args[0]>2*args[1]))
                 throw std::runtime_error("Not Possible : (2<2q<p) not met ...");
             
-            Graph<std::string,int> result;
+            Graph<int,int> result;
             add_vertices(result,args[0],start);
             
             int end=start+args[0]-1;
             for(int i=start,j=start+args[1];i<=end;++i)
             {
-                result.insertEdge(std::to_string(i),std::to_string(j),1);
+                result.insertEdge(i,j,1);
                 if(j==end)
                     j=start;
                 else
@@ -243,16 +242,16 @@ namespace graph
         * Graph<std::string,int> result - a variable to store the friendship graph
         * **/
         
-        Graph<std::string,int> friendship(std::vector<int> args,int start=1)
+        Graph<int,int> friendship(std::vector<int> args,int start=1)
         {
             if(args[0]<2)
                 throw std::runtime_error("Not Possible : (n>1) not met ...");
             
-            Graph<std::string,int> result = star({args[0]*2},start);
+            Graph<int,int> result = star({args[0]*2},start);
             
             int end=start+2*args[0];
             for(int i=start+1;i<=end;i+=2)
-                result.insertEdge(std::to_string(i),std::to_string(i+1),1);
+                result.insertEdge(i,i+1,1);
             
             return result;
         }
@@ -271,15 +270,15 @@ namespace graph
         * Graph<std::string,int> result - a variable to store the mobius ladder graph
         * **/
         
-        Graph<std::string,int> mobius_ladder(std::vector<int> args,int start=1)
+        Graph<int,int> mobius_ladder(std::vector<int> args,int start=1)
         {
             if(args[0]%2 != 0)
                 throw std::runtime_error("Not Possible : 'n' must be even ...");
             
-            Graph<std::string,int> result = cycle({args[0]},start);
+            Graph<int,int> result = cycle({args[0]},start);
             int end=start+args[0]-1;
             for(int i=start;i<=(start+end)/2;++i)
-                result.insertEdge(std::to_string(i),std::to_string(i+args[0]/2),1);
+                result.insertEdge(i,i+args[0]/2,1);
             return result;
         }
         
@@ -299,16 +298,16 @@ namespace graph
         * Graph<std::string,int> result - a variable to store the grid graph
         * **/
         
-        Graph<std::string,int> grid(std::vector<int> args,int start=1)
+        Graph<int,int> grid(std::vector<int> args,int start=1)
         {
             if(args[0]<1 || args[1]<1)
                 throw std::runtime_error("Not Possible : (m,n>0) not met ...");
             
-            Graph<std::string,int> result;
+            Graph<int,int> result;
 
             if(args[0]==1 && args[1]==1)
             {
-                result.insertVertex(std::to_string(start));
+                result.insertVertex(start);
                 return result;
             }
             if(args[0]==1)
@@ -320,10 +319,10 @@ namespace graph
 
             for(int i=start;i<=start+args[0]*args[1]-1;i+=args[1])
                 for(int j=i;j<=i+args[1]-2;++j)
-                    result.insertEdge(std::to_string(j),std::to_string(j+1),1);
+                    result.insertEdge(j,j+1,1);
             for(int i=start;i<=start+args[1]-1;++i)
                 for(int j=i+args[1];j<=start+args[0]*args[1]-1;j+=args[1])
-                    result.insertEdge(std::to_string(j-args[1]),std::to_string(j),1);
+                    result.insertEdge(j-args[1],j,1);
 
             return result;
         }
@@ -345,24 +344,24 @@ namespace graph
         * Graph<std::string,int> result - a variable to store the generalized petersen graph
         * **/
         
-        Graph<std::string,int> generalized_petersen(std::vector<int> args, int start=1)
+        Graph<int,int> generalized_petersen(std::vector<int> args, int start=1)
         {
-            Graph<std::string,int> result = Union(star_polygon({args[0],args[1]},start),cycle({args[0]},start+args[0]));
+            Graph<int,int> result = Union(star_polygon({args[0],args[1]},start),cycle({args[0]},start+args[0]));
             for(int i=start;i<=start+args[0]-1;i++)
-                result.insertEdge(std::to_string(i),std::to_string(i+args[0]),1);
+                result.insertEdge(i,i+args[0],1);
             
             return result;
         }
         
-        Graph<std::string,int> k_ary_tree(std::vector<int> args,int start=1)   //args[0]=n, args[1]=k
+        Graph<int,int> k_ary_tree(std::vector<int> args,int start=1)   //args[0]=n, args[1]=k
         {
-            Graph<std::string,int> result;
+            Graph<int,int> result;
             add_vertices(result,args[0],start);
             
             for(int i=0;i<args[0];++i)
                 for(int j=args[1]*i+1;j<=args[1]*i+args[1];++j)
                     if(j+1<=args[0])
-                        result.insertEdge(std::to_string(i+1),std::to_string(j+1),1);
+                        result.insertEdge(i+1,j+1,1);
             
             return result;
         }
@@ -378,7 +377,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> wagner(std::vector<int> /*args*/, int start=1)
+        Graph<int,int> wagner(std::vector<int> /*args*/, int start=1)
         {
             return mobius_ladder({8},start);
         }
@@ -394,7 +393,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> butterfly(std::vector<int> /*args*/, int start=1)
+        Graph<int,int> butterfly(std::vector<int> /*args*/, int start=1)
         {
             return friendship({2},start);
         }
@@ -410,7 +409,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> petersen(std::vector<int> /*args*/, int start=1)
+        Graph<int,int> petersen(std::vector<int> /*args*/, int start=1)
         {
             return generalized_petersen({5,2},start);
         }
@@ -426,7 +425,7 @@ namespace graph
         * to be added, default value 1
         * **/
 
-        Graph<std::string,int> durer(std::vector<int> /*args*/, int start=1)
+        Graph<int,int> durer(std::vector<int> /*args*/, int start=1)
         {
             return generalized_petersen({6,2},start);
         }
@@ -442,7 +441,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> desargues(std::vector<int> /*args*/, int start=1)
+        Graph<int,int> desargues(std::vector<int> /*args*/, int start=1)
         {
             return generalized_petersen({10,3},start);
         }
@@ -458,7 +457,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> mobius_kantor(std::vector<int> /*args*/, int start=1)
+        Graph<int,int> mobius_kantor(std::vector<int> /*args*/, int start=1)
         {
             return generalized_petersen({8,3},start);
         }
@@ -474,7 +473,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> dodecahedron(std::vector<int> /*args*/, int start=1)
+        Graph<int,int> dodecahedron(std::vector<int> /*args*/, int start=1)
         {
             return generalized_petersen({10,2},start);
         }
@@ -490,7 +489,7 @@ namespace graph
         * to be added, default value 1
         * **/
         
-        Graph<std::string,int> nauru(std::vector<int> /*args*/, int start=1)
+        Graph<int,int> nauru(std::vector<int> /*args*/, int start=1)
         {
             return generalized_petersen({12,5},start);
         }
