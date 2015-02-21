@@ -25,11 +25,11 @@ namespace graph
                 g.insertVertex(i);
         }
         
-        Graph<int,int> empty(std::vector<int> /*args*/,int=1)   
+        Graph<int,int> empty(std::vector<int> args,int start=1)   
         {
             Graph<int,int> result;
             return result;
-	}
+		}
         
         /**
         * \brief - Returns a path graph 
@@ -80,6 +80,37 @@ namespace graph
             Graph<int,int> result = path({args[0]},start);
             result.insertEdge(start,start+args[0]-1,1);
 
+            return result;
+        }
+        
+        /**
+        * \brief - Returns a hypercube graph
+        * Reference Link - http://en.wikipedia.org/wiki/Hypercube
+        *  
+        * std::vector<int> args - First parameter, a vector of integers
+        * 
+        * int start- Second parameter, the starting position from which the vertices are 
+        * to be added, default value 1
+        * 
+        * args[0]- The number of vertices to be added
+        * 
+        * Graph<std::string,int> result - a variable to store the hypercube graph
+        * **/
+        
+        Graph<int,int> hypercube(std::vector<int> args,int start=1)
+        {
+            if(args[0]<1)
+                throw std::runtime_error("Not possible : (n>0) not met ...");
+            int n=args[0], x=start, y=1;
+            Graph<int,int> result = path({2},x);
+            while(pow(2,y)<=pow(2,n-1))
+            {
+					y++;
+					x=x+2;
+					auto g = path({2},x);
+					std::cout<<"1"<<std::endl;
+					result=cartesian_product(result,g);
+			}
             return result;
         }
         

@@ -14,16 +14,6 @@
 #include <functional>
 int main()
 {
-    auto g=graph::gen::path({12});
-    graph::displayGraph(g);
-    graph::BreadthFirstSearch<decltype(g)> search(g, 1);
-    search();
-    for (auto v : graph::VertexList(g))
-    {
-//             std::cout << v <<'\t' << search.getParentArray()[v]<<std::endl;
-        auto path = search.getParentArray().getPath(v);
-        for(auto x : path)
-            std::cout << x <<' ';
-        std::cout<<std::endl;
-    }
+    auto g=graph::gen::hypercube({4},1);
+    displayGraph(g);
 }
