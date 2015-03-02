@@ -141,19 +141,24 @@ namespace graph
     Graph cartesian_product(Graph g1,Graph g2)
     {
         Graph result;
+        std::map<int,int> vmap;
+        int counter = 1;
+        bool flag = true;
         for(auto i=g1.begin();i!=g1.end();++i)
             for(auto j=g2.begin();j!=g2.end();++j)
-                result.insertVertex(pairCompute(i->first, j->first));
-        for(auto i=result.begin();i!=result.end();++i)
-            for(auto j=result.begin();j!=result.end();++j)
-                if(i->first!=j->first)
+                vmap[pairCompute(i->first, j->first)] = counter++;
+        for(auto i=vmap.begin();i!=vmap.end();++i)
+            result.insertVertex(i->second);
+        for(auto i=vmap.begin();i!=vmap.end();++i)
+            for(auto j=vmap.begin();j!=vmap.end();++j)
+                if(i->second!=j->second)
                 {
                     auto invi = pairInvert(i->first);
                     auto invj = pairInvert(j->first);
                     if((invi.first == invj.first && isAdjacent(g2,invi.second , invj.second )) 
                         || ( invi.second ==  invj.second && isAdjacent(g1, invi.first, invj.first)))
-                        if(!isAdjacent(result,i->first,j->first))
-                            result.insertEdge(i->first,j->first,1);
+                        if(!isAdjacent(result,i->second,j->second))
+                            result.insertEdge(i->second,j->second,1);
                 }
         return result;
     }
