@@ -76,9 +76,7 @@ namespace graph
         ParentArray<Graph>& parent=state.getParentArray();
         DistanceArray<Graph>& dist=state.getDistanceArray();
         
-        PriorityQueue<Graph> pq([&](V x,V y){return dist[x]<dist[y];});
-        for(auto i=g.begin();i!=g.end();++i)
-            pq.put(i->first);
+        PriorityQueue<Graph> pq([&](V x,V y){return dist[x]<dist[y];},VertexList(g));
         
         while(!pq.empty())
         {
