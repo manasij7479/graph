@@ -234,5 +234,30 @@ namespace graph
         return g;
     }
     
+    template<typename Graph>
+    Graph line(Graph g)
+    {
+        Graph result;
+        auto elist = EdgeList(g,false);
+        for(auto i=elist.begin();i!=elist.end();++i)
+            result.insertVertex(pairCompute(std::get<0>(*i),std::get<1>(*i)));
+        for(auto i=result.begin();i!=result.end();++i)
+            for(auto j=result.begin();j!=result.end();++j)
+                if(i->first != j->first)
+                {
+                    auto invi=pairInvert(i->first);
+                    auto invj=pairInvert(j->first);
+                    if
+                    (
+                        invi.first == invj.first ||
+                        invi.first == invj.second ||
+                        invi.second == invj.second ||
+                        invi.second == invj.first
+                    )
+                        result.insertEdge(i->first,j->first,1);
+                }
+        return result;
+    }
+    
 }
 #endif
