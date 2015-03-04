@@ -162,6 +162,7 @@ namespace graph
                 }
         return result;
     }
+    
     /**
      * \brief - Returns complement of a Graph datastructure
      * 
@@ -234,6 +235,17 @@ namespace graph
         return g;
     }
     
+        /**
+     * \brief - Returns line graph of a Graph datastructure
+     * 
+     * - each vertex of L(G) represents an edge of G, 
+     * - two vertices of L(G) are adjacent if and only if 
+     * their corresponding edges share a common endpoint in G.
+     * 
+     * Graph g1 - Parameter, a graph datastructure
+     * 
+     * Graph result - Variable to store resultant line graph of Graph g1
+     * **/
     template<typename Graph>
     Graph line(Graph g)
     {
