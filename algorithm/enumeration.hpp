@@ -7,6 +7,8 @@
 #define GRAPH_ALGORITHM_ENUMERATION_HPP    
 #include "../graph.hpp"
 #include "collections.hpp"
+#include "../structures/disjointset.hpp"
+#include <set>
 namespace graph
 {
     /** \brief - Returns number of edges in Graph g
@@ -135,6 +137,19 @@ namespace graph
     float Density(Graph& g)
     {
         return (2.0*Size(g))/(g.order()*(g.order()-1));
+    }
+    
+    template<typename Graph>
+    int noOfComponents(Graph g)
+    {
+        DisjointSet<Graph> ds(g);
+        for(auto i=g.begin();i!=g.end();++i)
+            for(auto j=g.nbegin(i->first);j!=g.nend(i->first);++j)
+                ds.Union(i->first,j->first);
+        std::set<typename Graph::VertexType> s;
+        for(auto i=g.begin();i!=g.end();++i)
+            s.insert(ds.findRoot(i->first));
+        return s.size();
     }
 }
 #endif
