@@ -103,6 +103,12 @@ namespace graph
     }
     
     template<typename Graph>
+    int chromaticNumber(Graph g)
+    {
+        return minVertexColoring(g).noOfColorsUsed();
+    }
+    
+    template<typename Graph>
     ColorState
     <
         Graph, 
@@ -127,6 +133,12 @@ namespace graph
         }
         ColorState<Graph, std::pair<V,V>> cstate_g(g,resultmap,cstate_l.noOfColorsUsed());
         return cstate_g;
+    }
+    
+    template<typename Graph>
+    int chromaticIndex(Graph g)
+    {
+        return minEdgeColoring(g).noOfColorsUsed();
     }
 }
 
