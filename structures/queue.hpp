@@ -40,6 +40,7 @@ namespace graph
     public:
         typedef typename GraphType::EdgeType E;
         typedef typename GraphType::VertexType V;
+        PriorityQueue(std::function<bool(V,V)> compare):less(compare) {}
         PriorityQueue(std::function<bool(V,V)> compare, std::vector<V> data_):less(compare),data(data_)
         {
             for(int i=data.size()/2;i>0;--i)

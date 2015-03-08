@@ -143,7 +143,6 @@ namespace graph
         Graph result;
         std::map<int,int> vmap;
         int counter = 1;
-        bool flag = true;
         for(auto i=g1.begin();i!=g1.end();++i)
             for(auto j=g2.begin();j!=g2.end();++j)
                 vmap[pairCompute(i->first, j->first)] = counter++;
