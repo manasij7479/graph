@@ -25,7 +25,7 @@ namespace graph
                 g.insertVertex(i);
         }
         
-        Graph<int,int> empty(std::vector<int> args,int start=1)   
+        Graph<int,int> empty(std::vector<int> ,int=1)   
         {
             Graph<int,int> result;
             return result;

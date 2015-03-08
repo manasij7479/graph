@@ -76,9 +76,9 @@ namespace graph
     
     private:
         
-        void siftDown(int x)
+        void siftDown(uint x)
         {
-            int smallest=x,r=right(x),l=left(x); 
+            uint smallest=x,r=right(x),l=left(x); 
             if(l<data.size() && less(data[l],data[smallest]))
                 smallest=l;
             if(r<data.size() && less(data[r],data[smallest]))
