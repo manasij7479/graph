@@ -52,7 +52,7 @@ namespace graph
      *                      sequence of vertices
      * **/
     template<typename Graph>
-    ColorState<Graph, typename Graph::VertexType> vertexColoring(Graph g, std::vector<typename Graph::VertexType> vertices)
+    ColorState<Graph, typename Graph::VertexType> vertexColoring(Graph& g, std::vector<typename Graph::VertexType> vertices)
     {
         std::map<typename Graph::VertexType,int> tempmap;
         int ncolor=0;
@@ -83,7 +83,7 @@ namespace graph
      *                      sequence of vertices
      * **/
     template<typename Graph>
-    ColorState<Graph, typename Graph::VertexType> minVertexColoring(Graph g)
+    ColorState<Graph, typename Graph::VertexType> minVertexColoring(Graph& g)
     {
         int min_color=g.order()+1,i=0;
         ColorState<Graph, typename Graph::VertexType> min_cstate;
@@ -118,7 +118,7 @@ namespace graph
             typename Graph::VertexType
         >
     >
-    minEdgeColoring(Graph g)
+    minEdgeColoring(Graph& g)
     {
         typedef typename Graph::VertexType V;
         std::map< std::pair<V,V>, int> resultmap;

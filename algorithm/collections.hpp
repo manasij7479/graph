@@ -9,6 +9,8 @@
 #include "search.hpp"
 #include "enumeration.hpp"
 #include "predicates.hpp"
+#include "../structures/attribute.hpp"
+#include "coloring.hpp"
 #include<vector>
 #include<map>
 #include<set>
@@ -16,6 +18,7 @@
 #include<algorithm>
 #include<stdexcept>
 #include<utility>
+
 namespace graph
 {
 	/**
@@ -300,6 +303,13 @@ namespace graph
             }
             return v;
         }           
+    }
+    template<typename Graph>
+    VertexAttribute<Graph, int> minVertexColorAssignment(Graph& g)
+    {
+        auto state = minVertexColoring(g);
+        VertexAttribute<Graph, int> vattr(state.getColorMap());
+        return vattr;
     }
 }
 #endif

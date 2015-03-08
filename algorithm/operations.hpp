@@ -125,11 +125,11 @@ namespace graph
      * 
      * Graph result - Variable to store resultant cartesian_product of Graph g1 and Graph g2
      * **/
-    int pairCompute(int x, int y)
+    inline int pairCompute(int x, int y)
     {
         return (x+y)*(x+y+1)/2+y;
     }
-    std::pair<int, int> pairInvert(int z)
+    inline std::pair<int, int> pairInvert(int z)
     {
         int w = (std::sqrt(8*z+1)-1)/2;
         int t = (w*w+w)/2;
