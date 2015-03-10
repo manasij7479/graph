@@ -135,6 +135,14 @@ namespace graph
         return state;
     }
     
+    /**
+     * \brief - Returns the Minimum Cost Spanning tree obtained using Prim's ALgorithm
+     * 
+     * Graph g - Parameter, a graph on which Boruvka Algorithm is implemented
+     * 
+     * MSTState<Graph> state - holds the Minimum Cost Spanning tree after Prim's Algorithm is applied
+     * **/
+    
     template<typename Graph>
     MSTState<Graph> Prim (Graph& g)
     {
@@ -165,7 +173,7 @@ namespace graph
             pq.heapify();
         }
         
-        for(auto i=parent.begin();i!=parent.end();++i)
+        for(auto i=parent.begin();i!=parent.end();++i)                   //creating tree from parent array
         {
             state.insertEdge(i->first,i->second, g.weight(i->first,i->second));
         }
