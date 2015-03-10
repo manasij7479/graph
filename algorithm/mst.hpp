@@ -5,8 +5,10 @@
 #define GRAPH_ALGORITHM_MST_HPP
 #include "../graph.hpp"
 #include "collections.hpp"
+#include "../util/visitors.hpp"
 #include "enumeration.hpp"
 #include "../structures/disjointset.hpp"
+#include "../structures/queue.hpp"
 #include<map>
 #include<list>
 #include<vector>
@@ -128,6 +130,44 @@ namespace graph
                 }
             }
             compMinEdge.clear();
+        }
+        
+        return state;
+    }
+    
+    template<typename Graph>
+    MSTState<Graph> Prim (Graph& g)
+    {
+        typedef typename Graph::VertexType V;
+        typedef typename Graph::EdgeType E;
+        std::vector <V> v_new=VertexList(g);
+        MSTState<Graph> state(g);
+        std::map<V,V> parent;
+        std::map<V,E> cost;
+        
+        for(auto i=g.begin();i!=g.end();++i)
+            cost[i->first]=std::numeric_limits<E>::max();
+        cost[g.begin()->first]=0;
+        
+        PriorityQueue<Graph> pq([&](V x,V y){return cost[x]<cost[y];},v_new);
+        
+        while(!pq.empty())
+        {
+            auto u=pq.get();
+            for(auto i=g.nbegin(u);i!=g.nend(u);++i)
+            {
+                if((g.weight(i->first,u)<cost[i->first])&&pq.isElement(i->first))
+                {
+                    parent[i->first]=u;
+                    cost[i->first]=g.weight(i->first,u);
+                }
+            }
+            pq.heapify();
+        }
+        
+        for(auto i=parent.begin();i!=parent.end();++i)
+        {
+            state.insertEdge(i->first,i->second, g.weight(i->first,i->second));
         }
         
         return state;
