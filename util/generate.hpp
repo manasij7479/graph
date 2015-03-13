@@ -90,16 +90,18 @@ namespace graph
         
         /**
          * \brief - Returns a hypercube graph
+         * 
+         * A hypercube is a n-dimensional analog of a square(n=2) or a cube(n=3)
          * Reference Link - http://en.wikipedia.org/wiki/Hypercube
          *  
-         * std::vector<int> args - First parameter, a vector of integers
+         * @param std::vector<int> args - First parameter, a vector of integers
          * 
-         * int start- Second parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
-         * args[0]- The number of vertices to be added
+         * @param args[0]- The number of vertices to be added
          * 
-         * Graph<std::string,int> result - a variable to store the hypercube graph
+         * @returns Graph<std::string,int> result - a variable to store the hypercube graph
          * **/
         
         Graph<int,int> hypercube(std::vector<int> args,int start=1)
