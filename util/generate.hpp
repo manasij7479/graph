@@ -243,18 +243,21 @@ namespace graph
         
         /**
          * \brief - Returns a star polygon graph
+         * 
+         * In a star polygon graph of p vertices seperated by q vertices, each vertex is 
+         * adjacent to the qth vertex starting from itself.
          * Reference Link - http://en.wikipedia.org/wiki/Star_polygon
          * 
-         * std::vector<int> args - First parameter, a vector of integers
+         * @param std::vector<int> args - First parameter, a vector of integers
          * 
-         * int start- Third parameter, the starting position from which the vertices are 
+         * @param int start- Third parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
-         * args[0]- The number of vertices to be added
+         * @param args[0]- The number of vertices to be added
          *  
-         * args[1]- The number of vertices between two vetices with an edge
+         * @param args[1]- The number of vertices between two vetices with an edge
          * 
-         * Graph<std::string,int> result - a variable to store the star polygon graph
+         * @returns Graph<std::string,int> result - a variable to store the star polygon graph
          * **/
         
         Graph<int,int> star_polygon(std::vector<int> args,int start=1)
