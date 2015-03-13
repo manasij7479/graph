@@ -12,11 +12,11 @@ namespace graph
         /**
          * \brief - Adds n vertices to Graph g
          *  
-         * @params Graph<std::string,int>& g - First parameter, a pointer to a graph datastructure
+         * @param Graph<std::string,int>& g - First parameter, a pointer to a graph datastructure
          *   
-         * @params int n- Second parameter, the number of vertices to be added
+         * @param int n- Second parameter, the number of vertices to be added
          * 
-         * @params int start- Third parameter, the starting position from which the vertices are to be added
+         * @param int start- Third parameter, the starting position from which the vertices are to be added
          * **/
         
         void add_vertices(Graph<int,int>& g,int n,int start)
@@ -34,16 +34,16 @@ namespace graph
         /**
          * \brief - Returns a path graph 
          * 
-         * In a path graph, each vertice but the first and last has two adjacent vertices.
+         * In a path graph, each vertex but the first and last has two adjacent vertices.
          * The first and last vertex is adjacent to one vertex each.
          * Reference Link - http://en.wikipedia.org/wiki/Path_graph
          * 
-         * @params std::vector<int> args - First parameter, a vector of integers
+         * @param std::vector<int> args - First parameter, a vector of integers
          * 
-         * @params int start- Second parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
-         * @params args[0] - the number of vertices to be added
+         * @param args[0] - the number of vertices to be added
          * 
          * @returns Graph<std::string,int> result - a variable to store the path graph
          * **/
@@ -63,16 +63,18 @@ namespace graph
         
         /**
          * \brief - Returns a cycle graph
+         * 
+         * In a cycle graph, each vertex is adjacent to two vertices.
          * Reference Link - http://en.wikipedia.org/wiki/Cycle_graph
          *  
-         * std::vector<int> args - First parameter, a vector of integers
+         * @param std::vector<int> args - First parameter, a vector of integers
          * 
-         * int start- Second parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
-         * args[0]- The number of vertices to be added
+         * @param args[0]- The number of vertices to be added
          * 
-         * Graph<std::string,int> result - a variable to store the cycle graph
+         * @returns Graph<std::string,int> result - a variable to store the cycle graph
          * **/
         
         Graph<int,int> cycle(std::vector<int> args,int start=1)
