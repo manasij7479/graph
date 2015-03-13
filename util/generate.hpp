@@ -519,13 +519,17 @@ namespace graph
         
         /**
          * \brief - Returns a desargues graph
+         * 
+         * A desargues is a (10,3) generalized petersen graph
          * Reference Link - http://en.wikipedia.org/wiki/Desargues_graph
          * 
-         * std::vector<int> args - First parameter, a vector of integers, not used here,
+         * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
          * 
-         * int start- Parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
+         * 
+         * @returns a generalized petersen (10,3) graph
          * **/
         
         Graph<int,int> desargues(std::vector<int> /*args*/, int start=1)
@@ -535,13 +539,17 @@ namespace graph
         
         /**
          * \brief - Returns a mobius kantor graph
+         * 
+         * A mobius kantor graph is a (8,3) generalized petersen graph
          * Reference Link - http://en.wikipedia.org/wiki/Möbius–Kantor_graph
          * 
-         * std::vector<int> args - First parameter, a vector of integers, not used here,
+         * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
          * 
-         * int start- Parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
+         * 
+         * @returns a generalized petersen (8,3) graph
          * **/
         
         Graph<int,int> mobius_kantor(std::vector<int> /*args*/, int start=1)
