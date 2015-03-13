@@ -283,16 +283,19 @@ namespace graph
         
         /**
          * \brief - Returns a friendship graph
+         * 
+         * A friendship graph of 2n+1 vertices has n cycle graphs with one vertex common
+         * to each cycle.
          * Reference Link - http://en.wikipedia.org/wiki/Friendship_graph
          *  
-         * std::vector<int> args - First parameter, a vector of integers
+         * @param std::vector<int> args - First parameter, a vector of integers
          * 
-         * int start- Second parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
-         * args[0]- The number of vertices to be added
+         * @param args[0]- The number of vertices to be added
          * 
-         * Graph<std::string,int> result - a variable to store the friendship graph
+         * @returns Graph<std::string,int> result - a variable to store the friendship graph
          * **/
         
         Graph<int,int> friendship(std::vector<int> args,int start=1)
