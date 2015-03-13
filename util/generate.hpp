@@ -450,13 +450,18 @@ namespace graph
         
         /**
          * \brief - Returns a wagner graph
+         * 
+         * A wagner graph has 8 vertices and 12 edges. Each vertex is connected by an edge with
+         * the 3rd next vertices starting from itself.
          * Reference Link - http://en.wikipedia.org/wiki/Wagner_graph
          * 
-         * std::vector<int> args - First parameter, a vector of integers, not used here,
+         * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
          * 
-         * int start- Parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
+         * 
+         * @returns a mobius_ladder graph of 8 vertices
          * **/
         
         Graph<int,int> wagner(std::vector<int> /*args*/, int start=1)
