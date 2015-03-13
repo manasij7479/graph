@@ -391,19 +391,23 @@ namespace graph
         
         /**
          * \brief - Returns a generalized petersen graph
+         * 
+         * A generalized petersen graph of n vertices is obtained by adding an edge between
+         * the vertices of a regular polygon of n vertices with the corresponding vertices
+         * of a star polygon of n vertices.
          * Reference Link - http://en.wikipedia.org/wiki/Generalized_Petersen_graph
          * 
-         * std::vector<int> args - First parameter, a vector of integers
+         * @param std::vector<int> args - First parameter, a vector of integers
          * 
-         * int start- Second parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
-         * args[0]- The number of vertices to be added
+         * @param args[0]- The number of vertices to be added
          *  
-         * args[1]- The number of vertices between two vertices with an 
+         * @param args[1]- The number of vertices between two vertices with an 
          * edge in the star polygon
          * 
-         * Graph<std::string,int> result - a variable to store the generalized petersen graph
+         * @returns Graph<std::string,int> result - a variable to store the generalized petersen graph
          * **/
         
         Graph<int,int> generalized_petersen(std::vector<int> args, int start=1)
