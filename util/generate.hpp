@@ -492,13 +492,17 @@ namespace graph
         
         /**
          * \brief - Returns a petersen graph
+         * 
+         * A petersen graph is a (5,2) generalized petersen graph
          * Reference Link - http://en.wikipedia.org/wiki/Petersen_graph
          * 
-         * std::vector<int> args - First parameter, a vector of integers, not used here,
+         * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
          * 
-         * int start- Parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
+         * 
+         * @returns a generalized petersen (5,2) graph
          * **/
         
         Graph<int,int> petersen(std::vector<int> /*args*/, int start=1)
