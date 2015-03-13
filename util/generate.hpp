@@ -343,18 +343,21 @@ namespace graph
         
         /**
          * \brief - Returns a grid graph
+         * 
+         * A grid graph of m x n vertices has m rows, n columns and a vertex
+         * at the intersection of each row and column.
          * Reference Link - http://en.wikipedia.org/wiki/Grid_graph
          * 
-         * std::vector<int> args - First parameter, a vector of integers
+         * @param std::vector<int> args - First parameter, a vector of integers
          * 
-         * int start- TSecond parameter, the starting position from which the vertices are 
+         * @param int start- TSecond parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
-         * args[0]- The number of vertices to be added as y coordinates
+         * @param args[0]- The number of vertices to be added as y coordinates
          *  
-         * args[1]- The number of vertices to be added as x coordinates
+         * @param args[1]- The number of vertices to be added as x coordinates
          * 
-         * Graph<std::string,int> result - a variable to store the grid graph
+         * @returns Graph<std::string,int> result - a variable to store the grid graph
          * **/
         
         Graph<int,int> grid(std::vector<int> args,int start=1)
