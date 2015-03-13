@@ -33,16 +33,19 @@ namespace graph
         
         /**
          * \brief - Returns a path graph 
+         * 
+         * In a path graph, each vertice but the first and last has two adjacent vertices.
+         * The first and last vertex is adjacent to one vertex each.
          * Reference Link - http://en.wikipedia.org/wiki/Path_graph
          * 
-         * std::vector<int> args - First parameter, a vector of integers
+         * @params std::vector<int> args - First parameter, a vector of integers
          * 
-         * int start- Second parameter, the starting position from which the vertices are 
+         * @params int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
-         * args[0] - the number of vertices to be added
+         * @params args[0] - the number of vertices to be added
          * 
-         * Graph<std::string,int> result - a variable to store the path graph
+         * @returns Graph<std::string,int> result - a variable to store the path graph
          * **/
         
         Graph<int,int> path(std::vector<int> args, int start=1)
