@@ -314,16 +314,19 @@ namespace graph
         
         /**
          * \brief - Returns a modius ladder graph
+         * 
+         * A mobius ladder of n vertices if formed from an n-cycle by adding an edge between
+         * opposite pairs of vertices.
          * Reference Link - http://en.wikipedia.org/wiki/Möbius_ladder
          *  
-         * std::vector<int> args - First parameter, a vector of integers
+         * @param std::vector<int> args - First parameter, a vector of integers
          * 
-         * int start- Second parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
-         * args[0]- The number of vertices to be added
+         * @param args[0]- The number of vertices to be added
          * 
-         * Graph<std::string,int> result - a variable to store the mobius ladder graph
+         * @returns Graph<std::string,int> result - a variable to store the mobius ladder graph
          * **/
         
         Graph<int,int> mobius_ladder(std::vector<int> args,int start=1)
