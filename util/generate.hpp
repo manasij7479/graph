@@ -556,7 +556,7 @@ namespace graph
          * std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
          * 
-         * int start- Parameter, the starting position from which the vertices are 
+         * int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * **/
         
@@ -567,13 +567,17 @@ namespace graph
         
         /**
          * \brief - Returns a nauru graph
+         * 
+         * A nauru graph is a (12,5) generalized petersen graph
          * Reference Link - http://en.wikipedia.org/wiki/Nauru_graph
          * 
-         * std::vector<int> args - First parameter, a vector of integers, not used here,
+         * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
          * 
-         * int start- Parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
+         * 
+         * @returns a generalized petersen (12,5) graph
          * **/
         
         Graph<int,int> nauru(std::vector<int> /*args*/, int start=1)
