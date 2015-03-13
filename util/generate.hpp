@@ -471,13 +471,18 @@ namespace graph
         
         /**
          * \brief - Returns a butterfly graph
+         * 
+         * A butterfly graph graph has 5 vertices and 6 edges, with 2 cycles
+         * having one common vertex.
          * Reference Link - http://en.wikipedia.org/wiki/Butterfly_graph
          * 
-         * std::vector<int> args - First parameter, a vector of integers, not used here,
+         * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
          * 
-         * int start- Parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
+         * 
+         * @returns a friendship (2) graph
          * **/
         
         Graph<int,int> butterfly(std::vector<int> /*args*/, int start=1)
@@ -503,13 +508,17 @@ namespace graph
         
         /**
          * \brief - Returns a durer graph
+         * 
+         * A durer graph is a (6,2) generalized petersen graph
          * Reference Link - http://en.wikipedia.org/wiki/Durer_graph
          * 
-         * std::vector<int> args - First parameter, a vector of integers, not used here,
+         * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
          * 
-         * int start- Parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
+         * 
+         * @returns a generalized petersen (6,2) graph
          * **/
         
         Graph<int,int> durer(std::vector<int> /*args*/, int start=1)
