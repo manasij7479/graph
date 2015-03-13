@@ -153,16 +153,19 @@ namespace graph
         
         /**
          * \brief - Returns a wheel graph
+         * 
+         * A wheel graph of n vertices contains a cycle of (n-1) vertices and
+         * another single vertex joined with all the (n-1) vertices.
          * Reference Link - http://en.wikipedia.org/wiki/Wheel_graph
          *  
-         * std::vector<int> args - First parameter, a vector of integers
+         * @param std::vector<int> args - First parameter, a vector of integers
          * 
-         * int start- Second parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
-         * args[0]- The number of vertices to be added
+         * @param args[0]- The number of vertices to be added
          * 
-         * Graph<std::string,int> result - a variable to store the wheel graph
+         * @returns Graph<std::string,int> result - a variable to store the wheel graph
          * **/
         
         Graph<int,int> wheel(std::vector<int> args,int start=1)
