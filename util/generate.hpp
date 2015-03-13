@@ -12,11 +12,11 @@ namespace graph
         /**
          * \brief - Adds n vertices to Graph g
          *  
-         * Graph<std::string,int>& g - First parameter, a pointer to a graph datastructure
+         * @params Graph<std::string,int>& g - First parameter, a pointer to a graph datastructure
          *   
-         * int n- Second parameter, the number of vertices to be added
+         * @params int n- Second parameter, the number of vertices to be added
          * 
-         * int start- Third parameter, the starting position from which the vertices are to be added
+         * @params int start- Third parameter, the starting position from which the vertices are to be added
          * **/
         
         void add_vertices(Graph<int,int>& g,int n,int start)
