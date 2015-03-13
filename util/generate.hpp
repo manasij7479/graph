@@ -91,7 +91,7 @@ namespace graph
         /**
          * \brief - Returns a hypercube graph
          * 
-         * A hypercube is a n-dimensional analog of a square(n=2) or a cube(n=3)
+         * A hypercube is a n-dimensional analog of a square(n=2) or a cube(n=3).
          * Reference Link - http://en.wikipedia.org/wiki/Hypercube
          *  
          * @param std::vector<int> args - First parameter, a vector of integers
@@ -122,16 +122,18 @@ namespace graph
         
         /**
          * \brief - Returns a complete graph
+         * 
+         * In a complete graph, each vertex is adjacent to all the other vertices.
          * Reference Link - http://en.wikipedia.org/wiki/Complete_graph
          *  
-         * std::vector<int> args - First parameter, a vector of integers
+         * @param std::vector<int> args - First parameter, a vector of integers
          * 
-         * int start- Second parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
-         * args[0]- The number of vertices to be added
+         * @param args[0]- The number of vertices to be added
          * 
-         * Graph<std::string,int> result - a variable to store the complete graph
+         * @returns Graph<std::string,int> result - a variable to store the complete graph
          * **/
         
         Graph<int,int> complete(std::vector<int> args,int start=1)
