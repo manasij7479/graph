@@ -551,13 +551,17 @@ namespace graph
         
         /**
          * \brief - Returns a dodecahedron graph
+         * 
+         * A dodecahedron graph is a (10,2) generalized petersen graph
          * Reference Link - http://en.wikipedia.org/wiki/Dodecahedron
          * 
-         * std::vector<int> args - First parameter, a vector of integers, not used here,
+         * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
          * 
-         * int start- Second parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
+         * 
+         * @returns a generalized petersen (10,2) graph
          * **/
         
         Graph<int,int> dodecahedron(std::vector<int> /*args*/, int start=1)
