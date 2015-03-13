@@ -183,18 +183,23 @@ namespace graph
         
         /**
          * \brief - Returns a complete bipartite graph
+         * 
+         * In a complete bipartite graph, there are two sets of vertices.
+         * Each of the vertices of first set is adjacent to all the vertices of the second set and vice versa.
+         * None of the vertices of first set is adjacent to any other vertex in the same set.
+         * None of the vertices of second set is adjacent to any other vertex in the same set.
          * Reference Link - http://en.wikipedia.org/wiki/Complete_bipartite_graph
          * 
-         * std::vector<int> args - First parameter, a vector of integers
+         * @param std::vector<int> args - First parameter, a vector of integers
          * 
-         * int start- Third parameter, the starting position from which the vertices are 
+         * @param int start- Third parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
-         * args[0]- The number of vertices to be added on one side
+         * @param args[0]- The number of vertices to be added on one side
          *  
-         * args[1]- The number of vertices to be added on the other side
+         * @param args[1]- The number of vertices to be added on the other side
          * 
-         * Graph<std::string,int> result - a variable to store the complete bipartite graph
+         * @returns Graph<std::string,int> result - a variable to store the complete bipartite graph
          * **/
         
         Graph<int,int> complete_bipartite(std::vector<int> args,int start=1)
@@ -213,16 +218,19 @@ namespace graph
         
         /**
          * \brief - Returns a star graph
+         * 
+         * Star graph is a complete bipartite graph of n vertices with first set containing
+         * 1 vertex and second set containin (n-1) vertices.
          * Reference Link - http://en.wikipedia.org/wiki/Star_graph
          *  
-         * std::vector<int> args - First parameter, a vector of integers
+         * @param std::vector<int> args - First parameter, a vector of integers
          * 
-         * int start- Second parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
-         * args[0]- The number of vertices to be added
+         * @param args[0]- The number of vertices to be added
          * 
-         * Graph<std::string,int> result - a variable to store the star graph
+         * @returns Graph<std::string,int> result - a variable to store the star graph
          * **/
         
         Graph<int,int> star(std::vector<int> args,int start=1)
