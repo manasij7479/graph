@@ -419,6 +419,22 @@ namespace graph
             return result;
         }
         
+         /**
+         * \brief - Returns a k-ary tree
+         * 
+         * A k-ary tree (k>=2) is a tree with each vertex having <= k childs.
+         * http://en.wikipedia.org/wiki/K-ary_tree
+         * 
+         * @param std::vector<int> args - First parameter, a vector of integers
+         * 
+         * @param int start- Second parameter, the starting position from which the vertices are 
+         * to be added, default value 1
+         * 
+         * @param args[0]- The number of vertices to be added
+         *  
+         * @returns Graph<std::string,int> result - a variable to store the k-ary tree
+         * **/
+        
         Graph<int,int> k_ary_tree(std::vector<int> args,int start=1)   //args[0]=n, args[1]=k
         {
             Graph<int,int> result;
