@@ -13,7 +13,7 @@ namespace graph
 {
     /** \brief - Returns number of edges in Graph g
      * 
-     * Graph g - Parameter, a graph object
+     * @param Graph g - Parameter, a graph object
      * **/
     template<typename Graph>
     int Size(Graph& g)
@@ -23,9 +23,11 @@ namespace graph
     
     /** \brief - Returns the number of edges directed out of Graph::VertexType v in Graph g
      * 
-     * Graph g - First parameter, a graph object
+     * @param Graph g - First parameter, a graph object
      * 
-     * Graph::VertexType v - Second parameter, a vertex of Graph g
+     * @param Graph::VertexType v - Second parameter, a vertex of Graph g
+     * 
+     * @returns int conunt - the number of edges directed out of Graph::VertexType v in Graph g
      * **/
     
     template<typename Graph>
@@ -39,9 +41,11 @@ namespace graph
     
     /** \brief - Returns the number of edges directed towards Graph::VertexType v in Graph g
      * 
-     * Graph g - First parameter, a graph object
+     * @param Graph g - First parameter, a graph object
      * 
-     * Graph::VertexType v - Second parameter, a vertex of Graph g
+     * @param Graph::VertexType v - Second parameter, a vertex of Graph g
+     * 
+     * @returns int conunt - the number of edges directed towards Graph::VertexType v in Graph g
      * **/
     
     template<typename Graph>
@@ -64,9 +68,11 @@ namespace graph
     
     /** \brief - Returns the total number of edges of Graph::VertexType v in Graph g
      * 
-     * Graph g - First parameter, a graph object
+     * @param Graph g - First parameter, a graph object
      * 
-     * Graph::VertexType v - Second parameter, a vertex of Graph g
+     * @param Graph::VertexType v - Second parameter, a vertex of Graph g
+     * 
+     * @returns the total number of edges of Graph::VertexType v in Graph g
      * **/
     
     template<typename Graph>
@@ -81,7 +87,10 @@ namespace graph
     /** \brief - Returns the degree of each vertex in Graph g if degree of all vertex is equal,
      * returns 0 otherwise
      * 
-     * Graph g - Parameter, a graph object
+     * @param Graph g - Parameter, a graph object
+     * 
+     * @returns int k - the degree of each vertex in Graph g if degree of all vertex is equal
+     * @returns 0 otherwise
      * **/
     
     template<typename Graph>
@@ -98,7 +107,11 @@ namespace graph
     
     /** \brief - Returns the radius eccentricity in Graph g
      * 
-     * Graph g - Parameter, a graph object
+     * Radius eccentricity is the minimum eccecntricity if a graph
+     * 
+     * @param Graph g - Parameter, a graph object
+     * 
+     * @returns min- minimum eccentricity
      * **/
     
     template<typename Graph>
@@ -114,7 +127,11 @@ namespace graph
     
     /** \brief - Returns the diameter of Graph g
      * 
-     * Graph g - Parameter, a graph object
+     * Diameter of a graph is the maximum eccentricity of a graph
+     * 
+     * @param Graph g - Parameter, a graph object
+     * 
+     * @returns max - maximum eccentricity of a graph
      * **/
     
     template<typename Graph>
@@ -130,7 +147,10 @@ namespace graph
     
     /** \brief - Returns the density of edges with respect to vertices in Graph g
      * 
-     * Graph g - Parameter, a graph object
+     * Density of a graph is obtained by the formula
+     * 2*no of edges in graph / (no of vertices of a graph * no of vertices of a graph - 1)
+     * 
+     * @param Graph g - Parameter, a graph object
      * **/
     
     template<typename Graph>
@@ -138,6 +158,15 @@ namespace graph
     {
         return (2.0*Size(g))/(g.order()*(g.order()-1));
     }
+    
+    /**
+     * \brief -  Returns the number of connected components of a graph
+     * 
+     * Connected Components of a graph are subgraphs which are connected.
+     * A pair of vertices are connected if there exists a path between them in a graph.
+     * 
+     * @param Graph g - Parameter, a graph object
+     * **/
     
     template<typename Graph>
     int noOfComponents(Graph g)
