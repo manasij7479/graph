@@ -14,11 +14,14 @@ namespace graph
     /**
      * \brief - Returns union of two Graph datastructures
      * 
-     * Graph g1 - First parameter, a graph datastructure
-     *   
-     * Graph g2 - Second parameter, a graph datastructure
+     * A union of two graphs contains all the vertices of both graphs and all
+     * corresponding edges from both graphs.
      * 
-     * Graph result - Variable to store resultant Union of Graph g1 and Graph g2
+     * @param Graph g1 - First parameter, a graph datastructure
+     *   
+     * @param Graph g2 - Second parameter, a graph datastructure
+     * 
+     * @returns Graph result - Variable to store resultant Union of Graph g1 and Graph g2
      * **/
     template<typename Graph>
     Graph Union(Graph g1,Graph g2)
@@ -42,11 +45,14 @@ namespace graph
     /**
      * \brief - Returns intersection of two Graph datastructures
      * 
-     * Graph g1 - First parameter, a graph datastructure
+     * An intersection of two graphs contains the vertices common to both graphs
+     * and corresponding edges from both graphs.
      * 
-     * Graph g2 - Second parameter, a graph datastructure
+     * @param Graph g1 - First parameter, a graph datastructure
      * 
-     * Graph result - Variable to store resultant intersection of Graph g1 and Graph g2
+     * @param Graph g2 - Second parameter, a graph datastructure
+     * 
+     * @returns Graph result - Variable to store resultant intersection of Graph g1 and Graph g2
      * **/
     template<typename Graph>
     Graph intersection(Graph g1,Graph g2)
@@ -66,11 +72,14 @@ namespace graph
     /**
      * \brief - Returns natural join of two Graph datastructures
      * 
-     * Graph g1 - First parameter, a graph datastructure
+     * A natural join of two graphs is a union of two graphs with some additional edges.
+     * The additional edges joins all vertices of first graph with all vertices of second graph.
      * 
-     * Graph g2 - Second parameter, a graph datastructure
+     * @param Graph g1 - First parameter, a graph datastructure
      * 
-     * Graph result - Variable to store resultant natural join of Graph g1 and Graph g2
+     * @param Graph g2 - Second parameter, a graph datastructure
+     * 
+     * @returns Graph result - Variable to store resultant natural join of Graph g1 and Graph g2
      * **/
     template<typename Graph>
     Graph join(Graph g1,Graph g2)
@@ -85,11 +94,15 @@ namespace graph
     /**
      * \brief - Returns symmetric_difference of two Graph datastructures
      * 
-     * Graph g1 - First parameter, a graph datastructure
+     * Symmetric difference of two graphs contains the vertices present in first graph and not
+     * in second graph and vice versa. It contains the edges that connect two vertices of first
+     * graph that are not connected by an edge in the second graph and vice versa.
      * 
-     * Graph g2 - Second parameter, a graph datastructure
+     * @param Graph g1 - First parameter, a graph datastructure
      * 
-     * Graph result - Variable to store resultant symmetric_difference of Graph g1 and Graph g2
+     * @param Graph g2 - Second parameter, a graph datastructure
+     * 
+     * @returns Graph result - Variable to store resultant symmetric_difference of Graph g1 and Graph g2
      * **/
     template<typename Graph>
     Graph symmetric_difference(Graph g1,Graph g2)
@@ -116,15 +129,6 @@ namespace graph
         return result;
     }
     
-    /**
-     * \brief - Returns cartesian_product of two Graph datastructures
-     * 
-     * Graph g1 - First parameter, a graph datastructure
-     * 
-     * Graph g2 - Second parameter, a graph datastructure
-     * 
-     * Graph result - Variable to store resultant cartesian_product of Graph g1 and Graph g2
-     * **/
     inline int pairCompute(int x, int y)
     {
         return (x+y)*(x+y+1)/2+y;
@@ -137,6 +141,20 @@ namespace graph
         int x = w-y;
         return {x, y};
     }
+    /**
+     * \brief - Returns cartesian_product of two Graph datastructures
+     * 
+     * The set of vertices of cartesian product of two graphs conatins the product of vertices
+     * of the two graphs. Two vertices (u,u') and (v,v') are connected by and edge in the
+     * cartesian product iff either u = v and u' is adjacent with v' in first graph or 
+     * u' = v' and u is adjacent with v in second graph.
+     * 
+     * @param Graph g1 - First parameter, a graph datastructure
+     * 
+     * @param Graph g2 - Second parameter, a graph datastructure
+     * 
+     * @returns Graph result - Variable to store resultant cartesian_product of Graph g1 and Graph g2
+     * **/
     template<typename Graph>
     Graph cartesian_product(Graph g1,Graph g2)
     {
@@ -167,9 +185,9 @@ namespace graph
      * 
      * The edges not present in Graph g1 are present in graph result and vice versa
      * 
-     * Graph g1 - Parameter, a graph datastructure
+     * @param Graph g1 - Parameter, a graph datastructure
      * 
-     * Graph result - Variable to store resultant complement of Graph g1
+     * @returns Graph result - Variable to store resultant complement of Graph g1
      * **/
     template<typename Graph>
     Graph complement(Graph g1)
@@ -185,10 +203,16 @@ namespace graph
         return result;
     }
     /**
-     * \brief - Returns the graph after deleting the edge between
-     * vertex x and vertex y of graph g1
+     * \brief - Returns the graph after deleting the edge between vertex x and vertex y 
+     * of graph g1
      * 
-     * Graph g1 - Parameter, a graph datastructure
+     * @param Graph g1 - First Parameter, a graph datastructure
+     * 
+     * @param typename Graph::VertexType x - Second Parameter, a vertex
+     * 
+     * @param typename Graph::VertexType y - Third Parameter, a vertex
+     * 
+     * @returns g1 - the graph after deleting the edge (x,y) of graph g
      * **/
     template<typename Graph>
     Graph EdgeDeletionSubgraph(Graph g1, typename Graph::VertexType x, typename Graph::VertexType  y)
@@ -198,10 +222,13 @@ namespace graph
         return g1;
     }
      /**
-     * \brief - Returns the graph after deleting the vertex x 
-     * of graph g1
+     * \brief - Returns the graph after deleting the vertex x of graph g1
      * 
-     * Graph g1 - Parameter, a graph datastructure
+     * @param Graph g1 - Parameter, a graph datastructure
+     * 
+     * @param typename Graph::VertexType x - Second Parameter, a vertex
+     * 
+     * @returns g1 - the graph after removing vertex x
      * **/
     template<typename Graph>
     Graph VertexDeletionSubgraph(Graph g1, typename Graph::VertexType x)
@@ -213,10 +240,17 @@ namespace graph
     
     
      /**
-     * \brief - Returns the graph minor after contracting the edge (x,y) 
-     * of graph g
+     * \brief - Returns the graph minor after contracting the edge (x,y) of graph g
      * 
-     * Graph g - Parameter, a graph datastructure
+     * Edge contraction removes an edge joning x and y, and merges the vertices x and y
+     * 
+     * @param Graph g - First Parameter, a graph datastructure
+     * 
+     * @param typename Graph::VertexType x - Second Parameter, a vertex
+     * 
+     * @param typename Graph::VertexType y - Third Parameter, a vertex
+     * 
+     * @returns g - the graph minor after contracting the edge (x,y) of graph g
      * **/
     template<typename Graph>
     Graph EdgeContractionMinor(Graph g, typename Graph::VertexType x, typename Graph::VertexType  y)
@@ -234,16 +268,16 @@ namespace graph
         return g;
     }
     
-        /**
+     /**
      * \brief - Returns line graph of a Graph datastructure
      * 
      * - each vertex of L(G) represents an edge of G, 
      * - two vertices of L(G) are adjacent if and only if 
      * their corresponding edges share a common endpoint in G.
      * 
-     * Graph g1 - Parameter, a graph datastructure
+     * @param Graph g1 - Parameter, a graph datastructure
      * 
-     * Graph result - Variable to store resultant line graph of Graph g1
+     * @returns Graph result - Variable to store resultant line graph of Graph g1
      * **/
     template<typename Graph>
     Graph line(Graph g)
