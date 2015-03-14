@@ -1,5 +1,10 @@
 /**
  * \brief - Header file that contains collectin of all Minimum Cost Spanning Tree finding algorithms
+ * 
+ * A spanning tree is a subgraph of a graph, which is a tree and connects all the vertices
+ * of the graph. A Minimum Cost Spanning Tree is a spanning tree with cost or weight less 
+ * than all other spanning trees. There might be multiple Minimum Cost Spanning Trees for
+ * a graph. Each algorithm might return different Minimum Cost Spanning Tree.
  * **/
 #ifndef GRAPH_ALGORITHM_MST_HPP
 #define GRAPH_ALGORITHM_MST_HPP
@@ -37,6 +42,12 @@ namespace graph
         E getSpan() {return span;}
         /**
          * \brief - Function to insert edges into the graph while creating Minimum Cost Spanning Tree
+         * 
+         * @param V x - First Parameter, a vertex
+         * 
+         * @param V y - Second Paramete, a vertex
+         * 
+         * @param E w - Third Parameter, edge weight between x and y
          * **/
         void insertEdge(V x,V y,E w) 
         { 
@@ -53,11 +64,11 @@ namespace graph
     /**
      * \brief - Returns the Minimum Cost Spanning tree obtained using Kruskal's ALgorithm
      * 
-     * Graph g - First Parameter, a graph on which Kruskal's Algorithm is implemented
+     * @param Graph g - First Parameter, a graph on which Kruskal's Algorithm is implemented
      * 
-     * F callback - Second Parameter, a hook to facilitate different functions
+     * @param F callback - Second Parameter, a hook to facilitate different functions
      * 
-     * MSTState<Graph> state - holds the Minimum Cost Spanning tree after Kruskal's Algorithm is applied
+     * @returns MSTState<Graph> state - holds the Minimum Cost Spanning tree after Kruskal's Algorithm is applied
      * **/
     template<typename Graph, typename F>
     MSTState<Graph> Kruskal(Graph g, F callback)
@@ -87,9 +98,9 @@ namespace graph
     /**
      * \brief - Returns the Minimum Cost Spanning tree obtained using Boruvka ALgorithm
      * 
-     * Graph g - Parameter, a graph on which Boruvka Algorithm is implemented
+     * @param Graph g - Parameter, a graph on which Boruvka Algorithm is implemented
      * 
-     * MSTState<Graph> state - holds the Minimum Cost Spanning tree after Boruvka Algorithm is applied
+     * @returns MSTState<Graph> state - holds the Minimum Cost Spanning tree after Boruvka Algorithm is applied
      * **/
     template <typename Graph>
     MSTState<Graph> Boruvka(Graph g)
@@ -138,9 +149,9 @@ namespace graph
     /**
      * \brief - Returns the Minimum Cost Spanning tree obtained using Prim's ALgorithm
      * 
-     * Graph g - Parameter, a graph on which Boruvka Algorithm is implemented
+     * @param Graph g - Parameter, a graph on which Boruvka Algorithm is implemented
      * 
-     * MSTState<Graph> state - holds the Minimum Cost Spanning tree after Prim's Algorithm is applied
+     * @returns MSTState<Graph> state - holds the Minimum Cost Spanning tree after Prim's Algorithm is applied
      * **/
     
     template<typename Graph>
