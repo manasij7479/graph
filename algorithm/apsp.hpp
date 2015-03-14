@@ -23,8 +23,8 @@ namespace graph
         typedef typename Graph::VertexType V;
         typedef typename Graph::EdgeType E;
         typedef typename edge_traits<E>::DistanceType D;
-        typedef typename std::map<std::pair<typename Graph::VertexType,typename Graph::VertexType>, std::vector<typename Graph::VertexType>> PM;
-        typedef typename std::map<std::pair<typename Graph::VertexType,typename Graph::VertexType>,D> AM;
+        typedef typename std::map<std::pair<typename Graph::VertexType,typename Graph::VertexType>, std::vector<typename Graph::VertexType>> PM; ///< Path Matrix
+        typedef typename std::map<std::pair<typename Graph::VertexType,typename Graph::VertexType>,D> AM; ///<Adjacency Matrix
         typedef typename std::map<std::pair<typename Graph::VertexType,typename Graph::VertexType>, typename Graph::VertexType> NM;
         /**
          * \brief - Constructor to initialize the distance matrix and path matrix
@@ -49,8 +49,16 @@ namespace graph
             }
         }
         /**
-         * \brief - Function to determine the shortest path between a pair of vertices 'i' and
-         * 			'j' through a vertex 'k'
+         * \brief - Function to determine the shortest path between a pair of vertices
+         * 
+         * This function finds the shortest path between a pair of vetices 'i' and
+         * 'j' through a vertex 'k'
+         * 
+         * @param V k - First parameter, a vertex
+         * 
+         * @param V i - Second parameter, source vertex
+         * 
+         * @param V j - Third parameter, destination vertex
          * **/
         void relax(V k, V i, V j)
         {
@@ -61,9 +69,16 @@ namespace graph
                     next[std::make_pair(i,j)]=next[std::make_pair(i,k)];
                 }
         }
+        
+        /**
+         * \brief - returns Adjacency Matrix
+         * **/
+        
         AM getDistanceArray() {return distance;}
         /**
          * \brief - Function to determine an initial path between all pairs of vertices of a graph
+         * 
+         * @returns PM path - a path matrix
          * **/
         PM getPathArray()
         {
@@ -96,12 +111,16 @@ namespace graph
         AM distance;
     };
     /**
-     * \brief - Returns the path matrix and distance matrix of a graph after applying
-     * 			Floyd-Roy-Warshall Algorithm
+     * \brief - Function to implement Floyd-Roy-Warshall Algorithm
      * 
-     * Graph g - Parameter, a graph object on which Floyd-Roy-Warshall Algorithm is applied
+     * Returns the path matrix and distance matrix of a graph after applying
+     * Floyd-Roy-Warshall Algorithm. This algorithm finds the shortest path possible
+     * between all pairs of vertices. It returns both the shortest path and the shortest 
+     * distance between all pairs of vertices.
      * 
-     * APSPState<Graph> state - Contains the modified path matrix and distance matrix after applying Floyd-Roy-Warshall Algorithm
+     * @param Graph g - Parameter, a graph object on which Floyd-Roy-Warshall Algorithm is applied
+     * 
+     * @returns APSPState<Graph> state - Contains the modified path matrix and distance matrix after applying Floyd-Roy-Warshall Algorithm
      * **/
     template<typename Graph>
     APSPState<Graph> FloydRoyWarshall(Graph& g)
