@@ -102,6 +102,19 @@ namespace graph
         return min_cstate;
     }
     
+    
+    // doesn't produce optimal coloring for SOME ordering of ...
+    // ... crown, chordal, interval & indifference graphs
+    template<typename Graph>
+    ColorState<Graph, typename Graph::VertexType> WelshPowellColoring(Graph& g)
+    {
+        typedef typename Graph::VertexType V;
+        auto d_list = DegreeList(g);
+        auto vlist = VertexList(g);
+        std::sort(vlist.begin(),vlist.end(),[&](V x,V y){return d_list[x]>d_list[y];});
+        return vertexColoring(g, vlist);
+    }
+    
     template<typename Graph>
     int chromaticNumber(Graph g)
     {
