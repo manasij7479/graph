@@ -33,6 +33,10 @@ namespace graph
         }
         /**
          * \brief - Function to calculate shortest path between two vertices 'u' and 'v'
+         * 
+         * @param V u - First Parameter, source vertex
+         * 
+         * @param V v - Second Parameter, destination vertex
          * **/
         void relax(V u, V v)
         {
@@ -58,15 +62,18 @@ namespace graph
         DistanceArray<Graph> distance;
     };
     /**
-     * \brief - Returns the parent array and distance array of a graph after applying
-     * 			Djikstra's Algorithm
+     * \brief - Applys Djikstra's Algorithm on a grpah object
      * 
-     * Graph g - First Parameter, a graph object on which Djikstra's Algorithm is applied
+     * Djikstra's Algorithm findest the shortest path to all vertices from a single source vertex.
+     * This function returns the distance array and path array after applying Djikstra's Algorithm
+     * for a single source vertex
      * 
-     * typename Graph::VertexType s - Second Parameter, a vertex of graph g and the source
+     * @param Graph g - First Parameter, a graph object on which Djikstra's Algorithm is applied
+     * 
+     * @param typename Graph::VertexType s - Second Parameter, a vertex of graph g and the source
      * 								  for Djikstra's algorithm
      * 
-     * SSSPState<Graph> state - Contains the modified parent array and distance array after applying Djikstra's Algorithm
+     * @returns SSSPState<Graph> state - Contains the modified parent array and distance array after applying Djikstra's Algorithm
      * **/
     template<typename Graph>
     SSSPState<Graph> Djikstra(Graph& g,typename Graph::VertexType s)
@@ -87,15 +94,18 @@ namespace graph
         return state;
     }
     /**
-     * \brief - Returns the parent array and distance array of a graph after applying
-     * 			Bellman-Ford Algorithm
+     * \brief - Applys Bellman-Ford Algorithm on a graph object
      * 
-     * Graph g - First Parameter, a graph object on which Djikstra's Algorithm is applied
+     * Bellman-Ford Algorithm findest the shortest path to all vertices from a single source vertex.
+     * This function returns the distance array and path array after applying Bellman-Ford Algorithm
+     * for a single source vertex
      * 
-     * typename Graph::VertexType s - Second Parameter, a vertex of graph g and the source
+     * @param Graph g - First Parameter, a graph object on which Djikstra's Algorithm is applied
+     * 
+     * @param typename Graph::VertexType s - Second Parameter, a vertex of graph g and the source
      * 								  for Djikstra's algorithm
      * 
-     * SSSPState<Graph> state - Contains the modified parent array and distance array after applying Bellman-Ford Algorithm
+     * @returns SSSPState<Graph> state - Contains the modified parent array and distance array after applying Bellman-Ford Algorithm
      * **/
     //FIXME: Assumes no negative cycle, may segfault
     //put proper checks later
