@@ -134,7 +134,7 @@ namespace graph
      * **/
      
     template<typename Graph>
-    std::map<typename Graph::VertexType,int> DegreeList(Graph& g)
+    std::map<typename Graph::VertexType,int> DegreeMap(Graph& g)
     {
         std::map<typename Graph::VertexType,int> m;
         for(auto i=g.begin();i!=g.end();++i)
