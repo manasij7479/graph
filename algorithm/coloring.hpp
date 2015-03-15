@@ -56,7 +56,7 @@ namespace graph
     {
         std::map<typename Graph::VertexType,int> tempmap;
         int ncolor=0;
-        for(auto i=0;i<vertices.size();++i)
+        for(uint i=0;i<vertices.size();++i)
         {
             std::vector<int> used;
             for(auto j=g.nbegin(vertices[i]);j!=g.nend(vertices[i]);++j)
