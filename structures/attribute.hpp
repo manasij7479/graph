@@ -23,6 +23,7 @@ namespace graph
         Value& value(typename Graph::VertexType x){return data[x];}
         bool isKnown(typename Graph::VertexType x){return data.find(x) != data.end();}
         int count(){return data.size();}
+        std::map<typename Graph::VertexType, Value>& getData(){return data;}
     private:
         std::map<typename Graph::VertexType, Value> data;
     };
