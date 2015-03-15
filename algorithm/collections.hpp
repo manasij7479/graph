@@ -311,5 +311,12 @@ namespace graph
         VertexAttribute<Graph, int> vattr(state.getColorMap());
         return vattr;
     }
+    template<typename Graph>
+    VertexAttribute<Graph, int> VertexColorAssignment(Graph& g)
+    {
+        auto state = WelshPowellColoring(g);
+        VertexAttribute<Graph, int> vattr(state.getColorMap());
+        return vattr;
+    }
 }
 #endif
