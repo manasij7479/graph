@@ -324,6 +324,27 @@ namespace graph
         return false;
     }
     
+    template <typename Graph>
+    bool isHypoHamiltonian(Graph g)
+    {
+        for(auto i=g.begin();i!=g.end();++i)
+        {
+//             std::cout<<i->first<<std::endl;
+//             auto h1 = g;
+            auto h=VertexDeletionSubgraph(g,i->first);
+//             displayGraph(h);
+//             if(!isConnected(&VertexDeletionSubgraph(g,vlist[i])))
+            if(!isHamiltonian(h))
+            {
+                return false;
+            }
+//             std::cout<<isHamiltonian(h)<<std::endl;
+        }
+        
+        return true;
+    }
+    
+    
     /** \brief - Returns true if atleast one edge is present between all
      *  combination of vertices (except self loops) in Graph g, false otherwise
      * 
