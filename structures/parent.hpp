@@ -24,6 +24,9 @@ namespace graph
             std::reverse(result.begin(), result.end());
             return result;
         }
+        
+        bool isKnown(typename Graph::VertexType x){return parent.isKnown(x);}
+        
         V& operator[](V v)
         {
             return parent.value(v); 
