@@ -22,7 +22,25 @@ namespace graph
         typedef typename std::map<VertexType,EdgeList*>::iterator VertexIterator;
         
         AdjacencyList(bool dir=false):directed(dir){}
-        
+        AdjacencyList(const AdjacencyList<VT,ET>& g)
+        {
+            directed = g.directed;
+            for (auto p: g.data)
+                data[p.first] = new EdgeList(*p.second);
+        }
+        AdjacencyList<VT, ET>& operator=(const AdjacencyList<VT, ET>& g)
+        {
+            for (auto p: data)
+                delete p.second;
+            directed = g.directed;
+            for (auto p: g.data)
+                data[p.first] = new EdgeList(*p.second);
+        }
+        ~AdjacencyList()
+        {
+            for (auto p: data)
+                delete p.second;
+        }
         void insertVertex(const VertexType& v)
         {
             if(data.find(v)==data.end())
