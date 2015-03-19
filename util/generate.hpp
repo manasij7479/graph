@@ -30,6 +30,11 @@ namespace graph
             Graph<int,int> result;
             return result;
         }
+        Graph<int,int> empty_directed(std::vector<int> ,int=1)   
+        {
+            Graph<int,int> result(true);
+            return result;
+        }
         
         /**
          * \brief - Returns a path graph 
