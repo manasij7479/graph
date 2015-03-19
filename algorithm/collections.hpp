@@ -173,8 +173,8 @@ namespace graph
     template<typename Graph>
     std::map<typename Graph::VertexType,typename Graph::EdgeType> EcentricityList(Graph& g)
     {
-        if(g.isDirected() || !isConnected(g))
-            throw std::runtime_error("Not Possible : 'g'-> Undirected & Connected not met ...");
+        if(/*g.isDirected() ||*/ !isConnected(g))
+            throw std::runtime_error("Not Possible : 'g'-> Connected not met ...");
         std::map<typename Graph::VertexType,typename Graph::EdgeType> m;
         for(auto i=g.begin();i!=g.end();++i)
         {
