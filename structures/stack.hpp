@@ -18,6 +18,8 @@ namespace graph
         Stack(std::function<bool(V,V)>){}
         /**
          * \brief - function to push element to stack
+         * 
+         * @param V t - Parameter, a vertex
          * **/
         void put(V t)
         {
@@ -43,6 +45,8 @@ namespace graph
         }
         /**
          * \brief - returns the number of element in stack
+         * 
+         * @param V v - Parameter, a vertex
          * **/
         int count(V v)
         {
