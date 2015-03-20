@@ -1,9 +1,15 @@
-#ifndef GRAPH_STRUCTURE_ATTRIBUTE
+/**
+ * \brief attribute.hpp - Header file to store different attributes of a graph
+ * **/
+ #ifndef GRAPH_STRUCTURE_ATTRIBUTE
 #define GRAPH_STRUCTURE_ATTRIBUTE
 #include <map>
 namespace graph
 {
     template<typename Graph,typename Value>
+    /**
+     * \brief - class that contains graph attributes
+     * **/
     class GraphAttribute
     {
     public:
@@ -13,7 +19,12 @@ namespace graph
     private:
         Value v;
     };
-    
+    /**
+     * \brief - class that contains Vertex attributes
+     * 
+     * vertex attributes contains functions to return value of a vertex, to check if a vertex
+     * belongs to a graph, and the total number of vertices in a graph
+     * **/
     template<typename Graph, typename Value>
     class VertexAttribute
     {
@@ -26,7 +37,12 @@ namespace graph
     private:
         std::map<typename Graph::VertexType, Value> data;
     };
-    
+    /**
+     * \brief - class that contains Edge attributes
+     * 
+     * edge attribute contains the weight of an edge when the two vertices
+     * joined by the edge are given
+     * **/
     template<typename Graph, typename Value>
     class EdgeAttribute
     {
