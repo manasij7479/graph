@@ -1,3 +1,6 @@
+/**
+ * \brief - parent.hpp - structure to hold paths of vertices of a graph
+ * **/
 #ifndef GRAPH_STRUCTURE_PARENT
 #define GRAPH_STRUCTURE_PARENT
 #include "attribute.hpp"
@@ -10,6 +13,13 @@ namespace graph
     {
     public:
         typedef typename Graph::VertexType V;
+        /**
+         * \brief - returns the path of a particular vertex of a graph
+         * 
+         * @param V v- Parameter, a vertex
+         * 
+         * @returns std::vector<V> result - the path of vertex v
+         * **/
         std::vector<V> getPath(V v)
         {
             std::vector<V> result;
