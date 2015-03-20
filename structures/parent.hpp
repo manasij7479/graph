@@ -1,5 +1,5 @@
 /**
- * \brief - parent.hpp - structure to hold paths of vertices of a graph
+ * \brief - parent.hpp - header file containing structure to hold paths of vertices of a graph
  * **/
 #ifndef GRAPH_STRUCTURE_PARENT
 #define GRAPH_STRUCTURE_PARENT
