@@ -298,7 +298,7 @@ namespace graph
      * \brief - Returns a list containing all vertices of Graph g having edges
      * ending at Vertex x
      * 
-     * @param Graph g - Parameter, a graph object
+     * @param Graph g - First Parameter, a graph object
      * 
      * @param typename Graph::VertexType x - Second parameter, a vertex of Graph g
      *   
@@ -322,6 +322,17 @@ namespace graph
             return v;
         }           
     }
+    
+    /**
+     * \brief - Returns a mapping of vertices and their corresponding colours
+     * 
+     * this employs a brute force approach. the vertex colouring is done using the minimum
+     * number of colours possible.
+     * 
+     * @param Graph& g - Parameter, a graph object
+     * 
+     * @returns VertexAttribute<Graph, int> vattr - the mapping of vertices and their colours
+     * **/
     template<typename Graph>
     VertexAttribute<Graph, int> minVertexColorAssignment(Graph& g)
     {
@@ -329,7 +340,17 @@ namespace graph
         VertexAttribute<Graph, int> vattr(state.getColorMap());
         return vattr;
     }
-    
+    /**
+     * \brief - Returns a mapping of vertices and their corresponding colours
+     * 
+     * this employs someheuristics to reduce complexity. the vertex colouring is
+     * not guaranteed to be done using the minimum number of colours possible everytime.
+     * 
+     * @param Graph& g - Parameter, a graph object
+     * 
+     * @returns VertexAttribute<Graph, int> vattr - the mapping of vertices and their colours
+     * **/
+    template<
     template<typename Graph>
     VertexAttribute<Graph, int> VertexColorAssignment(Graph& g)
     {
@@ -337,7 +358,17 @@ namespace graph
         VertexAttribute<Graph, int> vattr(state.getColorMap());
         return vattr;
     }
-    
+    /**
+     * \brief - Returns an Eulerian path of a graph
+     * 
+     * An Eulerian Path is a path that visits every edge of a graph exactly once.
+     * This employs Hierholzer's algorithm.
+     * 
+     * @param Graph g - Parameter, a graph object
+     * 
+     * @returns std::vector<V> path - the Eulerian path
+     * **/
+    template<
     template<typename Graph>
     std::vector<typename Graph::VertexType> EulerianPath(Graph g)           // Hierholzer's algorithm   
     {
