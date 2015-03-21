@@ -1,16 +1,17 @@
 /** \brief predicates.hpp - Header file that has collection of boolean functions 
-*      on a graph object. All these checks must evaluate to true or false.
-*      
-*      Note: Use std::bind on these predicates and a Graph object for these to be 
-*      applicable to STL algorithms.
-*      
-**/
+ *      on a graph object. All these checks must evaluate to true or false.
+ *      
+ *      Note: Use std::bind on these predicates and a Graph object for these to be 
+ *      applicable to STL algorithms.
+ *      
+ **/
 #ifndef GRAPH_ALGORITHM_PREDICATES_HPP
 #define GRAPH_ALGORITHM_PREDICATES_HPP
 #include "../graph.hpp"
 # include "enumeration.hpp"
 #include "search.hpp"
 #include "collections.hpp"
+#include "operations.hpp"
 #include<vector>
 #include<algorithm>
 namespace graph
@@ -39,7 +40,7 @@ namespace graph
      * 
      * @param Graph::VertexType y- Third parameter, the second vertex
      * **/
-     
+    
     template<typename Graph>
     bool isAdjacent(Graph& g,typename Graph::VertexType x,typename Graph::VertexType y)
     {
@@ -48,14 +49,14 @@ namespace graph
         return false;
     }
     
-     /**
+    /**
      * \brief - Returns true if Graph g is a subgraph of Graph h, false otherwise
      * 
      * @param Graph g - First parameter, a graph object
      *   
      * @param Graph h - Second parameter, a graph object
      * **/
-     
+    
     template<typename Graph>
     bool isSubgraph(Graph& g,Graph& h) //is 'g' subgraph of 'h'
     {
@@ -64,11 +65,11 @@ namespace graph
         for(auto i=g.begin();i!=g.end();++i)
             if(!(isVertex(h,i->first)))
                 return false;
-        for(auto i=g.begin();i!=g.end();++i)
-            for(auto j=g.nbegin(i->first);j!=g.nend(i->first);++j)
-                if(!(isAdjacent(h,i->first,j->first)))
-                    return false;
-        return true;
+            for(auto i=g.begin();i!=g.end();++i)
+                for(auto j=g.nbegin(i->first);j!=g.nend(i->first);++j)
+                    if(!(isAdjacent(h,i->first,j->first)))
+                        return false;
+                    return true;
     }
     /**
      * \brief - Returns true if Graph g is a spanning subgraph of Graph h,
@@ -86,6 +87,7 @@ namespace graph
             return true;
         return false;
     }
+    
     /**
      * \brief - Returns true if all vertices of Graph g can be traversed,
      * false otherwise
@@ -101,6 +103,7 @@ namespace graph
         
         return d.size()==g.order();
     }
+    
     /**
      * \brief - Returns true if Graph::VertexType y can be reached from 
      * Graph::VertexType x in Graph g, false otherwise
@@ -111,6 +114,7 @@ namespace graph
      * 
      * @param Graph::VertexType y- Third parameter, the second vertex
      * **/
+    
     template<typename Graph>
     bool isConnected(Graph& g,typename Graph::VertexType x,typename Graph::VertexType y)
     {
@@ -157,7 +161,7 @@ namespace graph
      * 
      * @param Graph g - Parameter, a graph object
      * **/
-     
+    
     template <typename Graph>
     bool isRegular(Graph &g)
     {
@@ -172,7 +176,7 @@ namespace graph
             }
             if(k!=degree(g,x->first))
                 return false;
-          
+            
         }
         return true;
     }
@@ -182,7 +186,7 @@ namespace graph
      * 
      * @param Graph g - Parameter, a graph object
      * **/
-     
+    
     template <typename Graph>
     bool isEulerian(Graph &g)
     {
@@ -216,7 +220,7 @@ namespace graph
      * 
      * @param Graph g - Parameter, a graph object
      * **/
-     
+    
     template <typename Graph>
     bool isSemiEulerian(Graph &g)
     {
@@ -268,6 +272,79 @@ namespace graph
             return false;
     }
     
+    template <typename Graph>
+    bool isHamiltonian(Graph g)
+    {
+        auto vlist = VertexList(g);
+        std::sort(vlist.begin(),vlist.end());
+        
+        do
+        {
+            bool flag = true;
+            auto v = vlist[0];
+            for(int i=1;i<vlist.size();++i)
+            {
+                if(!isAdjacent(g,v,vlist[i]))
+                {
+                    flag = false;
+                    break;
+                }
+                v = vlist[i];
+            }
+            if(flag == true && isAdjacent(g,vlist.front(),vlist.back()))
+                return true;
+        }while(std::next_permutation(vlist.begin(),vlist.end()));
+        
+        return false;
+    }
+    
+    template <typename Graph>
+    bool isSemiHamiltonian(Graph g)
+    {
+        auto vlist = VertexList(g);
+        std::sort(vlist.begin(),vlist.end());
+        
+        do
+        {
+            bool flag = true;
+            auto v = vlist[0];
+            for(int i=1;i<vlist.size();++i)
+            {
+                if(!isAdjacent(g,v,vlist[i]))
+                {
+                    flag = false;
+                    break;
+                }
+                v = vlist[i];
+            }
+            if(flag == true)
+                return true;
+        }while(std::next_permutation(vlist.begin(),vlist.end()));
+        
+        return false;
+    }
+    
+    template <typename Graph>
+    bool isHypoHamiltonian(Graph g)
+    {
+        for(auto i=g.begin();i!=g.end();++i)
+        {
+//             std::cout<<i->first<<std::endl;
+//             auto h1 = g;
+            auto h=VertexDeletionSubgraph(g,i->first);
+//             displayGraph(h);
+//             if(!isConnected(&VertexDeletionSubgraph(g,vlist[i])))
+            if(!isHamiltonian(h))
+            {
+                return false;
+            }
+//             std::cout<<isHamiltonian(h)<<std::endl;
+        }
+        
+        return true;
+    }
+    
+    
     /** \brief - Returns true if atleast one edge is present between all
      *  combination of vertices (except self loops) in Graph g, false otherwise
      * 
@@ -282,10 +359,10 @@ namespace graph
             {
                 if (x!=y && !(isAdjacent(g,x->first,y->first)))
                     return false;
-                 if (g.isDirected() && !(isAdjacent(g,y->first,x->first)))
-                        return false;
+                if (g.isDirected() && !(isAdjacent(g,y->first,x->first)))
+                    return false;
             }
-        return true;
+            return true;
     }
     
     /**
@@ -323,7 +400,7 @@ namespace graph
                     return false;
                 
                 return true;
-
+            
     }
     
     /** \brief - Returns true if there is atleast one path starting and ending
@@ -390,7 +467,7 @@ namespace graph
     template<typename Graph>
     bool isEmpty(Graph& g) //is vertexless graph
     {
-       return (g.begin()==g.end());
+        return (g.begin()==g.end());
     }
     
     /** \brief - Returns true if number of edges in Graph g is less than or equal
@@ -404,25 +481,25 @@ namespace graph
     {
         int count=0;
         for (auto x=g.begin();x!=g.end();x++)
-        for (auto y=g.begin();y!=g.end();y++)
-            if(x!=y && isAdjacent(g,x->first,y->first))
-                count++;
-            if (g.isDirected())
-                for (auto x=g.begin();x!=g.end();x++)
-                    for (auto y=g.begin();y!=g.end();y++)
-                        if(isAdjacent(g,y->first,x->first))
-                            count++;
-        int n=(g.isDirected()?4*g.order():2*g.order());
-        if (count<=n)
-            return true;
-        return false;
+            for (auto y=g.begin();y!=g.end();y++)
+                if(x!=y && isAdjacent(g,x->first,y->first))
+                    count++;
+                if (g.isDirected())
+                    for (auto x=g.begin();x!=g.end();x++)
+                        for (auto y=g.begin();y!=g.end();y++)
+                            if(isAdjacent(g,y->first,x->first))
+                                count++;
+                            int n=(g.isDirected()?4*g.order():2*g.order());
+                        if (count<=n)
+                            return true;
+                        return false;
     }
     
     /** \brief - Returns true if Graph g is a tree, false otherwise
      * 
      * @param Graph g - Parameter, a graph object
      * **/
-        
+    
     template<typename Graph>
     bool isTree(Graph& g) 
     {

@@ -10,6 +10,7 @@
 #include "enumeration.hpp"
 #include "predicates.hpp"
 #include "../structures/attribute.hpp"
+#include "../structures/parent.hpp"
 #include "coloring.hpp"
 #include<vector>
 #include<map>
@@ -139,7 +140,7 @@ namespace graph
      * **/
      
     template<typename Graph>
-    std::map<typename Graph::VertexType,int> DegreeList(Graph& g)
+    std::map<typename Graph::VertexType,int> DegreeMap(Graph& g)
     {
         std::map<typename Graph::VertexType,int> m;
         for(auto i=g.begin();i!=g.end();++i)
@@ -180,10 +181,11 @@ namespace graph
      * **/
     
     template<typename Graph>
-    std::map<typename Graph::VertexType,typename Graph::EdgeType> EcentricityList(Graph& g)
+    std::map<typename Graph::VertexType,typename Graph::EdgeType> EcentricityList(Graph& g, bool check = true)
     {
-        if(g.isDirected() || !isConnected(g))
-            throw std::runtime_error("Not Possible : 'g'-> Undirected & Connected not met ...");
+        if (check == true)
+            if(g.isDirected() || !isConnected(g))
+                throw std::runtime_error("Not Possible : 'g'-> Undirected and Connected not met ...");
         std::map<typename Graph::VertexType,typename Graph::EdgeType> m;
         for(auto i=g.begin();i!=g.end();++i)
         {
@@ -326,6 +328,73 @@ namespace graph
         auto state = minVertexColoring(g);
         VertexAttribute<Graph, int> vattr(state.getColorMap());
         return vattr;
+    }
+    
+    template<typename Graph>
+    VertexAttribute<Graph, int> VertexColorAssignment(Graph& g)
+    {
+        auto state = WelshPowellColoring(g);
+        VertexAttribute<Graph, int> vattr(state.getColorMap());
+        return vattr;
+    }
+    
+    template<typename Graph>
+    std::vector<typename Graph::VertexType> EulerianPath(Graph g)           // Hierholzer's algorithm   
+    {
+        if(!isEulerian(g))
+            throw std::runtime_error("g is not eulerian ...");
+        typedef typename Graph::VertexType V;
+        std::vector<V> path;
+        std::set<V> visited;
+        std::map<V,std::vector<V>> unusedEdges;                             // unused edges FROM each vertex
+        for(auto i=g.begin();i!=g.end();++i)
+            for(auto j=g.nbegin(i->first);j!=g.nend(i->first);++j)
+                unusedEdges[i->first].push_back(j->first);
+        V start = g.begin()->first;
+        auto it = path.begin();
+        
+        while(1)
+        {
+            V v = start;
+            visited.insert(v);
+            if(path.empty())
+                it = path.insert(it,v);
+                
+            do
+            {
+                for(auto w=g.nbegin(v);w!=g.nend(v);++w)                    // basic cycle find
+                {
+                    auto it1 = std::find(unusedEdges[v].begin(), unusedEdges[v].end(), w->first);
+                    if( it1 != unusedEdges[v].end())
+                    {
+                        unusedEdges[v].erase(it1);
+                        if(!g.isDirected())
+                        {
+                            auto it2 = std::find(unusedEdges[w->first].begin(), unusedEdges[w->first].end(), v);
+                            unusedEdges[w->first].erase(it2);
+                        }
+                        visited.insert(w->first);
+                        it = path.insert(it,w->first);
+                        v = w->first;
+                        break;
+                    }
+                }
+            }while(v != start);
+            
+            bool flag = false;
+            for(auto i=g.begin();i!=g.end();++i)                                               // check for existence of other cycles
+                if(visited.find(i->first)!=visited.end() && !unusedEdges[i->first].empty())
+                {
+                    start = i->first;
+                    it = std::find(path.begin(), path.end(), i->first);
+                    flag = true;
+                }
+            
+            if(flag == false)
+                break;
+        }
+        
+        return path;
     }
 }
 #endif

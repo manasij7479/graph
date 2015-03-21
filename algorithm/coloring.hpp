@@ -56,7 +56,7 @@ namespace graph
     {
         std::map<typename Graph::VertexType,int> tempmap;
         int ncolor=0;
-        for(auto i=0;i<vertices.size();++i)
+        for(uint i=0;i<vertices.size();++i)
         {
             std::vector<int> used;
             for(auto j=g.nbegin(vertices[i]);j!=g.nend(vertices[i]);++j)
@@ -109,7 +109,7 @@ namespace graph
     ColorState<Graph, typename Graph::VertexType> WelshPowellColoring(Graph& g)
     {
         typedef typename Graph::VertexType V;
-        auto d_list = DegreeList(g);
+        auto d_list = DegreeMap(g);
         auto vlist = VertexList(g);
         std::sort(vlist.begin(),vlist.end(),[&](V x,V y){return d_list[x]>d_list[y];});
         return vertexColoring(g, vlist);
