@@ -24,12 +24,35 @@ namespace graph
             for(int i=start;i<=start+n-1;++i)
                 g.insertVertex(i);
         }
-        
+        /**
+         * \brief - Returns an undirected empty graph 
+         * 
+         * An undirected empty graph has no vertices, no edges and is undirected
+         * 
+         * @param std::vector<int>- First parameter, a vector of integers, not used here
+         * 
+         * @param int- Second parameter, the starting position from which the vertices are 
+         * to be added, default value 1, not used here
+         * 
+         * returns Graph<int,int> result - a variable to store the empty graph
+         * **/
         Graph<int,int> empty(std::vector<int> ,int=1)   
         {
             Graph<int,int> result;
             return result;
         }
+        /**
+         * \brief - Returns an directed empty graph 
+         * 
+         * An undirected empty graph has no vertices, no edges and is directed
+         * 
+         * @param std::vector<int>- First parameter, a vector of integers, not used here
+         * 
+         * @param int- Second parameter, the starting position from which the vertices are 
+         * to be added, default value 1, not used here
+         * 
+         * returns Graph<int,int> result - a variable to store the empty graph
+         * **/
         Graph<int,int> empty_directed(std::vector<int> ,int=1)   
         {
             Graph<int,int> result(true);
