@@ -271,7 +271,10 @@ namespace graph
         else
             return false;
     }
-    
+    /** \brief - Returns true if the graph is Hamiltoian, false other wise
+     * 
+     * @param Graph g - Parameter, a graph object
+     * **/
     template <typename Graph>
     bool isHamiltonian(Graph g)
     {
@@ -297,7 +300,10 @@ namespace graph
         
         return false;
     }
-    
+    /** \brief - Returns true if the graph is Semi-Hamiltoian, false other wise
+     * 
+     * @param Graph g - Parameter, a graph object
+     * **/
     template <typename Graph>
     bool isSemiHamiltonian(Graph g)
     {
@@ -323,7 +329,13 @@ namespace graph
         
         return false;
     }
-    
+    /** \brief - Returns true if the graph is Hypo Hamiltoian, false other wise
+     * 
+     * A graph is Hypo Hamiltonian if all vertex deletion subgraphs of the graph
+     * are hamiltonian.
+     * 
+     * @param Graph g - Parameter, a graph object
+     * **/
     template <typename Graph>
     bool isHypoHamiltonian(Graph g)
     {
