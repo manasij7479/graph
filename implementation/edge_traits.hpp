@@ -1,8 +1,11 @@
+/**
+ * \brief edge_traits.hpp - Header fiel to store edge traits
+ * **/
 #ifndef GRAPH_IMPLEMENTATION_EDGE_TRAITS
 #define GRAPH_IMPLEMENTATION_EDGE_TRAITS
 namespace graph
 {
-    template<typename V>
+	template<typename V>
     struct edge_traits
     {
         typedef V DistanceType; 
