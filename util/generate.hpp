@@ -73,7 +73,7 @@ namespace graph
          * 
          * @param args[0] - the number of vertices to be added
          * 
-         * @returns Graph<std::string,int> result - a variable to store the path graph
+         * @returns Graph<int,int>  result - a variable to store the path graph
          * **/
         
         Graph<int,int> path(std::vector<int> args, int start=1)
@@ -102,7 +102,7 @@ namespace graph
          * 
          * @param args[0]- The number of vertices to be added
          * 
-         * @returns Graph<std::string,int> result - a variable to store the cycle graph
+         * @returns Graph<int,int> result - a variable to store the cycle graph
          * **/
         
         Graph<int,int> cycle(std::vector<int> args,int start=1)
@@ -129,7 +129,7 @@ namespace graph
          * 
          * @param args[0]- The number of vertices to be added
          * 
-         * @returns Graph<std::string,int> result - a variable to store the hypercube graph
+         * @returns Graph<int,int> result - a variable to store the hypercube graph
          * **/
         
         Graph<int,int> hypercube(std::vector<int> args,int start=1)
@@ -161,7 +161,7 @@ namespace graph
          * 
          * @param args[0]- The number of vertices to be added
          * 
-         * @returns Graph<std::string,int> result - a variable to store the complete graph
+         * @returns Graph<int,int> result - a variable to store the complete graph
          * **/
         
         Graph<int,int> complete(std::vector<int> args,int start=1)
@@ -193,7 +193,7 @@ namespace graph
          * 
          * @param args[0]- The number of vertices to be added
          * 
-         * @returns Graph<std::string,int> result - a variable to store the wheel graph
+         * @returns Graph<int,int> result - a variable to store the wheel graph
          * **/
         
         Graph<int,int> wheel(std::vector<int> args,int start=1)
@@ -227,7 +227,7 @@ namespace graph
          *  
          * @param args[1]- The number of vertices to be added on the other side
          * 
-         * @returns Graph<std::string,int> result - a variable to store the complete bipartite graph
+         * @returns Graph<int,int> result - a variable to store the complete bipartite graph
          * **/
         
         Graph<int,int> complete_bipartite(std::vector<int> args,int start=1)
@@ -258,7 +258,7 @@ namespace graph
          * 
          * @param args[0]- The number of vertices to be added
          * 
-         * @returns Graph<std::string,int> result - a variable to store the star graph
+         * @returns Graph<int,int> result - a variable to store the star graph
          * **/
         
         Graph<int,int> star(std::vector<int> args,int start=1)
@@ -285,7 +285,7 @@ namespace graph
          *  
          * @param args[1]- The number of vertices between two vetices with an edge
          * 
-         * @returns Graph<std::string,int> result - a variable to store the star polygon graph
+         * @returns Graph<int,int> result - a variable to store the star polygon graph
          * **/
         
         Graph<int,int> star_polygon(std::vector<int> args,int start=1)
@@ -323,7 +323,7 @@ namespace graph
          * 
          * @param args[0]- The number of vertices to be added
          * 
-         * @returns Graph<std::string,int> result - a variable to store the friendship graph
+         * @returns Graph<int,int> result - a variable to store the friendship graph
          * **/
         
         Graph<int,int> friendship(std::vector<int> args,int start=1)
@@ -354,7 +354,7 @@ namespace graph
          * 
          * @param args[0]- The number of vertices to be added
          * 
-         * @returns Graph<std::string,int> result - a variable to store the mobius ladder graph
+         * @returns Graph<int,int> result - a variable to store the mobius ladder graph
          * **/
         
         Graph<int,int> mobius_ladder(std::vector<int> args,int start=1)
@@ -378,14 +378,14 @@ namespace graph
          * 
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
-         * @param int start- TSecond parameter, the starting position from which the vertices are 
+         * @param int start- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1
          * 
          * @param args[0]- The number of vertices to be added as y coordinates
          *  
          * @param args[1]- The number of vertices to be added as x coordinates
          * 
-         * @returns Graph<std::string,int> result - a variable to store the grid graph
+         * @returns Graph<int,int> result - a variable to store the grid graph
          * **/
         
         Graph<int,int> grid(std::vector<int> args,int start=1)
@@ -435,7 +435,7 @@ namespace graph
          * @param args[1]- The number of vertices between two vertices with an 
          * edge in the star polygon
          * 
-         * @returns Graph<std::string,int> result - a variable to store the generalized petersen graph
+         * @returns Graph<int,int> result - a variable to store the generalized petersen graph
          * **/
         
         Graph<int,int> generalized_petersen(std::vector<int> args, int start=1)
@@ -460,7 +460,7 @@ namespace graph
          * 
          * @param args[0]- The number of vertices to be added
          *  
-         * @returns Graph<std::string,int> result - a variable to store the k-ary tree
+         * @returns Graph<int,int> result - a variable to store the k-ary tree
          * **/
         
         Graph<int,int> k_ary_tree(std::vector<int> args,int start=1)   //args[0]=n, args[1]=k
