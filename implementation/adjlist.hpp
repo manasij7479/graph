@@ -1,4 +1,7 @@
-#ifndef GRAPH_IMPLEMENTATION_ADJLIST_HPP
+/**
+ * \brief adjlist.hpp - Header file that contains adjacency list of a graph 
+ * **/
+ #ifndef GRAPH_IMPLEMENTATION_ADJLIST_HPP
 #define GRAPH_IMPLEMENTATION_ADJLIST_HPP
 #include <map>
 #include <unordered_map>
@@ -7,6 +10,9 @@
 #include <iostream>
 namespace graph
 {
+	/**
+	 * \brief - class to store adjacency list of a graph
+	 * **/
     template
     <
         typename VT,
@@ -22,7 +28,11 @@ namespace graph
         typedef typename std::map<VertexType,EdgeList*>::iterator VertexIterator;
         
         AdjacencyList(bool dir=false):directed(dir){}
-        
+        /**
+         * \brief - function to insert a vertex to a graph
+         * 
+         * @param const VertexType& v - Parameter, a vertex to be added
+         * **/
         void insertVertex(const VertexType& v)
         {
             if(data.find(v)==data.end())
@@ -31,6 +41,11 @@ namespace graph
                 data[v]=e;
             }
         }
+        /**
+         * \brief - function to remove a vertex from a graph
+         * 
+         * @param VertexType v - Parameter, a vertex to be removed
+         * **/
         void removeVertex(VertexType v)
         {
             for(auto& p:data)
@@ -46,6 +61,15 @@ namespace graph
             delete data[v];
             data.erase(v);
         }
+        /**
+         * \brief - function to insert an edge to a graph
+         * 
+         * @param const VertexType& x - First Parameter, source vertex
+         * 
+         * @param const VertexType& y - Second Parameter, destination vertex
+         * 
+         * @param const EdgeType& e - Third parameter, an edge
+         * **/
         void insertEdge(const VertexType& x,const VertexType& y,const EdgeType& e)
         {
             auto xit=data.find(x);
@@ -56,7 +80,14 @@ namespace graph
             if(!directed)
                 data[y]->insert({x,e});
         }
-        
+        /**
+         * \brief - function to remove an edge from a graph
+         * 
+         * @param const VertexType& x - First Parameter, source vertex
+         * 
+         * @param const VertexType& y - Second Parameter, destination vertex
+         * 
+         * **/
         void removeEdge(const VertexType& x,const VertexType& y)
         {
             data[x]->erase(y);
@@ -71,7 +102,9 @@ namespace graph
         EdgeIterator nbegin(const VertexType& v){return data[v]->begin();}
         EdgeIterator nend(const VertexType& v){return data[v]->end();}
         EdgeIterator nfind(const VertexType& v,const VertexType& n){return data[v]->find(n);}
-        
+        /**
+         * \brief - function to display vertices of a graph
+         * **/
         void showInternal()
         {
             for(auto x:data)
@@ -79,7 +112,13 @@ namespace graph
                 std::cout<<x.first<<std::endl;
             }
         }
-        
+        /**
+         * \brief - function to to get weight of an edge of a graph
+         * 
+         * @param const VertexType& x - First Parameter, source vertex
+         * 
+         * @param const VertexType& y - Second Parameter, destination vertex
+         * **/
         EdgeType weight(const VertexType x,const VertexType y)
         {
             auto i=data[x]->find(y);
