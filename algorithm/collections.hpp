@@ -309,7 +309,7 @@ namespace graph
     std::vector<typename Graph::VertexType> InVertexList(Graph& g,typename Graph::VertexType x)
     {
         if(!g.isDirected())
-            return outVertexList(g,x);
+            return OutVertexList(g,x);
         else
         {
             std::vector<typename Graph::VertexType> v;
@@ -350,7 +350,6 @@ namespace graph
      * 
      * @returns VertexAttribute<Graph, int> vattr - the mapping of vertices and their colours
      * **/
-    template<
     template<typename Graph>
     VertexAttribute<Graph, int> VertexColorAssignment(Graph& g)
     {
@@ -368,7 +367,6 @@ namespace graph
      * 
      * @returns std::vector<V> path - the Eulerian path
      * **/
-    template<
     template<typename Graph>
     std::vector<typename Graph::VertexType> EulerianPath(Graph g)           // Hierholzer's algorithm   
     {

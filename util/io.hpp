@@ -1,3 +1,6 @@
+/**
+ * \brief - io.hpp - Header file that contains all input output operations
+ * **/
 #ifndef GRAPH_UTIL_IO_HPP
 #define GRAPH_UTIL_IO_HPP
 #include <fstream>
@@ -53,6 +56,13 @@ namespace graph
         std::ifstream in(filename);
         return makeGraph(in);
     }
+    /**
+     * \brief - Function to display adjacency list of a graph
+     * 
+     * @param Graph& g - First Parameter, a graph object
+     * 
+     * @param std::ostream& out = std::cout - Second Paramaeter, an output stream
+     * **/
     template<typename Graph>
     void displayGraph(Graph& g, std::ostream& out = std::cout)
     {

@@ -28,13 +28,13 @@ namespace graph
         typedef typename std::map<VertexType,EdgeList*>::iterator VertexIterator;
         
         AdjacencyList(bool dir=false):directed(dir){}
-<<<<<<< HEAD
+        
         /**
          * \brief - function to insert a vertex to a graph
          * 
          * @param const VertexType& v - Parameter, a vertex to be added
          * **/
-=======
+        
         AdjacencyList(const AdjacencyList<VT,ET>& g)
         {
             directed = g.directed;
@@ -54,7 +54,6 @@ namespace graph
             for (auto p: data)
                 delete p.second;
         }
->>>>>>> master
         void insertVertex(const VertexType& v)
         {
             if(data.find(v)==data.end())

@@ -17,8 +17,7 @@ namespace graph
      /**
      * \brief - The basic framework to implement Graph Search
      * 
-     * Container<Graph> fringe - can be used as a stack, queue or priority queue in this 
-     * context
+     * Container<Graph> fringe - can be used as a stack, queue or priority queue in this context
      * **/   
     template
     <
@@ -31,7 +30,12 @@ namespace graph
         typedef typename Graph::VertexType V;
         typedef typename Graph::EdgeType E;
         typedef typename edge_traits<E>::DistanceType D;
-        
+        /**
+         * \brief - Constructor to initialize the graph, the source vertex as per input
+         * 
+         * Initialize fringe with the template variable Container and initializing
+         * the hooks with true value.
+         * **/
         Search
         (
             Graph& g_,
@@ -50,7 +54,13 @@ namespace graph
                 return true;
             };
         }
+        /**
+         * \brief - Destructor
+         * **/
         virtual ~Search(){}
+        /**
+         * \brief - overloaded () operator which performs the search 
+         **/
         virtual void operator()()
         {
             dist[source]=D(0);
@@ -99,11 +109,14 @@ namespace graph
         
         /** \brief - To get the parent array at a particular instance **/
         ParentArray<Graph>& getParentArray() {return parent;}
-
-    
+        
+        /** \brief - Hook for .... TODO **/
         void setp1(std::function<bool(const V&)> f){p1=f;}
+        /** \brief - Hook for .... TODO**/
         void setp2(std::function<bool(const V&)> f){p2=f;}
+        /** \brief - Hook for back edges **/
         void setp3(std::function<bool(const V&)> f){p3=f;}
+        /** \brief - Hook for tree edges **/
         void setp4(std::function<bool(const V&,const V&)> f){p4=f;}
         
         void resetFringe(std::function<bool(V,V)> compare)//This can be used to implement heuristics
