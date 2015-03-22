@@ -1,4 +1,9 @@
-/**	\brief sssp.hpp - Header file that has collection of single source shortest path finding algorithms
+/**	\brief sssp.hpp - Header file that has collection of single source shortest path finding algorithms.
+ * 
+ * The single-source shortest-paths problem refers to, given
+ * a graph G , finding a shortest path from a given source vertex
+ * s to every vertex x.
+ * Reference Link - <a href="http://en.wikipedia.org/wiki/Shortest_path_problem#Single-source_shortest_paths">SSSP</a>
  * **/
 
 #ifndef GRAPH_ALGORITHM_SSSP_HPP
@@ -15,6 +20,14 @@ namespace graph
 {    
     using namespace std::placeholders;
     
+    /**
+     * \brief - Class to hold the source vertex and current state of the required datastructures
+     * during a SSSP algorithm.
+     * 
+     * Current state includes the state of the graph, the distance array(DistanceArray<Graph>) and parent array(ParentArray<Graph>).
+     * At the end of a SSSP algorithm, SSSPState contains the final state which is the return type for every
+     * SSSP algprithm.
+     * **/
     template <typename Graph>
     class SSSPState
     {
@@ -47,9 +60,16 @@ namespace graph
                 parent[v]=u;
             }
         }
-        DistanceArray<Graph>& getDistanceArray() {return distance;}
-        ParentArray<Graph>& getParentArray() {return parent;}
+        DistanceArray<Graph>& getDistanceArray() {return distance;}///<Returns the distance array
+        ParentArray<Graph>& getParentArray() {return parent;}///< Returns the parent array
         
+        /** 
+         * \brief - Overloaded [] operator which returns a pair of distance and parent of x
+         *
+         * @param V x - Parameter, a vertex
+         * 
+         * @returns std::pair<E,V> - pair containing distance and parent of x
+         **/
         std::pair<E,V> operator[](V x)
         {
             return std::make_pair(distance[x],parent[x]);
@@ -67,6 +87,7 @@ namespace graph
      * Djikstra's Algorithm findest the shortest path to all vertices from a single source vertex.
      * This function returns the distance array and path array after applying Djikstra's Algorithm
      * for a single source vertex
+     * * Reference Link - <a href="http://en.wikipedia.org/wiki/Dijkstra's_algorithm">Dijkstra's ALgorithm</a>
      * 
      * @param Graph g - First Parameter, a graph object on which Djikstra's Algorithm is applied
      * 
@@ -98,7 +119,8 @@ namespace graph
      * 
      * Bellman-Ford Algorithm findest the shortest path to all vertices from a single source vertex.
      * This function returns the distance array and path array after applying Bellman-Ford Algorithm
-     * for a single source vertex
+     * for a single source vertex.
+     * * Reference Link - <a href="http://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm">Bellman-Ford Algorithm</a>
      * 
      * @param Graph g - First Parameter, a graph object on which Djikstra's Algorithm is applied
      * 

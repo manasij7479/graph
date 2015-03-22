@@ -1,4 +1,7 @@
 /**	\brief apsp.hpp - Header file that has collection of all pair shortest path finding algorithms
+ * 
+ * The All-Pairs Shortest Path problem finds the shortest paths between every pair of vertices v, v' in the graph.
+ * Reference Link - <a href="http://en.wikipedia.org/wiki/Shortest_path_problem#All-pairs_shortest_paths">APSP</a>
  * **/
 
 #ifndef GRAPH_ALGORITHM_APSP_HPP
@@ -16,6 +19,13 @@ namespace graph
 {    
     //     using namespace std::placeholders;
     
+    /**
+     * \brief - Class to hold the current state of the required datastructures during an APSP algorithm.
+     * 
+     * Current state includes the state of the graph, the distance matrix and the path matrix.
+     * At the end of an APSP algorithm, APSPState contains the final state which is the return type for every
+     * APSP algprithm.
+     * **/
     template <typename Graph>
     class APSPState
     {
@@ -52,7 +62,8 @@ namespace graph
          * \brief - Function to determine the shortest path between a pair of vertices
          * 
          * This function finds the shortest path between a pair of vetices 'i' and
-         * 'j' through a vertex 'k'
+         * 'j' through a vertex 'k' and updates the distance and the shortest path 
+         * accordingly.
          * 
          * @param V k - First parameter, a vertex
          * 
@@ -72,6 +83,8 @@ namespace graph
         
         /**
          * \brief - returns Adjacency Matrix
+         * 
+         * @returns AM distance - an Adjancency matrix
          * **/
         
         AM getDistanceArray() {return distance;}
@@ -117,6 +130,7 @@ namespace graph
      * Floyd-Roy-Warshall Algorithm. This algorithm finds the shortest path possible
      * between all pairs of vertices. It returns both the shortest path and the shortest 
      * distance between all pairs of vertices.
+     * Reference Lin  - <a href="http://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm">FLoyd-Roy-Warshall ALgorithm</a>
      * 
      * @param Graph g - Parameter, a graph object on which Floyd-Roy-Warshall Algorithm is applied
      * 

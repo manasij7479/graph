@@ -64,7 +64,7 @@ namespace graph
          * 
          * In a path graph, each vertex but the first and last has two adjacent vertices.
          * The first and last vertex is adjacent to one vertex each.
-         * Reference Link - http://en.wikipedia.org/wiki/Path_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Path_graph">Path Graph</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
@@ -93,8 +93,8 @@ namespace graph
          * \brief - Returns a cycle graph
          * 
          * In a cycle graph, each vertex is adjacent to two vertices.
-         * Reference Link - http://en.wikipedia.org/wiki/Cycle_graph
-         *  
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Cycle_graph">Cycle Graph</a>
+         *          *  
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
          * @param int start- Second parameter, the starting position from which the vertices are 
@@ -120,7 +120,7 @@ namespace graph
          * \brief - Returns a hypercube graph
          * 
          * A hypercube is a n-dimensional analog of a square(n=2) or a cube(n=3).
-         * Reference Link - http://en.wikipedia.org/wiki/Hypercube
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Hypercube">Hypercube</a>
          *  
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
@@ -152,7 +152,7 @@ namespace graph
          * \brief - Returns a complete graph
          * 
          * In a complete graph, each vertex is adjacent to all the other vertices.
-         * Reference Link - http://en.wikipedia.org/wiki/Complete_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Complete_graph">Complete Graph</a>
          *  
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
@@ -184,7 +184,7 @@ namespace graph
          * 
          * A wheel graph of n vertices contains a cycle of (n-1) vertices and
          * another single vertex joined with all the (n-1) vertices.
-         * Reference Link - http://en.wikipedia.org/wiki/Wheel_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Wheel_graph">Wheel Graph</a>
          *  
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
@@ -216,7 +216,7 @@ namespace graph
          * Each of the vertices of first set is adjacent to all the vertices of the second set and vice versa.
          * None of the vertices of first set is adjacent to any other vertex in the same set.
          * None of the vertices of second set is adjacent to any other vertex in the same set.
-         * Reference Link - http://en.wikipedia.org/wiki/Complete_bipartite_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Complete_bipartite_graph">Comlete-Bipartite Graph</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
@@ -249,7 +249,7 @@ namespace graph
          * 
          * Star graph is a complete bipartite graph of n vertices with first set containing
          * 1 vertex and second set containin (n-1) vertices.
-         * Reference Link - http://en.wikipedia.org/wiki/Star_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Star_graph">Star Graph</a>
          *  
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
@@ -274,7 +274,7 @@ namespace graph
          * 
          * In a star polygon graph of p vertices seperated by q vertices, each vertex is 
          * adjacent to the qth vertex starting from itself.
-         * Reference Link - http://en.wikipedia.org/wiki/Star_polygon
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Star_polygon">Star-Polygon Graph</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
@@ -314,7 +314,7 @@ namespace graph
          * 
          * A friendship graph of 2n+1 vertices has n cycle graphs with one vertex common
          * to each cycle.
-         * Reference Link - http://en.wikipedia.org/wiki/Friendship_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Friendship_graph">Friendship Graph</a>
          *  
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
@@ -345,7 +345,7 @@ namespace graph
          * 
          * A mobius ladder of n vertices if formed from an n-cycle by adding an edge between
          * opposite pairs of vertices.
-         * Reference Link - http://en.wikipedia.org/wiki/Möbius_ladder
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Mobius_ladder">Mobius Ladder</a>
          *  
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
@@ -374,7 +374,7 @@ namespace graph
          * 
          * A grid graph of m x n vertices has m rows, n columns and a vertex
          * at the intersection of each row and column.
-         * Reference Link - http://en.wikipedia.org/wiki/Grid_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Grid_graph">Grid Graph</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
@@ -423,7 +423,7 @@ namespace graph
          * A generalized petersen graph of n vertices is obtained by adding an edge between
          * the vertices of a regular polygon of n vertices with the corresponding vertices
          * of a star polygon of n vertices.
-         * Reference Link - http://en.wikipedia.org/wiki/Generalized_Petersen_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Generalized_Peteren_graph">Generalized Petersen Graph</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
@@ -451,7 +451,7 @@ namespace graph
          * \brief - Returns a k-ary tree
          * 
          * A k-ary tree (k>=2) is a tree with each vertex having <= k childs.
-         * http://en.wikipedia.org/wiki/K-ary_tree
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/K-ary_tree">K-ary Tree</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers
          * 
@@ -481,7 +481,7 @@ namespace graph
          * 
          * A wagner graph has 8 vertices and 12 edges. Each vertex is connected by an edge with
          * the 3rd next vertices starting from itself.
-         * Reference Link - http://en.wikipedia.org/wiki/Wagner_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Wagner_graph">Wagner Graph</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
@@ -502,7 +502,7 @@ namespace graph
          * 
          * A butterfly graph graph has 5 vertices and 6 edges, with 2 cycles
          * having one common vertex.
-         * Reference Link - http://en.wikipedia.org/wiki/Butterfly_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Butterfly_graph">Butterfly Graph</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
@@ -522,7 +522,7 @@ namespace graph
          * \brief - Returns a petersen graph
          * 
          * A petersen graph is a (5,2) generalized petersen graph
-         * Reference Link - http://en.wikipedia.org/wiki/Petersen_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Petersen_graph">Petersen Graph</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
@@ -542,7 +542,7 @@ namespace graph
          * \brief - Returns a durer graph
          * 
          * A durer graph is a (6,2) generalized petersen graph
-         * Reference Link - http://en.wikipedia.org/wiki/Durer_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Durer_graph">Durer Graph</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
@@ -562,7 +562,7 @@ namespace graph
          * \brief - Returns a desargues graph
          * 
          * A desargues is a (10,3) generalized petersen graph
-         * Reference Link - http://en.wikipedia.org/wiki/Desargues_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Deargues_graph">Desargues Graph</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
@@ -582,7 +582,7 @@ namespace graph
          * \brief - Returns a mobius kantor graph
          * 
          * A mobius kantor graph is a (8,3) generalized petersen graph
-         * Reference Link - http://en.wikipedia.org/wiki/Möbius–Kantor_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Möbius–Kantor_graph">Möbius–Kantor Graph</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
@@ -602,7 +602,7 @@ namespace graph
          * \brief - Returns a dodecahedron graph
          * 
          * A dodecahedron graph is a (10,2) generalized petersen graph
-         * Reference Link - http://en.wikipedia.org/wiki/Dodecahedron
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Dodecahedron">Dodecahedron</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
@@ -622,7 +622,7 @@ namespace graph
          * \brief - Returns a nauru graph
          * 
          * A nauru graph is a (12,5) generalized petersen graph
-         * Reference Link - http://en.wikipedia.org/wiki/Nauru_graph
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Nauru_graph">Nauru Graph</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency

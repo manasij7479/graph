@@ -1,10 +1,11 @@
 /**
- * \brief - Header file that contains collectin of all Minimum Cost Spanning Tree finding algorithms
+ * \brief mst.hpp - Header file that contains collectin of all Minimum Cost Spanning Tree finding algorithms
  * 
  * A spanning tree is a subgraph of a graph, which is a tree and connects all the vertices
  * of the graph. A Minimum Cost Spanning Tree is a spanning tree with cost or weight less 
  * than all other spanning trees. There might be multiple Minimum Cost Spanning Trees for
  * a graph. Each algorithm might return different Minimum Cost Spanning Tree.
+ * Reference Lin - <a href="http://en.wikipedia.org/wiki/Minimum_spanning_tree">MST</a>
  * **/
 #ifndef GRAPH_ALGORITHM_MST_HPP
 #define GRAPH_ALGORITHM_MST_HPP
@@ -22,6 +23,14 @@
 #include<limits>
 namespace graph
 {
+    /**
+     * \brief - Class to hold the current state of the required datastructures
+     * during a MST computing algorithm.
+     * 
+     * Current state includes the state of the graph, the MST and the span of the MST..
+     * At the end of a MST computing algorithm, MSTState contains the final state which is the return type for every
+     * MST computing algorithm.
+     * **/
     template<typename Graph>
     class MSTState
     {
@@ -38,8 +47,8 @@ namespace graph
             span=0;
         }
         
-        Graph& getMst() { return mst;}
-        E getSpan() {return span;}
+        Graph& getMst() { return mst;}///< Returns the MST
+        E getSpan() {return span;}///<Returns the span of MST
         /**
          * \brief - Function to insert edges into the graph while creating Minimum Cost Spanning Tree
          * 
@@ -54,7 +63,7 @@ namespace graph
             mst.insertEdge(x,y,w);
             span += w;
         }
-        int order() { return mst.order();}
+        int order() { return mst.order();}///<Returns the order of MST
         //int size() { return Size(mst);}
         
     private:
@@ -63,6 +72,8 @@ namespace graph
     };
     /**
      * \brief - Returns the Minimum Cost Spanning tree obtained using Kruskal's ALgorithm
+     * 
+     * Reference Link - <a href="http://en.wikipedia.org/wiki/Kruskal%27s_algorithm">Kruskal's ALgorithm</a>
      * 
      * @param Graph g - First Parameter, a graph on which Kruskal's Algorithm is implemented
      * 
@@ -97,6 +108,8 @@ namespace graph
     
     /**
      * \brief - Returns the Minimum Cost Spanning tree obtained using Boruvka ALgorithm
+     * 
+     * Reference Link - <a href="http://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm">Boruvka's ALgorithm</a>
      * 
      * @param Graph g - Parameter, a graph on which Boruvka Algorithm is implemented
      * 
@@ -148,6 +161,8 @@ namespace graph
     
     /**
      * \brief - Returns the Minimum Cost Spanning tree obtained using Prim's ALgorithm
+     * 
+     * Reference Link - <a href="http://en.wikipedia.org/wiki/Prim%27s_algorithm">Prim's ALgorithm</a>
      * 
      * @param Graph g - Parameter, a graph on which Boruvka Algorithm is implemented
      * 

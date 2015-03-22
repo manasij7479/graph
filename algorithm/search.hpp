@@ -1,4 +1,8 @@
-/** \brief - Contains execution of different searching algorithms with and without using Callback Funtions
+/** \brief seacrh.hpp - Contains execution of different searching algorithms with and without using Callback Funtions.
+ * 
+ * In computer science, graph search is the problem of visiting all the nodes in a graph in a particular
+ * manner, updating and/or checking their values along the way.
+ * Refernce Link  - <a href="http://en.wikipedia.org/wiki/Graph_traversal">Graph Search</a>
  * **/
 
 #ifndef GRAPH_SEARCH_HPP
@@ -136,13 +140,33 @@ namespace graph
     };
     
     
-    /** \brief - To implement Uniform Cost Search**/
+    /** \brief - To implement Uniform Cost Search
+     *
+     * Uniform cost search is a tree search algorithm related to breadth-first search.
+     * Whereas breadth-first search determines a path to the goal state that has the
+     * least number of edges, uniform cost search determines a path to the goal state
+     * that has the lowest weight.
+     * Refernce Link  - <a href="http://math.wikia.com/wiki/Uniform_cost_search">UCS</a>
+     **/
     template<typename G>
     using UniformCostSearch=Search<G,PriorityQueue>;
-    /** \brief - To implement Depth First Search**/
+    /** \brief - To implement Depth First Search
+     *
+     * Depth-first search (DFS) is an algorithm for traversing or searching tree
+     * or graph data structures. One starts at the root (selecting some arbitrary
+     * node as the root in the case of a graph) and explores as far as possible
+     * along each branch before backtracking.
+     * Refernce Link  - <a href="http://en.wikipedia.org/wiki/Depth-first_search">DFS</a>
+     **/
     template<typename G>
     using DepthFirstSearch=Search<G,Stack>;
-    /** \brief - To implement Breadth First Search**/
+    /** \brief - To implement Breadth First Search
+     * Breadth-first search (BFS) is an algorithm for traversing or searching tree
+     * or graph data structures. It starts at the tree root (or some arbitrary node
+     * of a graph, sometimes referred to as a `search key'[1]) and explores the neighbor
+     * nodes first, before moving to the next level neighbours.
+     * Refernce Link  - <a href="http://en.wikipedia.org/wiki/Breadth-first_search">BFS</a>
+     **/
     template<typename G>
     using BreadthFirstSearch=Search<G,Queue>;
     
