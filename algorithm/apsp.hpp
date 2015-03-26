@@ -1,9 +1,3 @@
-/**	\brief apsp.hpp - Header file that has collection of all pair shortest path finding algorithms
- * 
- * The All-Pairs Shortest Path problem finds the shortest paths between every pair of vertices v, v' in the graph.
- * Reference Link - <a href="http://en.wikipedia.org/wiki/Shortest_path_problem#All-pairs_shortest_paths">APSP</a>
- * **/
-
 #ifndef GRAPH_ALGORITHM_APSP_HPP
 #define GRAPH_ALGORITHM_APSP_HPP
 #include "enumeration.hpp"
@@ -15,6 +9,11 @@
 #include "../graph.hpp"
 #include "../util/visitors.hpp"
 #include <limits>
+/**	\brief apsp.hpp - Header file that has collection of all pair shortest path finding algorithms
+ * 
+ * The All-Pairs Shortest Path problem finds the shortest paths between every pair of vertices v, v' in the graph.
+ * Reference Link - <a href="http://en.wikipedia.org/wiki/Shortest_path_problem#All-pairs_shortest_paths">APSP</a>
+ * **/
 namespace graph
 {    
     //     using namespace std::placeholders;
@@ -30,12 +29,12 @@ namespace graph
     class APSPState
     {
     public:
-        typedef typename Graph::VertexType V;
-        typedef typename Graph::EdgeType E;
-        typedef typename edge_traits<E>::DistanceType D;
+        typedef typename Graph::VertexType V;///<Vertex
+        typedef typename Graph::EdgeType E;///<Edge
+        typedef typename edge_traits<E>::DistanceType D;///<Distance
         typedef typename std::map<std::pair<typename Graph::VertexType,typename Graph::VertexType>, std::vector<typename Graph::VertexType>> PM; ///< Path Matrix
         typedef typename std::map<std::pair<typename Graph::VertexType,typename Graph::VertexType>,D> AM; ///<Adjacency Matrix
-        typedef typename std::map<std::pair<typename Graph::VertexType,typename Graph::VertexType>, typename Graph::VertexType> NM;
+        typedef typename std::map<std::pair<typename Graph::VertexType,typename Graph::VertexType>, typename Graph::VertexType> NM;///<Next Matrix
         /**
          * \brief - Constructor to initialize the distance matrix and path matrix
          * **/
