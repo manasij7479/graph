@@ -1,11 +1,3 @@
-/**	\brief sssp.hpp - Header file that has collection of single source shortest path finding algorithms.
- * 
- * The single-source shortest-paths problem refers to, given
- * a graph G , finding a shortest path from a given source vertex
- * s to every vertex x.
- * Reference Link - <a href="http://en.wikipedia.org/wiki/Shortest_path_problem#Single-source_shortest_paths">SSSP</a>
- * **/
-
 #ifndef GRAPH_ALGORITHM_SSSP_HPP
 #define GRAPH_ALGORITHM_SSSP_HPP
 #include "enumeration.hpp"
@@ -16,6 +8,13 @@
 #include "../graph.hpp"
 #include "../util/visitors.hpp"
 #include <limits>
+/**	\brief sssp.hpp - Header file that has collection of single source shortest path finding algorithms.
+ * 
+ * The single-source shortest-paths problem refers to, given
+ * a graph G , finding a shortest path from a given source vertex
+ * s to every vertex x.
+ * Reference Link - <a href="http://en.wikipedia.org/wiki/Shortest_path_problem#Single-source_shortest_paths">SSSP</a>
+ * **/
 namespace graph
 {    
     using namespace std::placeholders;
@@ -32,8 +31,8 @@ namespace graph
     class SSSPState
     {
     public:
-        typedef typename Graph::VertexType V;
-        typedef typename Graph::EdgeType E;
+        typedef typename Graph::VertexType V;///<Vertex
+        typedef typename Graph::EdgeType E;///<Edge
         /**
          * \brief - Constructor to initialize distance array and parent array
          * **/
