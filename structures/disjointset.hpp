@@ -1,17 +1,17 @@
-/**
- * \brief disjointset.hpp -Header that contains disjointset structure
- * **/
 #ifndef GRAPH_STRUCTURES_DISJOINTSET_HPP
 #define GRAPH_STRUCTURES_DISJOINTSET_HPP
 #include "parent.hpp"
 #include <map>
+/**
+ * \brief disjointset.hpp -Header that contains disjointset structure
+ * **/
 namespace graph
 {
     template<typename Graph>
     class DisjointSet
     {
     public:
-        typedef typename Graph::VertexType V;
+        typedef typename Graph::VertexType V; ///<Vertex
         /**
          * \brief - cosntructor to initialize parent array and rank array for a graph
          * 
