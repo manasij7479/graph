@@ -1,6 +1,3 @@
-/**
- * \brief - Header file containing collection of vertex coloring algorithms
- * **/
 #ifndef GRAPH_ALGORITHM_COLORING_HPP
 #define GRAPH_ALGORITHM_COLORING_HPP
 #include "../graph.hpp"
@@ -10,16 +7,21 @@
 #include<vector>
 #include<utility>
 #include<algorithm>
+/**
+ * \brief - Header file containing collection of vertex coloring algorithms
+ * **/
 namespace graph
 {
     template<typename Graph, typename ColorType>
     class ColorState
     {
     public:
-        typedef typename Graph::VertexType V;
-        typedef typename Graph::EdgeType E;
-        typedef std::map<ColorType,int> CMapType;
-        
+        typedef typename Graph::VertexType V;///<Vertex
+        typedef typename Graph::EdgeType E;///<Edge
+        typedef std::map<ColorType,int> CMapType;///<Color Map
+        /**
+         * \brief - Default Constructor
+         * **/
         ColorState() {}
         /**
          * \brief - Constructor to initialize chromatic number of the graph
@@ -50,6 +52,13 @@ namespace graph
     /**
      * \brief - Returns a map of vertex and corresponding chromatic number for a particular
      *                      sequence of vertices
+     * 
+     * @param Graph &g - First Parameter, a graph object
+     * 
+     * @param std::vector<typename Graph::VertexType> vertices - Second parameter, a list of vertices
+     * 
+     * @returns ColorState<Graph, typename Graph::VertexType> cstate - map of vertex and corresponding chromatic number for a particular
+     *                      sequence of vertices
      * **/
     template<typename Graph>
     ColorState<Graph, typename Graph::VertexType> vertexColoring(Graph& g, std::vector<typename Graph::VertexType> vertices)
@@ -79,7 +88,12 @@ namespace graph
     }
     
     /**
-     * \brief - Determines the map of vertices and corresponding chromatic number for all possobile
+     * \brief - Determines the map of vertices and corresponding chromatic number for all possible
+     *                      sequence of vertices
+     * 
+     * @param Graph& g - Parameter, a graph object
+     * 
+     * @returns ColorState<Graph, typename Graph::VertexType> min_cstate - map of vertices and corresponding chromatic number for all possible
      *                      sequence of vertices
      * **/
     template<typename Graph>
@@ -102,7 +116,16 @@ namespace graph
         return min_cstate;
     }
     
-    
+    /**
+     * \brief - Vertex Coloring algorithm using some heuristics. Determines the
+     *          map of vertices and corresponding chromatic number for all possible
+     *                      sequence of vertices
+     * 
+     * @param Graph& g - Parameter, a graph object
+     * 
+     * @returns ColorState<Graph, typename Graph::VertexType> - map of vertices and corresponding chromatic number for all possible
+     *                      sequence of vertices
+     * **/
     // doesn't produce optimal coloring for SOME ordering of ...
     // ... crown, chordal, interval & indifference graphs
     template<typename Graph>
@@ -114,13 +137,28 @@ namespace graph
         std::sort(vlist.begin(),vlist.end(),[&](V x,V y){return d_list[x]>d_list[y];});
         return vertexColoring(g, vlist);
     }
-    
+    /**
+     * \brief - Returns the chromatic number for a graph object
+     * 
+     * @param Graph g - Parameter, a graph object
+     * 
+     * @returns no of colors used in vertex coloring
+     * **/
     template<typename Graph>
     int chromaticNumber(Graph g)
     {
         return minVertexColoring(g).noOfColorsUsed();
     }
     
+    /**
+     * \brief - Determines the map of edges and corresponding chromatic number for
+     * 		    all possible sequence of vertices
+     * 
+     * @param Graph& g - Parameter, a graph object
+     * 
+     * @returns ColorState<Graph, std::pair<V,V>> cstate_g cstate_g - map of edges and corresponding chromatic number for
+     * 		    all possible sequence of vertices
+     * **/
     template<typename Graph>
     ColorState
     <
@@ -147,7 +185,13 @@ namespace graph
         ColorState<Graph, std::pair<V,V>> cstate_g(g,resultmap,cstate_l.noOfColorsUsed());
         return cstate_g;
     }
-    
+    /**
+     * \brief - Returns the minimum number of colors used in Edge coloring
+     * 
+     * @param Graph g - Parameter, a graph object
+     * 
+     * @returns minimum number of colors used in Edge coloring
+     * **/
     template<typename Graph>
     int chromaticIndex(Graph g)
     {
