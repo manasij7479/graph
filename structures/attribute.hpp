@@ -1,9 +1,9 @@
+#ifndef GRAPH_STRUCTURE_ATTRIBUTE
+#define GRAPH_STRUCTURE_ATTRIBUTE
+#include <map>
 /**
  * \brief attribute.hpp - Header file to store different attributes of a graph
  * **/
- #ifndef GRAPH_STRUCTURE_ATTRIBUTE
-#define GRAPH_STRUCTURE_ATTRIBUTE
-#include <map>
 namespace graph
 {
     template<typename Graph,typename Value>
@@ -47,7 +47,7 @@ namespace graph
     template<typename Graph, typename Value>
     class EdgeAttribute
     {
-        typedef typename Graph::VertexType V;
+        typedef typename Graph::VertexType V;///<Vertex
     public:
         EdgeAttribute(){};
         Value& value(V x, V y){return data[{x,y}];}
