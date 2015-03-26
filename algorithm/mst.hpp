@@ -1,12 +1,3 @@
-/**
- * \brief mst.hpp - Header file that contains collectin of all Minimum Cost Spanning Tree finding algorithms
- * 
- * A spanning tree is a subgraph of a graph, which is a tree and connects all the vertices
- * of the graph. A Minimum Cost Spanning Tree is a spanning tree with cost or weight less 
- * than all other spanning trees. There might be multiple Minimum Cost Spanning Trees for
- * a graph. Each algorithm might return different Minimum Cost Spanning Tree.
- * Reference Lin - <a href="http://en.wikipedia.org/wiki/Minimum_spanning_tree">MST</a>
- * **/
 #ifndef GRAPH_ALGORITHM_MST_HPP
 #define GRAPH_ALGORITHM_MST_HPP
 #include "../graph.hpp"
@@ -21,6 +12,15 @@
 #include<tuple>
 #include<algorithm>
 #include<limits>
+/**
+ * \brief mst.hpp - Header file that contains collectin of all Minimum Cost Spanning Tree finding algorithms
+ * 
+ * A spanning tree is a subgraph of a graph, which is a tree and connects all the vertices
+ * of the graph. A Minimum Cost Spanning Tree is a spanning tree with cost or weight less 
+ * than all other spanning trees. There might be multiple Minimum Cost Spanning Trees for
+ * a graph. Each algorithm might return different Minimum Cost Spanning Tree.
+ * Reference Lin - <a href="http://en.wikipedia.org/wiki/Minimum_spanning_tree">MST</a>
+ * **/
 namespace graph
 {
     /**
@@ -35,8 +35,8 @@ namespace graph
     class MSTState
     {
     public:
-        typedef typename Graph::VertexType V;
-        typedef typename Graph::EdgeType E;
+        typedef typename Graph::VertexType V;///<Vertex
+        typedef typename Graph::EdgeType E;///<Edge
         /**
          * \brief - Constructor to initialize the graph with all the vetices but no edges
          * **/
