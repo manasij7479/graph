@@ -1,7 +1,3 @@
-/**	\brief collection.hpp - Header file that has functions that returns sequences and lists of
- *  different aspects of a graph object
- * **/
-
 #ifndef GRAPH_ALGORITHM_COLLECTIONS_HPP
 #define GRAPH_ALGORITHM_COLLECTIONS_HPP
 #include "../graph.hpp"
@@ -19,7 +15,9 @@
 #include<algorithm>
 #include<stdexcept>
 #include<utility>
-
+/**	\brief collection.hpp - Header file that has functions that returns sequences and lists of
+ *  different aspects of a graph object
+ * **/
 namespace graph
 {
 	/**
