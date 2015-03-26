@@ -1,6 +1,3 @@
-/**
- * \brief - io.hpp - Header file that contains all input output operations
- * **/
 #ifndef GRAPH_UTIL_IO_HPP
 #define GRAPH_UTIL_IO_HPP
 #include <fstream>
@@ -9,6 +6,9 @@
 #include "../graph.hpp"
 //Placeholder implementation,
 //will need to be abstracted when adding new formats
+/**
+ * \brief - io.hpp - Header file that contains all input output operations
+ * **/
 namespace graph
 {
     inline Graph<std::string,int> makeGraph(std::istream& in)
