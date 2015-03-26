@@ -1,8 +1,8 @@
+#ifndef GRAPH_IMPLEMENTATION_EDGE_TRAITS
+#define GRAPH_IMPLEMENTATION_EDGE_TRAITS
 /**
  * \brief edge_traits.hpp - Header file to store edge traits
  * **/
-#ifndef GRAPH_IMPLEMENTATION_EDGE_TRAITS
-#define GRAPH_IMPLEMENTATION_EDGE_TRAITS
 namespace graph
 {
     /** 
