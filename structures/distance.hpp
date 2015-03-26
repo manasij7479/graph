@@ -1,19 +1,19 @@
-/**
- * \brief distance.hpp - Header file containing structure to hold distance of vertices of a graph
- * **/
 #ifndef GRAPH_STRUCTURES_DISTANCE_HPP
 #define GRAPH_STRUCTURES_DISTANCE_HPP
 #include "../implementation/edge_traits.hpp"
 #include "attribute.hpp"
+/**
+ * \brief distance.hpp - Header file containing structure to hold distance of vertices of a graph
+ * **/
 namespace graph
 {
     template<typename Graph>
     class DistanceArray
     {
     public:
-        typedef typename Graph::EdgeType E;
-        typedef typename Graph::VertexType V;
-        typedef typename edge_traits<E>::DistanceType D;
+        typedef typename Graph::EdgeType E;///<Edge
+        typedef typename Graph::VertexType V;///<Vertex
+        typedef typename edge_traits<E>::DistanceType D;///<Distance
         /**
          * \brief - function to check if distance of a vertex is unknown or known
          * 
