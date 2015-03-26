@@ -1,6 +1,3 @@
-/**
-* \brief - queue.hpp - Header file that has a collection of all queue related datastructures
-* **/
 #ifndef GRAPH_STRUCTURES_QUEUE
 #define GRAPH_STRUCTURES_QUEUE
 #include <queue>
@@ -9,14 +6,17 @@
 #include <functional>
 #include <algorithm>
 #include "distance.hpp"
+/**
+* \brief - queue.hpp - Header file that has a collection of all queue related datastructures
+* **/
 namespace graph
 {
     template<typename GraphType>
     class Queue
     {
     public:
-        typedef typename GraphType::EdgeType E;
-        typedef typename GraphType::VertexType V;
+        typedef typename GraphType::EdgeType E;///<Edge
+        typedef typename GraphType::VertexType V;///<Vertex
         
         Queue(std::function<bool(V,V)>){}
         /**
@@ -59,8 +59,8 @@ namespace graph
     class PriorityQueue
     {
     public:
-        typedef typename GraphType::EdgeType E;
-        typedef typename GraphType::VertexType V;
+        typedef typename GraphType::EdgeType E;///<Edge
+        typedef typename GraphType::VertexType V;///<Vertex
         PriorityQueue(std::function<bool(V,V)> compare):less(compare) {}
         /**
          * \brief - function to build a heap
