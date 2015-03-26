@@ -1,10 +1,3 @@
-/** \brief seacrh.hpp - Contains execution of different searching algorithms with and without using Callback Funtions.
- * 
- * In computer science, graph search is the problem of visiting all the nodes in a graph in a particular
- * manner, updating and/or checking their values along the way.
- * Refernce Link  - <a href="http://en.wikipedia.org/wiki/Graph_traversal">Graph Search</a>
- * **/
-
 #ifndef GRAPH_SEARCH_HPP
 #define GRAPH_SEARCH_HPP
 #include "../graph.hpp"
@@ -15,6 +8,12 @@
 #include <map>
 #include <vector>
 #include <functional>
+/** \brief seacrh.hpp - Contains execution of different searching algorithms with and without using Callback Funtions.
+ * 
+ * In computer science, graph search is the problem of visiting all the nodes in a graph in a particular
+ * manner, updating and/or checking their values along the way.
+ * Refernce Link  - <a href="http://en.wikipedia.org/wiki/Graph_traversal">Graph Search</a>
+ * **/
 
 namespace graph
 {
@@ -31,9 +30,9 @@ namespace graph
     class Search
     {
     public:
-        typedef typename Graph::VertexType V;
-        typedef typename Graph::EdgeType E;
-        typedef typename edge_traits<E>::DistanceType D;
+        typedef typename Graph::VertexType V;///<Vertex
+        typedef typename Graph::EdgeType E;///<Edge
+        typedef typename edge_traits<E>::DistanceType D;///<Distance
         /**
          * \brief - Constructor to initialize the graph, the source vertex as per input
          * 
