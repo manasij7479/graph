@@ -1,14 +1,12 @@
-/**	\brief enumeration.hpp - Header file that has collection of functions 
- * that can enumerate different aspects of a grah object
- * **/
-
-
 #ifndef GRAPH_ALGORITHM_ENUMERATION_HPP
 #define GRAPH_ALGORITHM_ENUMERATION_HPP    
 #include "../graph.hpp"
 #include "collections.hpp"
 #include "../structures/disjointset.hpp"
 #include <set>
+/**	\brief enumeration.hpp - Header file that has collection of functions 
+ * that can enumerate different aspects of a grah object
+ * **/
 namespace graph
 {
     /** \brief - Returns number of edges in Graph g
