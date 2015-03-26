@@ -1,7 +1,3 @@
-/**	\brief operations.hpp - Header file that has collection of operations possible on any graph 
- * datastruture 
- * **/
-
 #ifndef GRAPH_ALGORITHM_OPERATIONS_HPP
 #define GRAPH_ALGORITHM_OPERATIONS_HPP
 #include "predicates.hpp"
@@ -9,6 +5,9 @@
 #include "../graph.hpp"
 #include <cmath>
 #include<string>
+/**	\brief operations.hpp - Header file that has collection of operations possible on any graph 
+ * datastruture 
+ * **/
 namespace graph
 {
     /**
@@ -128,11 +127,26 @@ namespace graph
                     
         return result;
     }
-    
+    /**
+     * \brief - returns the result of function (x+y) *(x+y+1) / 2 +y
+     * 
+     * @param int x - First Parameter
+     * 
+     * @param int y - Second Parameter
+     * 
+     * @returns (x+y) *(x+y+1) / 2 +y
+     * **/
     inline int pairCompute(int x, int y)
     {
         return (x+y)*(x+y+1)/2+y;
     }
+    /**
+     * \brief - returns a pair (square root of(8*z+1)-1)/2 - y and z - (w*w+w)/2
+     * 
+     * @param int z - Parameter
+     * 
+     * @returns (square root of(8*z+1)-1)/2 - y and z - (w*w+w)/2
+     * **/
     inline std::pair<int, int> pairInvert(int z)
     {
         int w = (std::sqrt(8*z+1)-1)/2;
