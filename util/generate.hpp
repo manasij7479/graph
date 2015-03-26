@@ -1,10 +1,9 @@
-/**     \brief generate.hpp - Contains a library of standard graphs
- * **/
-
 #ifndef GRAPH_UTIL_GENERATE_HPP
 #define GRAPH_UTIL_GENERATE_HPP
 #include "../algorithm/operations.hpp"
 #include<stdexcept>
+/**     \brief generate.hpp - Contains a library of standard graphs
+ * **/
 namespace graph
 {
     namespace gen
