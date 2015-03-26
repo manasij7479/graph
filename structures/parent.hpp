@@ -1,18 +1,18 @@
-/**
- * \brief - parent.hpp - header file containing structure to hold paths of vertices of a graph
- * **/
 #ifndef GRAPH_STRUCTURE_PARENT
 #define GRAPH_STRUCTURE_PARENT
 #include "attribute.hpp"
 #include <vector>
 #include <algorithm>
+/**
+ * \brief - parent.hpp - header file containing structure to hold paths of vertices of a graph
+ * **/
 namespace graph
 {
     template<typename Graph>
     class ParentArray
     {
     public:
-        typedef typename Graph::VertexType V;
+        typedef typename Graph::VertexType V;///<Vertex
         /**
          * \brief - returns the path of a particular vertex of a graph
          * 
