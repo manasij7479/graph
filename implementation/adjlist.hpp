@@ -1,13 +1,13 @@
-/**
- * \brief adjlist.hpp - Header file that contains adjacency list of a graph 
- * **/
- #ifndef GRAPH_IMPLEMENTATION_ADJLIST_HPP
+#ifndef GRAPH_IMPLEMENTATION_ADJLIST_HPP
 #define GRAPH_IMPLEMENTATION_ADJLIST_HPP
 #include <map>
 #include <unordered_map>
 #include <vector>
 #include <algorithm>
 #include <iostream>
+/**
+ * \brief adjlist.hpp - Header file that contains adjacency list of a graph 
+ * **/
 namespace graph
 {
 	/**
@@ -21,11 +21,11 @@ namespace graph
     class AdjacencyList
     {
     public:
-        typedef VT VertexType;
-        typedef ET EdgeType;
-        typedef typename std::map<VertexType,EdgeType> EdgeList;
-        typedef typename EdgeList::iterator EdgeIterator;
-        typedef typename std::map<VertexType,EdgeList*>::iterator VertexIterator;
+        typedef VT VertexType;///<Vertex
+        typedef ET EdgeType;///<Edge
+        typedef typename std::map<VertexType,EdgeType> EdgeList;///<List of Edges
+        typedef typename EdgeList::iterator EdgeIterator;///<Iterator for Edges
+        typedef typename std::map<VertexType,EdgeList*>::iterator VertexIterator;///<Iterator of Vertices
         
         AdjacencyList(bool dir=false):directed(dir){}
         
