@@ -1,10 +1,3 @@
-/** \brief predicates.hpp - Header file that has collection of boolean functions 
- *      on a graph object. All these checks must evaluate to true or false.
- *      
- *      Note: Use std::bind on these predicates and a Graph object for these to be 
- *      applicable to STL algorithms.
- *      
- **/
 #ifndef GRAPH_ALGORITHM_PREDICATES_HPP
 #define GRAPH_ALGORITHM_PREDICATES_HPP
 #include "../graph.hpp"
@@ -14,6 +7,13 @@
 #include "operations.hpp"
 #include<vector>
 #include<algorithm>
+/** \brief predicates.hpp - Header file that has collection of boolean functions 
+ *      on a graph object. All these checks must evaluate to true or false.
+ *      
+ *      Note: Use std::bind on these predicates and a Graph object for these to be 
+ *      applicable to STL algorithms.
+ *      
+ **/
 namespace graph
 {
     /**
