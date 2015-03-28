@@ -113,9 +113,9 @@ namespace graph
         /** \brief - To get the parent array at a particular instance **/
         ParentArray<Graph>& getParentArray() {return parent;}
         
-        /** \brief - Hook for .... TODO **/
+        /** \brief - Hook for source vertex **/
         void setp1(std::function<bool(const V&)> f){p1=f;}
-        /** \brief - Hook for .... TODO**/
+        /** \brief - Hook for traversing**/
         void setp2(std::function<bool(const V&)> f){p2=f;}
         /** \brief - Hook for back edges **/
         void setp3(std::function<bool(const V&)> f){p3=f;}

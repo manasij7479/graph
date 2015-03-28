@@ -561,7 +561,7 @@ namespace graph
          * \brief - Returns a desargues graph
          * 
          * A desargues is a (10,3) generalized petersen graph
-         * Reference Link - <a href="http://en.wikipedia.org/wiki/Deargues_graph">Desargues Graph</a>
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Desargues_graph">Desargues Graph</a>
          * 
          * @param std::vector<int> args - First parameter, a vector of integers, not used here,
          * included for consistency
