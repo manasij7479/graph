@@ -248,7 +248,6 @@ namespace graph
     Graph VertexDeletionSubgraph(Graph g1, typename Graph::VertexType x)
     {
         g1.removeVertex(x);
-                
         return g1;
     }
     

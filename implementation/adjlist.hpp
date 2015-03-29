@@ -45,6 +45,7 @@ namespace graph
         {
             for (auto p: data)
                 delete p.second;
+            data.clear();
             directed = g.directed;
             for (auto p: g.data)
                 data[p.first] = new EdgeList(*p.second);
