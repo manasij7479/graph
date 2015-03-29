@@ -8,7 +8,7 @@
 #include<utility>
 #include<algorithm>
 /**
- * \brief - Header file containing collection of vertex coloring algorithms
+ * \brief coloring.hpp - Header file containing collection of vertex coloring algorithms
  * **/
 namespace graph
 {

@@ -1,10 +1,11 @@
 #ifndef GRAPH_UTIL_VISITORS_HPP
 #include "../graph.hpp"
 #include <functional>
+#define GRAPH_UTIL_VISITORS_HPP
 /**
- * \brief - Header file to store different traversal techniques
- * **/#define GRAPH_UTIL_VISITORS_HPP
-namespace graph
+ * \brief visitors.hpp - Header file to store different traversal techniques
+ * **/
+ namespace graph
 {
     template<typename Graph, typename F>
     /**
