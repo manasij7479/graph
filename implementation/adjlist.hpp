@@ -27,20 +27,16 @@ namespace graph
         typedef typename EdgeList::iterator EdgeIterator;///<Iterator for Edges
         typedef typename std::map<VertexType,EdgeList*>::iterator VertexIterator;///<Iterator of Vertices
         
+        /** \brief -  constructor**/
         AdjacencyList(bool dir=false):directed(dir){}
-        
-        /**
-         * \brief - function to insert a vertex to a graph
-         * 
-         * @param const VertexType& v - Parameter, a vertex to be added
-         * **/
-        
-        AdjacencyList(const AdjacencyList<VT,ET>& g)
+        /** \brief - copy constructor **/
+                AdjacencyList(const AdjacencyList<VT,ET>& g)
         {
             directed = g.directed;
             for (auto p: g.data)
                 data[p.first] = new EdgeList(*p.second);
         }
+        /** \brief - overloaded '=' operator for assigning one graph object to another. **/
         AdjacencyList<VT, ET>& operator=(const AdjacencyList<VT, ET>& g)
         {
             for (auto p: data)
@@ -50,11 +46,18 @@ namespace graph
             for (auto p: g.data)
                 data[p.first] = new EdgeList(*p.second);
         }
+        /** \brief - Destructor **/
         ~AdjacencyList()
         {
             for (auto p: data)
                 delete p.second;
         }
+        
+        /**
+         * \brief - function to insert a vertex to a graph
+         * 
+         * @param const VertexType& v - Parameter, a vertex to be added
+         * **/
         void insertVertex(const VertexType& v)
         {
             if(data.find(v)==data.end())
@@ -117,12 +120,28 @@ namespace graph
                 data[y]->erase(x);
         }
         
-        VertexIterator begin(){return data.begin();}
-        VertexIterator end(){return data.end();}
+        VertexIterator begin(){return data.begin();}///< Returns the VertexIterator for beginning. 
+        VertexIterator end(){return data.end();}///< Returns the VertexIterator for end.
+        /**
+         * \brief - function to find a vertex of a graph
+         * 
+         * @param const VertexType& v - Parameter, a vertex to be found
+         * 
+         * @returns VertexIterator - Iterator of the vertex if found, iterator to end() otherwise
+         * **/
         VertexIterator find(const VertexType& v){return data.find(v);}
         
-        EdgeIterator nbegin(const VertexType& v){return data[v]->begin();}
-        EdgeIterator nend(const VertexType& v){return data[v]->end();}
+        EdgeIterator nbegin(const VertexType& v){return data[v]->begin();}///< Returns the EdgeIterator for beginning. 
+        EdgeIterator nend(const VertexType& v){return data[v]->end();}///< Returns the EdgeIterator for end.
+        /**
+         * \brief - function to find a neighbour of a vertex of a graph
+         * 
+         * @param const VertexType& v - First Parameter, a vertex whose neighbour to be found
+         * 
+         * @param const VertexType& n - Second Parameter, the neighbour to be found
+         * 
+         * @returns EdgeIterator - Iterator of the vertex if found, iterator to nend() otherwise
+         * **/
         EdgeIterator nfind(const VertexType& v,const VertexType& n){return data[v]->find(n);}
         /**
          * \brief - function to display vertices of a graph
@@ -150,7 +169,16 @@ namespace graph
                 return 0;
         }
         
+        /**
+         * \brief - returns true if directed, false otherwise.
+         * **/
         bool isDirected(){return directed;}
+        
+        /**
+         * \brief - function to find the order of the graph.
+         * 
+         * @returns uint order - the order of the graph.
+         * **/
         uint order(){return data.size();}
     private:
         std::map<VertexType,EdgeList*> data;

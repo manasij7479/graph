@@ -8,10 +8,18 @@
 #include<utility>
 #include<algorithm>
 /**
- * \brief coloring.hpp - Header file containing collection of vertex coloring algorithms
+ * \brief coloring.hpp - Header file containing collection of graph coloring algorithms.
  * **/
 namespace graph
 {
+	/**
+	 * \brief - Class to hold the current state of the required datastructures
+     * during any graph coloring algorithm.
+     * 
+     * It colors "ColorType", the template argument, with a color(integer)
+     * and stores it in a map. It also stores the no. of colors used.
+     * "ColorType" may be a vertex or an edge. 
+	 * **/
     template<typename Graph, typename ColorType>
     class ColorState
     {
@@ -125,6 +133,7 @@ namespace graph
      * 
      * @returns ColorState<Graph, typename Graph::VertexType> - map of vertices and corresponding chromatic number for all possible
      *                      sequence of vertices
+     * Reference Link <a href="http://comjnl.oxfordjournals.org/content/10/1/85.full.pdf+html"> WelshPowell </a>
      * **/
     // doesn't produce optimal coloring for SOME ordering of ...
     // ... crown, chordal, interval & indifference graphs

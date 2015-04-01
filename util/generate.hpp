@@ -2,10 +2,10 @@
 #define GRAPH_UTIL_GENERATE_HPP
 #include "../algorithm/operations.hpp"
 #include<stdexcept>
-/**     \brief generate.hpp - Contains a library of standard graphs
- * **/
 namespace graph
 {
+	/**     \brief generate.hpp - Contains a library of standard graphs
+	* **/
     namespace gen
     {
         /**
@@ -33,7 +33,7 @@ namespace graph
          * @param int- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1, not used here
          * 
-         * returns Graph<int,int> result - a variable to store the empty graph
+         * @returns Graph<int,int> result - a variable to store the empty graph
          * **/
         Graph<int,int> empty(std::vector<int> ,int=1)   
         {
@@ -50,7 +50,7 @@ namespace graph
          * @param int- Second parameter, the starting position from which the vertices are 
          * to be added, default value 1, not used here
          * 
-         * returns Graph<int,int> result - a variable to store the empty graph
+         * @returns Graph<int,int> result - a variable to store the empty graph
          * **/
         Graph<int,int> empty_directed(std::vector<int> ,int=1)   
         {

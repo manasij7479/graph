@@ -25,7 +25,7 @@ namespace graph
      * 
      * @param Graph::VertexType v - Second parameter, a vertex of Graph g
      * 
-     * @returns int conunt - the number of edges directed out of Graph::VertexType v in Graph g
+     * @returns int count - the number of edges directed out of Graph::VertexType v in Graph g
      * **/
     
     template<typename Graph>

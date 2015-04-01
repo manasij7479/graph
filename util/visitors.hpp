@@ -7,14 +7,14 @@
  * **/
  namespace graph
 {
-    template<typename Graph, typename F>
-    /**
+	/**
      * \brief - function to visit all vertices of a graph
      * 
      * @param Graph& g - First Parameter, a graph datastructure
      * 
      * @param F f - Second Parameter, a callback function
      * **/
+    template<typename Graph, typename F>
     void VisitVertices(Graph& g, F f)
     {
         for(auto it = g.begin(); it != g.end(); ++it)
