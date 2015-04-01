@@ -1,3 +1,4 @@
+//expected output 12121312314142121232324214313213232343441414241243431212131314134212412323242431341323412343441414241243413
 #include "../graph.hpp"
 #include "../util/generate.hpp"
 #include "../algorithm/apsp.hpp"
@@ -5,17 +6,16 @@
 using namespace graph;
 int main()
 {
-   auto g = graph::gen::cycle({10});
+   auto g = graph::gen::cycle({4});
    auto s = graph::FloydRoyWarshall(g);
    auto p = s.getPathArray();
    for(auto i=p.begin();i!=p.end();++i)
    {
-     std::cout<<"[ "<<i->first.first<<" , "<<i->first.second<<" ] ==>> ";
+     std::cout<<i->first.first<<i->first.second;
      for(auto j=i->second.begin();j!=i->second.end();++j)
-         std::cout<<*j<<" ";
-     std::cout<<std::endl;
+         std::cout<<*j;
+     //std::cout<<std::endl;
    }
-   std::cout<<std::endl<<std::endl<<std::endl<<std::endl;
    Graph <int, int> g5(true);
     g5.insertVertex(1);
     g5.insertVertex(2);
@@ -31,9 +31,9 @@ int main()
    auto p1 = s1.getPathArray();
    for(auto i=p1.begin();i!=p1.end();++i)
    {
-     std::cout<<"[ "<<i->first.first<<" , "<<i->first.second<<" ] ==>> ";
+     std::cout<<i->first.first<<i->first.second;
      for(auto j=i->second.begin();j!=i->second.end();++j)
-         std::cout<<*j<<" ";
-     std::cout<<std::endl;
+         std::cout<<*j;
+     //std::cout<<std::endl;
    }
 }

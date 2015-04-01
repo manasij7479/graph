@@ -1,3 +1,4 @@
+//expected output 25065
 #include "../graph.hpp"
 #include "../util/generate.hpp"
 #include "../algorithm/apsp.hpp"
@@ -8,13 +9,11 @@ int main()
    auto g = graph::gen::cycle({10});
    auto s = graph::FloydRoyWarshall(g);
    auto p = s.getDistanceArray();
+   int x=0, y=0;
    for(auto i=p.begin();i!=p.end();++i)
    {
-     std::cout<<"[ "<<i->first.first<<" , "<<i->first.second<<" ] ==>> ";
-     std::cout<<i->second<<" ";
-     std::cout<<std::endl;
+     x+=i->second;
    }
-   std::cout<<std::endl<<std::endl<<std::endl<<std::endl;
    Graph <int, int> g5(true);
     g5.insertVertex(1);
     g5.insertVertex(2);
@@ -30,8 +29,7 @@ int main()
    auto p1 = s1.getDistanceArray();
    for(auto i=p1.begin();i!=p1.end();++i)
    {
-     std::cout<<"[ "<<i->first.first<<" , "<<i->first.second<<" ] ==>> ";
-     std::cout<<i->second<<" ";
-     std::cout<<std::endl;
+     y+=i->second;
    }
+   std::cout<<x<<y;
 }

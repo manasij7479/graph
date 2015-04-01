@@ -1,3 +1,4 @@
+//expected output 2515
 #include "../graph.hpp"
 #include "../util/generate.hpp"
 #include "../algorithm/sssp.hpp"
@@ -8,12 +9,11 @@ int main()
    auto g = graph::gen::cycle({10});
    auto s = graph::Djikstra(g,1);
    auto p = s.getDistanceArray();
+   int x=0, y=0;
    for(auto i=g.begin();i!=g.end();++i)
    {
-     std::cout<<"dist [ "<<i->first<<" ] ==>> "<<p[i->first];
-	 std::cout<<std::endl;
+     x+=p[i->first];
    }
-   std::cout<<std::endl<<std::endl<<std::endl<<std::endl;
    Graph <int, int> g5(true);
     g5.insertVertex(1);
     g5.insertVertex(2);
@@ -29,7 +29,7 @@ int main()
    auto p1 = s1.getDistanceArray();
    for(auto i=g5.begin();i!=g5.end();++i)
    {
-     std::cout<<"dist [ "<<i->first<<" ] ==>> "<<p1[i->first];
-	 std::cout<<std::endl;
+     y+=p1[i->first];
    }
+   std::cout<<x<<y;
 }

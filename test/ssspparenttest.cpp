@@ -1,3 +1,4 @@
+//expected output 112347891011113
 #include "../graph.hpp"
 #include "../util/generate.hpp"
 #include "../algorithm/sssp.hpp"
@@ -10,10 +11,8 @@ int main()
    auto p = s.getParentArray();
    for(auto i=g.begin();i!=g.end();++i)
    {
-     std::cout<<"dist [ "<<i->first<<" ] ==>> "<<p[i->first];
-	 std::cout<<std::endl;
+     std::cout<<p[i->first];
    }
-   std::cout<<std::endl<<std::endl<<std::endl<<std::endl;
    Graph <int, int> g5(true);
     g5.insertVertex(1);
     g5.insertVertex(2);
@@ -29,7 +28,6 @@ int main()
    auto p1 = s1.getParentArray();
    for(auto i=g5.begin();i!=g5.end();++i)
    {
-     std::cout<<"dist [ "<<i->first<<" ] ==>> "<<p1[i->first];
-	 std::cout<<std::endl;
+     std::cout<<p1[i->first];
    }
 }
