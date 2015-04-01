@@ -53,11 +53,12 @@ namespace graph
         void relax(V u, V v)
         {
             auto w = g.weight(u,v);
-            if(distance[v]>distance[u]+w)
-            {
-                distance[v]=distance[u]+w;
-                parent[v]=u;
-            }
+            if(distance[u]<std::numeric_limits<E>::max())
+				if(distance[v]>distance[u]+w)
+				{
+					distance[v]=distance[u]+w;
+					parent[v]=u;
+				}
         }
         DistanceArray<Graph>& getDistanceArray() {return distance;}///<Returns the distance array
         ParentArray<Graph>& getParentArray() {return parent;}///< Returns the parent array
@@ -81,7 +82,7 @@ namespace graph
         DistanceArray<Graph> distance;
     };
     /**
-     * \brief - Applys Djikstra's Algorithm on a grpah object
+     * \brief - Applies Djikstra's Algorithm on a grpah object
      * 
      * Djikstra's Algorithm findest the shortest path to all vertices from a single source vertex.
      * This function returns the distance array and path array after applying Djikstra's Algorithm
@@ -114,7 +115,7 @@ namespace graph
         return state;
     }
     /**
-     * \brief - Applys Bellman-Ford Algorithm on a graph object
+     * \brief - Applies Bellman-Ford Algorithm on a graph object
      * 
      * Bellman-Ford Algorithm findest the shortest path to all vertices from a single source vertex.
      * This function returns the distance array and path array after applying Bellman-Ford Algorithm
