@@ -8,6 +8,12 @@
  * **/
 namespace graph
 {
+	/**
+	 * \brief - Class to implment stack.
+	 * 
+	 * It is a last in first out (LIFO) datastructure where the first 
+	 * element added to the queue will be the last one to be removed.
+	 * **/
     template<typename GraphType>
     class Stack
     {

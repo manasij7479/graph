@@ -7,6 +7,10 @@
  * **/
 namespace graph
 {
+	/** 
+	 * \brief - Class for distance array datastructure. Contains a VertexAttribute
+	 * which maps each vertex to distance.
+	 * **/
     template<typename Graph>
     class DistanceArray
     {

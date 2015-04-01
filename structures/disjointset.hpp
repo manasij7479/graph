@@ -7,6 +7,13 @@
  * **/
 namespace graph
 {
+	/** 
+	 * \brief - Class to implement disjoint set datastructure using
+	 * union by rank.
+	 * 
+	 * It is a data structure that keeps track of a set of elements 
+	 * partitioned into a number of disjoint (nonoverlapping) subsets.
+	 * **/
     template<typename Graph>
     class DisjointSet
     {

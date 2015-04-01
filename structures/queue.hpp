@@ -11,6 +11,12 @@
 * **/
 namespace graph
 {
+	/** 
+	 * \brief - Class to implment queue
+	 * 
+	 * It is a first in first out (FIFO) datastructure where the first 
+	 * element added to the queue will be the first one to be removed.
+	 * **/
     template<typename GraphType>
     class Queue
     {

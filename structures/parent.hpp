@@ -8,6 +8,10 @@
  * **/
 namespace graph
 {
+	/** 
+	 * \brief - Class for parent array datastructure. Contains a VertexAttribute
+	 * which maps each vertex to parent.
+	 * **/
     template<typename Graph>
     class ParentArray
     {

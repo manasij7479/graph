@@ -6,10 +6,10 @@
  * **/
 namespace graph
 {
-    template<typename Graph,typename Value>
     /**
      * \brief - class that contains graph attributes
      * **/
+    template<typename Graph,typename Value>
     class GraphAttribute
     {
     public:
