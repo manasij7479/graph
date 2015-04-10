@@ -424,6 +424,14 @@ namespace graph
         return path;
     }
     
+    /**
+     * \brief - Returns a bipartition of Graph g, if exists, throws a std::runtime_error otherwise.
+     * 
+     * @param Graph& g - Parameter, a graph object
+     *   
+     * @returns std::pair<std::vector<typename Graph::VertexType>, std::vector<typename Graph::VertexType>> result - 
+     * variable to store the pair of vectors of vertices where each vector is partition.
+     * **/
     template<typename Graph>
     std::pair<std::vector<typename Graph::VertexType>, std::vector<typename Graph::VertexType>> Bipartition(Graph& g)
     {
