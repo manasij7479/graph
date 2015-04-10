@@ -133,6 +133,13 @@ namespace graph
         return connected;
     }
     
+    /** \brief - Returns true if Graph g is bipartite, false otherwise
+     * 
+     * A graph is bipartite iff its vertices can be divided into two disjoint 
+     * sets U and V such that every edge connects a vertex in U to one in V. 
+     * 
+     * @param Graph g - Parameter, a graph object
+     * **/
     template<typename Graph>
     bool isBipartite(Graph& g)
     {
@@ -366,16 +373,11 @@ namespace graph
     {
         for(auto i=g.begin();i!=g.end();++i)
         {
-//             std::cout<<i->first<<std::endl;
-//             auto h1 = g;
             auto h=VertexDeletionSubgraph(g,i->first);
-//             displayGraph(h);
-//             if(!isConnected(&VertexDeletionSubgraph(g,vlist[i])))
             if(!isHamiltonian(h))
             {
                 return false;
             }
-//             std::cout<<isHamiltonian(h)<<std::endl;
         }
         
         return true;
