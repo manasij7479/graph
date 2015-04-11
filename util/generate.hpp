@@ -106,7 +106,9 @@ namespace graph
         
         Graph<int,int> cycle(std::vector<int> args,int start=1)
         {
-            if(args[0]<3)
+            if (args.size() < 1)
+                throw std::runtime_error("Not possible : Argument needed for generating cycle graph ...");
+            if (args[0] < 3)
                 throw std::runtime_error("Not possible : (n>2) not met ...");
             
             Graph<int,int> result = path({args[0]},start);
