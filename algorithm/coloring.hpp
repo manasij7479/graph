@@ -158,7 +158,14 @@ namespace graph
     {
         return minVertexColoring(g).noOfColorsUsed();
     }
-    
+    inline std::pair<int, int> pair_invert(int z)
+    {
+        int w = (std::sqrt(8*z+1)-1)/2;
+        int t = (w*w+w)/2;
+        int y = z-t;
+        int x = w-y;
+        return {x, y};
+    }
     /**
      * \brief - Determines the map of edges and corresponding chromatic number for
      * 		    all possible sequence of vertices
@@ -183,11 +190,12 @@ namespace graph
         typedef typename Graph::VertexType V;
         std::map< std::pair<V,V>, int> resultmap;
         auto l = line(g);
-        auto cstate_l = minVertexColoring(l);
+//         auto cstate_l = minVertexColoring(l);
+        auto cstate_l = WelshPowellColoring(l);
         auto cmap=cstate_l.getColorMap();
         for(auto i=cmap.begin();i!=cmap.end();++i)
         {
-            auto inv = pairInvert(i->first);
+            auto inv = pair_invert(i->first);
             resultmap[inv] = i->second;
             resultmap[{inv.second,inv.first}] = i->second;
         }
