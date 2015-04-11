@@ -423,5 +423,49 @@ namespace graph
         
         return path;
     }
+    
+    /**
+     * \brief - Returns a bipartition of Graph g, if exists, throws a std::runtime_error otherwise.
+     * 
+     * @param Graph& g - Parameter, a graph object
+     *   
+     * @returns std::pair<std::vector<typename Graph::VertexType>, std::vector<typename Graph::VertexType>> result - 
+     * variable to store the pair of vectors of vertices where each vector is partition.
+     * **/
+    template<typename Graph>
+    std::pair<std::vector<typename Graph::VertexType>, std::vector<typename Graph::VertexType>> Bipartition(Graph& g)
+    {
+        std::pair<std::vector<typename Graph::VertexType>, std::vector<typename Graph::VertexType>> result;
+        BreadthFirstSearch<Graph> bfs(g,g.begin()->first);
+        bool flag = true;
+        std::map<typename Graph::VertexType, int> label;
+        label[g.begin()->first] = 1;
+        bfs.setp4([&label](const typename Graph::VertexType& x, const typename Graph::VertexType& y)
+        {
+            label[y] = -label[x];
+            return true;
+        });
+        bfs.setp3([&flag,&label](const typename Graph::VertexType& x, const typename Graph::VertexType& y)
+        {
+            if(label[x] == label[y])
+            {
+                flag = false;
+                return false;
+            }
+            return true;
+        });
+        bfs();
+        if(flag == false)
+            throw std::runtime_error("Graph not bipartite");
+        else
+        {
+            for(auto i=g.begin();i!=g.end();++i)
+                if(label[i->first] == 1)
+                    result.first.push_back(i->first);
+                else
+                    result.second.push_back(i->first);
+        }
+        return result;
+    }
 }
 #endif

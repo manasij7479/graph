@@ -47,12 +47,12 @@ namespace graph
         :g(g_),source(s) 
         {
             fringe = new Container<Graph>([this](V x,V y){return this->dist[x] < this->dist[y];});
-            p1=p2=p3=
+            p1=p2=
             [](const V&)
             {
                 return true;
             };
-            p4=[](const V&,const V&)
+            p3=p4=[](const V&,const V&)
             {
                 return true;
             };
@@ -92,13 +92,13 @@ namespace graph
                         //back edge
                         if(g.isDirected())
                         {
-                            if(!p3(y->first))
+                            if(!p3(v,y->first))
                                 return;
                         }
                         else
                         {
                             if(parent[v]!=y->first)
-                                if(!p3(y->first))
+                                if(!p3(v,y->first))
                                     return;
                         }
                     }
@@ -118,7 +118,7 @@ namespace graph
         /** \brief - Hook for traversing**/
         void setp2(std::function<bool(const V&)> f){p2=f;}
         /** \brief - Hook for back edges **/
-        void setp3(std::function<bool(const V&)> f){p3=f;}
+        void setp3(std::function<bool(const V&,const V&)> f){p3=f;}
         /** \brief - Hook for tree edges **/
         void setp4(std::function<bool(const V&,const V&)> f){p4=f;}
         
@@ -134,8 +134,8 @@ namespace graph
         ParentArray<Graph> parent;
         Graph& g;
         V source;
-        std::function<bool(const V&)> p1, p2, p3;
-        std::function<bool(const V&,const V&)> p4;
+        std::function<bool(const V&)> p1, p2;
+        std::function<bool(const V&,const V&)> p3, p4;
     };
     
     

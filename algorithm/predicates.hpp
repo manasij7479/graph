@@ -133,6 +133,38 @@ namespace graph
         return connected;
     }
     
+    /** \brief - Returns true if Graph g is bipartite, false otherwise
+     * 
+     * A graph is bipartite iff its vertices can be divided into two disjoint 
+     * sets U and V such that every edge connects a vertex in U to one in V. 
+     * 
+     * @param Graph g - Parameter, a graph object
+     * **/
+    template<typename Graph>
+    bool isBipartite(Graph& g)
+    {
+        BreadthFirstSearch<Graph> bfs(g,g.begin()->first);
+        bool result = true;
+        std::map<typename Graph::VertexType, int> label;
+        label[g.begin()->first] = 1;
+        bfs.setp4([&label](const typename Graph::VertexType& x, const typename Graph::VertexType& y)
+        {
+            label[y] = -label[x];
+            return true;
+        });
+        bfs.setp3([&result,&label](const typename Graph::VertexType& x, const typename Graph::VertexType& y)
+        {
+            if(label[x] == label[y])
+            {
+                result = false;
+                return false;
+            }
+            return true;
+        });
+        bfs();
+        return result;
+    }
+    
     /**
      * \brief - Returns true if Graph g1 is a component of Graph g2,
      *  false otherwise
@@ -341,16 +373,11 @@ namespace graph
     {
         for(auto i=g.begin();i!=g.end();++i)
         {
-//             std::cout<<i->first<<std::endl;
-//             auto h1 = g;
             auto h=VertexDeletionSubgraph(g,i->first);
-//             displayGraph(h);
-//             if(!isConnected(&VertexDeletionSubgraph(g,vlist[i])))
             if(!isHamiltonian(h))
             {
                 return false;
             }
-//             std::cout<<isHamiltonian(h)<<std::endl;
         }
         
         return true;
@@ -426,7 +453,7 @@ namespace graph
     {
         Search<Graph,Stack> searchObject(g,g.begin()->first);
         bool cyclic=false;
-        searchObject.setp3([&cyclic](const typename Graph::VertexType&)
+        searchObject.setp3([&cyclic](const typename Graph::VertexType& x, const typename Graph::VertexType& y)
         {
             cyclic=true;
             return false;
