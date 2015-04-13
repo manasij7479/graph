@@ -638,6 +638,19 @@ namespace graph
         {
             return generalized_petersen({12,5},start);
         }
+        
+        Graph<int,int> heawood(std::vector<int> , int start=1)
+        {
+            auto result = cycle({14});
+            for(int i=1;i<14;i+=2)
+            {
+                if((i+5)%14 == 0)
+                    result.insertEdge(i,14,1);
+                else
+                    result.insertEdge(i,(i+5)%14,1);
+            }
+            return result;
+        }
     }
 }
 #endif
