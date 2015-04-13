@@ -651,6 +651,27 @@ namespace graph
             }
             return result;
         }
+        
+        Graph<int,int> pappus(std::vector<int> , int start=1)
+        {
+            auto result = cycle({18});
+            std::vector<int> inc ={5,7,11,7,11};
+            int j=1, counter=0;
+            for(int i=1;i<=3;i++)
+            {
+                for(;j<6*i;++j)
+                {
+                    if((j + inc[counter]) % 18 == 0)
+                        result.insertEdge(j,18,1);
+                    else
+                        result.insertEdge(j,(j + inc[counter]) % 18,1);
+                    counter++;
+                }
+                counter = 0;
+                j++;
+            }
+            return result;
+        }
     }
 }
 #endif
