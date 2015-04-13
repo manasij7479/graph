@@ -672,6 +672,17 @@ namespace graph
             }
             return result;
         }
+        
+        Graph<int,int> franklin(std::vector<int>, int start=1)
+        {
+            auto result = cycle({12},start);
+            for(int i=1;i<6;i+=2)
+            {
+                result.insertEdge(i,i+7,1);
+                result.insertEdge(i+1,i+6,1);
+            }
+            return result;
+        }
     }
 }
 #endif
