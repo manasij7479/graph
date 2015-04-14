@@ -667,6 +667,22 @@ namespace graph
             return result;
         }
         
+        /**
+         * \brief - Returns a Pappus graph
+         * 
+         * The Pappus graph is a bipartite 3-regular undirected graph with 18 vertices and 27 edges.
+         * It has girth 6, diameter 4, radius 4, chromatic number 2, chromatic index 3 and is both 
+         * 3-vertex-connected and 3-edge-connected.
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Pappus_graph">Nauru Graph</a>
+         * 
+         * @param std::vector<int> args - First parameter, a vector of integers, not used here,
+         * included for consistency
+         * 
+         * @param int start- Second parameter, the starting position from which the vertices are 
+         * to be added, default value 1
+         * 
+         * @returns Graph<int,int> - a Pappus graph
+         * **/
         Graph<int,int> pappus(std::vector<int> , int start=1)
         {
             auto result = cycle({18},start);
