@@ -704,6 +704,21 @@ namespace graph
             return result;
         }
         
+        /**
+         * \brief - Returns a Franklin graph
+         * 
+         * The Franklin graph a 3-regular graph with 12 vertices and 18 edges.It is Hamiltonian 
+         * and has chromatic number 2, chromatic index 3, radius 3, diameter 3 and girth 4.
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Franklin_graph">Nauru Graph</a>
+         * 
+         * @param std::vector<int> args - First parameter, a vector of integers, not used here,
+         * included for consistency
+         * 
+         * @param int start- Second parameter, the starting position from which the vertices are 
+         * to be added, default value 1
+         * 
+         * @returns Graph<int,int> - a Franklin graph
+         * **/
         Graph<int,int> franklin(std::vector<int>, int start=1)
         {
             auto result = cycle({12},start);
