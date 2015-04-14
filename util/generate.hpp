@@ -642,12 +642,12 @@ namespace graph
         Graph<int,int> heawood(std::vector<int> , int start=1)
         {
             auto result = cycle({14},start);
-            for(int i=1;i<14;i+=2)
+            for(int i=start;i<start+13;i+=2)
             {
-                if((i+5)%14 == 0)
+                if((i+5)%start+13 == 0)
                     result.insertEdge(i,start+13,1);
                 else
-                    result.insertEdge(i,(i+5)%14,1);
+                    result.insertEdge(i,(i+5)%start+13,1);
             }
             return result;
         }
@@ -656,15 +656,15 @@ namespace graph
         {
             auto result = cycle({18},start);
             std::vector<int> inc ={5,7,11,7,11};
-            int j=1, counter=0;
+            int j=start, counter=0;
             for(int i=1;i<=3;i++)
             {
-                for(;j<6*i;++j)
+                for(;j<start+6*i-1;++j)
                 {
                     if((j + inc[counter]) % 18 == 0)
                         result.insertEdge(j,start+17,1);
                     else
-                        result.insertEdge(j,(j + inc[counter]) % 18,1);
+                        result.insertEdge(j,(j + inc[counter]) % start+17,1);
                     counter++;
                 }
                 counter = 0;
@@ -676,11 +676,18 @@ namespace graph
         Graph<int,int> franklin(std::vector<int>, int start=1)
         {
             auto result = cycle({12},start);
-            for(int i=1;i<6;i+=2)
+            for(int i=start;i<start+5;i+=2)
             {
                 result.insertEdge(i,i+7,1);
                 result.insertEdge(i+1,i+6,1);
             }
+            return result;
+        }
+        
+        Graph<int,int> diamond(std::vector<int>, int start=1)
+        {
+            auto result = cycle({4},start);
+            result.insertEdge(start+1,start+3,1);
             return result;
         }
     }
