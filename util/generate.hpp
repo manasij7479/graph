@@ -730,6 +730,22 @@ namespace graph
             return result;
         }
         
+        /**
+         * \brief - Returns a Diamond graph
+         * 
+         * The diamond graph is a planar undirected graph with 4 vertices and 5 edges. It has 
+         * radius 1, diameter 2, girth 3, chromatic number 3 and chromatic index 3. It is also 
+         * a 2-vertex-connected and a 2-edge-connected Hamiltonian graph.
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Franklin_graph">Nauru Graph</a>
+         * 
+         * @param std::vector<int> args - First parameter, a vector of integers, not used here,
+         * included for consistency
+         * 
+         * @param int start- Second parameter, the starting position from which the vertices are 
+         * to be added, default value 1
+         * 
+         * @returns Graph<int,int> - a Diamond graph
+         * **/
         Graph<int,int> diamond(std::vector<int>, int start=1)
         {
             auto result = cycle({4},start);
