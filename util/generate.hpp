@@ -752,6 +752,38 @@ namespace graph
             result.insertEdge(start+1,start+3,1);
             return result;
         }
+        
+        /**
+         * \brief - Returns a Tietze's graph
+         * 
+         * Tietze's graph is an undirected cubic graph with 12 vertices and 18 edges It has 
+         * diameter 3, girth 3, chromatic number 3 and chromatic index 4. It is also a 
+         * 2-vertex-connected non Hamiltonian graph. It is not hypohamiltonian.
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Tietze%27s_graph">Nauru Graph</a>
+         * 
+         * @param std::vector<int> args - First parameter, a vector of integers, not used here,
+         * included for consistency
+         * 
+         * @param int start- Second parameter, the starting position from which the vertices are 
+         * to be added, default value 1
+         * 
+         * @returns Graph<int,int> - a Tietze's graph
+         * **/
+        Graph<int,int> tietze(std::vector<int>, int start=1)
+        {
+            auto g1 = cycle({3},start);
+            auto g2 = cycle({9},start+3);
+            auto result = graph::Union(g1,g2);
+            
+            int start2 = start+3;
+            for(int i=start,j=start2;i<start+3;++i,j+=3)
+                result.insertEdge(i,j,1);
+            result.insertEdge(start2+1,start2+5,1);
+            result.insertEdge(start2+2,start2+7,1);
+            result.insertEdge(start2+4,start2+8,1);
+            
+            return result;
+        }
     }
 }
 #endif
