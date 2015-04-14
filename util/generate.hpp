@@ -639,6 +639,21 @@ namespace graph
             return generalized_petersen({12,5},start);
         }
         
+        /**
+         * \brief - Returns a Heawood graph
+         * 
+         * The Heawood graph is an undirected graph with 14 vertices and 21 edges, 
+         * named after Percy John Heawood. It is bipartite, cubic, cage, Hamiltonian.
+         * Reference Link - <a href="http://en.wikipedia.org/wiki/Heawood_graph">Nauru Graph</a>
+         * 
+         * @param std::vector<int> args - First parameter, a vector of integers, not used here,
+         * included for consistency
+         * 
+         * @param int start- Second parameter, the starting position from which the vertices are 
+         * to be added, default value 1
+         * 
+         * @returns Graph<int,int> - a Heawood graph
+         * **/
         Graph<int,int> heawood(std::vector<int> , int start=1)
         {
             auto result = cycle({14},start);
