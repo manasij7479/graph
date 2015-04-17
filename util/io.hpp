@@ -4,6 +4,7 @@
 #include <sstream>
 #include <map>
 #include "../graph.hpp"
+#include "../algorithm/collections.hpp"
 //Placeholder implementation,
 //will need to be abstracted when adding new formats
 /**
@@ -95,6 +96,18 @@ namespace graph
         return out.str();
     }
     
-    
+    template<typename Graph>
+    std::string writeGraphDOT(Graph& g)
+    {
+        std::ostringstream out;
+        std::string connector = "--";
+        if (g.isDirected())
+            connector = "->";
+        out << "graph {\n";
+        for (auto e : EdgeList<Graph>(g, false))
+            out << std::get<0>(e)<<connector<<std::get<1>(e)<<";\n";
+        out << "}\n";
+        return out.str();
+    }
 }
 #endif
