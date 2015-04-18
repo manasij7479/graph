@@ -456,6 +456,15 @@ namespace graph
         return path;
     }
     
+    /**
+     * \brief - Returns a Hamiltonian Path of a graph
+     * 
+     * A Hamiltonian Path is a path that visits every vertex of a graph exactly once.
+     * 
+     * @param Graph g - Parameter, a graph object
+     * 
+     * @returns std::vector<V> path - a Hamiltonian Path
+     * **/
     template<typename Graph>
     std::vector<typename Graph::VertexType> HamiltonianPath(Graph g)
     {
@@ -482,6 +491,15 @@ namespace graph
         throw std::runtime_error("g is not semi-hamiltonian ...");
     }
     
+    /**
+     * \brief - Returns a Hamiltonian Cycle of a graph
+     * 
+     * A Hamiltonian Cycle is a cycle that visits every vertex of a graph exactly once.
+     * 
+     * @param Graph g - Parameter, a graph object
+     * 
+     * @returns std::vector<V> path - a Hamiltonian Cycle
+     * **/
     template<typename Graph>
     std::vector<typename Graph::VertexType> HamiltonianCycle(Graph g)
     {
