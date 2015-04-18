@@ -356,17 +356,17 @@ namespace graph
         return vattr;
     }
     /**
-     * \brief - Returns an Eulerian path of a graph
+     * \brief - Returns an Eulerian cycle of a graph
      * 
-     * An Eulerian Path is a path that visits every edge of a graph exactly once.
+     * An Eulerian Cycle is a cycle that visits every edge of a graph exactly once.
      * This employs Hierholzer's algorithm.
      * 
      * @param Graph g - Parameter, a graph object
      * 
-     * @returns std::vector<V> path - the Eulerian path
+     * @returns std::vector<V> path - the Eulerian Cycle
      * **/
     template<typename Graph>
-    std::vector<typename Graph::VertexType> EulerianPath(Graph g)           // Hierholzer's algorithm   
+    std::vector<typename Graph::VertexType> EulerianCycle(Graph g)           // Hierholzer's algorithm   
     {
         if(!isEulerian(g))
             throw std::runtime_error("g is not eulerian ...");
