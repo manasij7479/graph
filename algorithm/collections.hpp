@@ -356,17 +356,17 @@ namespace graph
         return vattr;
     }
     /**
-     * \brief - Returns an Eulerian cycle of a graph
+     * \brief - Returns an Eulerian Circuit of a graph
      * 
-     * An Eulerian Cycle is a cycle that visits every edge of a graph exactly once.
+     * An Eulerian Circuit is a circuit that visits every edge of a graph exactly once.
      * This employs Hierholzer's algorithm.
      * 
      * @param Graph g - Parameter, a graph object
      * 
-     * @returns std::vector<V> path - an Eulerian Cycle
+     * @returns std::vector<V> path - an Eulerian Circuit
      * **/
     template<typename Graph>
-    std::vector<typename Graph::VertexType> EulerianCycle(Graph g, bool isStartGiven=false, typename Graph::VertexType start=1)
+    std::vector<typename Graph::VertexType> EulerianCircuit(Graph g, bool isStartGiven=false, typename Graph::VertexType start=1)
     {
         if(!isEulerian(g))
             throw std::runtime_error("g is not eulerian ...");
@@ -425,14 +425,24 @@ namespace graph
         return path;
     }
     
+    /**
+     * \brief - Returns an Eulerian trail of a graph
+     * 
+     * An Eulerian Trail is a trail that visits every edge of a graph exactly once.
+     * This employs an augemnted version of Hierholzer's algorithm.
+     * 
+     * @param Graph g - Parameter, a graph object
+     * 
+     * @returns std::vector<V> path - an Eulerian Trail
+     * **/
     template<typename Graph>
-    std::vector<typename Graph::VertexType> EulerianPath(Graph g)
+    std::vector<typename Graph::VertexType> EulerianTrail(Graph g)
     {
         if(!isSemiEulerian(g))
             std::runtime_error("g is not semi-eulerian ...");
         if(isEulerian(g))
         {
-            auto path = EulerianCycle(g);
+            auto path = EulerianCircuit(g);
             path.pop_back();
             return path;
         }
@@ -441,7 +451,7 @@ namespace graph
             if(degree(g,i->first)%2!=0)
                 oddVertices.push_back(i->first);
         g.insertEdge(oddVertices[0],oddVertices[1],1);
-        auto path = EulerianCycle(g,oddVertices[0]);
+        auto path = EulerianCircuit(g,oddVertices[0]);
         path.pop_back();
         return path;
     }
