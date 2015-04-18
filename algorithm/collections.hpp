@@ -439,7 +439,7 @@ namespace graph
     std::vector<typename Graph::VertexType> EulerianTrail(Graph g)
     {
         if(!isSemiEulerian(g))
-            std::runtime_error("g is not semi-eulerian ...");
+            throw std::runtime_error("g is not semi-eulerian ...");
         if(isEulerian(g))
         {
             auto path = EulerianCircuit(g);
@@ -454,6 +454,61 @@ namespace graph
         auto path = EulerianCircuit(g,oddVertices[0]);
         path.pop_back();
         return path;
+    }
+    
+    template<typename Graph>
+    std::vector<typename Graph::VertexType> HamiltonianPath(Graph g)
+    {
+        auto vlist = VertexList(g);
+        std::sort(vlist.begin(),vlist.end());
+        
+        do
+        {
+            bool flag = true;
+            auto v = vlist[0];
+            for(int i=1;i<vlist.size();++i)
+            {
+                if(!isAdjacent(g,v,vlist[i]))
+                {
+                    flag = false;
+                    break;
+                }
+                v = vlist[i];
+            }
+            if(flag == true)
+                return vlist;
+        }while(std::next_permutation(vlist.begin(),vlist.end()));
+        
+        throw std::runtime_error("g is not semi-hamiltonian ...");
+    }
+    
+    template<typename Graph>
+    std::vector<typename Graph::VertexType> HamiltonianCycle(Graph g)
+    {
+        auto vlist = VertexList(g);
+        std::sort(vlist.begin(),vlist.end());
+        
+        do
+        {
+            bool flag = true;
+            auto v = vlist[0];
+            for(int i=1;i<vlist.size();++i)
+            {
+                if(!isAdjacent(g,v,vlist[i]))
+                {
+                    flag = false;
+                    break;
+                }
+                v = vlist[i];
+            }
+            if(flag == true && isAdjacent(g,vlist.front(),vlist.back()))
+            {
+                vlist.push_back(vlist.front());
+                return vlist;
+            }
+        }while(std::next_permutation(vlist.begin(),vlist.end()));
+        
+        throw std::runtime_error("g is not hamiltonian ...");
     }
     
     /**
