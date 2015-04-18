@@ -438,14 +438,14 @@ namespace graph
     template<typename Graph>
     std::vector<typename Graph::VertexType> EulerianTrail(Graph g)
     {
-        if(!isSemiEulerian(g))
-            throw std::runtime_error("g is not semi-eulerian ...");
         if(isEulerian(g))
         {
             auto path = EulerianCircuit(g);
             path.pop_back();
             return path;
         }
+        if(!isSemiEulerian(g))
+            throw std::runtime_error("g is not semi-eulerian ...");
         std::vector<typename Graph::VertexType> oddVertices;
         for(auto i=g.begin();i!=g.end();++i)
             if(degree(g,i->first)%2!=0)
