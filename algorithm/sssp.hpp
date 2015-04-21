@@ -54,11 +54,11 @@ namespace graph
         {
             auto w = g.weight(u,v);
             if(distance[u]<std::numeric_limits<E>::max())
-				if(distance[v]>distance[u]+w)
-				{
-					distance[v]=distance[u]+w;
-					parent[v]=u;
-				}
+                if(distance[v]>distance[u]+w)
+                {
+                    distance[v]=distance[u]+w;
+                    parent[v]=u;
+                }
         }
         DistanceArray<Graph>& getDistanceArray() {return distance;}///<Returns the distance array
         ParentArray<Graph>& getParentArray() {return parent;}///< Returns the parent array
@@ -108,6 +108,7 @@ namespace graph
         
         while(!pq.empty())
         {
+            pq.heapify();
             auto u=pq.get();
             VisitNeighbours(g,u,[&state,&u](V v){state.relax(u,v);});
         }
@@ -125,7 +126,7 @@ namespace graph
      * @param Graph g - First Parameter, a graph object on which Djikstra's Algorithm is applied
      * 
      * @param typename Graph::VertexType s - Second Parameter, a vertex of graph g and the source
-     * 								  for Djikstra's algorithm
+     *   for Djikstra's algorithm
      * 
      * @returns SSSPState<Graph> state - Contains the modified parent array and distance array after applying Bellman-Ford Algorithm
      * **/
