@@ -178,5 +178,23 @@ namespace graph
             s.insert(ds.findRoot(i->first));
         return s.size();
     }
+    
+    template<typename Graph>
+    int KruskalMinimumSpan(Graph g)
+    {
+        return Kruskal(g,[](typename Graph::VertexType, typename Graph::VertexType, typename Graph::VertexType){}).getSpan();
+    }
+    
+    template<typename Graph>
+    int PrimMinimumSpan(Graph g)
+    {
+        return Prim(g).getSpan();
+    }
+    
+    template<typename Graph>
+    int BoruvkaMinimumSpan(Graph g)
+    {
+        return Boruvka(g).getSpan();
+    }
 }
 #endif
