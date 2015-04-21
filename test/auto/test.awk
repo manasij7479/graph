@@ -12,7 +12,7 @@ BEGIN{
 	retval=system("./auto/pycheck.py "  $1 " " expected);
 	if(retval==0)
 	{
-		print "[OK]" #$1
+		print "[OK] :: " $1
 		pass++;
 	}
 	else 
