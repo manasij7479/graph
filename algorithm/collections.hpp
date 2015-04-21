@@ -2,9 +2,11 @@
 #define GRAPH_ALGORITHM_COLLECTIONS_HPP
 #include "../graph.hpp"
 #include "../util/visitors.hpp"
-#include "search.hpp"
+#include "sssp.hpp"
 #include "enumeration.hpp"
 #include "predicates.hpp"
+#include "search.hpp"
+#include "apsp.hpp"
 #include "../structures/attribute.hpp"
 #include "../structures/parent.hpp"
 #include "coloring.hpp"
@@ -20,7 +22,7 @@
  * **/
 namespace graph
 {
-	/**
+    /**
      * \brief - Returns a list containing names of all the vertices in Graph g
      * 
      * @param Graph g - Parameter, a graph object
@@ -571,6 +573,53 @@ namespace graph
                     result.second.push_back(i->first);
         }
         return result;
+    }
+    
+    template<typename Graph>
+    std::map<typename Graph::VertexType, std::vector<typename Graph::VertexType>> DijkstraPath(Graph g, typename Graph::VertexType source)
+    {
+        std::map<typename Graph::VertexType, std::vector<typename Graph::VertexType>> result;
+        auto state = graph::Djikstra<Graph>(g,source);
+        auto parent = state.getParentArray();
+        for(auto i=g.begin();i!=g.end();++i)
+            result[i->first] = parent.getPath(i->first);
+        return result;
+    }
+   
+    template<typename Graph>
+    std::map<typename Graph::VertexType, std::vector<typename Graph::VertexType>> BellmanFordPath(Graph g, typename Graph::VertexType source)
+    {
+        std::map<typename Graph::VertexType, std::vector<typename Graph::VertexType>> result;
+        auto state = graph::BellmanFord<Graph>(g,source);
+        auto parent = state.getParentArray();
+        for(auto i=g.begin();i!=g.end();++i)
+            result[i->first] = parent.getPath(i->first);
+        return result;
+    }
+   
+    template<typename Graph>
+    typename APSPState<Graph>::PM FloydRoyWarshallPath(Graph g)
+    {
+        auto state = FloydRoyWarshall<Graph>(g);
+        return state.getPathArray();
+    }
+   
+    template<typename Graph>
+    DistanceArray<Graph> DijkstraDistance(Graph g, typename Graph::VertexType source)
+    {
+        return Djikstra<Graph>(g,source).getDistanceArray();
+    }
+   
+    template<typename Graph>
+    DistanceArray<Graph> BellmanFordDistance(Graph g, typename Graph::VertexType source)
+    {
+        return BellmanFord<Graph>(g,source).getDistanceArray();
+    }
+   
+    template<typename Graph>
+    typename APSPState<Graph>::AM FloydRoyWarshallDistance(Graph g)
+    {
+        return FloydRoyWarshall<Graph>(g).getDistanceArray();
     }
 }
 #endif
