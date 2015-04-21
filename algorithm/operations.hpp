@@ -2,6 +2,7 @@
 #define GRAPH_ALGORITHM_OPERATIONS_HPP
 #include "predicates.hpp"
 #include "collections.hpp"
+#include "mst.hpp"
 #include "../graph.hpp"
 #include <cmath>
 #include<string>
@@ -315,6 +316,24 @@ namespace graph
                         result.insertEdge(i->first,j->first,1);
                 }
         return result;
+    }
+    
+    template<typename Graph>
+    Graph KruskalMST(Graph g)
+    {
+        return Kruskal(g,[](typename Graph::VertexType, typename Graph::VertexType, typename Graph::VertexType){}).getMst();
+    }
+    
+    template<typename Graph>
+    Graph PrimMST(Graph g)
+    {
+        return Prim(g).getMst();
+    }
+    
+    template<typename Graph>
+    Graph BoruvkaMST(Graph g)
+    {
+        return Boruvka(g).getMst();
     }
     
 }
