@@ -9,7 +9,7 @@ BEGIN{
 	for(i=3;i<=NF;++i)
 		expected=expected "\\ "$i;
 	
-	retval=system("./auto/pycheck.py "  $1 " " expected);
+	retval=system("python3 ./auto/pycheck.py "  $1 " " expected);
 	if(retval==0)
 	{
 		print "[OK] :: " $1

@@ -45,6 +45,7 @@ namespace graph
             directed = g.directed;
             for (auto p: g.data)
                 data[p.first] = new EdgeList(*p.second);
+            return *this;
         }
         /** \brief - Destructor **/
         ~AdjacencyList()
