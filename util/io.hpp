@@ -5,6 +5,8 @@
 #include <map>
 #include "../graph.hpp"
 #include "../algorithm/collections.hpp"
+#include "gml/gmlparser.tab.c"
+#include "gml/gmlscanutil.hpp"
 //Placeholder implementation,
 //will need to be abstracted when adding new formats
 /**
@@ -12,6 +14,32 @@
  * **/
 namespace graph
 {
+    Graph<int,int> getGMLGraph(std::string filename)
+    {
+            GMLScanUtil scanner(filename);
+            yyin = scanner.getInputStream();
+            int status = yyparse();
+            if(status)
+            {
+                printf("Not Parsed\n");
+                return 0;
+            }
+//             std::cout<<"Parsed successfully"<<std::endl<<std::endl;
+            
+            auto v = s1.getVertices();
+            auto e = s1.getEdges();
+            
+            Graph<int, int> g(s1.getDirectedStatus());
+            for(int i=0; i<v.size(); i++)
+                g.insertVertex(v[i]);
+            for(int i=0; i<e.size(); ++i)
+                g.insertEdge(std::get<0>(e[i]), std::get<1>(e[i]), std::get<2>(e[i]));
+            
+            s1.clear();
+            
+            return g;
+    }
+    
     inline Graph<std::string,int> makeGraph(std::istream& in)
     {
         std::string line;
