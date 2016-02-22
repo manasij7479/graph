@@ -14,7 +14,7 @@
  * **/
 namespace graph
 {
-    Graph<int,int> getGMLGraph(std::string filename)
+    static Graph<int,int> getGMLGraph(std::string filename)
     {
             GMLScanUtil scanner(filename);
             yyin = scanner.getInputStream();
