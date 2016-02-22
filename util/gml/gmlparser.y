@@ -4,11 +4,11 @@
     #include "gmlparsestate.hpp"
     #define YYSTYPE int
     
-    std::ifstream* yyin;
-    int s,d,w;
-    graph::GMLParseState<graph::AdjacencyList<int,int>> s1;
-    int yylex ();
-    void yyerror(char* s);
+    static std::ifstream* yyin;
+    static int s,d,w;
+    static graph::GMLParseState<graph::AdjacencyList<int,int>> s1;
+    static int yylex ();
+    static void yyerror(char* s);
 %}
 
 %token GRAPH_KEYWORD_TOKEN
@@ -63,7 +63,7 @@ edge_weight_stmt:
 ;
 %%
 
-bool isNumber(std::string s)
+static bool isNumber(std::string s)
 {
     for(int i=0;i<s.length();++i)
         if(!isdigit(s[i]))
@@ -71,7 +71,7 @@ bool isNumber(std::string s)
     return true;
 }
 
-int yylex ()
+static int yylex ()
 {
     std::string input;
     *yyin>>input;
@@ -125,4 +125,4 @@ int yylex ()
     }
 }
 
-void yyerror (char* s) {}
+static void yyerror (char* s) {}
