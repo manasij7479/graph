@@ -12,7 +12,7 @@
     static int yyparse(void);
 %}
 
-%pure_parser
+%pure-parser
 %token GRAPH_KEYWORD_TOKEN
 %token DIR_KEYWORD_TOKEN
 %token VERTEX_KEYWORD_TOKEN
