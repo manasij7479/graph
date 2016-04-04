@@ -7,10 +7,12 @@
     static std::ifstream* yyin;
     static int s,d,w;
     static graph::GMLParseState<graph::AdjacencyList<int,int>> s1;
-    static int yylex ();
+    static int yylex (YYSTYPE *lvalp);
     static void yyerror(char* s);
+    static int yyparse(void);
 %}
 
+%pure_parser
 %token GRAPH_KEYWORD_TOKEN
 %token DIR_KEYWORD_TOKEN
 %token VERTEX_KEYWORD_TOKEN
@@ -71,7 +73,7 @@ static bool isNumber(std::string s)
     return true;
 }
 
-static int yylex ()
+static int yylex (YYSTYPE *lvalp)
 {
     std::string input;
     *yyin>>input;
@@ -82,7 +84,7 @@ static int yylex ()
     {
         if(isNumber(input))
         {
-            yylval = std::stoi(input);
+            *lvalp = std::stoi(input);
             return NUM;
         }
         else
@@ -90,12 +92,12 @@ static int yylex ()
     }
     if(input == "true")
     {
-        yylval = 1;
+        *lvalp = 1;
         return TRUE_OR_FALSE_TOKEN;
     }
     if(input == "false")
     {
-        yylval = 0;
+        *lvalp = 0;
         return TRUE_OR_FALSE_TOKEN;
     }
     if(input == "graph")
@@ -116,7 +118,7 @@ static int yylex ()
         return WEIGHT_KEYWORD_TOKEN;
     if(isNumber(input))
     {
-        yylval = std::stoi(input);
+        *lvalp = std::stoi(input);
         return NUM;
     }
     else
